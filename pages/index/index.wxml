@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="container" id="page">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+    <view class="box red-bg" style="left:{{x}}px;top:{{y}}px"></view>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <block wx:if="{{isLoadMore}}">
+      <view class="weui-loadmore">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+      </view>
+    </block>
+    <view class="end main-bg"></view>
+  </view>
+</view>

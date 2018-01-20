@@ -1,0 +1,43 @@
+{
+  "pages":[
+    "pages/hello/hello",
+    "pages/mall/mall",
+    "pages/almirah/almirah",
+    "pages/me/me",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "商城",
+        "iconPath": "assets/mall.png",
+        "selectedIconPath": "assets/mall_active.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "衣橱",
+        "iconPath": "assets/almirah.png",
+        "selectedIconPath": "assets/almirah_active.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "我的",
+        "iconPath": "assets/me.png",
+        "selectedIconPath": "assets/me_active.png"
+      }
+    ],
+    "color": "#353535",
+    "backgroundColor": "#fff",
+    "selectedColor": "#1aaade",
+    "position": "bottom",
+    "borderStyle": "#c0c0c0"
+  },
+  "window":{
+    "backgroundTextStyle":"#fff",
+    "navigationBarBackgroundColor": "#1aaade",
+    "navigationBarTitleText": "净衣客",
+    "navigationBarTextStyle":"#ffffff"
+  }
+}
