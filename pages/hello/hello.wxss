@@ -1,1 +1,14 @@
 /* pages/hello/hello.wxss */
+
+.container {
+  padding-top: 160rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  margin: 150rpx 0 170rpx;
+}
+
+.btn {
+  margin: 30rpx 0 0;
+}

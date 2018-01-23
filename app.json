@@ -1,28 +1,33 @@
 {
   "pages":[
-    "pages/hello/hello",
-    "pages/mall/mall",
-    "pages/almirah/almirah",
     "pages/me/me",
-    "pages/index/index",
+    "pages/hello/hello",
+    "pages/trolley/trolley",
+    "pages/mall/mall",
+    "pages/search/search",
+    "pages/laundrySettlement/laundrySettlement",
+    "pages/laundryOrder/laundryOrder",
+    "pages/mallSettlement/mallSettlement",
+    "pages/mallOrder/mallOrder",
+    "pages/almirah/almirah",
     "pages/logs/logs"
   ],
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/mall/mall",
         "text": "商城",
         "iconPath": "assets/mall.png",
         "selectedIconPath": "assets/mall_active.png"
       },
       {
-        "pagePath": "pages/order/order",
+        "pagePath": "pages/almirah/almirah",
         "text": "衣橱",
         "iconPath": "assets/almirah.png",
         "selectedIconPath": "assets/almirah_active.png"
       },
       {
-        "pagePath": "pages/about/about",
+        "pagePath": "pages/me/me",
         "text": "我的",
         "iconPath": "assets/me.png",
         "selectedIconPath": "assets/me_active.png"

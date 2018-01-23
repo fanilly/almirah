@@ -3,11 +3,18 @@
 @import 'styles/weui.wxss';
 .container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  color: #353535;
 }
 
 page {
   background-color: #f0f0f0;
 }
+
 
 /* *                      公共样式
  * *************************************************************
@@ -36,22 +43,6 @@ page {
   font-size: 24rpx;
 }
 
-.bg-white {
-  background-color: #fff;
-}
-
-.main-bg {
-  background-color: #1aaade;
-}
-
-.main-color {
-  color: #1aaade;
-}
-
-.red-bg {
-  background-color: #e8380d;
-}
-
 .gray01 {
   color: #353535;
 }
@@ -70,4 +61,145 @@ page {
 
 .gray05 {
   color: #999;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.main-bg {
+  background-color: #1aaade;
+  color: #fff;
+}
+
+.main-color {
+  color: #1aaade;
+}
+
+.red-bg {
+  background-color: #e8380d;
+  color: #fff;
+}
+
+.red-color {
+  color: #e8380d;
+}
+
+.box-shadow {
+  box-shadow: 0 2px 8px #999;
+  border-radius: 2px;
+}
+
+.btn {
+  width: 180rpx;
+  height: 46rpx;
+  padding: 15rpx 40rpx;
+  text-align: center;
+  display: flex;
+  box-shadow: 0 2px 8px #999;
+  border-radius: 2px;
+}
+
+.btn text {
+  padding-left: 12rpx;
+}
+
+.btn-hover {
+  background-color: #0996c9;
+}
+
+.main {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 15rpx;
+}
+
+.placeholder-box100 {
+  height: 100rpx;
+}
+
+.placeholder-box120 {
+  height: 120rpx;
+}
+
+
+/*块标题*/
+
+.block-title {
+  height: 112rpx;
+  line-height: 112rpx;
+  color: #1aaade;
+  font-size: 32rpx;
+  border-bottom: 1px solid #ccc;
+  padding-left: 30rpx;
+}
+
+.block-title text {
+  padding-left: 10rpx;
+}
+
+
+/* 结算栏图标 */
+
+.arc-btn-xs {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #1aaade;
+  color: #fff;
+  border-radius: 40rpx;
+  position: relative;
+  margin: 20rpx auto;
+}
+
+.arc-btn-xs image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+
+.arc-btn-xs .corner {
+  width: 32rpx;
+  height: 32rpx;
+  font-size: 18rpx;
+  background-color: #e8380d;
+  border-radius: 16rpx;
+  position: absolute;
+  right: -6rpx;
+  top: -6rpx;
+  text-align: center;
+  line-height: 32rpx;
+}
+
+.arc-btn-lg {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #1aaade;
+  color: #fff;
+  border-radius: 50rpx;
+  position: relative;
+}
+
+.arc-btn-lg image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+
+.arc-btn-lg .corner {
+  width: 34rpx;
+  height: 34rpx;
+  font-size: 18rpx;
+  background-color: #e8380d;
+  border-radius: 16rpx;
+  position: absolute;
+  right: 0;
+  top: 5rpx;
+  text-align: center;
+  line-height: 34rpx;
 }

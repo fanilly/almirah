@@ -1,0 +1,92 @@
+/* pages/laundrySettlement/laundrySettlement.wxss */
+
+.details,
+.messages {
+  width: 100%;
+  padding: 15rpx 15rpx 0;
+  box-sizing: border-box;
+}
+
+.wapper {
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 2rpx 5rpx #ccc;
+}
+
+.items-wapper {
+  padding: 0 15rpx;
+}
+
+.items-wapper .detail-items:last-child {
+  border-bottom: 0;
+}
+
+.detail-items {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px dashed #ccc;
+}
+
+.detail-items .lside {
+  flex: 1;
+  padding: 15rpx 5rpx;
+}
+
+.detail-items .lside view:first-child {
+  height: 28rpx;
+  padding-bottom: 10rpx;
+}
+
+.detail-items .rside {
+  width: 100rpx;
+  text-align: center;
+  text-align: right;
+}
+
+.footer {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  box-shadow: 0 -3rpx 5rpx #eee;
+}
+
+.footer>view:first-child {
+  flex: 1;
+  line-height: 120rpx;
+  text-align: right;
+  padding-right: 30rpx;
+}
+
+.footer>view:last-child {
+  width: 240rpx;
+  text-align: center;
+  line-height: 120rpx;
+}
+
+.msg-item {
+  display: flex;
+  margin-bottom: 6rpx;
+}
+.messages .wapper {
+  padding: 15rpx;
+}
+.msg-item view:first-child {
+  width: 140rpx;
+}
+.msg-item view:last-child {
+  flex: 1;
+}
+.remarks view:last-child {
+  padding: 15rpx;
+}
+.remarks textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15rpx;
+  font-size: 24rpx;
+  box-shadow: 0 0 3rpx #ccc;
+  height: 260rpx;
+  /* border: 1px solid #ccc; */
+}

@@ -1,1 +1,136 @@
 /* pages/mall/mall.wxss */
+
+.header {
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  box-shadow: 0 2px 4px #ccc;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+.header view:nth-child(1) {
+  width: 100rpx;
+  position: relative;
+}
+
+.header view:nth-child(1) image {
+  margin-left: 28rpx;
+}
+
+.header view:nth-child(2) {
+  flex: 1;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.header view:nth-child(3) {
+  width: 100rpx;
+  position: relative;
+}
+
+.header image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+
+.swiper-wapper {
+  width: 100%;
+  padding: 0 15rpx;
+  box-sizing: border-box;
+  margin-top: 15rpx;
+}
+
+.carousel {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.carousel image {
+  width: 100%;
+}
+
+.wx-swiper-dot {
+  width: 22rpx !important;
+  height: 6rpx !important;
+  border-radius: 0 !important;
+}
+
+.hot-title {
+  width: 100%;
+  padding: 0 25rpx;
+  box-sizing: border-box;
+  display: flex;
+  height: 70rpx;
+}
+
+.hot-title image {
+  margin-top: 20rpx;
+}
+
+.hot-title text {
+  line-height: 70rpx;
+  padding-left: 10rpx;
+}
+
+.pro-list-box {
+  width: 100%;
+  padding: 0 15rpx;
+  box-sizing: border-box;
+  column-count: 2;
+  column-gap: 20rpx;
+  font-size: 0;
+}
+
+.pro-item {
+  overflow: hidden;
+  border-radius: 4rpx;
+  background-color: #fff;
+  margin-bottom: 15rpx;
+  padding-bottom: 15rpx;
+  transition: all .4s ease-in-out;
+  width: 100%;
+  display: inline-block;
+}
+
+.pro-item image {
+  width: 100%;
+}
+
+.pro-title {
+  margin: 12rpx 0 8rpx;
+}
+
+.info {
+  width: 100%;
+  padding: 0 15rpx;
+  box-sizing: border-box;
+}
+
+.info>view {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order,
+.trolley {
+  position: fixed;
+  right: 15rpx;
+}
+
+.order {
+  bottom: 130rpx;
+}
+.trolley {
+  bottom: 15rpx;
+}

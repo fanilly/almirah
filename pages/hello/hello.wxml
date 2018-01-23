@@ -1,2 +1,15 @@
 <!--pages/hello/hello.wxml-->
-<text>pages/hello/hello.wxml</text>
+<view class="container">
+  <image src="../../assets/lg-logo.png" style="width: 228rpx;height: 185rpx"></image>
+  <view class="title gray01">净衣客，一键下单，免费取送</view>
+  <navigator url="../laundryOrder/laundryOrder" hover-class="none">
+    <view class="btn main-bg">
+      <image src="../../assets/h_order.png" style="width: 46rpx;height: 46rpx"></image>
+      <text class="f28">立即下单</text>
+    </view>
+  </navigator>
+  <view class="btn main-bg" bindtap="goToMall">
+    <image src="../../assets/h_enter.png" style="width: 46rpx;height: 46rpx;"></image>
+    <text class="f28">直接进入</text>
+  </view>
+</view>

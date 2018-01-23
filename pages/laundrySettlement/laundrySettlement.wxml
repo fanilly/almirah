@@ -1,0 +1,78 @@
+<!--pages/laundrySettlement/laundrySettlement.wxml-->
+<view class="container">
+  <!-- 订单明细 -->
+  <view class="details">
+    <view class="wapper">
+      <view class="block-title">
+        <image src="../../assets/settlement_01.png" style="width: 23rpx;height: 23rpx"></image>
+        <text>订单明细</text>
+      </view>
+      <view class="items-wapper">
+        <view class="detail-items">
+          <view class="lside">
+            <view class="f28 gray04">类型：
+              <text class="gray02">西服</text>
+            </view>
+            <view class="f28 gray04">价格：
+              <text class="f32 red-color">￥20.00</text>
+            </view>
+          </view>
+          <view class="rside f32 gray05">
+            x1
+          </view>
+        </view>
+        <view class="detail-items">
+          <view class="lside">
+            <view class="f28 gray04">类型：
+              <text class="gray02">西服</text>
+            </view>
+            <view class="f28 gray04">价格：
+              <text class="f32 red-color">￥20.00</text>
+            </view>
+          </view>
+          <view class="rside f32 gray05">
+            x1
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 地址等备注信息 -->
+  <view class="messages">
+    <view class="wapper">
+      <view class="receipt-address msg-item gray04 f28">
+        <view>收货地址:</view>
+        <view class="gray02">-- 请选择 --</view>
+      </view>
+      <view class="delivery-address msg-item gray04 f28">
+        <view>送货地址:</view>
+        <view class="gray02">-- 请选择 --</view>
+      </view>
+      <view class="msg-item gray04 f28">
+        <view>预取时间:</view>
+        <view class="gray02">
+          <picker mode="date" value="{{prefetchingTime}}" start="{{startTime}}" bindchange="handleDateChange">
+            {{prefetchingTime}}
+          </picker>
+        </view>
+      </view>
+      <view class="remarks gray04 f28">
+        <view>添加备注:</view>
+        <view>
+          <textarea bindblur="bindTextAreaBlur" show-confirm-bar="false"  placeholder="请输入备注信息（备注信息不得大于300个字符）" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="placeholder-box120"></view>
+  <!-- 底部 -->
+  <view class="footer">
+    <view class="f28">
+      总计：
+      <text class="red-color f32">￥300.00</text>
+    </view>
+    <view class="main-bg f32">
+      提交订单
+    </view>
+  </view>
+</view>

@@ -6,6 +6,13 @@
  * frame - 每帧的回调函数
  * callback - 运动结束后回调函数
  */
+// parabola({
+//   startPos: { x: 360, y: 10 },
+//   endPos: { x: 50, y: 600 },
+//   frame: (x, y) => {
+//     this.setData({ x, y });
+//   }
+// });
 module.exports = (params = {}) => {
   let startPos = params.startPos,
     endPos = params.endPos,
