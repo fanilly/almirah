@@ -1,0 +1,67 @@
+<!--pages/newAddress/newAddress.wxml-->
+<view class="container">
+  <!-- 订单明细 -->
+  <view class="details">
+    <view class="wapper">
+      <view class="block-title">
+        <image src="../../assets/settlement_01.png" style="width: 23rpx;height: 23rpx"></image>
+        <text>地址信息</text>
+      </view>
+      <view class="inputs name f28">
+        <view>
+          <view>姓</view>
+          <view>名:</view>
+        </view>
+        <input class="gray04" bindinput="handleRecordName" placeholder="请输入姓名" />
+      </view>
+      <view class="inputs phone f28">
+        <view>
+          <view>手</view>
+          <view>机</view>
+          <view>号:</view>
+        </view>
+        <input class="gray04" bindinput="handleRecordPhone" placeholder="请输入手机号" />
+      </view>
+      <view class="f28 inputs">
+        <view>
+          <view>选</view>
+          <view>择</view>
+          <view>地</view>
+          <view>址:</view>
+        </view>
+        <view class="choose-btn">
+          <view class="btn-box">
+            <image src="../../assets/m_list_btns_04.png" style="width:40rpx;height: 40rpx;"></image>
+          </view>
+          <view class="gray04">请选择</view>
+        </view>
+      </view>
+      <view class="inputs phone f28 address-detail">
+        <view>
+          <view>详</view>
+          <view>细</view>
+          <view>地</view>
+          <view>址:</view>
+        </view>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea maxlength="100" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleQuestionContent" placeholder="请输入详细地址" style="height: 200rpx" class="f24" />
+            <view class="weui-textarea-counter f24">{{textareaValueLen}}/100</view>
+          </view>
+        </view>
+      </view>
+      <view class="checkbox" bindtap="handleCheckout">
+        <view>
+          <icon color="#1aaade" class="weui-icon-checkbox_circle" type="circle" size="18" wx:if="{{!isDefault}}"></icon>
+          <icon color="#1aaade" class="weui-icon-checkbox_success" type="success" size="18" wx:if="{{isDefault}}"></icon>
+        </view>
+        <view class="gray03 f24">
+          是否设置为默认地址
+        </view>
+      </view>
+      <view class="submit-address f28 main-bg main-bgi">确认添加</view>
+    </view>
+  </view>
+</view>

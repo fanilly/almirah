@@ -1,0 +1,27 @@
+/* pages/messages/messages.wxss */
+
+.msg-item {
+  background-color: #fff;
+  border-radius: 2px;
+  margin-top: 15rpx;
+  position: relative;
+  box-shadow: 0 3rpx 10rpx #ccc;
+}
+
+.msg-item .pointer,
+.msg-item .pointer-gray {
+  float: left;
+  margin: 20rpx 10rpx 0 15rpx;
+}
+
+.title {
+  line-height: 56rpx;
+  padding-top: 12rpx;
+}
+
+.content {
+  padding: 0 15rpx 15rpx 38rpx;
+}
+.weui-footer{
+  margin-top: 30rpx;
+}

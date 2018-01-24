@@ -1,0 +1,34 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="container">
+  <view class="main">
+    <view class="types">
+      <view class="gray01 f28 title">
+        <view class="pointer"></view>必选
+        <text class="f24 gray05">(你想反馈的问题类型)</text>
+      </view>
+      <block wx:for="{{radioItems}}" wx:key="{{index}}">
+        <view class="checkbox" id="{{index}}" bindtap="handleCheckout">
+          <view>
+            <icon color="#1aaade" class="weui-icon-checkbox_circle" type="circle" size="20" wx:if="{{index != curIndex}}"></icon>
+            <icon color="#1aaade" class="weui-icon-checkbox_success" type="success" size="20" wx:if="{{index == curIndex}}"></icon>
+          </view>
+          <view class="gray03 f24">
+            {{item}}
+          </view>
+        </view>
+      </block>
+      <view class="gray01 f28 title">
+        <view class="pointer"></view>请补充详细问题或意见
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea maxlength="200" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleQuestionContent" placeholder="请输入文本(不得小于15个字符)" style="height: 200rpx" class="f24" />
+            <view class="weui-textarea-counter f24">{{textareaValueLen}}/200</view>
+          </view>
+        </view>
+      </view>
+      <view class="feedback-btn f28 main-bg" bindtap="handleConfrimFeedback">提交反馈</view>
+    </view>
+  </view>
+</view>

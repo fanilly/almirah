@@ -10,10 +10,10 @@
       <view class="items-wapper">
         <view class="detail-items">
           <view class="lside">
-            <view class="f28 gray04">类型：
-              <text class="gray02">西服</text>
+            <view class="f28 gray01">类型：
+              <text class="gray04">西服</text>
             </view>
-            <view class="f28 gray04">价格：
+            <view class="f28 gray01">价格：
               <text class="f32 red-color">￥20.00</text>
             </view>
           </view>
@@ -23,10 +23,10 @@
         </view>
         <view class="detail-items">
           <view class="lside">
-            <view class="f28 gray04">类型：
-              <text class="gray02">西服</text>
+            <view class="f28 gray01">类型：
+              <text class="gray04">西服</text>
             </view>
-            <view class="f28 gray04">价格：
+            <view class="f28 gray01">价格：
               <text class="f32 red-color">￥20.00</text>
             </view>
           </view>
@@ -40,26 +40,79 @@
   <!-- 地址等备注信息 -->
   <view class="messages">
     <view class="wapper">
-      <view class="receipt-address msg-item gray04 f28">
-        <view>收货地址:</view>
-        <view class="gray02">-- 请选择 --</view>
+      <view class="receipt-address gray01 f28 msg-item2">
+        <view>取衣地址:</view>
+        <view>
+          <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
+          <text style="padding-left: 10rpx;" class="gray04">请选择</text>
+        </view>
       </view>
-      <view class="delivery-address msg-item gray04 f28">
-        <view>送货地址:</view>
-        <view class="gray02">-- 请选择 --</view>
+      <view class="gray02">
+        <navigator url="" class="address-item">
+          <view>
+            <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+          </view>
+          <view>
+            <view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">姓名：</text>卡尔玛</view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">手机号：</text>16616616666
+                <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+              </view>
+            </view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">地址：</text>神秘的召唤师峡谷 南艾欧尼亚 纳沃里省某村庄古董店
+            </view>
+          </view>
+        </navigator>
       </view>
-      <view class="msg-item gray04 f28">
+      <view class="delivery-address gray01 f28">
+        <view>送衣地址:</view>
+      </view>
+      <view class="gray02">
+        <navigator url="" class="address-item">
+          <view>
+            <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+          </view>
+          <view>
+            <view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">姓名：</text>卡尔玛</view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">手机号：</text>16616616666
+                <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+              </view>
+            </view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">地址：</text>神秘的召唤师峡谷 南艾欧尼亚 纳沃里省某村庄古董店
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view class="msg-item gray01 f28 time">
         <view>预取时间:</view>
-        <view class="gray02">
+        <view class="gray04 picker-time">
           <picker mode="date" value="{{prefetchingTime}}" start="{{startTime}}" bindchange="handleDateChange">
-            {{prefetchingTime}}
+            <block wx:if="{{prefetchingTime==''}}">
+              <view class="picker-time-text">
+                <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
+                <text style="padding-left: 10rpx;">请选择</text>
+              </view>
+            </block>
+            <view wx:else class="picker-time-text">{{prefetchingTime}}</view>
           </picker>
         </view>
       </view>
-      <view class="remarks gray04 f28">
+      <view class="remarks gray01 f28">
         <view>添加备注:</view>
-        <view>
-          <textarea bindblur="bindTextAreaBlur" show-confirm-bar="false"  placeholder="请输入备注信息（备注信息不得大于300个字符）" />
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <textarea maxlength="100" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleQuestionContent" placeholder="选填：请输入备注信息（长度不得大于300个字符）" style="height: 180rpx" class="f24" />
+              <view class="weui-textarea-counter f24">{{textareaValueLen}}/300</view>
+            </view>
+          </view>
         </view>
       </view>
     </view>
@@ -71,7 +124,7 @@
       总计：
       <text class="red-color f32">￥300.00</text>
     </view>
-    <view class="main-bg f32">
+    <view class="main-bg f32 main-bgi">
       提交订单
     </view>
   </view>

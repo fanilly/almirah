@@ -43,6 +43,10 @@ page {
   font-size: 24rpx;
 }
 
+.f22 {
+  font-size: 22rpx;
+}
+
 .gray01 {
   color: #353535;
 }
@@ -66,10 +70,14 @@ page {
 .bg-white {
   background-color: #fff;
 }
-
+/*466ede*/
 .main-bg {
   background-color: #1aaade;
   color: #fff;
+}
+
+.main-bgi {
+  background-image: linear-gradient(to right,#1aaade,#2e8fde);
 }
 
 .main-color {
@@ -92,18 +100,22 @@ page {
 
 .btn {
   width: 180rpx;
-  height: 46rpx;
+  height: 52rpx;
   padding: 15rpx 40rpx;
   text-align: center;
   display: flex;
+  line-height: 52rpx;
   box-shadow: 0 2px 8px #999;
   border-radius: 2px;
+  background-image: linear-gradient(to right,#1aaade,#2e8fde);
 }
 
 .btn text {
   padding-left: 12rpx;
 }
-
+.btn image {
+  margin-top: 5rpx;
+}
 .btn-hover {
   background-color: #0996c9;
 }
@@ -120,6 +132,20 @@ page {
 
 .placeholder-box120 {
   height: 120rpx;
+}
+
+.pointer {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background-color: #e8380d;
+}
+
+.pointer-gray {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background-color: #999;
 }
 
 
@@ -180,6 +206,7 @@ page {
   color: #fff;
   border-radius: 50rpx;
   position: relative;
+  background-image: linear-gradient(to right,#1aaade,#2e8fde);
 }
 
 .arc-btn-lg image {

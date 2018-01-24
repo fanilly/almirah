@@ -1,0 +1,33 @@
+<!--pages/addressManager/addressManager.wxml-->
+<view class="container">
+  <view class="main">
+    <navigator url="../newAddress/newAddress" class="new-address">
+      <view>
+        <image src="../../assets/plus.png" style="width:35rpx;height: 35rpx;"></image>
+      </view>
+      <view class="gray01 f28">新增地址</view>
+      <view>
+        <image src="../../assets/gray_arrow.png" style="width:20rpx;height: 35rpx;"></image>
+      </view>
+    </navigator>
+    <navigator url="" class="address-item">
+      <view>
+        <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+      </view>
+      <view>
+        <view>
+          <view class="gray04 f28">
+            <text class="gray01 f28">姓名：</text>卡尔玛</view>
+          <view class="gray04 f28">
+            <text class="gray01 f28">手机号：</text>16616616666
+            <image src="../../assets/garbage.png" style="width:40rpx;height:40rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+          </view>
+        </view>
+        <view class="gray04 f28">
+          <text class="gray01 f28">地址：</text>神秘的召唤师峡谷 南艾欧尼亚 纳沃里省某村庄古董店
+          <text class="red-color f28"> 【默认】 </text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

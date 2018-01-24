@@ -1,0 +1,27 @@
+<!--pages/messages/messages.wxml-->
+<view class="container">
+  <view class="main">
+    <view class="msg-item">
+      <view class="title gray01 f28">
+        <view class="pointer"></view>订单消息
+        <text class="gray05 f22"> 2018-01-15 08:30:29</text>
+      </view>
+      <view class="content f24 gray04">
+        你的订单号为20158642911548的订单正在派送中正在派送在派送中正在派送中
+      </view>
+    </view>
+    <view class="msg-item">
+      <view class="title gray01 f28">
+        <view class="pointer-gray"></view>订单消息
+        <text class="gray05 f22"> 2018-01-15 08:30:29</text>
+      </view>
+      <view class="content f24 gray04">
+        你的订单号为20158642911548的订单正在派送中正在派送在派送中正在派送中
+      </view>
+    </view>
+  </view>
+</view>
+<!-- footer -->
+<view class="weui-footer">
+  <view class="weui-footer__text">没有更多消息了</view>
+</view>

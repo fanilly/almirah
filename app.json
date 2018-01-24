@@ -1,14 +1,22 @@
 {
   "pages":[
+    "pages/bindphone/bindphone",
     "pages/me/me",
+    "pages/mallSettlement/mallSettlement",
+    "pages/newAddress/newAddress",
+    "pages/addressManager/addressManager",
+    "pages/laundrySettlement/laundrySettlement",
     "pages/hello/hello",
+    "pages/mallOrder/mallOrder",
+    "pages/messages/messages",
+    "pages/feedback/feedback",
+    "pages/about/about",
+    "pages/service/service",
+    "pages/helps/helps",
     "pages/trolley/trolley",
     "pages/mall/mall",
     "pages/search/search",
-    "pages/laundrySettlement/laundrySettlement",
     "pages/laundryOrder/laundryOrder",
-    "pages/mallSettlement/mallSettlement",
-    "pages/mallOrder/mallOrder",
     "pages/almirah/almirah",
     "pages/logs/logs"
   ],
@@ -40,7 +48,7 @@
     "borderStyle": "#c0c0c0"
   },
   "window":{
-    "backgroundTextStyle":"#fff",
+    "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#1aaade",
     "navigationBarTitleText": "净衣客",
     "navigationBarTextStyle":"#ffffff"

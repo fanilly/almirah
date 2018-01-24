@@ -1,2 +1,109 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view class="container">
+  <view class="main">
+    <!-- header -->
+    <view class="header box-shadow">
+      <view>
+        <image src="{{avatarUrl}}" style="width: 150rpx;height: 150rpx;border-radius: 50%"></image>
+      </view>
+      <view>
+        <view class="f36 gray01">{{nickName}}</view>
+        <view class="f32 gray04">18736636666</view>
+      </view>
+      <view>
+        <image src="../../assets/lg_arrow.png" style="width: 30rpx;height: 52rpx;"></image>
+      </view>
+    </view>
+    <!-- btns -->
+    <view class="btn-list box-shadow">
+      <navigator url="../feedback/feedback">
+        <view>
+          <image src="../../assets/m_btns_01.png" style="width: 65rpx;height: 65rpx"></image>
+          <view class="f28 gray04">反馈中心</view>
+        </view>
+      </navigator>
+      <navigator url="../messages/messages">
+        <view>
+          <view class="pointer"></view>
+          <image src="../../assets/m_btns_02.png" style="width: 65rpx;height: 65rpx"></image>
+          <view class="f28 gray04">消息中心</view>
+        </view>
+      </navigator>
+      <navigator url="../helps/helps">
+        <view>
+          <image src="../../assets/m_btns_03.png" style="width: 65rpx;height: 65rpx"></image>
+          <view class="f28 gray04">帮助中心</view>
+        </view>
+      </navigator>
+      <navigator url="../service/service">
+        <view>
+          <image src="../../assets/m_btns_04.png" style="width: 65rpx;height: 65rpx"></image>
+          <view class="f28 gray04">客服中心</view>
+        </view>
+      </navigator>
+    </view>
+    <!-- lists -->
+    <view class="lists-box box-shadow">
+      <navigator url="../bindphone/bindphone">
+        <view class="flag-icon">
+          <image src="../../assets/m_list_btns_01.png" style="width: 55rpx;height: 55rpx"></image>
+        </view>
+        <view class="f28 gray01 text-con">
+          绑定手机号
+        </view>
+        <view class="xs-arrow">
+          <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+        </view>
+      </navigator>
+      <navigator url="../trolley/trolley">
+        <view class="flag-icon">
+          <image src="../../assets/m_list_btns_02.png" style="width: 55rpx;height: 55rpx"></image>
+        </view>
+        <view class="f28 gray01 text-con">
+          我的购物车
+        </view>
+        <view class="xs-arrow">
+          <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+        </view>
+      </navigator>
+      <navigator url="../mallOrder/mallOrder">
+        <view class="flag-icon">
+          <image src="../../assets/m_list_btns_03.png" style="width: 55rpx;height: 55rpx"></image>
+        </view>
+        <view class="f28 gray01 text-con">
+          我的订单
+        </view>
+        <view class="xs-arrow">
+          <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+        </view>
+      </navigator>
+      <navigator url="../addressManager/addressManager">
+        <view class="flag-icon">
+          <image src="../../assets/m_list_btns_04.png" style="width: 55rpx;height: 55rpx"></image>
+        </view>
+        <view class="f28 gray01 text-con">
+          地址管理
+        </view>
+        <view class="xs-arrow">
+          <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+        </view>
+
+      </navigator>
+      <navigator url="../about/about">
+        <view class="flag-icon">
+          <image src="../../assets/m_list_btns_05.png" style="width: 55rpx;height: 55rpx"></image>
+        </view>
+        <view class="f28 gray01 text-con">
+          关于我们
+        </view>
+        <view class="xs-arrow">
+          <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+        </view>
+      </navigator>
+    </view>
+    <!-- footer -->
+    <view class="weui-footer">
+      <view class="weui-footer__text">Copyright © 2018 净衣客</view>
+    </view>
+  </view>
+</view>

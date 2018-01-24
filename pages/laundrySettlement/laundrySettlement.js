@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    prefetchingTime:'-- 请选择 --',
+    prefetchingTime:'',
     startTime:'',
     remarks:''
   },

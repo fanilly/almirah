@@ -42,7 +42,7 @@
       共选中<text class="red-color f32"> 3 </text>件 总计：<text class="red-color f32"> ￥300.00 </text>
     </view>
     <view class="main-bg f32">
-      <navigator url="../laundrySettlement/laundrySettlement">
+      <navigator url="../mallSettlement/mallSettlement">
         去结算
       </navigator>
     </view>

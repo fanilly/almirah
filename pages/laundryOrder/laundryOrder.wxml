@@ -52,7 +52,7 @@
   <!-- 底部 -->
   <view class="footer">
     <view>
-      <view class="arc-btn-xs">
+      <view class="arc-btn-xs main-bgi">
         <image src="../../assets/order_02.png" style="width: 41rpx;height: 45rpx"></image>
         <view class="corner">12</view>
       </view>
@@ -60,7 +60,7 @@
     <view class="f28">
       总计：<text class="red-color f32">￥300.00</text>
     </view>
-    <view class="main-bg f32">
+    <view class="main-bg f32 main-bgi">
       <navigator url="../laundrySettlement/laundrySettlement">
         去结算
       </navigator>

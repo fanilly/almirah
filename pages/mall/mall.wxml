@@ -32,7 +32,7 @@
   </view>
   <!-- pro list -->
   <view class="pro-list-box">
-    <navigator url="/">
+    <navigator url="" hover-class="none">
       <view class="pro-item">
         <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517215642&di=04749e48f2a385f236a428c99079848c&imgtype=jpg&er=1&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F0823dd54564e9258df7f3f9d9682d158ccbf4e7d.jpg" mode="widthFix"></image>
         <view class="info">
@@ -48,7 +48,7 @@
         </view>
       </view>
     </navigator>
-    <navigator url="/">
+    <navigator url="/" hover-class="none">
       <view class="pro-item">
         <image src="https://gd1.alicdn.com/imgextra/i4/2018150028/TB2xiFHc7fb_uJkSnhJXXbdDVXa_!!2018150028.jpg" mode="widthFix"></image>
         <view class="info">
@@ -64,7 +64,7 @@
         </view>
       </view>
     </navigator>
-    <navigator url="/">
+    <navigator url="/" hover-class="none">
       <view class="pro-item">
         <image src="https://gd3.alicdn.com/imgextra/i3/737914807/TB2sG.0XvBNTKJjSszcXXbO2VXa_!!737914807.jpg" mode="widthFix"></image>
         <view class="info">
@@ -80,7 +80,7 @@
         </view>
       </view>
     </navigator>
-    <navigator url="/">
+    <navigator url="/" hover-class="none">
       <view class="pro-item">
         <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517215710&di=adc1806904776066d969986272c88bf2&imgtype=jpg&er=1&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F8435e5dde71190ef83342cacc41b9d16fcfa60f2.jpg" mode="widthFix"></image>
         <view class="info">

@@ -1,0 +1,91 @@
+/* pages/newAddress/newAddress.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.details,
+.messages {
+  width: 100%;
+  padding: 15rpx 15rpx 0;
+  box-sizing: border-box;
+}
+
+.block-title {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 16rpx;
+}
+
+.wapper {
+  border-radius: 2px;
+  background-color: #fff;
+  /*box-shadow: 0 2rpx 5rpx #ccc;*/
+}
+
+.items-wapper {
+  padding: 0 15rpx;
+}
+
+.inputs {
+  display: flex;
+  padding: 0 20rpx;
+  align-items: center;
+  line-height: 80rpx;
+}
+
+.inputs input {
+  border-bottom: 1px solid #eee;
+}
+
+.inputs>view:first-child {
+  width: 130rpx;
+  text-align: right;
+  height: 80rpx;
+  padding-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.inputs input {
+  flex: 1;
+  padding: 0 15rpx;
+}
+
+.choose-btn {
+  display: flex;
+  position: relative;
+  top: 6rpx;
+}
+
+.btn-box {
+  padding-top: 10rpx;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  padding-left: 10rpx;
+}
+
+.checkbox>view:first-child {
+  position: relative;
+  top: -2rpx;
+}
+
+.submit-address {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 2rpx;
+  margin: 40rpx 15rpx 15rpx;
+}
+
+.weui-cells {
+  margin: 0 20rpx 20rpx;
+}
+
+.weui-cell:before {
+  border-color: #eee !important;
+}

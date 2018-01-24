@@ -1,0 +1,47 @@
+/* pages/feedback/feedback.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.main {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15rpx;
+}
+
+.types {
+  padding: 15rpx;
+  background-color: #fff;
+  line-height: 55rpx;
+}
+
+.types .pointer {
+  float: left;
+  margin-top: 20rpx;
+  margin-right: 10rpx;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+}
+
+.checkbox>view:first-child {
+  padding-top: 24rpx;
+}
+
+.title {
+  margin: 10rpx 0;
+}
+
+.feedback-btn {
+  width: 260rpx;
+  height: 80rpx;
+  float: right;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 2px;
+  margin-top: 20rpx;
+}

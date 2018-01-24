@@ -1,0 +1,59 @@
+/* pages/bindphone/bindphone.wxss */
+.content {
+  width: 100%;
+  background: #fff;
+  padding: 0 15rpx;
+  box-sizing: border-box;
+  padding-bottom: 50rpx;
+}
+
+.content input {
+  height: 120rpx;
+  width: 100%;
+  border-bottom: 1rpx solid #f0f0f0;
+  color: #666;
+  padding-left: 10rpx;
+  font-size: 30rpx;
+}
+
+.placeholder {
+  color: #ccc;
+}
+
+.content button {
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 100%;
+  border-radius: 6rpx;
+  font-size: 36rpx;
+  color: #fff;
+  background-color: #02c1c9;
+  margin-top: 50rpx;
+}
+
+.verf-code {
+  display: flex;
+  height: 120rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+}
+
+.verf-code input {
+  flex: 1;
+  border-bottom: 0;
+}
+
+.verf-code text {
+  display: block;
+  width: 200rpx;
+  height: 60rpx;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  bottom: 18rpx;
+  border-radius: 4rpx;
+  z-index: 10;
+}

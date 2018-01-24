@@ -3,38 +3,43 @@
 .details,
 .messages {
   width: 100%;
-  padding: 15rpx 15rpx 0;
+  padding: 0 0 0;
   box-sizing: border-box;
+}
+
+.messages {
+  margin-top: 15rpx;
 }
 
 .wapper {
   border-radius: 2px;
   background-color: #fff;
-  box-shadow: 0 2rpx 5rpx #ccc;
 }
 
 .items-wapper {
-  padding: 0 15rpx;
+  padding: 10rpx 15rpx;
 }
 
 .items-wapper .detail-items:last-child {
   border-bottom: 0;
 }
-
+.details .block-title {
+  border-bottom: 1px solid #e2e2e2;
+}
 .detail-items {
   display: flex;
   align-items: center;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px dashed #e2e2e2;
 }
 
 .detail-items .lside {
   flex: 1;
-  padding: 15rpx 5rpx;
+  padding: 20rpx 5rpx;
 }
 
 .detail-items .lside view:first-child {
   height: 28rpx;
-  padding-bottom: 10rpx;
+  padding-bottom: 20rpx;
 }
 
 .detail-items .rside {
@@ -60,33 +65,83 @@
 }
 
 .footer>view:last-child {
-  width: 240rpx;
+  width: 280rpx;
   text-align: center;
   line-height: 120rpx;
 }
 
 .msg-item {
   display: flex;
-  margin-bottom: 6rpx;
+  margin-bottom: 15rpx;
 }
+
 .messages .wapper {
-  padding: 15rpx;
+  padding: 30rpx 15rpx;
 }
-.msg-item view:first-child {
+
+.msg-item>view:first-child {
   width: 140rpx;
 }
-.msg-item view:last-child {
+
+.remarks>view:last-child {
+  margin: 20rpx 15rpx 0;
+}
+
+.picker-time {
   flex: 1;
 }
-.remarks view:last-child {
-  padding: 15rpx;
-}
-.remarks textarea {
+
+.picker-time-text {
   width: 100%;
-  box-sizing: border-box;
-  padding: 15rpx;
-  font-size: 24rpx;
-  box-shadow: 0 0 3rpx #ccc;
-  height: 260rpx;
-  /* border: 1px solid #ccc; */
+}
+
+.address-item {
+  display: flex;
+  background-color: #fff;
+  margin-top: 15rpx;
+  padding: 22rpx 0;
+  border-radius: 2rpx;
+  position: relative;
+  border: 1px solid #e2e2e2;
+}
+
+.address-item>view:first-child {
+  width: 50rpx;
+  padding: 0 35rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.address-item>view:last-child {
+  padding-right: 15rpx;
+}
+
+.address-item>view:last-child view {
+  line-height: 44rpx;
+}
+
+.address-item>view:last-child view:first-child {
+  display: flex;
+}
+
+.address-item>view:last-child view:first-child view:first-child {
+  width: 220rpx;
+}
+
+.delivery-address {
+  margin-top: 20rpx;
+}
+
+.time {
+  margin-top: 20rpx;
+}
+
+.msg-item2 {
+  display: flex;
+}
+.msg-item2>view:last-child {
+  position: relative;
+  padding-left: 20rpx;
+  top: -8rpx;
 }
