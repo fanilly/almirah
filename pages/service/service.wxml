@@ -1,2 +1,21 @@
 <!--pages/service/service.wxml-->
-<text>pages/service/service.wxml</text>
+<view class="container">
+  <view class="main">
+    <block wx:for="{{services}}" wx:key="{{index}}">
+      <view class="items box-shadow">
+        <view class="avatar">
+          <image src="../../assets/services.png" style="width: 161rpx; height: 133rpx;"></image>
+        </view>
+        <view class="info">
+          <view class="f32 gray01">一号客服</view>
+          <view class="f28 gray04">4008-079-029</view>
+        </view>
+        <view>
+          <view class="phone-btn main-bg main-bgi">
+            <image src="../../assets/services_phone.png" style="width: 50rpx;height:58rpx;margin-top:21rpx"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

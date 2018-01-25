@@ -1,7 +1,10 @@
-/* pages/bindphone/bindphone.wxss */
-
+/* pages/register/register.wxss */
 page {
   background-color: #fff;
+}
+
+.title {
+  margin: 50rpx 0 0;
 }
 
 .content {
@@ -25,15 +28,19 @@ page {
   color: #ccc;
 }
 
+.content .msg,
 .content button {
   height: 80rpx;
   line-height: 80rpx;
-  width: 100%;
+  width: 46%;
+  float: left;
+  margin: 0 2%;
   border-radius: 6rpx;
   font-size: 28rpx;
   color: #fff;
   background-color: #02c1c9;
   margin-top: 50rpx;
+  text-align: center;
 }
 
 .verf-code {

@@ -1,1 +1,43 @@
 /* pages/service/service.wxss */
+
+.items {
+  display: flex;
+  height: 160rpx;
+  background-color: #fff;
+  margin-top: 15rpx;
+}
+
+.avatar {
+  width: 161rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx
+}
+
+.info {
+  flex: 1;
+}
+
+.info view:first-child {
+  line-height: 32rpx;
+  margin-top: 44rpx;
+}
+
+.info view:last-child {
+  line-height: 28rpx;
+  margin-top: 15rpx;
+}
+
+.items>view:last-child {
+  width: 100rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.phone-btn {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  text-align: center;
+}

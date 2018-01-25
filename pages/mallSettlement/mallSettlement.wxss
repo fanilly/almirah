@@ -79,6 +79,7 @@
   bottom: 0;
   display: flex;
   box-shadow: 0 -3rpx 5rpx #eee;
+  z-index: 9999;
 }
 
 .footer>view:first-child {

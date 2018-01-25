@@ -1,1 +1,80 @@
 /* pages/search/search.wxss */
+
+.header {
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100rpx;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px #ccc;
+  display: flex;
+}
+
+.header>view:first-child {
+  flex: 1;
+  padding-left: 20rpx;
+}
+
+.header>view:last-child {
+  width: 150rpx;
+  padding: 0 20rpx;
+}
+
+.search-btn {
+  height: 60rpx;
+  margin-top: 20rpx;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.search-box {
+  height: 56rpx;
+  border: 1px solid #1aaade;
+  border-radius: 30rpx;
+  margin-top: 20rpx;
+  display: flex;
+}
+
+input {
+  padding: 8rpx 15rpx 0;
+}
+
+.history {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+
+.h-title {
+  border-bottom: 1px solid #d0d0d0;
+  padding: 15rpx 0 15rpx;
+  position: relative;
+}
+
+.h-content {
+  padding: 0 0 0 35rpx;
+  text-align: justify;
+}
+
+.h-content view {
+  display: inline-block;
+  padding: 12rpx 40rpx;
+  border: 1rpx solid #d0d0d0;
+  border-radius: 24rpx;
+  line-height: 24rpx;
+  height: 24rpx;
+  text-align: center;
+  margin: 0 6rpx;
+}
+
+.loading-box {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px #ccc;
+  margin-top: 50rpx;
+}

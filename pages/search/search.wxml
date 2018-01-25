@@ -1,2 +1,36 @@
 <!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="container">
+  <view class="placeholder-box100"></view>
+  <!-- 头部搜索框 -->
+  <view class="header">
+    <view>
+      <view class="search-box">
+        <image src="../../assets/mall_search.png" style="width:32rpx;height: 32rpx;margin:14rpx 0 0 15rpx"></image>
+        <input bindinput="handleRecordSearchKeyWord" focus="true" value="{{quickSearchKeyWord}}" placeholder="请输入关键词" name="phonenumber" class="f24" />
+      </view>
+    </view>
+    <view>
+      <view class="search-btn f24 main-bg main-bgi" bindtap="handleStartSearch">搜索</view>
+    </view>
+  </view>
+  <!-- 历史记录模块 -->
+  <block wx:if="{{!startSearch && !isStartSearch}}">
+    <view class="history">
+      <view class="h-title f28 gray02">
+        <image src="../../assets/clock_gray.png" style="width:28rpx;height:28rpx;vertical-align: middle; margin:-4rpx 10rpx 0 5rpx;"></image>
+        <text>搜索历史</text>
+        <image wx:if="{{hasHistorys}}" src="../../assets/garbage.png" bindtap="handleClearHistorysSearch" style="width:40rpx;height:40rpx;position: absolute;right: 10rpx;top:20rpx;"></image>
+      </view>
+      <view class="h-content">
+        <text class="f24 gray05" wx:if="{{!hasHistorys}}">暂无搜索历史</text>
+        <view class="f24 gray05" wx:for="{{historys}}" wx:key="{{index}}" id="{{index}}" bindtap="handleQuickSearch">{{item}}</view>
+      </view>
+    </view>
+  </block>
+  <!-- 加载动画 -->
+  <block wx:if="{{startSearch}}">
+    <view class="loading-box">
+      <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+    </view>
+  </block>
+</view>
