@@ -1,19 +1,19 @@
 <!--pages/me/me.wxml-->
 <view class="container">
-  <view class="main">
-    <!-- header -->
-    <view class="header box-shadow">
-      <view>
-        <image src="{{avatarUrl}}" style="width: 150rpx;height: 150rpx;border-radius: 50%"></image>
-      </view>
-      <view>
-        <view class="f36 gray01">{{nickName}}</view>
-        <view class="f32 gray04">18736636666</view>
-      </view>
-      <view>
-        <image src="../../assets/lg_arrow.png" style="width: 30rpx;height: 52rpx;"></image>
-      </view>
+  <!-- header -->
+  <view class="header box-shadow main-bg">
+    <view>
+      <image src="{{avatarUrl}}" style="width: 150rpx;height: 150rpx;border-radius: 50%; border:2px solid #fff;"></image>
     </view>
+    <view>
+      <view class="f36">{{nickName}}</view>
+      <view class="f32">18736636666</view>
+    </view>
+    <view>
+      <image src="../../assets/lg_arrow.png" style="width: 30rpx;height: 52rpx;"></image>
+    </view>
+  </view>
+  <view class="main">
     <!-- btns -->
     <view class="btn-list box-shadow">
       <navigator url="../feedback/feedback">
@@ -87,7 +87,6 @@
         <view class="xs-arrow">
           <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
         </view>
-
       </navigator>
       <navigator url="../about/about">
         <view class="flag-icon">

@@ -38,11 +38,13 @@
   </view>
   <!-- 底部 -->
   <view class="footer">
-    <view class="f28">
-      共选中<text class="red-color f32"> 3 </text>件 总计：<text class="red-color f32"> ￥300.00 </text>
+    <view class="f24">
+      共选中
+      <text class="red-color f28"> 3 </text>件 总计：
+      <text class="red-color f28"> ￥300.00 </text>
     </view>
-    <view class="main-bg f32 main-bgi">
-      <navigator url="../mallSettlement/mallSettlement">
+    <view>
+      <navigator class="f28 main-bg main-bgi" url="../mallSettlement/mallSettlement">
         去结算
       </navigator>
     </view>

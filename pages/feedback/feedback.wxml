@@ -28,7 +28,7 @@
           </view>
         </view>
       </view>
-      <view class="feedback-btn f28 main-bg" bindtap="handleConfrimFeedback">提交反馈</view>
+      <view class="feedback-btn f28 main-bg main-bgi" bindtap="handleConfrimFeedback">提交反馈</view>
     </view>
   </view>
 </view>

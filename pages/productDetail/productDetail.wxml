@@ -1,30 +1,43 @@
-<!--pages/mall/mall.wxml-->
-<view class="container" id="page">
-  <!-- header -->
-  <view class="header">
-    <navigator url="../search/search" class="f24">搜索商品</navigator>
-    <view>
-      <navigator url="../messages/messages" class="msg-box">
-        <image src="../../assets/m_btns_02_fff.png" style="width:38rpx;height:38rpx;"></image>
-        <view class="pointer"></view>
-      </navigator>
+<!--pages/productDetail/productDetail.wxml-->
+<view class="container">
+  <image src="https://img.alicdn.com/bao/uploaded/i1/2935830079/TB1T7_zf4HI8KJjy1zbXXaxdpXa_!!0-item_pic.jpg_430x430q90.jpg" style="width:100%" mode="widthFix"></image>
+  <view class="infos">
+    <view class="title f28 gray01">冬季棉衣女2017新款宽松学生韩版chic棉服原宿ulzzang小棉袄外套</view>
+    <view class="double-column">
+      <view class="f24 gray02">原价:
+        <text class="gray04">￥400.00</text>
+      </view>
+      <view class="f24 gray02">现价:
+        <text class="red-color f28">￥200.00</text>
+      </view>
     </view>
+    <view class="double-column">
+      <view class="f24 gray02">颜色:
+        <text class="gray04">棕色</text>
+      </view>
+      <view class="f24 gray02">尺码:
+        <text class="gray04">L</text>
+      </view>
+    </view>
+    <view class="f24 gray02 desc-t">商品描述:</view>
+    <view class="f24 gray04 desc">冬季棉衣女2017新款宽松学生韩版chic棉服原宿ulzzang小棉袄外套冬季棉衣女2017新款宽松学生韩版chic棉服原宿ulzzang小棉袄外套</view>
   </view>
-  <!-- banner -->
-  <view class="swiper-wapper">
-    <swiper class="carousel" id="test" style="height:{{swiperHeight}}px" indicator-dots="true" indicator-color="#fff" indicator-active-color="#1aaade" autoplay="true" interval="5000" circular="true">
-      <swiper-item>
-        <image src="../../assets/banner.jpg" bindload="imageLoad" mode="widthFix"></image>
-      </swiper-item>
-      <swiper-item>
-        <image src="../../assets/banner.jpg" bindload="imageLoad" mode="widthFix"></image>
-      </swiper-item>
-    </swiper>
+  <view class="details">
+    <view class="d-title">
+      <image src="../../assets/goods_detail.png" style="width:30rpx;height: 30rpx;position: relative;top:4rpx;"></image>
+      <text class="f32">商品详情</text>
+    </view>
+    <image src="https://img.alicdn.com/imgextra/i2/2935830079/TB27kfXf8fH8KJjy1XbXXbLdXXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
+    <image src="https://img.alicdn.com/imgextra/i2/2935830079/TB2ECCEbjgy_uJjSZK9XXXvlFXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
+    <image src="https://img.alicdn.com/imgextra/i3/2935830079/TB2tADib0LO8KJjSZFxXXaGEVXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
+    <image src="https://img.alicdn.com/imgextra/i3/2935830079/TB28AjXf8fH8KJjy1XbXXbLdXXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
+    <image src="https://img.alicdn.com/imgextra/i2/2935830079/TB2D6_hf0zJ8KJjSspkXXbF7VXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
   </view>
-  <!-- hot title -->
-  <view class="hot-title">
-    <image src="../../assets/fire.png" style="width: 21rpx;height: 29rpx;"></image>
-    <text class="f28">热门推荐</text>
+  <view class="recommend">
+    <view class="d-title">
+      <image src="../../assets/goods_lsit.png" style="width:36rpx;height: 36rpx;position: relative;top:6rpx;"></image>
+      <text class="f32">推荐商品</text>
+    </view>
   </view>
   <!-- pro list -->
   <view class="pro-list-box">
@@ -93,23 +106,6 @@
       </view>
     </navigator>
   </view>
-  <!-- loadmore -->
-  <block wx:if="{{isLoadMore}}">
-    <view class="weui-loadmore">
-      <view class="weui-loading"></view>
-      <view class="weui-loadmore__tips">正在加载</view>
-    </view>
-  </block>
-  <!-- bnts -->
-  <navigator url="../laundryOrder/laundryOrder">
-    <view class="arc-btn-lg order">
-      <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
-    </view>
-  </navigator>
-  <navigator url="../trolley/trolley">
-    <view class="arc-btn-lg trolley">
-      <image src="../../assets/mall_02.png" style="width: 58rpx;height: 58rpx"></image>
-      <view class="corner">12</view>
-    </view>
-  </navigator>
+  <view class="public-footer"><text></text>别扯了，到底了<text></text></view>
+  <view class="placeholder-box120"></view>
 </view>

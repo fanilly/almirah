@@ -9,6 +9,8 @@
 
 .messages {
   margin-top: 15rpx;
+  position: relative;
+  z-index: 1;
 }
 
 .wapper {
@@ -55,7 +57,7 @@
   bottom: 0;
   display: flex;
   box-shadow: 0 -3rpx 5rpx #eee;
-  z-index: 9999;
+  z-index: 999999;
 }
 
 .footer>view:first-child {
@@ -66,10 +68,21 @@
 }
 
 .footer>view:last-child {
-  width: 280rpx;
+  width: 300rpx;
   text-align: center;
   line-height: 120rpx;
 }
+
+.footer>view:last-child text {
+  display: block;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  width: 90%;
+  margin: 20rpx auto;
+  box-shadow: 0 0 8px #999;
+}
+
 
 .msg-item {
   display: flex;

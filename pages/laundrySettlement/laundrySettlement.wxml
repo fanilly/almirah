@@ -120,12 +120,12 @@
   <view class="placeholder-box120"></view>
   <!-- 底部 -->
   <view class="footer">
-    <view class="f28">
+    <view class="f24">
       总计：
-      <text class="red-color f32">￥300.00</text>
+      <text class="red-color f28">￥300.00</text>
     </view>
-    <view class="main-bg f32 main-bgi">
-      提交订单
+    <view>
+      <text class="main-bg f28 main-bgi">提交订单</text>
     </view>
   </view>
 </view>

@@ -39,9 +39,9 @@ Page({
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
     //模拟加载
+      wx.stopPullDownRefresh(); //停止下拉刷新
     setTimeout(() => {
       wx.hideNavigationBarLoading(); //完成停止加载
-      wx.stopPullDownRefresh(); //停止下拉刷新
     }, 5000);
   },
 
@@ -50,7 +50,7 @@ Page({
     //获取图片真实宽度
     let imgwidth = e.detail.width,
       imgheight = e.detail.height,
-      swiperHeight = this.data.windowWidth / (imgwidth + 30) * imgheight;
+      swiperHeight = this.data.windowWidth / imgwidth * imgheight;
     this.setData({
       swiperHeight: swiperHeight
     });

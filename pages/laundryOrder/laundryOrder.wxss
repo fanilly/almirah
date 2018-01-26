@@ -4,21 +4,24 @@
   width: 100%;
   background-color: #fff;
   height: 100rpx;
-  box-shadow: 0 5px 10px #e2e2e2;
+  box-shadow: 0 3px 8px #e2e2e2;
   position: fixed;
   top: 0;
-  padding: 0 30rpx;
+  padding: 0 56rpx 0 30rpx;
   box-sizing: border-box;
+  z-index: 9999;
 }
 
+
 .wapper {
+
   white-space: nowrap;
 }
 
 .wapper text {
   display: inline-block;
   line-height: 100rpx;
-  margin-right: 60rpx;
+  margin-right: 40rpx;
 }
 
 .pro-items {
@@ -28,6 +31,8 @@
   box-sizing: border-box;
   display: flex;
   height: 220rpx;
+  border-radius: 4rpx;
+  overflow:hidden;
 }
 
 .lside {
@@ -94,7 +99,14 @@
 }
 
 .footer > view:nth-child(3){
-  width: 280rpx;
+  width: 300rpx;
   text-align: center;
-  line-height: 120rpx;
+}
+.footer>view:nth-child(3) navigator {
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  width: 90%;
+  margin: 20rpx auto;
+  box-shadow: 0 0 8px #999;
 }

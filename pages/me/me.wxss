@@ -2,15 +2,20 @@
 
 .main {
   width: 100%;
-  padding: 0;
+
   box-sizing: border-box;
 }
 
 .header {
   display: flex;
-  height: 150rpx;
-  padding: 30rpx;
+  height: 250rpx;
+  padding: 50rpx;
   background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-image: linear-gradient(to bottom,#1aaade,#2e8fde);
 }
 
 .box-shadow {

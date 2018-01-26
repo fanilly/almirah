@@ -80,6 +80,8 @@ page {
   text-align: center;
   border-radius: 2rpx;
   margin: 40rpx 15rpx 15rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 0 8px #ccc;
 }
 
 .weui-cells {

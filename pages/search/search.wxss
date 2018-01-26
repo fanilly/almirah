@@ -10,6 +10,9 @@
   background-color: #fff;
   box-shadow: 0 2px 4px #ccc;
   display: flex;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .header>view:first-child {

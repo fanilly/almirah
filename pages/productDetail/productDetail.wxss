@@ -1,0 +1,68 @@
+/* pages/productDetail/productDetail.wxss */
+
+.infos {
+  background-color: #fff;
+  padding: 15rpx;
+}
+
+.title {
+  border-bottom: 1px solid #e2e2e2;
+  line-height: 40rpx;
+  padding: 0 8rpx 15rpx;
+  margin-bottom: 15rpx;
+}
+
+.double-column {
+  display: flex;
+  padding: 0 8rpx;
+}
+
+.double-column view {
+  flex: 1;
+  line-height: 40rpx;
+}
+
+.double-column view text {
+  padding-left: 20rpx;
+}
+
+.desc-t {
+  padding: 0 8rpx;
+}
+
+.desc {
+  text-indent: 2em;
+  line-height: 36rpx;
+  padding: 0 8rpx;
+}
+
+.details {
+  width: 100%;
+  margin-top: 15rpx;
+}
+
+.details image {
+  display: block;
+}
+
+.details {
+  background-color: #fff;
+}
+
+.d-title {
+  background-color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  padding:20rpx 0 30rpx;
+}
+
+.d-title image {
+  display: inline-block;
+}
+.d-title text {
+  padding-left: 10rpx;
+}
+.recommend {
+  margin: 15rpx 0;
+  width: 100%;
+}

@@ -7,6 +7,7 @@
         <text wx:for="{{datas}}" id="{{index}}" wx:key="key" class="f28 gray01 {{index==curIndex?'main-color':''}}" bindtap="handleTap">{{item}}</text>
       </view>
     </scroll-view>
+    <image src="../../assets/more.png" style="width:32rpx;height:32rpx;position: absolute;right: 28rpx;top:32rpx; padding-left:4px; background-color:#fff; box-shadow: -8px 0 10px #fff;"></image>
   </view>
   <!-- 占位块 -->
   <view class="placeholder-box100"></view>
@@ -29,23 +30,25 @@
         </view>
       </view>
     </view>
-    <view class="pro-items">
-      <view class="lside">
-        <image src="../../assets/pro_02.png" style="width: 190rpx;height: 190rpx;"></image>
-      </view>
-      <view class="rside">
-        <view>
-          <view class="title f28 gray01">类型：西装</view>
-          <view class="price f28 gray01">价格：
-            <text class="red-color f32">￥20.00</text>
+    <block wx:for="123456789" wx:key="{{index}}">
+      <view class="pro-items">
+        <view class="lside">
+          <image src="../../assets/pro_02.png" style="width: 190rpx;height: 190rpx;"></image>
+        </view>
+        <view class="rside">
+          <view>
+            <view class="title f28 gray01">类型：西装</view>
+            <view class="price f28 gray01">价格：
+              <text class="red-color f32">￥20.00</text>
+            </view>
+            <view class="num gray04 f24">月订单量 769</view>
           </view>
-          <view class="num gray04 f24">月订单量 769</view>
-        </view>
-        <view class="add-pro-btn" bindtap="handleAddProduct">
-          <image src="../../assets/order_01.png" style="width: 56rpx;height: 56rpx"></image>
+          <view class="add-pro-btn" bindtap="handleAddProduct">
+            <image src="../../assets/order_01.png" style="width: 56rpx;height: 56rpx"></image>
+          </view>
         </view>
       </view>
-    </view>
+    </block>
   </view>
   <!-- 占位块 -->
   <view class="placeholder-box120"></view>
@@ -57,11 +60,12 @@
         <view class="corner">12</view>
       </view>
     </view>
-    <view class="f28">
-      总计：<text class="red-color f32">￥300.00</text>
+    <view class="f24">
+      总计：
+      <text class="red-color f28">￥300.00</text>
     </view>
-    <view class="main-bg f32 main-bgi">
-      <navigator url="../laundrySettlement/laundrySettlement">
+    <view>
+      <navigator class="main-bg f28 main-bgi" url="../laundrySettlement/laundrySettlement">
         去结算
       </navigator>
     </view>

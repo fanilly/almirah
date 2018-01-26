@@ -104,7 +104,15 @@
 }
 
 .footer>view:nth-child(2) {
-  width: 280rpx;
+  width: 300rpx;
   text-align: center;
-  line-height: 120rpx;
+}
+
+.footer>view:nth-child(2) navigator {
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  width: 90%;
+  margin: 20rpx auto;
+  box-shadow: 0 0 8px #999;
 }
