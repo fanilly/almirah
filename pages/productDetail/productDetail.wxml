@@ -106,6 +106,18 @@
       </view>
     </navigator>
   </view>
+  <!-- 底线 -->
   <view class="public-footer"><text></text>别扯了，到底了<text></text></view>
   <view class="placeholder-box120"></view>
+  <!-- footer -->
+  <view class="footer">
+    <view class="add-trolley f28 main-bg main-bgi">加入购物车</view>
+    <view class="now-buy f28 main-bg main-bgi">立即购买</view>
+  </view>
+  <navigator url="../trolley/trolley">
+    <view class="arc-btn-lg trolley">
+      <image src="../../assets/mall_02.png" style="width: 58rpx;height: 58rpx"></image>
+      <view class="corner">12</view>
+    </view>
+  </navigator>
 </view>

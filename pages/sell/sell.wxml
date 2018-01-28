@@ -1,0 +1,44 @@
+<!--pages/sell/sell.wxml-->
+<view class="container">
+  <view class="main">
+    <!-- 商品参数 -->
+    <view class="details">
+      <view class="wapper">
+        <view class="block-title">
+          <image src="../../assets/settlement_01.png" style="width: 23rpx;height: 23rpx"></image>
+          <text>商品参数</text>
+        </view>
+        <view class="inputs name f28">
+          <view>
+            商品名称：
+          </view>
+          <input class="gray04" bindinput="handleRecordName" placeholder="请输入姓名" />
+        </view>
+        <view class="f28 inputs">
+          <view>买入时间：
+          </view>
+          <view class="choose-btn">
+            <view class="btn-box">
+              <image src="../../assets/clock.png" style="width:24rpx;height: 24rpx; margin:2rpx 8rpx 0 0"></image>
+            </view>
+            <view class="gray04">请选择</view>
+          </view>
+        </view>
+        <view class="inputs phone f28 address-detail">
+          <view>
+            描述信息：
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <textarea maxlength="100" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleQuestionContent" placeholder="请输入描述信息" style="height: 200rpx" class="f24" />
+              <view class="weui-textarea-counter f24">{{textareaValueLen}}/100</view>
+            </view>
+          </view>
+        </view>
+        <view class="submit-address f28 main-bg main-bgi">确认出售</view>
+      </view>
+    </view>
+  </view>
+</view>

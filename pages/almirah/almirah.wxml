@@ -1,2 +1,77 @@
 <!--pages/almirah/almirah.wxml-->
-<text>pages/almirah/almirah.wxml</text>
+<view class="container">
+  <!-- header btns -->
+  <view class="btn-list box-shadow">
+    <navigator url="../feedback/feedback">
+      <view>
+        <image src="../../assets/m_btns_01.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray04">在洗衣物</view>
+      </view>
+    </navigator>
+    <navigator url="../messages/messages">
+      <view>
+        <view class="pointer"></view>
+        <image src="../../assets/m_btns_02.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray04">在售衣物</view>
+      </view>
+    </navigator>
+    <navigator url="../helps/helps">
+      <view>
+        <image src="../../assets/m_btns_03.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray04">洗衣记录</view>
+      </view>
+    </navigator>
+    <navigator url="../service/service">
+      <view>
+        <image src="../../assets/m_btns_04.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray04">交易记录</view>
+      </view>
+    </navigator>
+  </view>
+  <!-- title -->
+  <view class="hot-title">
+    <image src="../../assets/clock.png" style="width: 26rpx;height: 26rpx;"></image>
+    <text class="f28">最近订单</text>
+  </view>
+  <view class="order-list">
+    <view class="order-list-item">
+      <view class="o-header">
+        <view class="f28 gray01">订单时间
+          <text class="gray04">2018-01-26</text>
+        </view>
+        <view class="f26">
+          <text class="pointer"></text>正在清洗</view>
+      </view>
+      <navigator url="../lOrderDetail/lOrderDetail" class="o-body">
+        <view>
+          <view class="item-lside f24 gray02">西服</view>
+          <view class="item-rside f24 gray04">x1</view>
+        </view>
+        <view>
+          <view class="f24 gray02 item-lside">毛绒西服</view>
+          <view class="item-rside f24 gray04">x1</view>
+        </view>
+        <view>
+          <view class="f24 gray02 item-lside">羽绒服（小款）</view>
+          <view class="item-rside f24 gray04">x1</view>
+        </view>
+        <view>
+          <view class="gray05 item-lside">......</view>
+          <view class="item-rside f24 gray05">共5件商品 实付
+            <text class="red-color f28">￥90</text>
+          </view>
+        </view>
+      </navigator>
+      <view class="o-footer">
+        <view class="o-btn">出售</view>
+        <view class="o-btn">确认收货</view>
+      </view>
+    </view>
+  </view>
+  <!-- bnts -->
+  <navigator url="../laundryOrder/laundryOrder">
+    <view class="arc-btn-lg order">
+      <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
+    </view>
+  </navigator>
+</view>

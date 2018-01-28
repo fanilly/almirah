@@ -1,11 +1,13 @@
 {
   "pages":[
+    "pages/sell/sell",
+    "pages/newAddress/newAddress",
+    "pages/almirah/almirah",
     "pages/hello/hello",
     "pages/productDetail/productDetail",
     "pages/mall/mall",
     "pages/laundryOrder/laundryOrder",
     "pages/me/me",
-    "pages/newAddress/newAddress",
     "pages/bindphone/bindphone",
     "pages/feedback/feedback",
     "pages/search/search",
@@ -19,7 +21,6 @@
     "pages/messages/messages",
     "pages/about/about",
     "pages/helps/helps",
-    "pages/almirah/almirah",
     "pages/logs/logs"
   ],
   "tabBar": {
