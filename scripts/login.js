@@ -1,13 +1,38 @@
-module.exports = (fn) => {
+/**
+ * [用户登陆]
+ * @param  {[String]}   api [api地址]
+ * @param  {Function} fn  [获取用户信息成功的回调]
+ * @param  {[Function]}   err [获取用户信息失败的回调]
+ * @return {[void]}       [description]
+ */
+module.exports = (api, fn, err) => {
+  console.log(api)
+  // 调用微信授权弹窗
   wx.login({
     success: res => {
-      wx.getUserInfo({
-        success: res => {
-          let userInfo = res.userInfo;
-          fn(userInfo);
+      //如果点击授权 向服务器发送res.code 换取userID
+      wx.request({
+        method: 'GET',
+        url: `${api}/user/get_openid`,
+        data: {
+          code: res.code
         },
-        fail() {
-          console.log('getUserInco fail');
+        header: {
+          'content-type': 'application/json'
+        },
+        success: res => {
+          let user = res;
+          //成功获取user之后获取用户微信信息
+          wx.getUserInfo({
+            success: res => {
+              let userInfo = res.userInfo;
+              fn(user, userInfo);
+            },
+            fail() {
+              console.log('getUserInco fail');
+              err(user);
+            }
+          });
         }
       });
     }

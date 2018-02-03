@@ -4,19 +4,12 @@
     <!-- 商品参数 -->
     <view class="details">
       <view class="wapper">
-        <view class="block-title">
-          <image src="../../assets/settlement_01.png" style="width: 23rpx;height: 23rpx"></image>
-          <text>商品参数</text>
+        <view class="inputs name f28 gray03 mt30">
+          <view> 商品名称：</view>
+          <input class="gray04" bindinput="handleRecordName" placeholder="请输入商品名称" placeholder-class="gray06 f24" />
         </view>
-        <view class="inputs name f28">
-          <view>
-            商品名称：
-          </view>
-          <input class="gray04" bindinput="handleRecordName" placeholder="请输入姓名" />
-        </view>
-        <view class="f28 inputs">
-          <view>买入时间：
-          </view>
+        <view class="f28 gray03 inputs">
+          <view>买入时间：</view>
           <view class="choose-btn">
             <view class="btn-box">
               <image src="../../assets/clock.png" style="width:24rpx;height: 24rpx; margin:2rpx 8rpx 0 0"></image>
@@ -24,19 +17,74 @@
             <view class="gray04">请选择</view>
           </view>
         </view>
-        <view class="inputs phone f28 address-detail">
+        <view class="xs-inputs f28 gray03">
           <view>
-            描述信息：
+            <view> 尺码：</view>
+            <view class="choose-btn">
+              <view class="btn-box">
+                <image src="../../assets/rule.png" style="width:30rpx;height: 30rpx; margin:4rpx 8rpx 0 0"></image>
+              </view>
+              <view class="gray04">请选择</view>
+            </view>
           </view>
+          <view>
+            <view> 颜色：</view>
+            <input class="gray04" bindinput="handleRecordName" placeholder-class="gray06 f24" placeholder="请输入颜色" />
+          </view>
+        </view>
+        <view class="xs-inputs f28 gray03">
+          <view>
+            <view> 原价：</view>
+            <input class="gray04" bindinput="handleRecordName" placeholder-class="gray06 f24" placeholder="买入价格（元）" />
+          </view>
+          <view>
+            <view> 现价：</view>
+            <input class="gray04" bindinput="handleRecordName" placeholder-class="gray06 f24" placeholder="卖出价格（元）" />
+          </view>
+        </view>
+        <!-- 描述 -->
+        <view class="inputs phone f28 gray03 address-detail">
+          <view>描述信息：</view>
         </view>
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell">
             <view class="weui-cell__bd">
-              <textarea maxlength="100" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleQuestionContent" placeholder="请输入描述信息" style="height: 200rpx" class="f24" />
+              <textarea maxlength="100" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleQuestionContent" placeholder-class="gray06" placeholder="请输入商品描述信息" style="height: 100rpx" class="f24" />
               <view class="weui-textarea-counter f24">{{textareaValueLen}}/100</view>
             </view>
           </view>
         </view>
+        <!-- 图片 -->
+        <view class="up-img-box">
+          <view class="up-header">
+            <view class="f28 gray03">上传图片：
+              <text class="f24 gray05">(默认第一张图片为封面图片)</text>
+            </view>
+            <view class="f24 gray06">{{files.length}}/8</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files" id="uploaderFiles">
+              <block wx:for="{{files}}" wx:key="*this">
+                <view class="weui-uploader__file" bindtap="previewImage" catchlongpress="handleShowDelImage" id="{{index}}">
+                  <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  <block wx:if="{{delIndex == index}}">
+                    <view class="del" catchtap="handleHideDelImage">
+                      <view catchtap="handleDelImage">
+                        <image src="../../assets/del.png" style="width:48rpx;height:48rpx;margin:16rpx;"></image>
+                      </view>
+                    </view>
+                  </block>
+                </view>
+              </block>
+            </view>
+            <block wx:if="{{files.length<8}}">
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="placeholder-box100"></view>
         <view class="submit-address f28 main-bg main-bgi">确认出售</view>
       </view>
     </view>

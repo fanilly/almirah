@@ -67,6 +67,10 @@ page {
   color: #999;
 }
 
+.gray06 {
+  color: #bbb;
+}
+
 .bg-white {
   background-color: #fff;
 }

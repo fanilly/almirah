@@ -4,7 +4,7 @@
   <view class="header">
     <scroll-view scroll-x>
       <view class="wapper">
-        <text wx:for="{{datas}}" id="{{index}}" wx:key="key" class="f28 gray01 {{index==curIndex?'main-color':''}}" bindtap="handleTap">{{item}}</text>
+        <text wx:for="{{datas}}" id="{{index}}" wx:key="key" class="f28 gray01 {{index==curIndex?'main-color':''}}" bindtap="handleCheckoutType">{{item.catName}}</text>
       </view>
     </scroll-view>
     <image src="../../assets/more.png" style="width:32rpx;height:32rpx;position: absolute;right: 28rpx;top:32rpx; padding-left:4px; background-color:#fff; box-shadow: -8px 0 10px #fff;"></image>
@@ -13,37 +13,20 @@
   <view class="placeholder-box100"></view>
   <!-- 产品列表 -->
   <view class="main">
-    <view class="pro-items">
-      <view class="lside">
-        <image src="../../assets/pro_01.png" style="width: 190rpx;height: 190rpx;"></image>
-      </view>
-      <view class="rside">
-        <view>
-          <view class="title f28 gray01">类型：西装</view>
-          <view class="price f28 gray01">价格：
-            <text class="red-color f32">￥20.00</text>
-          </view>
-          <view class="num gray04 f24">月订单量 769</view>
-        </view>
-        <view class="add-pro-btn" bindtap="handleAddProduct">
-          <image src="../../assets/order_01.png" style="width: 56rpx;height: 56rpx"></image>
-        </view>
-      </view>
-    </view>
-    <block wx:for="123456789" wx:key="{{index}}">
+    <block wx:for="{{lists}}" wx:key="{{index}}">
       <view class="pro-items">
         <view class="lside">
-          <image src="../../assets/pro_02.png" style="width: 190rpx;height: 190rpx;"></image>
+          <image src="{{baseUrl}}{{item.catThumbs}}" style="width: 190rpx;height: 190rpx;"></image>
         </view>
         <view class="rside">
           <view>
-            <view class="title f28 gray01">类型：西装</view>
+            <view class="title f28 gray01">类型：{{item.catName}}</view>
             <view class="price f28 gray01">价格：
-              <text class="red-color f32">￥20.00</text>
+              <text class="red-color f32">￥{{item.price}}</text>
             </view>
-            <view class="num gray04 f24">月订单量 769</view>
+            <view class="num gray04 f24">月订单量: {{item.monthNum || 0}}</view>
           </view>
-          <view class="add-pro-btn" bindtap="handleAddProduct">
+          <view class="add-pro-btn" bindtap="handleAddProduct" id="{{index}}">
             <image src="../../assets/order_01.png" style="width: 56rpx;height: 56rpx"></image>
           </view>
         </view>
@@ -55,14 +38,14 @@
   <!-- 底部 -->
   <view class="footer">
     <view>
-      <view class="arc-btn-xs main-bgi">
+      <view class="arc-btn-xs main-bgi" bindtap="handleShowTrolley">
         <image src="../../assets/order_02.png" style="width: 41rpx;height: 45rpx"></image>
-        <view class="corner">12</view>
+        <view class="corner" wx:if="{{totalTrolley > 0}}">{{totalTrolley}}</view>
       </view>
     </view>
     <view class="f24">
       总计：
-      <text class="red-color f28">￥300.00</text>
+      <text class="red-color f28">￥{{totalPrice}}</text>
     </view>
     <view>
       <navigator class="main-bg f28 main-bgi" url="../laundrySettlement/laundrySettlement">
@@ -70,4 +53,24 @@
       </navigator>
     </view>
   </view>
+  <!-- 购物车 -->
+  <block wx:if="{{isShowTrolley && totalTrolley>=1}}">
+    <view class="trolley-box" catchtap="handleCloseTrolley">
+      <scroll-view scroll-y class="trolley-control" catchtap="handleStopPropagation">
+        <view>
+          <block wx:for="{{trolleyContent}}" wx:key="{{index}}">
+            <view class="trolley-item f28 gray02">
+              <view>{{item.catName}}</view>
+              <view class="red-color f32">￥{{item.price}}</view>
+              <view>
+                <text bindtap="handleReduceProductNumber" id="{{index}}">-</text>
+                <text>{{item.total}}</text>
+                <text bindtap="handleAddProductNumber" id="{{index}}">+</text>
+              </view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+  </block>
 </view>

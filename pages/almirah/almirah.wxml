@@ -2,29 +2,29 @@
 <view class="container">
   <!-- header btns -->
   <view class="btn-list box-shadow">
-    <navigator url="../feedback/feedback">
+    <navigator url="../washing/washing">
       <view>
-        <image src="../../assets/m_btns_01.png" style="width: 65rpx;height: 65rpx"></image>
-        <view class="f28 gray04">在洗衣物</view>
+        <image src="../../assets/o_btns_01.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray01">在洗衣物</view>
       </view>
     </navigator>
-    <navigator url="../messages/messages">
+    <navigator url="../selling/selling">
       <view>
         <view class="pointer"></view>
-        <image src="../../assets/m_btns_02.png" style="width: 65rpx;height: 65rpx"></image>
-        <view class="f28 gray04">在售衣物</view>
+        <image src="../../assets/o_btns_02.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray01">在售衣物</view>
       </view>
     </navigator>
-    <navigator url="../helps/helps">
+    <navigator url="../washRecord/washRecord">
       <view>
-        <image src="../../assets/m_btns_03.png" style="width: 65rpx;height: 65rpx"></image>
-        <view class="f28 gray04">洗衣记录</view>
+        <image src="../../assets/o_btns_03.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray01">洗衣记录</view>
       </view>
     </navigator>
-    <navigator url="../service/service">
+    <navigator url="../sellRecord/sellRecord">
       <view>
-        <image src="../../assets/m_btns_04.png" style="width: 65rpx;height: 65rpx"></image>
-        <view class="f28 gray04">交易记录</view>
+        <image src="../../assets/o_btns_04.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray01">交易记录</view>
       </view>
     </navigator>
   </view>
@@ -63,7 +63,7 @@
         </view>
       </navigator>
       <view class="o-footer">
-        <view class="o-btn">出售</view>
+        <view class="o-btn" bindtap="handleCheckSell">出售</view>
         <view class="o-btn">确认收货</view>
       </view>
     </view>

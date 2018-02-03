@@ -1,14 +1,17 @@
 //app.js
 import login from 'scripts/login';
+import updateUserInfo from 'scripts/updateUserInfo';
 App({
   onLaunch: function() {
-    // // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-    login((userInfo) => {
+    wx.showLoading();
+    login(this.globalData.api,(user,userInfo) => {
+      wx.hideLoading();
       this.globalData.userInfo = userInfo;
-      console.log(userInfo);
+      console.log(user,userInfo);
+      // updateUserInfo(userInfo, this.globalData.api, user);
+    },(user)=>{
+      wx.hideLoading();
+      console.log(user);
     });
     // 登录
     // wx.login({
@@ -36,11 +39,60 @@ App({
     //     }
     //   }
     // });
+    // this.login();
+  },
+
+  // 登录
+  login() {
+    const api = this.globalData.api;
+    wx.login({
+      success: res => {
+        //向后台发送res.code 换取openid
+        wx.request({
+          method: 'GET',
+          url: `${api}/user/get_openid`,
+          data: {
+            code: res.code
+          },
+          header: {
+            'content-type': 'application/json'
+          },
+          success: res => {
+            console.log(res);
+            // this.globalData.userID = res.data;
+            // wx.hideLoading();
+            // this.getUserInfo();
+          }
+        });
+      }
+    });
+  },
+
+  getUserInfo() {
+    wx.getUserInfo({
+      success: res => {
+        let userInfo = res.userInfo,
+          api = this.globalData.api,
+          userID = this.globalData.userID;
+        //保存用户信息
+        this.globalData.userInfo = userInfo;
+        if (userID) {
+          updateUserInfo(userInfo, api, userID);
+          console.log(userID);
+        }
+      },
+      fail() {
+        console.log('getUserInco fail');
+      }
+    });
   },
 
   globalData: {
+    userID:'',
+    api: 'https://ybh.hohu.cc/index.php/api',
+    baseUrl: 'https://ybh.hohu.cc/',
     userInfo: {
-      nickName:'卮言',
+      nickName: '卮言',
       avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/ywFvlKF6uhng0HAv4Aa53NHfrxStvT9ftibFCSeOP1zxmLq9iaTVSDgkCdtD3taQIGibibhMl03Xz08EDTy7f4w5rw/0"
     }
   }
