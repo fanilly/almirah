@@ -5,12 +5,18 @@ App({
   onLaunch: function() {
     wx.showLoading();
     login(this.globalData.api,(user,userInfo) => {
+      //登陆成功 隐藏加载动画 并记录返回数据
       wx.hideLoading();
       this.globalData.userInfo = userInfo;
+      this.globalData.userID = user.userId;
+      this.globalData.isVIP = user.isVip * 1 == 1 ? true : false;
       console.log(user,userInfo);
-      // updateUserInfo(userInfo, this.globalData.api, user);
+      updateUserInfo(userInfo, this.globalData.api, user.userId);
     },(user)=>{
+      //登陆成功 隐藏加载动画 并记录用户id及是否为vip
       wx.hideLoading();
+      this.globalData.userID = user.userId;
+      this.globalData.isVIP = user.isVip * 1 == 1 ? true : false;
       console.log(user);
     });
     // 登录
@@ -42,53 +48,9 @@ App({
     // this.login();
   },
 
-  // 登录
-  login() {
-    const api = this.globalData.api;
-    wx.login({
-      success: res => {
-        //向后台发送res.code 换取openid
-        wx.request({
-          method: 'GET',
-          url: `${api}/user/get_openid`,
-          data: {
-            code: res.code
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          success: res => {
-            console.log(res);
-            // this.globalData.userID = res.data;
-            // wx.hideLoading();
-            // this.getUserInfo();
-          }
-        });
-      }
-    });
-  },
-
-  getUserInfo() {
-    wx.getUserInfo({
-      success: res => {
-        let userInfo = res.userInfo,
-          api = this.globalData.api,
-          userID = this.globalData.userID;
-        //保存用户信息
-        this.globalData.userInfo = userInfo;
-        if (userID) {
-          updateUserInfo(userInfo, api, userID);
-          console.log(userID);
-        }
-      },
-      fail() {
-        console.log('getUserInco fail');
-      }
-    });
-  },
-
   globalData: {
     userID:'',
+    isVIP:null,
     api: 'https://ybh.hohu.cc/index.php/api',
     baseUrl: 'https://ybh.hohu.cc/',
     userInfo: {

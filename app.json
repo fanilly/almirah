@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/addressManager/addressManager",
+    "pages/newAddress/newAddress",
     "pages/hello/hello",
     "pages/laundryOrder/laundryOrder",
     "pages/almirah/almirah",
@@ -8,7 +10,6 @@
     "pages/washRecord/washRecord",
     "pages/selling/selling",
     "pages/washing/washing",
-    "pages/newAddress/newAddress",
     "pages/productDetail/productDetail",
     "pages/mall/mall",
     "pages/me/me",
@@ -20,7 +21,6 @@
     "pages/trolley/trolley",
     "pages/service/service",
     "pages/register/register",
-    "pages/addressManager/addressManager",
     "pages/mallOrder/mallOrder",
     "pages/messages/messages",
     "pages/about/about",

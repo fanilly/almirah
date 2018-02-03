@@ -58,6 +58,12 @@ page {
   top: 6rpx;
 }
 
+.choose-btn view:last-child {
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
 .btn-box {
   padding-top: 10rpx;
 }

@@ -1,66 +1,60 @@
 // pages/addressManager/addressManager.js
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    lists: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  // 获取地址列表数据
+  getAddressLists() {
+    wx.showLoading();
+    wx.request({
+      url: `${app.globalData.api}/address/list_address`,
+      data: {
+        userId: 2
+      },
+      success: res => {
+        console.log(res);
+        wx.hideLoading();
+        this.setData({
+          lists: res.data.data
+        });
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  //删除地址
+  handleDelAddress(e) {
+    wx.showLoading();
+    wx.request({
+      url: `${app.globalData.api}/address/del_address`,
+      data: {
+        addressId: this.data.lists[e.currentTarget.id].addressId
+      },
+      success: res => {
+        console.log(res)
+        wx.hideLoading();
+        wx.showToast({
+          title: `删除成功`,
+          icon: 'success',
+          duration: 1500
+        });
+        let lists = this.data.lists;
+        lists.splice(e.currentTarget.id, 1);
+        this.setData({
+          lists: lists
+        });
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  // 生命周期函数--监听页面加载
+  onLoad(options) {
+    this.getAddressLists();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  //生命周期函数--监听页面显示
+  onShow: function() {
+    this.getAddressLists();
   }
-})
+});

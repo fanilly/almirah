@@ -21,7 +21,7 @@ module.exports = (api, fn, err) => {
           'content-type': 'application/json'
         },
         success: res => {
-          let user = res;
+          let user = res.data;
           //成功获取user之后获取用户微信信息
           wx.getUserInfo({
             success: res => {
