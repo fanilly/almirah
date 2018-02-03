@@ -26,6 +26,7 @@ Page({
   //删除地址
   handleDelAddress(e) {
     wx.showLoading();
+    console.log(this.data.lists[e.currentTarget.id].addressId)
     wx.request({
       url: `${app.globalData.api}/address/del_address`,
       data: {
@@ -34,16 +35,24 @@ Page({
       success: res => {
         console.log(res)
         wx.hideLoading();
-        wx.showToast({
-          title: `删除成功`,
-          icon: 'success',
-          duration: 1500
-        });
-        let lists = this.data.lists;
-        lists.splice(e.currentTarget.id, 1);
-        this.setData({
-          lists: lists
-        });
+        if (res.data.status == 1) {
+          wx.showToast({
+            title: `删除成功`,
+            icon: 'success',
+            duration: 1500
+          });
+          let lists = this.data.lists;
+          lists.splice(e.currentTarget.id, 1);
+          this.setData({
+            lists: lists
+          });
+        }else{
+          wx.showToast({
+            title: `删除失败`,
+            icon: 'fail',
+            duration: 1500
+          });
+        }
       }
     });
   },

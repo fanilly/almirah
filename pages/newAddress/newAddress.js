@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addressID:'',
+    addressID: '',
     isAdd: true, //是否为添加地址
     name: '请输入姓名',
     phone: '请输入手机号',
@@ -118,7 +118,7 @@ Page({
             isDefault: this.data.isDefault ? 1 : 0
           },
           success: res => {
-            if (res.data.stauts == 1) {
+            if (res.data.status == 1) {
               //弹出提示
               wx.showToast({
                 title: `${title}成功`,
@@ -162,25 +162,30 @@ Page({
           showCancel: false
         });
       } else {
-        console.log(name)
-        console.log(this.data.name)
-        console.log(name || this.data.name)
+        console.log('--------------------------------------------')
         console.log(this.data.addressID)
+        console.log('1:' + name || '2:' + this.data.name)
+        console.log('1:' + phone || '2:' + this.data.phone)
+        console.log('1:' + latitude || '2:' + this.data.latitude)
+        console.log('1:' + longitude || '2:' + this.data.longitude)
+        console.log('1:' + addressContent || '2:' + this.data.addressContent)
+        console.log('1:' + this.data.isDefault ? 1 : 0)
+        console.log('--------------------------------------------')
         wx.request({
           url: `${app.globalData.api}/address/add_address`,
           data: {
-            addressId:this.data.addressID,
+            addressId: this.data.addressID,
             userId: app.globalData.userID,
-            userName: name || this.data.name,
-            userPhone: phone || this.data.phone,
+            userName: name != '' ? name : this.data.name,
+            userPhone: phone != '' ? phone : this.data.phone,
             addr: this.data.address,
-            latitude: latitude || this.data.latitude,
-            longitude: longitude || this.data.longitude,
-            address: addressContent || this.data.addressContent,
+            latitude: latitude != '' ? latitude : this.data.latitude,
+            longitude: longitude != '' ? longitude : this.data.longitude,
+            address: addressContent != '' ? addressContent : this.data.addressContent,
             isDefault: this.data.isDefault ? 1 : 0
           },
           success: res => {
-            if (res.data.stauts == 1) {
+            if (res.data.status == 1) {
               //弹出提示
               wx.showToast({
                 title: `${title}成功`,
@@ -207,8 +212,16 @@ Page({
 
 
   //生命周期函数--监听页面加载
-  onLoad: function(options) {
-    console.log(options.addressId)
+  onLoad(options) {
+    address = '';
+    name = '';
+    phone = '';
+    addressContent = '';
+    latitude = '';
+    longitude = '';
+    title = '添加';
+    console.log('----------------------------------')
+    console.log(options)
     if (options.title == '修改地址') {
       title = '修改';
       wx.setNavigationBarTitle({
@@ -222,8 +235,8 @@ Page({
         addressContent: options.address,
         addressID: options.addressId,
         isDefault: options.isDefault * 1 == 1 ? true : false,
-        latitude:options.latitude,
-        longitude:options.longitude
+        latitude: options.latitude,
+        longitude: options.longitude
       });
     }
   }
