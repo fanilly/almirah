@@ -1,131 +1,142 @@
 <!--pages/laundrySettlement/laundrySettlement.wxml-->
-<view class="container">
-  <!-- 订单明细 -->
-  <view class="details">
-    <view class="wapper">
-      <view class="block-title">
-        <image src="../../assets/settlement_01.png" style="width: 23rpx;height: 23rpx"></image>
-        <text>订单明细</text>
-      </view>
-      <view class="items-wapper">
-        <view class="detail-items">
-          <view class="lside">
-            <view class="f28 gray01">类型：
-              <text class="gray04">西服</text>
-            </view>
-            <view class="f28 gray01">价格：
-              <text class="f32 red-color">￥20.00</text>
-            </view>
-          </view>
-          <view class="rside f32 gray05">
-            x1
-          </view>
+<block wx:if="{{!loaded}}">
+  <view class="container loadbox">
+    <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+    <text class="f24 gray05">正在加载中...</text>
+  </view>
+</block>
+<block wx:if="{{loaded}}">
+  <view class="container">
+    <!-- 订单明细 -->
+    <view class="details">
+      <view class="wapper">
+        <view class="block-title">
+          <image src="../../assets/settlement_01.png" style="width: 23rpx;height: 23rpx"></image>
+          <text>订单明细</text>
         </view>
-        <view class="detail-items">
-          <view class="lside">
-            <view class="f28 gray01">类型：
-              <text class="gray04">西服</text>
+        <view class="items-wapper">
+          <block wx:for="{{trolleys}}" wx:key="{{index}}">
+            <view class="detail-items">
+              <view class="lside">
+                <view class="f28 gray01">类型：
+                  <text class="gray04">{{item.catName}}</text>
+                </view>
+                <view class="f28 gray01">价格：
+                  <text class="f32 red-color">￥{{item.price}}</text>
+                </view>
+              </view>
+              <view class="rside f32 gray05">
+                x{{item.total}}
+              </view>
             </view>
-            <view class="f28 gray01">价格：
-              <text class="f32 red-color">￥20.00</text>
-            </view>
-          </view>
-          <view class="rside f32 gray05">
-            x1
-          </view>
+          </block>
         </view>
       </view>
     </view>
-  </view>
-  <!-- 地址等备注信息 -->
-  <view class="messages">
-    <view class="wapper">
-      <view class="receipt-address gray01 f28 msg-item2">
-        <view>取衣地址:</view>
-        <view>
-          <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
-          <text style="padding-left: 10rpx;" class="gray04">请选择</text>
-        </view>
-      </view>
-      <view class="gray02">
-        <navigator url="" class="address-item">
-          <view>
-            <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
-          </view>
-          <view>
+    <!-- 地址等备注信息 -->
+    <view class="messages">
+      <view class="wapper">
+        <view class="receipt-address gray01 f28 msg-item2">
+          <view>取衣地址:</view>
+          <block wx:if="{{!takeAddress}}">
             <view>
-              <view class="gray04 f28">
-                <text class="gray01 f28">姓名：</text>卡尔玛</view>
-              <view class="gray04 f28">
-                <text class="gray01 f28">手机号：</text>16616616666
-                <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+              <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
+              <text style="padding-left: 10rpx;" class="gray04">请选择</text>
+            </view>
+          </block>
+        </view>
+        <view class="gray02">
+          <block wx:if="{{takeAddress}}">
+            <navigator url="../addressChoose/addressChoose?type=1" class="address-item">
+              <view>
+                <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
               </view>
-            </view>
-            <view class="gray04 f28">
-              <text class="gray01 f28">地址：</text>神秘的召唤师峡谷 南艾欧尼亚 纳沃里省某村庄古董店
-            </view>
-          </view>
-        </navigator>
-      </view>
-      <view class="delivery-address gray01 f28">
-        <view>送衣地址:</view>
-      </view>
-      <view class="gray02">
-        <navigator url="" class="address-item">
-          <view>
-            <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
-          </view>
-          <view>
+              <view>
+                <view>
+                  <view class="gray04 f28">
+                    <text class="gray01 f28">姓名：</text>{{takeAddress.userName}}</view>
+                  <view class="gray04 f28">
+                    <text class="gray01 f28">手机号：</text>{{takeAddress.userPhone}}
+                    <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+                  </view>
+                </view>
+                <view class="gray04 f28">
+                  <text class="gray01 f28">地址：</text>{{takeAddress.address}}
+                  <text class="red-color f28" wx:if="{{takeAddress.isDefault*1 == 1}}"> 【默认】</text>
+                </view>
+              </view>
+            </navigator>
+          </block>
+        </view>
+        <view class="delivery-address gray01 f28 msg-item2">
+          <view>送衣地址:</view>
+          <block wx:if="{{!giveAddress}}">
             <view>
-              <view class="gray04 f28">
-                <text class="gray01 f28">姓名：</text>卡尔玛</view>
-              <view class="gray04 f28">
-                <text class="gray01 f28">手机号：</text>16616616666
-                <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+              <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
+              <text style="padding-left: 10rpx;" class="gray04">请选择</text>
+            </view>
+          </block>
+        </view>
+        <view class="gray02">
+          <block wx:if="{{giveAddress}}">
+            <navigator url="../addressChoose/addressChoose?type=2" class="address-item">
+              <view>
+                <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+              </view>
+              <view>
+                <view>
+                  <view class="gray04 f28">
+                    <text class="gray01 f28">姓名：</text>{{giveAddress.userName}}</view>
+                  <view class="gray04 f28">
+                    <text class="gray01 f28">手机号：</text>{{giveAddress.userPhone}}
+                    <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+                  </view>
+                </view>
+                <view class="gray04 f28">
+                  <text class="gray01 f28">地址：</text>{{giveAddress.address}}
+                  <text class="red-color f28" wx:if="{{giveAddress.isDefault*1 == 1}}"> 【默认】</text>
+                </view>
+              </view>
+            </navigator>
+          </block>
+        </view>
+        <view class="msg-item gray01 f28 time">
+          <view>预取时间:</view>
+          <view class="gray04 picker-time">
+            <picker mode="date" value="{{prefetchingTime}}" start="{{startTime}}" bindchange="handleDateChange">
+              <block wx:if="{{prefetchingTime==''}}">
+                <view class="picker-time-text">
+                  <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
+                  <text style="padding-left: 10rpx;">请选择</text>
+                </view>
+              </block>
+              <view wx:else class="picker-time-text">{{prefetchingTime}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="remarks gray01 f28">
+          <view>添加备注:</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea maxlength="300" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="bindTextAreaBlur" placeholder="选填：请输入备注信息（长度不得大于300个字符）" style="height: 180rpx" class="f24" />
+                <view class="weui-textarea-counter f24">{{remarksLen}}/300</view>
               </view>
             </view>
-            <view class="gray04 f28">
-              <text class="gray01 f28">地址：</text>神秘的召唤师峡谷 南艾欧尼亚 纳沃里省某村庄古董店
-            </view>
-          </view>
-        </navigator>
-      </view>
-      <view class="msg-item gray01 f28 time">
-        <view>预取时间:</view>
-        <view class="gray04 picker-time">
-          <picker mode="date" value="{{prefetchingTime}}" start="{{startTime}}" bindchange="handleDateChange">
-            <block wx:if="{{prefetchingTime==''}}">
-              <view class="picker-time-text">
-                <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
-                <text style="padding-left: 10rpx;">请选择</text>
-              </view>
-            </block>
-            <view wx:else class="picker-time-text">{{prefetchingTime}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="remarks gray01 f28">
-        <view>添加备注:</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell">
-            <view class="weui-cell__bd">
-              <textarea maxlength="100" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleQuestionContent" placeholder="选填：请输入备注信息（长度不得大于300个字符）" style="height: 180rpx" class="f24" />
-              <view class="weui-textarea-counter f24">{{textareaValueLen}}/300</view>
-            </view>
           </view>
         </view>
+      </view>
+    </view>
+    <view class="placeholder-box120"></view>
+    <!-- 底部 -->
+    <view class="footer">
+      <view class="f24">
+        总计：
+        <text class="red-color f28">￥{{totalPrice}}</text>
+      </view>
+      <view>
+        <text class="main-bg f28 main-bgi" bindtap="handleBuy">提交订单</text>
       </view>
     </view>
   </view>
-  <view class="placeholder-box120"></view>
-  <!-- 底部 -->
-  <view class="footer">
-    <view class="f24">
-      总计：
-      <text class="red-color f28">￥300.00</text>
-    </view>
-    <view>
-      <text class="main-bg f28 main-bgi">提交订单</text>
-    </view>
-  </view>
-</view>
+</block>

@@ -1,5 +1,6 @@
-// pages/addressManager/addressManager.js
+// pages/addressChoose/addressChoose.js
 const app = getApp();
+let type; //保存本次选取类型 1取衣地址 2送衣地址 3收货地址
 Page({
   data: {
     lists: []
@@ -14,7 +15,6 @@ Page({
         userId: app.globalData.userID
       },
       success: res => {
-        console.log(res);
         wx.hideLoading();
         this.setData({
           lists: res.data.data
@@ -23,17 +23,38 @@ Page({
     });
   },
 
+  handleChooseAddress(e){
+    let id = e.currentTarget.id;
+    console.log(type)
+    switch (type) {
+      case 1:
+        app.globalData.takeAddress = this.data.lists[id];
+        break;
+      case 2:
+        app.globalData.giveAddress = this.data.lists[id];
+        break;
+      case 3:
+        app.globalData.receiptAddress = this.data.lists[id];
+        break;
+      default:
+        console.log(1)
+        break;
+    }
+    wx.navigateBack({
+      delta:1
+    });
+  },
+
   //删除地址
   handleDelAddress(e) {
     wx.showLoading();
-    console.log(this.data.lists[e.currentTarget.id].addressId)
+    console.log(this.data.lists[e.currentTarget.id].addressId);
     wx.request({
       url: `${app.globalData.api}/address/del_address`,
       data: {
         addressId: this.data.lists[e.currentTarget.id].addressId
       },
       success: res => {
-        console.log(res)
         wx.hideLoading();
         if (res.data.status == 1) {
           wx.showToast({
@@ -60,6 +81,7 @@ Page({
   // 生命周期函数--监听页面加载
   onLoad(options) {
     this.getAddressLists();
+    type = parseInt(options.type);
   },
 
   //生命周期函数--监听页面显示

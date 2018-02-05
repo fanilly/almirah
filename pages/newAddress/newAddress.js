@@ -162,15 +162,6 @@ Page({
           showCancel: false
         });
       } else {
-        console.log('--------------------------------------------')
-        console.log(this.data.addressID)
-        console.log('1:' + name || '2:' + this.data.name)
-        console.log('1:' + phone || '2:' + this.data.phone)
-        console.log('1:' + latitude || '2:' + this.data.latitude)
-        console.log('1:' + longitude || '2:' + this.data.longitude)
-        console.log('1:' + addressContent || '2:' + this.data.addressContent)
-        console.log('1:' + this.data.isDefault ? 1 : 0)
-        console.log('--------------------------------------------')
         wx.request({
           url: `${app.globalData.api}/address/add_address`,
           data: {
@@ -220,8 +211,6 @@ Page({
     latitude = '';
     longitude = '';
     title = '添加';
-    console.log('----------------------------------')
-    console.log(options)
     if (options.title == '修改地址') {
       title = '修改';
       wx.setNavigationBarTitle({

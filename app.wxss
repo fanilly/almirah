@@ -11,6 +11,17 @@
   color: #353535;
 }
 
+.loadbox {
+  height: 184rpx;
+  width: 170rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+
 page {
   background-color: #f0f0f0;
 }

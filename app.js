@@ -49,8 +49,10 @@ App({
   },
 
   globalData: {
-    userID:'',
+    userID:2,
     isVIP:null,
+    takeAddress:null, //取衣地址
+    giveAddress:null, //送衣地址
     api: 'https://ybh.hohu.cc/index.php/api',
     baseUrl: 'https://ybh.hohu.cc/',
     userInfo: {

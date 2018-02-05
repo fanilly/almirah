@@ -102,7 +102,7 @@
   text-align: center;
 }
 
-.footer>view:nth-child(3) navigator {
+.footer>view:nth-child(3) view {
   height: 80rpx;
   line-height: 80rpx;
   border-radius: 40rpx;

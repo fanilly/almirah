@@ -9,6 +9,10 @@ Page({
     isLoadMore: false
   },
 
+  getHotLists(){
+    console.log(1);
+  },
+
   onLoad: function() {
     //获取系统信息
     wx.getSystemInfo({
@@ -19,6 +23,16 @@ Page({
         });
       }
     });
+    //获取轮播图数据
+    wx.request({
+      url:`${app.globalData.api}/common/index_banner`,
+      success:res=>{
+        console.log(res)
+      }
+    });
+
+    // 获取热门推荐数据
+    this.getHotLists();
   },
 
   //上拉加载更多

@@ -6,6 +6,7 @@ Page({
 
   data: {
     baseUrl: '',
+    loaded:false, //加载完毕
     isShowTrolley: false, // 是否显示购物车内容编辑模块
     trolleyContent: [], //购物车中的数据
     totalPrice: 0, //购物车中的商品总价
@@ -18,6 +19,19 @@ Page({
   //阻止时间冒泡
   handleStopPropagation() {
 
+  },
+
+  // 去结算
+  handleGoSettlement() {
+    if (this.data.totalTrolley <= 0) {
+      wx.showModal({
+        content: '您还没有选择商品呦！'
+      });
+    } else {
+      wx.navigateTo({
+        url: '../laundrySettlement/laundrySettlement'
+      });
+    }
   },
 
   //关闭购物车内容编辑模块
@@ -170,7 +184,8 @@ Page({
       success: res => {
         this.setData({
           datas: res.data || [],
-          lists: res.data[0].children || []
+          lists: res.data[0].children || [],
+          loaded: true
         });
       }
     });

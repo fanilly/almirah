@@ -1,0 +1,36 @@
+<!--pages/addressChoose/addressChoose.wxml-->
+<view class="container">
+  <view class="main">
+    <navigator url="../newAddress/newAddress?title=添加地址" class="new-address">
+      <view>
+        <image src="../../assets/plus.png" style="width:35rpx;height: 35rpx;"></image>
+      </view>
+      <view class="gray01 f28">新增地址</view>
+      <view>
+        <image src="../../assets/gray_arrow.png" style="width:20rpx;height: 35rpx;"></image>
+      </view>
+    </navigator>
+    <block wx:for="{{lists}}" wx:key="{{index}}">
+      <view class="address-item" bindtap="handleChooseAddress" id="{{index}}">
+        <view>
+          <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+        </view>
+        <view>
+          <view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">姓名：</text>{{item.userName}}</view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">手机号：</text>{{item.userPhone}}
+              <image src="../../assets/garbage.png" style="width:40rpx;height:40rpx;position: absolute;right: 10rpx;top:12rpx;" id="{{index}}" catchtap="handleDelAddress"></image>
+            </view>
+          </view>
+          <view class="gray04 f28">
+            <text class="gray01 f28">地址：</text>{{item.address}}
+            <text class="red-color f28" wx:if="{{item.isDefault*1 == 1}}"> 【默认】 </text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
