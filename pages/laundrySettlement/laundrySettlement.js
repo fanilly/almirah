@@ -93,26 +93,34 @@ Page({
   },
 
   //购买
-  handleBuy(){
+  handleBuy() {
+    console.log(this.data);
     let i,
-    goods = [],
-    trolleys = this.data.trolleys;
-    for(i=0;i<trolleys.length;i++){
+      goods = [],
+      trolleys = this.data.trolleys;
+    for (i = 0; i < trolleys.length; i++) {
       goods.push({
-        "goodsId":trolleys[i].catId,
-        "goodsNum":trolleys[i].total
+        "goodsId": trolleys[i].catId,
+        "goodsNum": trolleys[i].total
       });
     }
-    wx.request({
-      method:'POST',
-      url:`${app.globalData.api}/buy/buy`,
-      data:{
-        userId:app.globalData.userID,
-        orderScore:0,
-        goods:goods
-      },
-      success:res=>{
 
+    wx.request({
+      method: 'POST',
+      url: `${app.globalData.api}/buy/buy`,
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        userId: app.globalData.userID,
+        orderScore: 1,
+        goods: JSON.stringify(goods),
+        userAddressId: this.data.takeAddress.addressId,
+        getAddressId: this.data.giveAddress.addressId,
+        requireTime: this.data.prefetchingTime,
+        deliverType: 0,
+        orderRemarks: this.data.remarks
+      },
+      success: res => {
+        console.log(res);
       }
     });
   }

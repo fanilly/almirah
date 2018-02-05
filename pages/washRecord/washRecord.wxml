@@ -1,2 +1,46 @@
 <!--pages/washRecord/washRecord.wxml-->
-<text>pages/washRecord/washRecord.wxml</text>
+<view class="container">
+  <view class="order-list">
+    <block wx:for="hello" wx:key="{{index}}">
+      <view class="order-list-item">
+        <view class="o-header">
+          <view class="f28 gray01">订单时间
+            <text class="gray04">2018-01-26</text>
+          </view>
+          <view class="f26">
+            <text class="pointer"></text>已完成</view>
+        </view>
+        <navigator url="../lOrderDetail/lOrderDetail" class="o-body">
+          <view>
+            <view class="item-lside f24 gray02">西服</view>
+            <view class="item-rside f24 gray04">x1</view>
+          </view>
+          <view>
+            <view class="f24 gray02 item-lside">毛绒西服</view>
+            <view class="item-rside f24 gray04">x1</view>
+          </view>
+          <view>
+            <view class="f24 gray02 item-lside">羽绒服（小款）</view>
+            <view class="item-rside f24 gray04">x1</view>
+          </view>
+          <view>
+            <view class="gray05 item-lside">......</view>
+            <view class="item-rside f24 gray05">共5件商品 实付
+              <text class="red-color f28">￥90</text>
+            </view>
+          </view>
+        </navigator>
+        <view class="o-footer">
+          <!-- <view class="o-btn" bindtap="handleCheckSell">出售</view> -->
+          <view class="o-btn">删除</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- bnts -->
+  <navigator url="../laundryOrder/laundryOrder">
+    <view class="arc-btn-lg order">
+      <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
+    </view>
+  </navigator>
+</view>

@@ -3,17 +3,34 @@ const app = getApp();
 
 Page({
   data: {
+    baseUrl:'',
+    carouselImgs:[], //轮播图
     windowWidth: '',
     windowHeight: '',
     swiperHeight: '',
     isLoadMore: false
   },
 
+  // 获取人们推荐列表数据
   getHotLists(){
-    console.log(1);
+    wx.request({
+      url:`${app.globalData.api}/goods/goodslist`,
+      data:{
+        p:1
+      },
+      success:res=>{
+        console.log(res);
+      }
+    });
   },
 
   onLoad: function() {
+
+    //记录根路径
+    this.setData({
+      baseUrl:app.globalData.baseUrl
+    });
+
     //获取系统信息
     wx.getSystemInfo({
       success: res => {
@@ -27,7 +44,9 @@ Page({
     wx.request({
       url:`${app.globalData.api}/common/index_banner`,
       success:res=>{
-        console.log(res)
+        this.setData({
+          carouselImgs:res.data
+        });
       }
     });
 
@@ -68,6 +87,5 @@ Page({
     this.setData({
       swiperHeight: swiperHeight
     });
-    console.log(swiperHeight);
-  },
+  }
 });

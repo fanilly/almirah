@@ -1,1 +1,6 @@
 /* pages/washRecord/washRecord.wxss */
+.order {
+  position: fixed;
+  bottom: 15rpx;
+  right: 15rpx;
+}

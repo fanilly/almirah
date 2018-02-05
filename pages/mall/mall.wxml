@@ -13,12 +13,11 @@
   <!-- banner -->
   <view class="swiper-wapper">
     <swiper class="carousel" id="test" style="height:{{swiperHeight}}px" indicator-dots="true" indicator-color="#fff" indicator-active-color="#1aaade" autoplay="true" interval="5000" circular="true">
-      <swiper-item>
-        <image src="../../assets/banner.jpg" bindload="imageLoad" mode="widthFix"></image>
-      </swiper-item>
-      <swiper-item>
-        <image src="../../assets/banner.jpg" bindload="imageLoad" mode="widthFix"></image>
-      </swiper-item>
+      <block wx:for="{{carouselImgs}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{baseUrl}}{{item}}" bindload="imageLoad" mode="widthFix"></image>
+        </swiper-item>
+      </block>
     </swiper>
   </view>
   <!-- hot title -->
@@ -101,15 +100,17 @@
     </view>
   </block>
   <!-- bnts -->
-  <navigator url="../laundryOrder/laundryOrder">
-    <view class="arc-btn-lg order">
-      <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
-    </view>
-  </navigator>
-  <navigator url="../trolley/trolley">
-    <view class="arc-btn-lg trolley">
-      <image src="../../assets/mall_02.png" style="width: 58rpx;height: 58rpx"></image>
-      <view class="corner">12</view>
-    </view>
-  </navigator>
+  <block wx:if="xx">
+    <navigator url="../laundryOrder/laundryOrder">
+      <view class="arc-btn-lg order">
+        <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
+      </view>
+    </navigator>
+    <navigator url="../trolley/trolley">
+      <view class="arc-btn-lg trolley">
+        <image src="../../assets/mall_02.png" style="width: 58rpx;height: 58rpx"></image>
+        <view class="corner">12</view>
+      </view>
+    </navigator>
+  </block>
 </view>

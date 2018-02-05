@@ -1,15 +1,15 @@
 {
   "pages":[
+    "pages/almirah/almirah",
+    "pages/laundrySettlement/laundrySettlement",
     "pages/mall/mall",
     "pages/hello/hello",
     "pages/laundryOrder/laundryOrder",
-    "pages/laundrySettlement/laundrySettlement",
     "pages/sellRecord/sellRecord",
     "pages/sell/sell",
     "pages/addressChoose/addressChoose",
     "pages/addressManager/addressManager",
     "pages/newAddress/newAddress",
-    "pages/almirah/almirah",
     "pages/washRecord/washRecord",
     "pages/selling/selling",
     "pages/washing/washing",

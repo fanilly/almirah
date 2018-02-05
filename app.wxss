@@ -311,18 +311,72 @@ page {
 .public-footer text:last-child {
   margin-left: 20rpx;
 }
-/*.public-footer:after,
-.public-footer:before {
-  content: '';
-  display: block;
-  width: 160rpx;
-  height: 2px;
-  background-color: #e2e2e2;
-  position: absolute;
-  top:0;
-  bottom:0;
-  left: 0;
-  right: 0;
-  margin: auto;
+
+
+/* 订单列表 */
+
+.order-list {
+  width: 100%;
+  box-sizing: border-box;
+  /*padding: 0 15rpx;*/
 }
-*/
+
+.order-list-item {
+  background-color: #fff;
+  padding: 15rpx;
+  border-radius: 4px;
+  margin-bottom: 15rpx;
+}
+
+.o-header {
+  display: flex;
+  border-bottom: 1px dashed #e2e2e2;
+  line-height: 80rpx;
+  margin-bottom: 15rpx;
+}
+
+.o-header>view:first-child {
+  flex: 1;
+}
+
+.o-header>view:last-child {
+  width: 300rpx;
+  text-align: right;
+}
+
+.o-header .pointer {
+  display: inline-block;
+  margin-right: 10rpx;
+}
+
+.o-body>view {
+  display: flex;
+  line-height: 50rpx;
+}
+
+.item-lside {
+  flex: 1;
+}
+
+.item-rside {
+  width: 300rpx;
+  text-align: right;
+}
+
+.o-footer {
+  text-align: right;
+  margin-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.o-btn {
+  display: inline-block;
+  font-size: 24rpx;
+  padding: 0 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 1px solid #e2e2e2;
+  border-radius: 30rpx;
+  color: #999;
+  margin-left: 15rpx;
+}

@@ -1,1 +1,6 @@
 /* pages/washing/washing.wxss */
+.order {
+  position: fixed;
+  bottom: 15rpx;
+  right: 15rpx;
+}
