@@ -91,7 +91,7 @@
     <view class="goods-box" catchtap="handleCloseChooseGoods">
       <scroll-view scroll-x class="goods-control" catchtap="handleStopPropagation">
         <view class="goods-list-box">
-          <view wx:for="{{chooseList}}" wx:key="{{index}}" class="goods-item f28 gray02" bindtap="handleGoToSell">{{item}}</view>
+          <view wx:for="{{chooseList}}" wx:key="{{index}}" id="{{index}}" class="goods-item f28 gray02" bindtap="handleGoToSell">{{item.catName}}</view>
         </view>
       </scroll-view>
     </view>

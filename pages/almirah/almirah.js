@@ -5,7 +5,7 @@ Page({
   data: {
     chooseList: [], //供选择出售的商品列表
     isShowChooseGoods: false, // 是否显示选择商品列表
-    hasOrderList: 1, //1加载中 2.隐藏 3.无订单数据
+    hasOrderList: 1, //1.加载中 2.隐藏 3.无订单数据
     lists: []
   },
 
@@ -37,9 +37,14 @@ Page({
   },
 
   // 点击商品跳转出售页面
-  handleGoToSell() {
+  handleGoToSell(e) {
+    let id = e.currentTarget.id,
+      item = this.data.chooseList[id],
+      goodsID = item.goodsId,
+      ID = item.id;
+      console.log(item)
     wx.navigateTo({
-      url: '../sell/sell'
+      url: `../sell/sell?goodsID=${goodsID}&ID=${ID}`
     });
   },
 
@@ -56,18 +61,14 @@ Page({
   //选择衣物进行出售
   handleCheckSell(e) {
     let id = e.currentTarget.id,
-      list = this.data.lists[id].list,
-      itemList = [];
-    list.forEach(item => {
-      itemList.push(item.catName);
-    });
+      list = this.data.lists[id].list;
     //改变标题栏
     wx.setNavigationBarTitle({
       title: '选择出售商品'
     });
     //记录选择出售的数据
     this.setData({
-      chooseList: itemList,
+      chooseList: list,
       isShowChooseGoods: true
     });
   },

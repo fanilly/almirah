@@ -4,3 +4,19 @@
   bottom: 15rpx;
   right: 15rpx;
 }
+
+.loadbox {
+  height: 280rpx;
+}
+
+.btn {
+  text-align: center;
+  display: block;
+  color: #fff;
+  padding: 12rpx 18rpx;
+  margin-top: 30rpx;
+}
+
+.loading-box {
+  height: 200rpx;
+}

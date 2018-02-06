@@ -1,0 +1,64 @@
+/* pages/lOrderDetail/lOrderDetail.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.title {
+  text-align: center;
+  padding: 35rpx 0 20rpx;
+}
+
+.say {
+  text-align: center;
+
+}
+
+.content {
+  border-top: 1px dashed #e2e2e2;
+  border-bottom: 1px dashed #e2e2e2;
+  padding: 20rpx 0;
+  margin: 20rpx 0;
+}
+
+.content > view {
+  line-height: 60rpx;
+}
+
+.goods-list {
+  display: flex;
+}
+
+.goods-list view:first-child {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.goods-list view:last-child {
+  width: 100rpx;
+  text-align: right;
+}
+
+.footer-info {
+  text-align: right;
+}
+
+.remark {
+  text-indent: 2em;
+  line-height: 50rpx;
+}
+
+.order {
+  position: fixed;
+  bottom: 15rpx;
+  right: 15rpx;
+}
+
+.phone {
+  position: fixed;
+  bottom: 130rpx;
+  right: 15rpx;
+}

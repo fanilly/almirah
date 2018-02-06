@@ -4,15 +4,15 @@ const app = getApp();
 Page({
 
   data: {
-    loaded: false,
-    prefetchingTime: '',
+    loaded: false, //是否加载完成
+    prefetchingTime: '', //选择的预取时间
     startTime: '', //预取时间 开始
     remarks: '', //记录备注信息
-    totalPrice: 0,
-    remarksLen: 0,
-    trolleys: [],
-    takeAddress: null,
-    giveAddress: null
+    totalPrice: 0, //总价
+    remarksLen: 0, //备注长度
+    trolleys: [], //购物车数据
+    takeAddress: null, // 取货地址
+    giveAddress: null //送货地址
   },
 
   onShow() {

@@ -1,66 +1,45 @@
 // pages/washRecord/washRecord.js
+const app = getApp();
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    hasOrderList: 1, //1.加载中 2.隐藏 3.无订单数据
+    lists: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+
+  // 生命周期函数--监听页面加载
+
+  onLoad(options) {
+    wx.request({
+      url: `${app.globalData.api}/order/order_list`,
+      data: {
+        userId: app.globalData.userID,
+        orderMark: 2
+      },
+      success: res => {
+        console.log(res);
+        if (res.data) {
+          this.setData({
+            lists: res.data,
+            hasOrderList: 2
+          });
+        } else {
+          this.setData({
+            hasOrderList: 3
+          });
+        }
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  //删除订单
+  handleDelOrder(){
+
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
+  // 生命周期函数--监听页面显示
+  onShow() {
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
-})
+});

@@ -1,66 +1,89 @@
 // pages/washing/washing.js
+const app = getApp();
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    chooseList: [], //供选择出售的商品列表
+    isShowChooseGoods: false, // 是否显示选择商品列表
+    hasOrderList: 1, //1.加载中 2.隐藏 3.无订单数据
+    lists: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+
+  // 生命周期函数--监听页面加载
+
+  onLoad(options) {
+    wx.request({
+      url: `${app.globalData.api}/order/order_list`,
+      data: {
+        userId: app.globalData.userID,
+        orderMark: 1
+      },
+      success: res => {
+        console.log(res)
+        if (res.data) {
+          this.setData({
+            lists: res.data,
+            hasOrderList: 2
+          });
+        } else {
+          this.setData({
+            hasOrderList: 3
+          });
+        }
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  //阻止冒泡
+  handleStopPropagation() {
+
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  // 点击商品跳转出售页面
+  handleGoToSell(e) {
+    let id = e.currentTarget.id,
+      item = this.data.chooseList[id],
+      goodsID = item.goodsId,
+      ID = item.id;
+    console.log(item)
+    wx.navigateTo({
+      url: `../sell/sell?goodsID=${goodsID}&ID=${ID}`
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  //点击出售时改变标题栏标题
+  handleCloseChooseGoods() {
+    wx.setNavigationBarTitle({
+      title: '在洗衣物'
+    });
+    this.setData({
+      isShowChooseGoods: false
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  //选择衣物进行出售
+  handleCheckSell(e) {
+    let id = e.currentTarget.id,
+      list = this.data.lists[id].list;
+    //改变标题栏
+    wx.setNavigationBarTitle({
+      title: '选择出售商品'
+    });
+    //记录选择出售的数据
+    this.setData({
+      chooseList: list,
+      isShowChooseGoods: true
+    });
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  // 生命周期函数--监听页面显示
+  onShow() {
+    wx.setNavigationBarTitle({
+      title: '在洗衣物'
+    });
+    this.setData({
+      isShowChooseGoods: false
+    });
   }
-})
+});
