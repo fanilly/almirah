@@ -1,0 +1,64 @@
+<!--components/lorder/lorder.wxml-->
+<view class="container">
+  <!-- 加载中 -->
+  <block wx:if="{{hasOrderList == 1}}">
+    <view class="loading-box">
+      <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+    </view>
+  </block>
+  <!-- 加载完成 未获取到数据 -->
+  <block wx:if="{{hasOrderList == 3}}">
+    <view class="container loadbox">
+      <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+      <text class="f24 gray05">暂无订单数据</text>
+      <navigator url="../laundryOrder/laundryOrder" class="f24 gray05 btn">立即下单</navigator>
+    </view>
+  </block>
+  <!-- 加载完成 已获取订单数据 -->
+  <block wx:if="{{hasOrderList == 2}}">
+    <view class="order-list">
+      <block wx:for="{{lists}}" wx:key="{{index}}">
+        <view class="order-list-item">
+          <view class="o-header">
+            <view class="f28 gray01">订单时间:
+              <text class="gray04">{{item.createTime}}</text>
+            </view>
+            <view class="f26">
+              <text class="pointer"></text>{{item.orderStatus}}</view>
+          </view>
+          <navigator url="../lOrderDetail/lOrderDetail" class="o-body">
+            <block wx:for="{{item.list}}" wx:key="{{index}}" wx:if="{{index<3}}">
+              <view>
+                <view class="item-lside f24 gray02">{{item.catName}}</view>
+                <view class="item-rside f24 gray04">x{{item.goodsNums}}</view>
+              </view>
+            </block>
+            <view>
+              <view class="gray05 item-lside">
+                <text wx:if="{{item.list.length>=4}}">......</text>
+              </view>
+              <view class="item-rside f24 gray05">共{{item.list.length}}件商品 实付
+                <text class="red-color f28">￥{{item.totalMoney}}</text>
+              </view>
+            </view>
+          </navigator>
+          <view class="o-footer">
+            <view wx:if="{{item.isOver != 1}}" class="o-btn" bindtap="handleCheckSell" id="{{index}}">出售</view>
+            <view wx:if="{{item.isOver != 1}}" class="o-btn" bindtap="handleConfirm" id="{{index}}">确认收货</view>
+            <view wx:if="{{item.isOver == 1}}" class="o-btn" bindtap="handleDelOrder" id="{{index}}">删除订单</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <!-- 选择出售商品 -->
+  <block wx:if="{{isShowChooseGoods}}">
+    <view class="goods-box" catchtap="handleCloseChooseGoods">
+      <scroll-view scroll-x class="goods-control" catchtap="handleStopPropagation">
+        <view class="goods-list-box">
+          <view wx:for="{{chooseList}}" wx:key="{{index}}" id="{{index}}" class="goods-item f28 gray02" bindtap="handleGoToSell">{{item.catName}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </block>
+</view>

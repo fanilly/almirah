@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText":"交易记录"
+  "navigationBarTitleText":"交易记录",
+  "usingComponents":{
+    "lorder":"../../components/lorder/lorder"
+  },
+  "enablePullDownRefresh":true
 }

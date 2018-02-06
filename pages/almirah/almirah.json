@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText":"衣橱"
+  "navigationBarTitleText":"衣橱",
+  "usingComponents":{
+    "lorder":"../../components/lorder/lorder"
+  },
+  "enablePullDownRefresh":true
 }

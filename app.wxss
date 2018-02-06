@@ -85,14 +85,17 @@ page {
 .bg-white {
   background-color: #fff;
 }
+
+
 /*466ede*/
+
 .main-bg {
   background-color: #1aaade;
   color: #fff;
 }
 
 .main-bgi {
-  background-image: linear-gradient(to right,#1aaade,#2e8fde);
+  background-image: linear-gradient(to right, #1aaade, #2e8fde);
 }
 
 .main-color {
@@ -122,15 +125,17 @@ page {
   line-height: 52rpx;
   box-shadow: 0 2px 8px #999;
   border-radius: 2px;
-  background-image: linear-gradient(to right,#1aaade,#2e8fde);
+  background-image: linear-gradient(to right, #1aaade, #2e8fde);
 }
 
 .btn text {
   padding-left: 12rpx;
 }
+
 .btn image {
   margin-top: 5rpx;
 }
+
 .btn-hover {
   background-color: #0996c9;
 }
@@ -221,7 +226,7 @@ page {
   color: #fff;
   border-radius: 50rpx;
   position: relative;
-  background-image: linear-gradient(to right,#1aaade,#2e8fde);
+  background-image: linear-gradient(to right, #1aaade, #2e8fde);
 }
 
 .arc-btn-lg image {
@@ -245,6 +250,7 @@ page {
   text-align: center;
   line-height: 34rpx;
 }
+
 
 /*瀑布流*/
 
@@ -276,24 +282,26 @@ page {
   margin: 12rpx 0 8rpx;
 }
 
- .pro-list-box .info {
+.pro-list-box .info {
   width: 100%;
   padding: 0 15rpx;
   box-sizing: border-box;
 }
 
- .pro-list-box .info>view {
+.pro-list-box .info>view {
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+
 /*通用底部*/
+
 .public-footer {
   height: 100rpx;
   line-height: 100rpx;
-  color:#999;
+  color: #999;
   font-size: 26rpx;
   position: relative;
 }
@@ -305,78 +313,11 @@ page {
   background-color: #999;
   vertical-align: middle;
 }
+
 .public-footer text:first-child {
   margin-right: 20rpx;
 }
+
 .public-footer text:last-child {
   margin-left: 20rpx;
-}
-
-
-/* 订单列表 */
-
-.order-list {
-  width: 100%;
-  box-sizing: border-box;
-  /*padding: 0 15rpx;*/
-}
-
-.order-list-item {
-  background-color: #fff;
-  padding: 15rpx;
-  border-radius: 4px;
-  margin-bottom: 15rpx;
-}
-
-.o-header {
-  display: flex;
-  border-bottom: 1px dashed #e2e2e2;
-  line-height: 80rpx;
-  margin-bottom: 15rpx;
-}
-
-.o-header>view:first-child {
-  flex: 1;
-}
-
-.o-header>view:last-child {
-  width: 300rpx;
-  text-align: right;
-}
-
-.o-header .pointer {
-  display: inline-block;
-  margin-right: 10rpx;
-}
-
-.o-body>view {
-  display: flex;
-  line-height: 50rpx;
-}
-
-.item-lside {
-  flex: 1;
-}
-
-.item-rside {
-  width: 300rpx;
-  text-align: right;
-}
-
-.o-footer {
-  text-align: right;
-  margin-top: 10rpx;
-  padding-bottom: 10rpx;
-}
-
-.o-btn {
-  display: inline-block;
-  font-size: 24rpx;
-  padding: 0 40rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  border: 1px solid #e2e2e2;
-  border-radius: 30rpx;
-  color: #999;
-  margin-left: 15rpx;
 }
