@@ -50,6 +50,11 @@
         </view>
       </block>
     </view>
+    <!-- 底线 -->
+    <view class="public-footer">
+      <text></text>我是有底线的
+      <text></text>
+    </view>
   </block>
   <!-- 选择出售商品 -->
   <block wx:if="{{isShowChooseGoods}}">

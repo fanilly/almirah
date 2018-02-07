@@ -1,7 +1,8 @@
 // pages/sell/sell.js
 const app = getApp();
 import { formatDate } from '../../utils/util.js';
-let goodsID,ID;
+import uploadImages from '../../request/uploadImages.js';
+let goodsID, ID;
 Page({
 
   data: {
@@ -19,7 +20,7 @@ Page({
       endTime: formatDate(new Date())
     });
     goodsID = options.goodsID;
-    ID=options.ID;
+    ID = options.ID;
   },
 
   //选择买入时间
@@ -47,12 +48,13 @@ Page({
 
   //提交
   handleFormSubmit(e) {
-    let datas = e.detail.value;
+    let datas = e.detail.value,
+      imgs = this.data.files;
     if (!datas.goodsname) {
       this.showMsg('请输入商品名称');
-    } else if(!this.data.buyTime){
+    } else if (!this.data.buyTime) {
       this.showMsg('请选择买入时间');
-    }else if (!datas.size) {
+    } else if (!datas.size) {
       this.showMsg('请输入商品尺码');
     } else if (!datas.color) {
       this.showMsg('请输入商品颜色');
@@ -60,29 +62,44 @@ Page({
       this.showMsg('请输入商品原价');
     } else if (!datas.nowprice) {
       this.showMsg('请输入商品现价');
-    }else if(!datas.desc){
+    } else if (!datas.desc) {
       this.showMsg('请输入商品描述');
-    }else if(this.data.files.length<1){
+    } else if (imgs.length < 1) {
       this.showMsg('请至少上传一张商品图片');
-    }else{
-      console.log(goodsID,ID,datas.goodsname,datas.size,datas.color,datas.oldprice,datas.nowprice,this.data.buyTime,datas.desc,JSON.stringify(this.data.files))
+    } else {
+      wx.showLoading({ title: '上传中' });
+      //上传商品 首先上传标题等信息
+      //如果上传成功 会返回一个商品id
+      //再根据商品ID 上传商品图片
       wx.request({
-        method:'POST',
+        method: 'POST',
         header: {
-          'content-type':'application/x-www-form-urlencoded'
+          'content-type': 'application/x-www-form-urlencoded'
         },
-        url:`${app.globalData.api}/order/putup`,
-        data:{
-          id:ID,
-          goodsCat:goodsID,
-          goodsName:datas.goodsname,
-          goodsSize:datas.size,
-          goodsColor:datas.color,
-          originalPrice:datas.oldprice,
-          presentPrice:datas.nowprice,
-          buyTime:this.data.buyTime,
-          goodsDesc:datas.desc,
-          goodsImage:JSON.stringify(this.data.files)
+        url: `${app.globalData.api}/order/putup`,
+        data: {
+          goodsCat: goodsID,
+          userId: app.globalData.userID,
+          goodsName: datas.goodsname,
+          goodsSize: datas.size,
+          goodsColor: datas.color,
+          originalPrice: datas.oldprice,
+          presentPrice: datas.nowprice,
+          buyTime: this.data.buyTime,
+          goodsDesc: datas.desc,
+          goodsImage: JSON.stringify(this.data.files)
+        },
+        success: res => {
+          if (res.data.status == 1) {
+            uploadImages(imgs, res.data.data);
+          } else {
+            wx.hideLoading();
+            wx.showToast({
+              title: '网络异常',
+              image: '../../assets/warning.png',
+              duration: 1500
+            });
+          }
         }
       });
     }
@@ -142,4 +159,3 @@ Page({
     });
   }
 });
-

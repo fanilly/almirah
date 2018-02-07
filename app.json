@@ -1,11 +1,12 @@
 {
   "pages":[
+    "pages/mall/mall",
     "pages/almirah/almirah",
     "pages/washRecord/washRecord",
     "pages/washing/washing",
+    "components/mGoodsLists/mGoodsLists",
     "components/lorder/lorder",
     "pages/laundryOrder/laundryOrder",
-    "pages/mall/mall",
     "pages/hello/hello",
     "pages/lOrderDetail/lOrderDetail",
     "pages/sell/sell",

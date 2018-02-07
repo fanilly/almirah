@@ -1,7 +1,15 @@
-/* components/lorder/lorder.wxss */
+/*components/lorder/lorder.wxss */
+
+
+/*组件所在节点的样式*/
+
+:host {
+  width: 100%;
+}
 
 .container {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,7 +114,7 @@
 
 .order-list-item {
   background-color: #fff;
-  padding: 15rpx 30rpx;
+  padding: 15rpx;
   border-radius: 4px;
   margin-bottom: 15rpx;
 }
@@ -207,4 +215,31 @@
 .goods-list-box view {
   display: inline-block;
   padding: 20rpx 30rpx;
+}
+
+
+/* 底线 */
+
+.public-footer {
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #999;
+  font-size: 26rpx;
+  position: relative;
+}
+
+.public-footer text {
+  display: inline-block;
+  width: 160rpx;
+  height: 1px;
+  background-color: #999;
+  vertical-align: middle;
+}
+
+.public-footer text:first-child {
+  margin-right: 20rpx;
+}
+
+.public-footer text:last-child {
+  margin-left: 20rpx;
 }

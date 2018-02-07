@@ -7,7 +7,7 @@ Page({
 
   // 获取地址列表数据
   getAddressLists() {
-    wx.showLoading();
+    wx.showLoading({title:'加载中'});
     wx.request({
       url: `${app.globalData.api}/address/list_address`,
       data: {
@@ -25,15 +25,15 @@ Page({
 
   //删除地址
   handleDelAddress(e) {
-    wx.showLoading();
-    console.log(this.data.lists[e.currentTarget.id].addressId)
+    wx.showLoading({title:'删除中'});
+    console.log(this.data.lists[e.currentTarget.id].addressId);
     wx.request({
       url: `${app.globalData.api}/address/del_address`,
       data: {
         addressId: this.data.lists[e.currentTarget.id].addressId
       },
       success: res => {
-        console.log(res)
+        console.log(res);
         wx.hideLoading();
         if (res.data.status == 1) {
           wx.showToast({

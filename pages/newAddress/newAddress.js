@@ -105,6 +105,7 @@ Page({
           showCancel: false
         });
       } else {
+        wx.showLoading({title:`${title}中`});
         wx.request({
           url: `${app.globalData.api}/address/add_address`,
           data: {
@@ -118,6 +119,7 @@ Page({
             isDefault: this.data.isDefault ? 1 : 0
           },
           success: res => {
+            wx.hideLoading();
             if (res.data.status == 1) {
               //弹出提示
               wx.showToast({
@@ -162,6 +164,7 @@ Page({
           showCancel: false
         });
       } else {
+        wx.showLoading({title:`${title}中`});
         wx.request({
           url: `${app.globalData.api}/address/add_address`,
           data: {
@@ -176,6 +179,7 @@ Page({
             isDefault: this.data.isDefault ? 1 : 0
           },
           success: res => {
+            wx.hideLoading();
             if (res.data.status == 1) {
               //弹出提示
               wx.showToast({
