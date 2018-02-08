@@ -40,8 +40,10 @@
           <view>取衣地址:</view>
           <block wx:if="{{!takeAddress}}">
             <view>
-              <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
-              <text style="padding-left: 10rpx;" class="gray04">请选择</text>
+              <navigator url="../addressChoose/addressChoose?type=1" hover-class="none">
+                <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
+                <text style="padding-left: 10rpx;" class="gray04">请选择</text>
+              </navigator>
             </view>
           </block>
         </view>
@@ -72,8 +74,10 @@
           <view>送衣地址:</view>
           <block wx:if="{{!giveAddress}}">
             <view>
-              <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
-              <text style="padding-left: 10rpx;" class="gray04">请选择</text>
+              <navigator url="../addressChoose/addressChoose?type=2" hover-class="none">
+                <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
+                <text style="padding-left: 10rpx;" class="gray04">请选择</text>
+              </navigator>
             </view>
           </block>
         </view>

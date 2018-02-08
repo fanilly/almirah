@@ -1,7 +1,9 @@
 {
   "pages":[
     "pages/trolley/trolley",
+    "pages/mallSettlement/mallSettlement",
     "pages/mall/mall",
+    "pages/laundrySettlement/laundrySettlement",
     "pages/search/search",
     "pages/almirah/almirah",
     "pages/washRecord/washRecord",
@@ -12,7 +14,6 @@
     "pages/hello/hello",
     "pages/lOrderDetail/lOrderDetail",
     "pages/sell/sell",
-    "pages/laundrySettlement/laundrySettlement",
     "pages/sellRecord/sellRecord",
     "pages/addressChoose/addressChoose",
     "pages/addressManager/addressManager",
@@ -22,7 +23,6 @@
     "pages/me/me",
     "pages/bindphone/bindphone",
     "pages/feedback/feedback",
-    "pages/mallSettlement/mallSettlement",
     "pages/service/service",
     "pages/register/register",
     "pages/mallOrder/mallOrder",

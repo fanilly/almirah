@@ -25,7 +25,7 @@ Page({
 
   handleChooseAddress(e){
     let id = e.currentTarget.id;
-    console.log(type)
+    console.log(type);
     switch (type) {
       case 1:
         app.globalData.takeAddress = this.data.lists[id];
@@ -37,7 +37,7 @@ Page({
         app.globalData.receiptAddress = this.data.lists[id];
         break;
       default:
-        console.log(1)
+        console.log(1);
         break;
     }
     wx.navigateBack({

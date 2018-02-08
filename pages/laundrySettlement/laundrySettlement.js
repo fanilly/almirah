@@ -94,6 +94,7 @@ Page({
 
   //购买
   handleBuy() {
+    wx.showLoading({ title: '提交中' });
     console.log(this.data);
     let i,
       goods = [],
@@ -120,7 +121,21 @@ Page({
         orderRemarks: this.data.remarks
       },
       success: res => {
+        wx.hideLoading();
         console.log(res);
+        if (res.data == 1) {
+          wx.showToast({
+            title: '下单成功',
+            icon: 'success',
+            duration: 1500
+          });
+        } else {
+          wx.showToast({
+            title: '网络异常',
+            image: '../../assets/warning.png',
+            duration: 1500
+          });
+        }
       }
     });
   }
