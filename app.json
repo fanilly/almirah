@@ -1,8 +1,8 @@
 {
   "pages":[
+    "pages/mall/mall",
     "pages/trolley/trolley",
     "pages/mallSettlement/mallSettlement",
-    "pages/mall/mall",
     "pages/laundrySettlement/laundrySettlement",
     "pages/search/search",
     "pages/almirah/almirah",

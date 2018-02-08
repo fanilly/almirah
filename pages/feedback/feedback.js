@@ -1,10 +1,9 @@
 // pages/feedback/feedback.js
+const app = getApp();
 let textareaValue = ''; //记录文本域输入的内容
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+  //
   data: {
     focus: false, //文本域是否获取焦点
     textareaValueLen: 0, //记录当前文本域输入内容的长度
@@ -44,6 +43,31 @@ Page({
       });
     }else{
       //在这里添加提交反馈的业务
+      wx.showLoading({title:'提交中'});
+      wx.request({
+        url:`${app.globalData.api}/user/callback`,
+        data:{
+          userId:app.globalData.userID,
+          questionType:this.data.curIndex+1, //问题类型
+          content:textareaValue
+        },
+        success:res=>{
+          wx.hideLoading();
+          if(res.data.status == 1){
+            wx.showModal({
+              title:'提交成功',
+              content:'您反馈的问题我们会及时整理并改进，客户的满意是我们永恒的追求，祝您生活愉快！',
+              showCancel: false
+            });
+          }else{
+            wx.showToast({
+              title:'网络异常',
+              image:'../../assets/warning.png',
+              duration:1500
+            });
+          }
+        }
+      });
     }
   }
 });
