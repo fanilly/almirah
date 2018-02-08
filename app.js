@@ -3,21 +3,33 @@ import login from 'scripts/login';
 import updateUserInfo from 'scripts/updateUserInfo';
 App({
   onLaunch: function() {
-    wx.showLoading({title:'加载中'});
-    login(this.globalData.api,(user,userInfo) => {
+    wx.showLoading({ title: '加载中' });
+    login(this.globalData.api, (user, userInfo) => {
       //登陆成功 隐藏加载动画 并记录返回数据
       wx.hideLoading();
       this.globalData.userInfo = userInfo;
       this.globalData.userID = user.userId;
       this.globalData.isVIP = user.isVip * 1 == 1 ? true : false;
-      console.log(user,userInfo);
+      console.log(user, userInfo);
       updateUserInfo(userInfo, this.globalData.api, user.userId);
-    },(user)=>{
+    }, (user) => {
       //登陆成功 隐藏加载动画 并记录用户id及是否为vip
       wx.hideLoading();
       this.globalData.userID = user.userId;
       this.globalData.isVIP = user.isVip * 1 == 1 ? true : false;
       console.log(user);
+    });
+
+    // 记录商城购物车商品个数
+    wx.getStorage({
+      key: 'mallTrolley',
+      success: res => {
+        let mallTrolley = res.data ? JSON.parse(res.data) : [];
+        this.globalData.totalTrolleyLen = mallTrolley.length;
+      },
+      fail: err => {
+        this.globalData.totalTrolleyLen = 0;
+      }
     });
     // 登录
     // wx.login({
@@ -49,10 +61,11 @@ App({
   },
 
   globalData: {
-    userID:2,
-    isVIP:null,
-    takeAddress:null, //取衣地址
-    giveAddress:null, //送衣地址
+    userID: 2,
+    isVIP: null,
+    totalTrolleyLen: 0,
+    takeAddress: null, //取衣地址
+    giveAddress: null, //送衣地址
     api: 'https://ybh.hohu.cc/index.php/api',
     baseUrl: 'https://ybh.hohu.cc/',
     userInfo: {

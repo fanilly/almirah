@@ -135,7 +135,7 @@ Page({
             } else {
               wx.showToast({
                 title: `${title}失败`,
-                icon: 'fail',
+                image:'../../assets/warning.png',
                 duration: 1500
               });
             }
@@ -195,7 +195,7 @@ Page({
             } else {
               wx.showToast({
                 title: `${title}失败`,
-                icon: 'fail',
+                image:'../../assets/warning.png',
                 duration: 1500
               });
             }

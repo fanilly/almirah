@@ -1,123 +1,130 @@
 <!--pages/productDetail/productDetail.wxml-->
-<view class="container">
-  <image src="https://img.alicdn.com/bao/uploaded/i1/2935830079/TB1T7_zf4HI8KJjy1zbXXaxdpXa_!!0-item_pic.jpg_430x430q90.jpg" style="width:100%" mode="widthFix"></image>
-  <view class="infos">
-    <view class="title f28 gray01">冬季棉衣女2017新款宽松学生韩版chic棉服原宿ulzzang小棉袄外套</view>
-    <view class="double-column">
-      <view class="f24 gray02">原价:
-        <text class="gray04">￥400.00</text>
-      </view>
-      <view class="f24 gray02">现价:
-        <text class="red-color f28">￥200.00</text>
-      </view>
-    </view>
-    <view class="double-column">
-      <view class="f24 gray02">颜色:
-        <text class="gray04">棕色</text>
-      </view>
-      <view class="f24 gray02">尺码:
-        <text class="gray04">L</text>
-      </view>
-    </view>
-    <view class="f24 gray02 desc-t">商品描述:</view>
-    <view class="f24 gray04 desc">冬季棉衣女2017新款宽松学生韩版chic棉服原宿ulzzang小棉袄外套冬季棉衣女2017新款宽松学生韩版chic棉服原宿ulzzang小棉袄外套</view>
+<block wx:if="{{!loaded}}">
+  <view class="container loadbox">
+    <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+    <text class="f24 gray05">正在加载中...</text>
   </view>
-  <view class="details">
-    <view class="d-title">
-      <image src="../../assets/goods_detail.png" style="width:30rpx;height: 30rpx;position: relative;top:4rpx;"></image>
-      <text class="f32">商品详情</text>
-    </view>
-    <image src="https://img.alicdn.com/imgextra/i2/2935830079/TB27kfXf8fH8KJjy1XbXXbLdXXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
-    <image src="https://img.alicdn.com/imgextra/i2/2935830079/TB2ECCEbjgy_uJjSZK9XXXvlFXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
-    <image src="https://img.alicdn.com/imgextra/i3/2935830079/TB2tADib0LO8KJjSZFxXXaGEVXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
-    <image src="https://img.alicdn.com/imgextra/i3/2935830079/TB28AjXf8fH8KJjy1XbXXbLdXXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
-    <image src="https://img.alicdn.com/imgextra/i2/2935830079/TB2D6_hf0zJ8KJjSspkXXbF7VXa_!!2935830079.jpg" style="width:100%" mode="widthFix"></image>
-  </view>
-  <view class="recommend">
-    <view class="d-title">
-      <image src="../../assets/goods_lsit.png" style="width:36rpx;height: 36rpx;position: relative;top:6rpx;"></image>
-      <text class="f32">推荐商品</text>
-    </view>
-  </view>
-  <!-- pro list -->
-  <view class="pro-list-box">
-    <navigator url="" hover-class="none">
-      <view class="pro-item">
-        <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517215642&di=04749e48f2a385f236a428c99079848c&imgtype=jpg&er=1&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F0823dd54564e9258df7f3f9d9682d158ccbf4e7d.jpg" mode="widthFix"></image>
-        <view class="info">
-          <view class="f24 gray04 pro-title">连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服</view>
-          <view class="f24 gray05">尺码：
-            <text class="gray04">L</text> 颜色：
-            <text class="gray04">红色</text>
-          </view>
-          <view class="f24 gray05">原价
-            <text class="gray04">￥2000</text> 现价
-            <text class="f32 red-color">￥200</text>
-          </view>
+</block>
+<block wx:if="{{loaded}}">
+  <view class="container">
+    <image src="{{baseUrl}}{{detail.goodsImg}}" style="width:100%" mode="widthFix"></image>
+    <view class="infos">
+      <view class="title f28 gray01">{{detail.goodsName}}</view>
+      <view class="double-column">
+        <view class="f24 gray02">原价:
+          <text class="gray04">￥{{detail.marketPrice}}</text>
+        </view>
+        <view class="f24 gray02">现价:
+          <text class="red-color f28">￥{{detail.shopprice}}</text>
         </view>
       </view>
-    </navigator>
-    <navigator url="/" hover-class="none">
-      <view class="pro-item">
-        <image src="https://gd1.alicdn.com/imgextra/i4/2018150028/TB2xiFHc7fb_uJkSnhJXXbdDVXa_!!2018150028.jpg" mode="widthFix"></image>
-        <view class="info">
-          <view class="f24 gray04 pro-title">连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服</view>
-          <view class="f24 gray05">尺码：
-            <text class="gray04">L</text> 颜色：
-            <text class="gray04">红色</text>
-          </view>
-          <view class="f24 gray05">原价
-            <text class="gray04">￥2000</text> 现价
-            <text class="f32 red-color">￥200</text>
-          </view>
+      <view class="double-column">
+        <view class="f24 gray02">颜色:
+          <text class="gray04">{{detail.goodsSpec}}</text>
+        </view>
+        <view class="f24 gray02">尺码:
+          <text class="gray04">{{detail.goodsUnit}}</text>
         </view>
       </view>
-    </navigator>
-    <navigator url="/" hover-class="none">
-      <view class="pro-item">
-        <image src="https://gd3.alicdn.com/imgextra/i3/737914807/TB2sG.0XvBNTKJjSszcXXbO2VXa_!!737914807.jpg" mode="widthFix"></image>
-        <view class="info">
-          <view class="f24 gray04 pro-title">连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服</view>
-          <view class="f24 gray05">尺码：
-            <text class="gray04">L</text> 颜色：
-            <text class="gray04">红色</text>
-          </view>
-          <view class="f24 gray05">原价
-            <text class="gray04">￥2000</text> 现价
-            <text class="f32 red-color">￥200</text>
-          </view>
-        </view>
-      </view>
-    </navigator>
-    <navigator url="/" hover-class="none">
-      <view class="pro-item">
-        <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517215710&di=adc1806904776066d969986272c88bf2&imgtype=jpg&er=1&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F8435e5dde71190ef83342cacc41b9d16fcfa60f2.jpg" mode="widthFix"></image>
-        <view class="info">
-          <view class="f24 gray04 pro-title">连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服</view>
-          <view class="f24 gray05">尺码：
-            <text class="gray04">L</text> 颜色：
-            <text class="gray04">红色</text>
-          </view>
-          <view class="f24 gray05">原价
-            <text class="gray04">￥2000</text> 现价
-            <text class="f32 red-color">￥200</text>
-          </view>
-        </view>
-      </view>
-    </navigator>
-  </view>
-  <!-- 底线 -->
-  <view class="public-footer"><text></text>别扯了，到底了<text></text></view>
-  <view class="placeholder-box120"></view>
-  <!-- footer -->
-  <view class="footer">
-    <view class="add-trolley f28 main-bg main-bgi">加入购物车</view>
-    <view class="now-buy f28 main-bg main-bgi">立即购买</view>
-  </view>
-  <navigator url="../trolley/trolley">
-    <view class="arc-btn-lg trolley">
-      <image src="../../assets/mall_02.png" style="width: 58rpx;height: 58rpx"></image>
-      <view class="corner">12</view>
+      <view class="f24 gray02 desc-t">商品描述:</view>
+      <view class="f24 gray04 desc">{{detail.goodsDesc}}</view>
     </view>
-  </navigator>
-</view>
+    <view class="details">
+      <view class="d-title">
+        <image src="../../assets/goods_detail.png" style="width:30rpx;height: 30rpx;position: relative;top:4rpx;"></image>
+        <text class="f32">商品详情</text>
+      </view>
+      <image wx:for="{{detail.imageList}}" wx:key="{{index}}" src="{{baseUrl}}{{item.goodsImg}}" style="width:100%" mode="widthFix"></image>
+    </view>
+    <view class="recommend">
+      <view class="d-title">
+        <image src="../../assets/goods_lsit.png" style="width:36rpx;height: 36rpx;position: relative;top:6rpx;"></image>
+        <text class="f32">推荐商品</text>
+      </view>
+    </view>
+    <!-- pro list -->
+    <view class="pro-list-box">
+      <navigator url="" hover-class="none">
+        <view class="pro-item">
+          <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517215642&di=04749e48f2a385f236a428c99079848c&imgtype=jpg&er=1&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F0823dd54564e9258df7f3f9d9682d158ccbf4e7d.jpg" mode="widthFix"></image>
+          <view class="info">
+            <view class="f24 gray04 pro-title">连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服</view>
+            <view class="f24 gray05">尺码：
+              <text class="gray04">L</text> 颜色：
+              <text class="gray04">红色</text>
+            </view>
+            <view class="f24 gray05">原价
+              <text class="gray04">￥2000</text> 现价
+              <text class="f32 red-color">￥200</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/" hover-class="none">
+        <view class="pro-item">
+          <image src="https://gd1.alicdn.com/imgextra/i4/2018150028/TB2xiFHc7fb_uJkSnhJXXbdDVXa_!!2018150028.jpg" mode="widthFix"></image>
+          <view class="info">
+            <view class="f24 gray04 pro-title">连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服</view>
+            <view class="f24 gray05">尺码：
+              <text class="gray04">L</text> 颜色：
+              <text class="gray04">红色</text>
+            </view>
+            <view class="f24 gray05">原价
+              <text class="gray04">￥2000</text> 现价
+              <text class="f32 red-color">￥200</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/" hover-class="none">
+        <view class="pro-item">
+          <image src="https://gd3.alicdn.com/imgextra/i3/737914807/TB2sG.0XvBNTKJjSszcXXbO2VXa_!!737914807.jpg" mode="widthFix"></image>
+          <view class="info">
+            <view class="f24 gray04 pro-title">连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服</view>
+            <view class="f24 gray05">尺码：
+              <text class="gray04">L</text> 颜色：
+              <text class="gray04">红色</text>
+            </view>
+            <view class="f24 gray05">原价
+              <text class="gray04">￥2000</text> 现价
+              <text class="f32 red-color">￥200</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/" hover-class="none">
+        <view class="pro-item">
+          <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517215710&di=adc1806904776066d969986272c88bf2&imgtype=jpg&er=1&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F8435e5dde71190ef83342cacc41b9d16fcfa60f2.jpg" mode="widthFix"></image>
+          <view class="info">
+            <view class="f24 gray04 pro-title">连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服</view>
+            <view class="f24 gray05">尺码：
+              <text class="gray04">L</text> 颜色：
+              <text class="gray04">红色</text>
+            </view>
+            <view class="f24 gray05">原价
+              <text class="gray04">￥2000</text> 现价
+              <text class="f32 red-color">￥200</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <!-- 底线 -->
+    <view class="public-footer">
+      <text></text>别扯了，到底了
+      <text></text>
+    </view>
+    <view class="placeholder-box120"></view>
+    <!-- footer -->
+    <view class="footer">
+      <view class="add-trolley f28 main-bg main-bgi" bindtap="handleAddToTrolley">加入购物车</view>
+      <view class="now-buy f28 main-bg main-bgi" bindtap="handleBuy">立即购买</view>
+    </view>
+    <navigator url="../trolley/trolley">
+      <view class="arc-btn-lg trolley">
+        <image src="../../assets/mall_02.png" style="width: 58rpx;height: 58rpx"></image>
+        <view class="corner" wx:if="{{totalTrolleyLen!=0}}">{{totalTrolleyLen}}</view>
+      </view>
+    </navigator>
+  </view>
+</block>

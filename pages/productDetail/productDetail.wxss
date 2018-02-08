@@ -3,6 +3,8 @@
 .infos {
   background-color: #fff;
   padding: 15rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .title {

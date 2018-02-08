@@ -35,38 +35,12 @@ Page({
   // 下拉刷新
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh(); //停止微信默认下拉刷新动画
-    currentPageNum = 1;
-    //显示刷新动画 清空上次加载的数据
-    this.setData({
-      startSearch: true,
-      loadingStatus: -1,
-      lists: []
-    });
-    getMGoodsLists(this, currentPageNum, searchKeyWord);
+    this.handleStartSearch();
   },
 
   //生命周期函数--监听页面加载
   onLoad(options) {
-    //从storage中获取历史搜索记录
-    //将历史搜索记录转换为数组并存入数据模型中
-    wx.getStorage({
-      key: 'searchHistorys',
-      success: res => {
-        let historyKeyWords = res.data,
-          temp = this.data.historys;
-        //将historyKeyWords转换为数组并进行去重复操作
-        temp.push(...Array.from(new Set(historyKeyWords.split(','))));
-        this.setData({
-          historys: temp
-        });
-      },
-      fail: res => {
-        //如果不存在历史记录 显示暂无历史 并隐藏清空按钮
-        this.setData({
-          hasHistorys: false
-        });
-      }
-    });
+    this.getHistoricalSearch();
   },
 
   //搜索
@@ -89,7 +63,7 @@ Page({
 
   //点击搜索按钮事件
   handleStartSearch() {
-    if (searchKeyWord != '') {
+    if (searchKeyWord.trim() != '') {
       //仅保留二十条历史数据
       //当点击搜索按钮时 判断是否输入关键字
       //如果关键字存在，将关键字添加进历史数组的头部
@@ -106,7 +80,41 @@ Page({
       });
       //开始搜索
       this.search(searchKeyWord);
+    } else {
+      //没有输入关键词进行搜索时显示历史搜索记录 并刷新历史记录
+      this.setData({
+        startSearch: false,
+        isStartSearch: false,
+        loadingStatus: -1,
+        lists: [],
+        historys:[]
+      });
+      this.getHistoricalSearch();
     }
+  },
+
+  //从缓存中获取历史记录
+  getHistoricalSearch() {
+    //从storage中获取历史搜索记录
+    //将历史搜索记录转换为数组并存入数据模型中
+    wx.getStorage({
+      key: 'searchHistorys',
+      success: res => {
+        let historyKeyWords = res.data,
+          temp = this.data.historys;
+        //将historyKeyWords转换为数组并进行去重复操作
+        temp.push(...Array.from(new Set(historyKeyWords.split(','))));
+        this.setData({
+          historys: temp
+        });
+      },
+      fail: res => {
+        //如果不存在历史记录 显示暂无历史 并隐藏清空按钮
+        this.setData({
+          hasHistorys: false
+        });
+      }
+    });
   },
 
   //当点击历史搜索记录时以点击历史的内容为关键词 进行快捷搜索

@@ -6,9 +6,10 @@ Page({
   data: {
     allLoadMore: true, //允许加载更多
     countPageNum: 5, //共可以加载的次数
-    baseUrl: '',
+    baseUrl: app.globalData.baseUrl,
     startRefresh: false, // 是否开始下拉刷新
     carouselImgs: [], //轮播图
+    totalTrolleyLen: 0, //购物车商品数量
     windowWidth: '',
     windowHeight: '',
     swiperHeight: '',
@@ -17,13 +18,13 @@ Page({
     lists: [] //列表数据
   },
 
-  onLoad: function() {
-
-    //记录根路径
+  onShow(){
     this.setData({
-      baseUrl: app.globalData.baseUrl
+      totalTrolleyLen: app.globalData.totalTrolleyLen
     });
+  },
 
+  onLoad: function() {
     //获取系统信息
     wx.getSystemInfo({
       success: res => {

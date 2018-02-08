@@ -45,7 +45,7 @@
     <navigator url="../trolley/trolley">
       <view class="arc-btn-lg trolley">
         <image src="../../assets/mall_02.png" style="width: 58rpx;height: 58rpx"></image>
-        <view class="corner">12</view>
+        <view class="corner" wx:if="{{totalTrolleyLen!=0}}">{{totalTrolleyLen}}</view>
       </view>
     </navigator>
   </block>
