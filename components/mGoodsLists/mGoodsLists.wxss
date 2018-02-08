@@ -6,12 +6,29 @@
 @import '../../app.wxss';
 
 .pro-list-box {
-  width: 100%;
+  /*width: 100%;
   padding: 0 15rpx;
   box-sizing: border-box;
   column-count: 2;
   column-gap: 15rpx;
-  font-size: 0;
+  font-size: 0;*/
+}
+.pro-list-box {
+  width: 100%;
+  display: flex;
+  padding: 0 2%;
+}
+
+.pro-list-box > view {
+  width: 49%;
+}
+
+.pro-list-box > view:first-child {
+  padding-right: 1%;
+}
+
+.pro-list-box > view:last-child {
+  padding-left: 1%;
 }
 
 .pro-list-box .pro-item {
@@ -27,6 +44,7 @@
 
 .pro-list-box .pro-item image {
   width: 100%;
+  height: 400rpx;
 }
 
 .pro-list-box .pro-title {
@@ -44,4 +62,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.goods-null {
+  margin-top: 50rpx;
 }

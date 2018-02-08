@@ -1,13 +1,48 @@
 // pages/search/search.js
-let searchKeyWord = ''; //保存搜索的关键词
+import getMGoodsLists from '../../request/getMGoodsLists.js';
+const app = getApp();
+let currentPageNum = 1, //当前加载的次数
+  searchKeyWord = ''; //保存搜索的关键词
+
 Page({
 
   data: {
+    countPageNum: 5, //共可以加载的次数
+    allLoadMore: true, //允许加载更多
+    isLoadMore: false, //显示加载动画
+    loadingStatus: -1, //1 到底了 2 未加载到商品
+    lists: [], //列表数据
     quickSearchKeyWord: '', //快捷搜索关键词
     startSearch: false, //是否开始搜索
     isStartSearch: false, //是否开始搜索 控制历史是否显示
     hasHistorys: true, //是否存在历史记录
     historys: [] //记录历史搜索记录
+  },
+
+  //上拉加载更多
+  onReachBottom() {
+    if (this.data.loadingStatus == -1) {
+      if (this.data.allLoadMore) {
+        currentPageNum++;
+        this.setData({
+          isLoadMore: true
+        });
+        getMGoodsLists(this, currentPageNum, searchKeyWord);
+      }
+    }
+  },
+
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    wx.stopPullDownRefresh(); //停止微信默认下拉刷新动画
+    currentPageNum = 1;
+    //显示刷新动画 清空上次加载的数据
+    this.setData({
+      startSearch: true,
+      loadingStatus: -1,
+      lists: []
+    });
+    getMGoodsLists(this, currentPageNum, searchKeyWord);
   },
 
   //生命周期函数--监听页面加载
@@ -36,11 +71,15 @@ Page({
 
   //搜索
   search(keyWord) {
-    //隐藏搜索历史并显示加载动画
+    //清楚上次搜索状态及数据 重新开始本次搜索
+    currentPageNum = 1;
     this.setData({
       startSearch: true,
-      isStartSearch: true
+      isStartSearch: true,
+      loadingStatus: -1,
+      lists: []
     });
+    getMGoodsLists(this, currentPageNum, searchKeyWord);
   },
 
   //记录输入的关键词

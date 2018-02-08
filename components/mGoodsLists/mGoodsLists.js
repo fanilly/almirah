@@ -1,6 +1,6 @@
 // components/mGoodsLists/mGoodsLists.js
 const app = getApp();
-
+let imgWidth, scrollH;
 Component({
   properties: {
     // 列表数据
@@ -20,7 +20,8 @@ Component({
     baseUrl: app.globalData.baseUrl
   },
 
+  //当组件被加入到节点中
   created() {
-    console.log(this.data);
+
   }
 });

@@ -27,6 +27,16 @@
       </view>
     </view>
   </block>
+  <view style="height: 15rpx"></view>
+  <!-- pro list -->
+  <lists lists="{{lists}}" loadingStatus="{{loadingStatus}}"></lists>
+  <!-- loadmore -->
+  <block wx:if="{{isLoadMore}}">
+    <view class="weui-loadmore">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+  </block>
   <!-- 加载动画 -->
   <block wx:if="{{startSearch}}">
     <view class="loading-box">

@@ -156,3 +156,12 @@
 .trolley {
   bottom: 15rpx;
 }
+
+.loading-box {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px #ccc;
+  margin-top: 50rpx;
+}

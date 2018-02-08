@@ -49,4 +49,10 @@
       </view>
     </navigator>
   </block>
+  <!-- 刷新动画 -->
+  <block wx:if="{{startRefresh}}">
+    <view class="loading-box">
+      <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+    </view>
+  </block>
 </view>

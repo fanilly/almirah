@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/mall/mall",
+    "pages/search/search",
     "pages/almirah/almirah",
     "pages/washRecord/washRecord",
     "pages/washing/washing",
@@ -20,7 +21,6 @@
     "pages/me/me",
     "pages/bindphone/bindphone",
     "pages/feedback/feedback",
-    "pages/search/search",
     "pages/mallSettlement/mallSettlement",
     "pages/trolley/trolley",
     "pages/service/service",
