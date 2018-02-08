@@ -8,66 +8,38 @@
         <text>订单明细</text>
       </view>
       <view class="items-wapper">
-        <view class="detail-items">
-          <view class="lside">
-            <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517215642&di=04749e48f2a385f236a428c99079848c&imgtype=jpg&er=1&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F0823dd54564e9258df7f3f9d9682d158ccbf4e7d.jpg" mode="aspectFill"></image>
-          </view>
-          <view class="rside f32 gray05">
-            <view class="f24 gray04 pro-title">
-              连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服
+        <block wx:for="{{lists}}" wx:key="{{index}}">
+          <view class="detail-items">
+            <view class="lside">
+              <image src="{{baseUrl}}{{item.goodsThums}}" mode="aspectFill"></image>
             </view>
-            <view class="f24 gray05 settings">
-              <view>
-                尺码：
-                <text class="gray04">L</text>
+            <view class="rside f32 gray05">
+              <view class="f24 gray04 pro-title">
+                {{item.goodsName}}
               </view>
-              <view>
-                颜色：
-                <text class="gray04">红色</text>
+              <view class="f24 gray05 settings">
+                <view>
+                  尺码：
+                  <text class="gray04">{{item.goodsUnit}}</text>
+                </view>
+                <view>
+                  颜色：
+                  <text class="gray04">{{item.goodsSpec}}</text>
+                </view>
               </view>
-            </view>
-            <view class="f24 gray05 settings">
-              <view>
-                原价
-                <text class="gray04">￥2000</text>
-              </view>
-              <view>
-                现价
-                <text class="red-color">￥200</text>
-              </view>
-            </view>
-          </view>
-        </view>
-        <view class="detail-items">
-          <view class="lside">
-            <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517215642&di=04749e48f2a385f236a428c99079848c&imgtype=jpg&er=1&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F0823dd54564e9258df7f3f9d9682d158ccbf4e7d.jpg" mode="aspectFill"></image>
-          </view>
-          <view class="rside f32 gray05">
-            <view class="f26 gray04 pro-title">
-              连帽中长款羽绒服连帽中长款羽绒服连帽中长款羽绒服
-            </view>
-            <view class="f26 gray05 settings">
-              <view>
-                尺码：
-                <text class="gray04">L</text>
-              </view>
-              <view>
-                颜色：
-                <text class="gray04">红色</text>
-              </view>
-            </view>
-            <view class="f26 gray05 settings">
-              <view>
-                原价
-                <text class="gray04">￥2000</text>
-              </view>
-              <view>
-                现价
-                <text class="red-color">￥200</text>
+              <view class="f24 gray05 settings">
+                <view>
+                  原价
+                  <text class="gray04">￥{{item.marketPrice}}</text>
+                </view>
+                <view>
+                  现价
+                  <text class="red-color">￥{{item.shopprice}}</text>
+                </view>
               </view>
             </view>
           </view>
-        </view>
+        </block>
       </view>
     </view>
   </view>

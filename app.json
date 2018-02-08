@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/trolley/trolley",
     "pages/mall/mall",
     "pages/search/search",
     "pages/almirah/almirah",
@@ -22,7 +23,6 @@
     "pages/bindphone/bindphone",
     "pages/feedback/feedback",
     "pages/mallSettlement/mallSettlement",
-    "pages/trolley/trolley",
     "pages/service/service",
     "pages/register/register",
     "pages/mallOrder/mallOrder",

@@ -27,11 +27,18 @@
 
 .thumbnail {
   width: 190rpx;
+  height: 190rpx;
+}
+
+.thumbnail image {
+  width: 190rpx;
+  height: 190rpx;
 }
 
 .info {
   flex: 1;
   padding: 0 12rpx 0 26rpx;
+  overflow: hidden;
 }
 
 .info view {
@@ -108,11 +115,30 @@
   text-align: center;
 }
 
-.footer>view:nth-child(2) navigator {
+.footer>view:nth-child(2) view {
   height: 80rpx;
   line-height: 80rpx;
   border-radius: 40rpx;
   width: 90%;
   margin: 20rpx auto;
   box-shadow: 0 0 8px #999;
+}
+
+.loadbox {
+  height: 300rpx;
+}
+
+.btn {
+  display: block;
+  color: #fff;
+  text-align: center;
+}
+
+.loading-box {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px #ccc;
+  margin: 50rpx auto;
 }

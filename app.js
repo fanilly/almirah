@@ -63,9 +63,10 @@ App({
   globalData: {
     userID: 2,
     isVIP: null,
-    totalTrolleyLen: 0,
+    totalTrolleyLen: 0, //商城购物车物品数量
     takeAddress: null, //取衣地址
     giveAddress: null, //送衣地址
+    buyGoodsLists:[], //结算时选中的商品
     api: 'https://ybh.hohu.cc/index.php/api',
     baseUrl: 'https://ybh.hohu.cc/',
     userInfo: {

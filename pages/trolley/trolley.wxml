@@ -1,52 +1,68 @@
 <!--pages/trolley/trolley.wxml-->
-<view class="container">
-  <view class="main">
-    <view class="pro-item" catchlongpress="handleShowControl">
-      <view class="item-content">
-        <view class="thumbnail">
-          <image src="../../assets/pro_01.png" style="width:190rpx; height: 190rpx;"></image>
-        </view>
-        <view class="info">
-          <view class="f28 gray01">商务职业正装商务职业正装</view>
-          <view class="f24 gray04 price">
-            <view>颜色:
-              <text class="gray01"> 灰色</text>
+<block wx:if="{{loadingStatus==0}}">
+  <view class="loading-box">
+    <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+  </view>
+</block>
+<block wx:if="{{loadingStatus==1}}">
+  <view class="container loadbox">
+    <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+    <text class="f24 gray05">暂无订单数据</text>
+    <view class="f24 gray05 btn" bindtap="handleNavigateToMall">去商城逛逛</view>
+  </view>
+</block>
+<block wx:if="{{loadingStatus ==2}}">
+  <view class="container">
+    <view class="main">
+      <block wx:for="{{lists}}" wx:key="{{index}}">
+        <view class="pro-item" catchlongpress="handleShowControl" id="{{index}}">
+          <view class="item-content">
+            <view class="thumbnail">
+              <image src="{{baseUrl}}{{item.goodsThums}}" style="width:190rpx; height: 190rpx;" mode="aspectFill"></image>
             </view>
-            <view>尺码:
-              <text class="gray01"> XL</text>
+            <view class="info" bindtap="handleNavigateToDetail" id="{{index}}">
+              <view class="f28 gray01">{{item.goodsName}}</view>
+              <view class="f24 gray04 price">
+                <view>颜色:
+                  <text class="gray01"> {{item.goodsSpec}}</text>
+                </view>
+                <view>尺码:
+                  <text class="gray01"> {{item.goodsUnit}}</text>
+                </view>
+              </view>
+              <view class="f24 gray04">
+                原价:
+                <text class="gray01 f28">￥{{item.marketPrice}}</text>
+                现价:
+                <text class="red-color f28">￥{{item.shopprice}}</text>
+              </view>
+            </view>
+            <view class="checkbox" id="{{index}}" bindtap="handleCheckout">
+              <icon color="#1aaade" class="weui-icon-checkbox_circle" type="circle" size="30" wx:if="{{!item.checked}}"></icon>
+              <icon color="#1aaade" class="weui-icon-checkbox_success" type="success" size="30" wx:if="{{item.checked}}"></icon>
             </view>
           </view>
-          <view class="f24 gray04">
-            原价:
-            <text class="gray01 f28">￥210.00</text>
-            现价:
-            <text class="red-color f28">￥210.00</text>
-          </view>
-        </view>
-        <view class="checkbox" bindtap="handleCheckout">
-          <icon color="#1aaade" class="weui-icon-checkbox_circle" type="circle" size="30" wx:if="{{!item.checked}}"></icon>
-          <icon color="#1aaade" class="weui-icon-checkbox_success" type="success" size="30" wx:if="{{item.checked}}"></icon>
-        </view>
-      </view>
-      <block wx:if="{{item.test}}">
-        <view class="item-control" animation="{{showMask}}" catchtap="handleHideControl">
-          <view class="del red-bg f24">删除</view>
-          <view class="buy main-bg f24">购买</view>
+          <block wx:if="{{currentShowControl == index}}">
+            <view class="item-control" animation="{{showMask}}" catchtap="handleHideControl">
+              <view class="del red-bg f24" id="{{index}}" bindtap="handleDelGoods">删除</view>
+              <view class="buy main-bg f24" id="{{index}}" bindtap="handleBuyGoods">购买</view>
+            </view>
+          </block>
         </view>
       </block>
     </view>
-  </view>
-  <!-- 底部 -->
-  <view class="footer">
-    <view class="f24">
-      共选中
-      <text class="red-color f28"> 3 </text>件 总计：
-      <text class="red-color f28"> ￥300.00 </text>
+    <!-- 底部 -->
+    <view class="footer">
+      <view class="f24">
+        共选中
+        <text class="red-color f28"> {{totalCheckedGoods}} </text>件 总计：
+        <text class="red-color f28"> ￥{{totalCheckedPrice}} </text>
+      </view>
+      <view>
+        <view class="f28 main-bg main-bgi" bindtap="handleGoSettlement">
+          去结算
+        </view>
+      </view>
     </view>
-    <view>
-      <navigator class="f28 main-bg main-bgi" url="../mallSettlement/mallSettlement">
-        去结算
-      </navigator>
-    </view>
   </view>
-</view>
+</block>
