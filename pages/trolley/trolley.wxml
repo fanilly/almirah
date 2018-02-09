@@ -51,6 +51,8 @@
         </view>
       </block>
     </view>
+    <view class="placeholder-box120"></view>
+    <view class="placeholder-box100"></view>
     <!-- 底部 -->
     <view class="footer">
       <view class="f24">

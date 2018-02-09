@@ -32,17 +32,40 @@ Page({
 
   //点击删除从购物车中删除当前商品
   handleDelGoods(e) {
-    let index = e.currentTarget.id,
-      lists = this.data.lists;
+    let i, index = e.currentTarget.id,
+      lists = this.data.lists,
+      totalCheckedGoods = 0,
+      totalCheckedPrice = 0;
+
     //更新缓存中的购物车数据
     storageMallTrolley.splice(index, 1);
     wx.setStorage({
       key: 'mallTrolley',
       data: JSON.stringify(storageMallTrolley)
     });
+
+
     //更新页面渲染的购物车数据
     lists.splice(index, 1);
-    this.setData({ lists });
+
+    //更新选中商品的个数及价格
+    for (i = 0; i < lists.length; i++) {
+      if (lists[i].checked) {
+        totalCheckedGoods++;
+        totalCheckedPrice = parseFloat(totalCheckedPrice) + parseFloat(lists[i].shopprice);
+      }
+    }
+
+    //如果lists的长度小于等于0 证明购物车已经被删空了
+    if (lists.length <= 0) {
+      this.setData({
+        loadingStatus: 1
+      });
+    } else {
+      //改变购物车中商品列表及选中商品个数和价格
+      this.setData({ lists, totalCheckedGoods, totalCheckedPrice });
+    }
+
     //更新全局记录的购物车商品数量
     app.globalData.totalTrolleyLen = app.globalData.totalTrolleyLen - 1;
   },
@@ -67,14 +90,19 @@ Page({
       success: res => {
         let i, mallTrolley = res.data ? JSON.parse(res.data) : [];
         storageMallTrolley = mallTrolley;
+        console.log(storageMallTrolley);
         for (i = 0; i < mallTrolley.length; i++) {
           mallTrolley[i].checked = false;
         }
         this.setData({
           lists: mallTrolley,
-          loadingStatus: mallTrolley.length = 0 ? 1 : 2
+          loadingStatus: mallTrolley.length <= 0 ? 1 : 2
         });
-        console.log(this.data.lists);
+      },
+      fail: err => {
+        this.setData({
+          loadingStatus: 1
+        });
       }
     });
   },
@@ -89,7 +117,7 @@ Page({
     if (lists[id].checked) { //如果选中 改变选中件数及总金额
       totalCheckedGoods++;
       totalCheckedPrice = parseFloat(totalCheckedPrice) + parseFloat(lists[id].shopprice);
-      console.log(totalCheckedPrice)
+      console.log(totalCheckedPrice);
       totalCheckedPrice = totalCheckedPrice.toFixed(2);
     } else {
       //如果取消选择改变选中件数及总金额

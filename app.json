@@ -1,10 +1,10 @@
 {
   "pages":[
-    "pages/selling/selling",
-    "pages/almirah/almirah",
-    "pages/trolley/trolley",
-    "pages/sell/sell",
     "pages/mall/mall",
+    "pages/trolley/trolley",
+    "pages/almirah/almirah",
+    "pages/selling/selling",
+    "pages/sell/sell",
     "pages/mallSettlement/mallSettlement",
     "pages/laundrySettlement/laundrySettlement",
     "pages/search/search",

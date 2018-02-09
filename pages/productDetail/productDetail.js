@@ -1,6 +1,6 @@
 // pages/productDetail/productDetail.js
 const app = getApp(),
-  getMallTrolleyItem = (detail) => { //本次购买或加入购物车的数据
+  getMallTrolleyItem = function(detail) { //本次购买或加入购物车的数据
     return {
       goodsName: detail.goodsName,
       goodsId: detail.goodsId,
@@ -13,9 +13,8 @@ const app = getApp(),
   };
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
+  // 页面的初始数据
   data: {
     totalTrolleyLen: 0,
     baseUrl: app.globalData.baseUrl,
@@ -27,6 +26,7 @@ Page({
   handleAddToTrolley() {
     let detail = this.data.detail,
       mallTrolleyItem = getMallTrolleyItem(detail);
+    console.log(mallTrolleyItem);
     wx.getStorage({
       key: 'mallTrolley',
       success: res => {
@@ -83,6 +83,11 @@ Page({
           key: 'mallTrolley',
           data: JSON.stringify(mallTrolley)
         });
+        app.globalData.totalTrolleyLen = app.globalData.totalTrolleyLen + 1;
+        //改变数量
+        this.setData({
+          totalTrolleyLen: app.globalData.totalTrolleyLen
+        });
       }
     });
   },
@@ -90,7 +95,9 @@ Page({
   //立即购买
   handleBuy() {
     let detail = this.data.detail,
-      settlementGoods = [getMallTrolleyItem(detail)];
+      settlementGoods = [],
+      temp = getMallTrolleyItem(detail);
+    settlementGoods.push(temp);
     app.globalData.buyGoodsLists = settlementGoods;
     //跳转到商品结算页面
     wx.navigateTo({
@@ -101,7 +108,9 @@ Page({
   // 生命周期函数--监听页面加载
   onLoad(options) {
     this.setData({
-      totalTrolleyLen: app.globalData.totalTrolleyLen
+      totalTrolleyLen: app.globalData.totalTrolleyLen,
+      //如果是从出售商品页面进来的表示是自己的商品 此时应只显示详情无不相关内容
+      isSelf: options.self ? true : false
     });
     //请求商品详情数据
     wx.request({
@@ -121,7 +130,9 @@ Page({
 
   //生命周期函数--监听页面显示
   onShow: function() {
-
+    this.setData({
+      totalTrolleyLen: app.globalData.totalTrolleyLen
+    });
   },
 
   // 用户点击右上角分享

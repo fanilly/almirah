@@ -38,12 +38,12 @@
   <!-- bnts -->
   <block wx:if="xx">
     <navigator url="../laundryOrder/laundryOrder">
-      <view class="arc-btn-lg order">
+      <view class="arc-btn-lg order box-shadow">
         <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
       </view>
     </navigator>
     <navigator url="../trolley/trolley">
-      <view class="arc-btn-lg trolley">
+      <view class="arc-btn-lg trolley box-shadow">
         <image src="../../assets/mall_02.png" style="width: 58rpx;height: 58rpx"></image>
         <view class="corner" wx:if="{{totalTrolleyLen!=0}}">{{totalTrolleyLen}}</view>
       </view>
