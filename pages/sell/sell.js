@@ -2,7 +2,7 @@
 const app = getApp();
 import { formatDate } from '../../utils/util.js';
 import uploadImages from '../../request/uploadImages.js';
-let goodsID, ID;
+let goodsID, ID, shopID;
 Page({
 
   data: {
@@ -21,6 +21,7 @@ Page({
     });
     goodsID = options.goodsID;
     ID = options.ID;
+    shopID = options.shopID;
   },
 
   //选择买入时间
@@ -80,6 +81,7 @@ Page({
         data: {
           goodsCat: goodsID,
           userId: app.globalData.userID,
+          shopId: shopID,
           goodsName: datas.goodsname,
           goodsSize: datas.size,
           goodsColor: datas.color,
@@ -90,6 +92,7 @@ Page({
           goodsImage: JSON.stringify(this.data.files)
         },
         success: res => {
+          console.log(res);
           if (res.data.status == 1) {
             uploadImages(imgs, res.data.data);
           } else {

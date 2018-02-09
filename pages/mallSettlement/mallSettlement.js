@@ -6,9 +6,32 @@ Page({
   data: {
     baseUrl: app.globalData.baseUrl,
     lists: [], //订单明细
-    textareaValueLen:0, //当前留言的长度
+    textareaValueLen: 0, //当前留言的长度
     receiptAddress: null, //收货地址
     totalPrice: 0 //订单总价
+  },
+
+  //提交订单
+  handleSubmitOrder() {
+    let goodsIds = [];
+    console.log(this.data.receiptAddress);
+    console.log(this.data.lists);
+    this.data.lists.forEach(function(item) {
+      goodsIds.push({ goodsId: item.goodsId });
+    });
+    console.log(JSON.stringify(goodsIds),this.data.receiptAddress.addressId);
+    wx.request({
+      url: `${app.globalData.api}/clothesBuy/buy`,
+      data: {
+        userId: app.globalData.userID,
+        getAddressId: this.data.receiptAddress.addressId,
+        goodsId: JSON.stringify(goodsIds),
+        orderRemarks: leavingMessage
+      },
+      success: res => {
+        console.log(res);
+      }
+    });
   },
 
   //生命周期函数--监听页面显示
@@ -22,10 +45,10 @@ Page({
   },
 
   //记录卖家留言
-  handleLeavingMessage(e){
+  handleLeavingMessage(e) {
     leavingMessage = e.detail.value;
     this.setData({
-      textareaValueLen:leavingMessage.length
+      textareaValueLen: leavingMessage.length
     });
   },
 

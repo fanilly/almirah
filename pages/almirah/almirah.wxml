@@ -8,6 +8,12 @@
         <view class="f28 gray01">在洗衣物</view>
       </view>
     </navigator>
+    <navigator url="../washRecord/washRecord">
+      <view>
+        <image src="../../assets/o_btns_03.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray01">洗衣记录</view>
+      </view>
+    </navigator>
     <navigator url="../selling/selling">
       <view>
         <view class="pointer"></view>
@@ -15,16 +21,10 @@
         <view class="f28 gray01">在售衣物</view>
       </view>
     </navigator>
-    <navigator url="../washRecord/washRecord">
-      <view>
-        <image src="../../assets/o_btns_03.png" style="width: 65rpx;height: 65rpx"></image>
-        <view class="f28 gray01">洗衣记录</view>
-      </view>
-    </navigator>
     <navigator url="../sellRecord/sellRecord">
       <view>
         <image src="../../assets/o_btns_04.png" style="width: 65rpx;height: 65rpx"></image>
-        <view class="f28 gray01">交易记录</view>
+        <view class="f28 gray01">售出记录</view>
       </view>
     </navigator>
   </view>

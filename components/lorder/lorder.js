@@ -1,6 +1,7 @@
 // components/lorder/lorder.js
 import changeOrderStatus from '../../request/changeOrderStatus.js';
 const app = getApp();
+let shopId;
 Component({
   properties: {
     // 订单列表渲染状态
@@ -54,7 +55,7 @@ Component({
         goodsID = item.goodsId,
         ID = item.id;
       wx.navigateTo({
-        url: `../sell/sell?goodsID=${goodsID}&ID=${ID}`
+        url: `../sell/sell?goodsID=${goodsID}&ID=${ID}&shopID=${shopId}`
       });
     },
 
@@ -72,6 +73,8 @@ Component({
     handleCheckSell(e) {
       let id = e.currentTarget.id,
         list = this.data.lists[id].list;
+      //api工程师要求需要shopId
+      shopId = this.data.lists[id].shopId;
       //改变标题栏
       wx.setNavigationBarTitle({
         title: '选择出售商品'
