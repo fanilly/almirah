@@ -15,6 +15,7 @@ module.exports = (that, num, type = '') => {
   wx.request({
     url: `${app.globalData.api}/goods/goodslist`,
     data: {
+      recom: type != '' ? 0 : 1, //热门推荐传1 搜索传0
       p: num, //当前请求的页数
       goodsname: type //当前请求的关键字 如果为空请求为热门推荐
     },

@@ -1,2 +1,73 @@
 <!--pages/sellRecord/sellRecord.wxml-->
-<text>pages/sellRecord/sellRecord.wxml</text>
+<view class="container">
+  <view class="main">
+    <!-- 头部 -->
+    <view class="header">
+      <view wx:for="{{btns}}" wx:key="{{index}}" class="f28 gray01 {{index == currentIndex?'active':''}}" bindtap="handleCheckout" id="{{index}}">{{item}}</view>
+    </view>
+    <view class="placeholder-box100"></view>
+    <!-- 刷新动画 -->
+    <block wx:if="{{startRefresh}}">
+      <view class="loading-box">
+        <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+      </view>
+    </block>
+    <!-- contnet -->
+    <view class="content">
+      <block wx:for="{{listsAll}}" wx:for-index="i" wx:for-item="obj" wx:key="{{i}}">
+        <view>
+          <block wx:if="{{currentIndex==i && obj.listsStatus==1}}">
+            <view>
+              <block wx:for="{{obj.lists}}" wx:key="{{index}}">
+                <view class="details-items-wapper">
+                  <view class="detail-items">
+                    <view class="lside">
+                      <image src="{{baseUrl}}{{item.goodsThums}}" mode="aspectFill"></image>
+                    </view>
+                    <view class="rside f32 gray05">
+                      <view class="f26 gray04 pro-title" id="{{item.goodsId}}" bindtap="handleGoDetail">
+                        {{item.goodsName}}
+                      </view>
+                      <view class="f24 gray04 settings" id="{{item.goodsId}}" bindtap="handleGoDetail">
+                        <view>
+                          尺码：
+                          <text class="gray05">{{item.goodsUnit}}</text>
+                        </view>
+                        <view>
+                          颜色：
+                          <text class="gray05">{{item.goodsSpec}}</text>
+                        </view>
+                      </view>
+                      <view class="f24 gray04 settings" id="{{item.goodsId}}" bindtap="handleGoDetail">
+                        <view>
+                          原价：
+                          <text class="gray05">￥{{item.marketPrice}}</text>
+                        </view>
+                        <view>
+                          现价：
+                          <text class="red-color">￥{{item.shopPrice}}</text>
+                        </view>
+                      </view>
+                      <view class="f24 gray03 control">
+                        <view wx:if="{{i==0}}" id="{{index}}">催促发货</view>
+                        <view wx:if="{{i==1}}" id="{{index}}" bindtap="handleConfirm">确认收货</view>
+                        <view wx:if="{{i==2}}" id="{{index}}" bindtap="handleDelete">删除</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </block>
+          <!-- 加载 -->
+          <block wx:if="{{currentIndex==i&&obj.listsStatus!=1}}">
+            <view class="container loadbox">
+              <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+              <text class="f24 gray05">{{obj.listsStatus}}</text>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

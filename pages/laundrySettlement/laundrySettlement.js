@@ -123,6 +123,7 @@ Page({
       success: res => {
         wx.hideLoading();
         console.log(res);
+        console.log(res);
         if (res.data == 1) {
           wx.showToast({
             title: '下单成功',

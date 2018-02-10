@@ -1,66 +1,152 @@
 // pages/sellRecord/sellRecord.js
+const app = getApp(),
+  params = {
+    num: [7, 5, 6],
+    msg: ['暂无待发货订单', '暂无已发货订单', '暂无已完成订单']
+  },
+  switchStatus = {
+    GetDelete: '删除',
+    Confirm: '确认'
+  };
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+  // 页面的初始数据
   data: {
-  
+    btns: ['待发货', '已发货', '已完成'],
+    baseUrl: app.globalData.baseUrl,
+    listsAll: [{
+      lists: [],
+      listsStatus: '努力加载中...'
+    }, {
+      lists: [],
+      listsStatus: '努力加载中...'
+    }, {
+      lists: [],
+      listsStatus: '努力加载中...'
+    }],
+    currentIndex: 0,
+    startRefresh: false
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  //生命周期函数--监听页面加载
+  onLoad(options) {
+    this.handleCheckout({ currentTarget: { id: this.data.currentIndex } });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  // 确认收货
+  handleConfirm(e) {
+    this.changeStatus(e.currentTarget.id, 'Confirm');
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  //删除
+  handleDelete(e) {
+    this.changeStatus(e.currentTarget.id, 'GetDelete');
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  //跳转至详情
+  handleGoDetail(e) {
+    console.log(e.currentTarget.id);
+    wx.navigateTo({
+      url: `../productDetail/productDetail?id=${e.currentTarget.id}&self=1`
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  //下拉刷新
+  onPullDownRefresh() {
+    wx.stopPullDownRefresh();
+    let listsAll = this.data.listsAll,
+      startRefresh = true;
+    //显示刷新动画 清楚视图中数据 重新发起请求
+    listsAll[this.data.currentIndex].listsStatus = 1;
+    listsAll[this.data.currentIndex].lists = [];
+    this.setData({ listsAll, startRefresh });
+    this.handleCheckout({ currentTarget: { id: this.data.currentIndex } });
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  // 商品类型切换
+  handleCheckout(e) {
+    let index = parseInt(e.currentTarget.id);
+    this.setData({
+      currentIndex: index
+    });
+    //如果listsStatus的值为努力加载中 代表当前选项的数据未被加载过
+    //加载过的数据不进行二次加载 刷新时重新加载当前选项的数据
+    if (this.data.listsAll[index].listsStatus == '努力加载中...' || this.data.startRefresh) {
+      this.checkout(params.num[index], () => {
+        let listsAll = this.data.listsAll;
+        listsAll[index].listsStatus = params.msg[index];
+        this.setData({ listsAll });
+      }, (res) => {
+        let listsAll = this.data.listsAll;
+        listsAll[index].listsStatus = 1;
+        listsAll[index].lists = res;
+        this.setData({ listsAll });
+      });
+    }
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  //改变状态
+  changeStatus(index, type) {
+    wx.showLoading({ title: '请稍后', mask: true });
+    let cIndex = this.data.currentIndex,
+      listsAll = this.data.listsAll;
+    console.log(listsAll[cIndex].lists[index].goodsId);
+    wx.request({
+      url: `${app.globalData.api}/goods/goods_status`,
+      data: {
+        goodsId: listsAll[cIndex].lists[index].goodsId,
+        goodsMark: type
+      },
+      success: res => {
+        wx.hideLoading();
+        if (res.data == 1) {
+          wx.showToast({
+            title: `${switchStatus[type]}成功`,
+            icon: 'success',
+            duration: 1500
+          });
+          listsAll[cIndex].lists.splice(index, 1);
+          if (listsAll[cIndex].lists.length <= 0) {
+            listsAll[cIndex].listsStatus = params.msg[cIndex];
+          }
+          this.setData({ listsAll });
+        } else {
+          wx.showToast({
+            title: `${switchStatus[type]}失败`,
+            image: '../../assets/warning.png',
+            duration: 1500
+          });
+        }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络异常',
+          image: '../../assets/warning.png',
+          duration: 1500
+        });
+      }
+    });
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  //数据切换
+  checkout(num, fn1, fn2) {
+    wx.request({
+      url: `${app.globalData.api}/goods/goods_list`,
+      data: {
+        userId: app.globalData.userID,
+        goodsMark: num
+      },
+      success: res => {
+        // 隐藏加载动画
+        this.setData({
+          startRefresh: false
+        });
+        if (!res.data || res.data.length <= 0) {
+          if (fn1) fn1();
+        } else {
+          if (fn2) fn2(res.data);
+        }
+      }
+    });
   }
-})
+});

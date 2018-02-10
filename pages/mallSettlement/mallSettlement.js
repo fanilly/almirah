@@ -14,13 +14,16 @@ Page({
   //提交订单
   handleSubmitOrder() {
     let goodsIds = [];
+    wx.showLoading({title:'提交中'});
     console.log(this.data.receiptAddress);
     console.log(this.data.lists);
     this.data.lists.forEach(function(item) {
       goodsIds.push({ goodsId: item.goodsId });
     });
-    console.log(JSON.stringify(goodsIds),this.data.receiptAddress.addressId);
+    console.log(JSON.stringify(goodsIds), this.data.receiptAddress.addressId);
     wx.request({
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
       url: `${app.globalData.api}/clothesBuy/buy`,
       data: {
         userId: app.globalData.userID,
@@ -30,6 +33,19 @@ Page({
       },
       success: res => {
         console.log(res);
+        if (res.data == 1) {
+          wx.showToast({
+            title: '下单成功',
+            icon: 'success',
+            duration: 1500
+          });
+        } else {
+          wx.showToast({
+            title: '网络异常',
+            image: '../../assets/warning.png',
+            duration: 1500
+          });
+        }
       }
     });
   },

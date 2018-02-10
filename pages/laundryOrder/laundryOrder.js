@@ -182,7 +182,7 @@ Page({
     wx.request({
       url: `${api}/common/get_goods_cate`,
       success: res => {
-        console.log(res.data)
+        console.log(res.data);
         this.setData({
           datas: res.data || [],
           lists: res.data[0].children || [],

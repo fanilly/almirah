@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/mall/mall",
+    "pages/sellRecord/sellRecord",
+    "pages/helps/helps",
     "pages/trolley/trolley",
     "pages/almirah/almirah",
     "pages/selling/selling",
@@ -15,7 +17,6 @@
     "pages/laundryOrder/laundryOrder",
     "pages/hello/hello",
     "pages/lOrderDetail/lOrderDetail",
-    "pages/sellRecord/sellRecord",
     "pages/addressChoose/addressChoose",
     "pages/addressManager/addressManager",
     "pages/newAddress/newAddress",
@@ -27,8 +28,7 @@
     "pages/register/register",
     "pages/mallOrder/mallOrder",
     "pages/messages/messages",
-    "pages/about/about",
-    "pages/helps/helps"
+    "pages/about/about"
   ],
   "tabBar": {
     "list": [

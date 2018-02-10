@@ -43,7 +43,7 @@ Page({
 
   //跳转至详情
   handleGoDetail(e) {
-    console.log(e.currentTarget.id)
+    console.log(e.currentTarget.id);
     wx.navigateTo({
       url: `../productDetail/productDetail?id=${e.currentTarget.id}&self=1`
     });
@@ -86,7 +86,7 @@ Page({
     wx.showLoading({ title: '请稍后', mask: true });
     let cIndex = this.data.currentIndex,
       listsAll = this.data.listsAll;
-    console.log(listsAll[cIndex].lists[index].goodsId)
+    console.log(listsAll[cIndex].lists[index].goodsId);
     wx.request({
       url: `${app.globalData.api}/goods/goods_status`,
       data: {
@@ -166,20 +166,5 @@ Page({
         }
       }
     });
-  },
-
-  // 生命周期函数--监听页面初次渲染完成
-  onReady() {
-
-  },
-
-  // 生命周期函数--监听页面显示
-  onShow() {
-
-  },
-
-  //生命周期函数--监听页面隐藏
-  onHide() {
-
   }
 });
