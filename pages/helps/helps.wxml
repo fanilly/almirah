@@ -2,5 +2,21 @@
 <view class="container">
   <image src="../../assets/lg-logo.png" style="width:228rpx;height: 185rpx;"></image>
   <!-- 羽衣常染烟霞色 不沾红尘桃李花 -->
-  <view class="welcome">其实贫穷与富有并没有什么差别，只是拥有的东西不同。拥有一样必定会失去一样，一个土豪跟一个博士比钱财，那么可能会很富有，但要比知识也许就只能用贫穷来形容了。</view>
+  <view class="welcome f24 gray04">
+    <text class="f28 main-color">欢迎您</text>成为我们净衣客的一员，作为新成员的你，肯定对我们平台还有很多很多疑问吧，请先在列表中点击查看自己想要了解到内容建议您将所有问题都浏览一遍，为您以后的使用过程扫平障碍呦~~~</view>
+  <view class="content">
+    <block wx:for="1234567" wx:key="{{index}}">
+      <navigator url="" class="list-item gray04 f28">
+        <view>{{index+1}}.</view>
+        <view>新手必读</view>
+        <view>
+          <image style="width: 20rpx;height: 35rpx;" src="../../assets/gray_arrow.png"></image>
+        </view>
+      </navigator>
+    </block>
+  </view>
+  <!-- footer -->
+  <view class="weui-footer">
+    <view class="weui-footer__text">Copyright © 2018 净衣客</view>
+  </view>
 </view>

@@ -1,2 +1,33 @@
 <!--pages/about/about.wxml-->
-<text>pages/about/about.wxml</text>
+<view class="container">
+  <image src="../../assets/lg-logo.png" style="width:228rpx;height: 185rpx;"></image>
+  <!-- 羽衣常染烟霞色 不沾红尘桃李花 -->
+  <view class="welcome f24 gray04">
+    <text class="f28 main-color">净衣客</text>是服务于洗护行业的互联网产品，总部位于河南郑州市金水区民航路15号6层602号。</view>
+  <view class="content">
+    <view class="list-item">
+      <view><text>微</text><text>信</text><text>公</text><text>众</text><text>号</text><text>：</text></view>
+      <view>净衣客洗衣</view>
+    </view>
+    <view class="list-item">
+      <view><text>微</text><text>信</text><text>客</text><text>服</text><text>：</text></view>
+      <view>jingyike2017</view>
+    </view>
+    <view class="list-item">
+      <view><text>联</text><text>系</text><text>电</text><text>话</text><text>：</text></view>
+      <view>4000371788</view>
+    </view>
+    <view class="list-item">
+      <view><text>电</text><text>子</text><text>邮</text><text>箱</text><text>：</text></view>
+      <view>henanjingyike@163.com</view>
+    </view>
+    <view class="list-item">
+      <view><text>官</text><text>方</text><text>网</text><text>站</text><text>：</text></view>
+      <view>http://jingyike.com</view>
+    </view>
+  </view>
+  <!-- footer -->
+  <view class="weui-footer">
+    <view class="weui-footer__text">Copyright © 2018 净衣客</view>
+  </view>
+</view>

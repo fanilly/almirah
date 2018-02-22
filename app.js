@@ -3,7 +3,7 @@ import login from 'scripts/login';
 import updateUserInfo from 'scripts/updateUserInfo';
 App({
   onLaunch: function() {
-    wx.showLoading({ title: '加载中' });
+    wx.showLoading({ title: '加载中', mask:true });
     login(this.globalData.api, (user, userInfo) => {
       //登陆成功 隐藏加载动画 并记录返回数据
       wx.hideLoading();

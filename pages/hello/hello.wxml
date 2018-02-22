@@ -5,7 +5,7 @@
   <navigator url="../laundryOrder/laundryOrder" hover-class="none">
     <view class="btn main-bg">
       <image src="../../assets/h_order.png" style="width: 46rpx;height: 46rpx"></image>
-      <text class="f28">立即下单</text>
+      <text class="f28">我要洗衣</text>
     </view>
   </navigator>
   <view class="btn main-bg" bindtap="goToMall">

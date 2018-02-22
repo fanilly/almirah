@@ -1,1 +1,40 @@
 /* pages/about/about.wxss */
+.container {
+  padding: 90rpx 0 80rpx;
+}
+
+.welcome {
+  padding: 50rpx 30rpx 0;
+  text-indent: 2em;
+  text-align: justify;
+}
+
+.content {
+  padding: 15rpx;
+  box-sizing: border-box;
+  margin: 100rpx 0;
+}
+
+.list-item {
+  display: flex;
+}
+
+.list-item view:first-child {
+  width:180rpx;
+  font-size: 28rpx;
+  color:#666;
+  text-align: right;
+  display: flex;
+}
+.list-item view:first-child text {
+  flex: 1;
+}
+.list-item view:last-child {
+  font-size: 26rpx;
+  color:#999;
+  padding-left: 15rpx;
+}
+.weui-footer {
+  position: fixed;
+  bottom: 100rpx;
+}

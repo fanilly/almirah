@@ -1,1 +1,54 @@
 /* pages/helps/helps.wxss */
+
+.container {
+  padding: 90rpx 0 80rpx;
+}
+
+.welcome {
+  padding: 50rpx 30rpx 0;
+  text-indent: 2em;
+  text-align: justify;
+}
+
+.content {
+  width: 100%;
+  padding: 15rpx;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+
+.list-item {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.list-item>view:nth-child(1) {
+  width: 50rpx;
+  line-height: 35rpx;
+}
+
+.list-item>view:nth-child(2) {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 35rpx;
+  height: 35rpx;
+}
+
+.list-item>view:nth-child(3) {
+  height: 35rpx;
+  width: 20rpx;
+}
+
+.content .list-item:last-child {
+  border-bottom: 0;
+}
+
+
+/*.list-item>view:nth-child(3) {
+  width: 50rpx;
+}*/
