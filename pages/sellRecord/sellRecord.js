@@ -1,4 +1,6 @@
 // pages/sellRecord/sellRecord.js
+// 时间一直走 没有尽头 只有路口
+import getSelling from '../../request/getSelling.js';
 const app = getApp(),
   params = {
     num: [7, 5, 6],
@@ -72,7 +74,7 @@ Page({
     //如果listsStatus的值为努力加载中 代表当前选项的数据未被加载过
     //加载过的数据不进行二次加载 刷新时重新加载当前选项的数据
     if (this.data.listsAll[index].listsStatus == '努力加载中...' || this.data.startRefresh) {
-      this.checkout(params.num[index], () => {
+      getSelling(this,params.num[index], () => {
         let listsAll = this.data.listsAll;
         listsAll[index].listsStatus = params.msg[index];
         this.setData({ listsAll });
@@ -124,28 +126,6 @@ Page({
           image: '../../assets/warning.png',
           duration: 1500
         });
-      }
-    });
-  },
-
-  //数据切换
-  checkout(num, fn1, fn2) {
-    wx.request({
-      url: `${app.globalData.api}/goods/goods_list`,
-      data: {
-        userId: app.globalData.userID,
-        goodsMark: num
-      },
-      success: res => {
-        // 隐藏加载动画
-        this.setData({
-          startRefresh: false
-        });
-        if (!res.data || res.data.length <= 0) {
-          if (fn1) fn1();
-        } else {
-          if (fn2) fn2(res.data);
-        }
       }
     });
   }
