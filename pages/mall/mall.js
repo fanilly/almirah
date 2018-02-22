@@ -4,6 +4,7 @@ let currentPageNum = 1; //当前加载的次数
 
 Page({
   data: {
+    hasNewMsg: app.globalData.hasNewMsg,
     allLoadMore: true, //允许加载更多
     countPageNum: 5, //共可以加载的次数
     baseUrl: app.globalData.baseUrl,
@@ -18,9 +19,10 @@ Page({
     lists: [] //列表数据
   },
 
-  onShow(){
+  onShow() {
     this.setData({
-      totalTrolleyLen: app.globalData.totalTrolleyLen
+      totalTrolleyLen: app.globalData.totalTrolleyLen,
+      hasNewMsg: app.globalData.hasNewMsg
     });
   },
 
@@ -34,6 +36,13 @@ Page({
         });
       }
     });
+
+    //登陆成功的回调函数
+    app.loginSuccessCallback = res => {
+      this.setData({
+        hasNewMsg: res.newMessages == 1 ? true : false
+      });
+    };
 
     //获取轮播图数据
     wx.request({

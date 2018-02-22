@@ -1,12 +1,14 @@
 {
   "pages":[
     "pages/mall/mall",
-    "pages/about/about",
+    "pages/messages/messages",
+    "pages/almirah/almirah",
+    "pages/lOrderDetail/lOrderDetail",
     "pages/hello/hello",
+    "pages/about/about",
     "pages/helps/helps",
     "pages/sellRecord/sellRecord",
     "pages/trolley/trolley",
-    "pages/almirah/almirah",
     "pages/selling/selling",
     "pages/sell/sell",
     "pages/mallSettlement/mallSettlement",
@@ -17,7 +19,6 @@
     "components/mGoodsLists/mGoodsLists",
     "components/lorder/lorder",
     "pages/laundryOrder/laundryOrder",
-    "pages/lOrderDetail/lOrderDetail",
     "pages/addressChoose/addressChoose",
     "pages/addressManager/addressManager",
     "pages/newAddress/newAddress",
@@ -27,8 +28,7 @@
     "pages/feedback/feedback",
     "pages/service/service",
     "pages/register/register",
-    "pages/mallOrder/mallOrder",
-    "pages/messages/messages"
+    "pages/mallOrder/mallOrder"
   ],
   "tabBar": {
     "list": [

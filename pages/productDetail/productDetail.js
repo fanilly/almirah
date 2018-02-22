@@ -1,4 +1,5 @@
 // pages/productDetail/productDetail.js
+import getMGoodsLists from '../../request/getMGoodsLists.js';
 const app = getApp(),
   getMallTrolleyItem = function(detail) { //本次购买或加入购物车的数据
     return {
@@ -18,7 +19,9 @@ Page({
   data: {
     totalTrolleyLen: 0,
     baseUrl: app.globalData.baseUrl,
-    detail: {}, //商品详情数据
+    detail: {}, //商品详情数据,
+    loadingStatus: -1, //1 到底了 2 未加载到商品
+    lists: [], //列表数据
     loaded: false //是否加载完成
   },
 
@@ -126,6 +129,8 @@ Page({
         });
       }
     });
+
+    getMGoodsLists(this, 1);
   },
 
   //生命周期函数--监听页面显示

@@ -26,7 +26,7 @@
             <view class="f26">
               <text class="pointer"></text>{{item.orderStatus}}</view>
           </view>
-          <navigator url="../lOrderDetail/lOrderDetail" class="o-body">
+          <navigator url="../lOrderDetail/lOrderDetail?orderId={{item.orderId}}" class="o-body">
             <block wx:for="{{item.list}}" wx:key="{{index}}" wx:if="{{index<3}}">
               <view>
                 <view class="item-lside f24 gray02">{{item.catName}}</view>

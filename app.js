@@ -6,17 +6,23 @@ App({
     wx.showLoading({ title: '加载中', mask:true });
     login(this.globalData.api, (user, userInfo) => {
       //登陆成功 隐藏加载动画 并记录返回数据
+      if(this.loginSuccessCallback) this.loginSuccessCallback(user);
       wx.hideLoading();
       this.globalData.userInfo = userInfo;
       this.globalData.userID = user.userId;
-      this.globalData.isVIP = user.isVip * 1 == 1 ? true : false;
+      this.globalData.isVIP = user.isVip == 1 ? true : false;
+      this.globalData.hasNewMsg = user.newMessages == 1 ? true : false;
       console.log(user, userInfo);
       updateUserInfo(userInfo, this.globalData.api, user.userId);
     }, (user) => {
       //登陆成功 隐藏加载动画 并记录用户id及是否为vip
+      //由于 是网络请求，可能会在 Page.onLoad 之后才返回
+      //// 所以此处加入 callback 以防止这种情况
+      if(this.loginSuccessCallback) this.loginSuccessCallback(user);
       wx.hideLoading();
       this.globalData.userID = user.userId;
-      this.globalData.isVIP = user.isVip * 1 == 1 ? true : false;
+      this.globalData.isVIP = user.isVip == 1 ? true : false;
+      this.globalData.hasNewMsg = user.newMessages == 1 ? true : false;
       console.log(user);
     });
 
@@ -63,6 +69,7 @@ App({
   globalData: {
     userID: 2,
     isVIP: null,
+    hasNewMsg:false,//是否存在新消息
     totalTrolleyLen: 0, //商城购物车物品数量
     takeAddress: null, //取衣地址
     giveAddress: null, //送衣地址

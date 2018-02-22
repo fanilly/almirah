@@ -6,7 +6,7 @@
     <view>
       <navigator url="../messages/messages" class="msg-box">
         <image src="../../assets/m_btns_02_fff.png" style="width:38rpx;height:38rpx;"></image>
-        <view class="pointer"></view>
+        <view class="pointer" wx:if="{{hasNewMsg}}"></view>
       </navigator>
     </view>
   </view>
