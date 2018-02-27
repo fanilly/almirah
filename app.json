@@ -1,10 +1,12 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/mall/mall",
+    "pages/donation/donation",
+    "pages/hello/hello",
     "pages/messages/messages",
     "pages/almirah/almirah",
     "pages/lOrderDetail/lOrderDetail",
-    "pages/hello/hello",
     "pages/about/about",
     "pages/helps/helps",
     "pages/sellRecord/sellRecord",
@@ -26,15 +28,14 @@
     "pages/me/me",
     "pages/bindphone/bindphone",
     "pages/feedback/feedback",
-    "pages/service/service",
     "pages/register/register",
     "pages/mallOrder/mallOrder"
   ],
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/mall/mall",
-        "text": "商城",
+        "pagePath": "pages/index/index",
+        "text": "首页",
         "iconPath": "assets/mall.png",
         "selectedIconPath": "assets/mall_active.png"
       },

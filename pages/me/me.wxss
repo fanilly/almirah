@@ -2,7 +2,6 @@
 
 .main {
   width: 100%;
-
   box-sizing: border-box;
 }
 
@@ -15,7 +14,7 @@
   box-sizing: border-box;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  background-image: linear-gradient(to bottom,#1aaade,#2e8fde);
+  background-image: linear-gradient(to bottom, #1aaade, #2e8fde);
 }
 
 .box-shadow {
@@ -55,7 +54,8 @@
   margin-top: 15rpx;
 }
 
-.btn-list navigator {
+.btn-list navigator,
+.btn-list>view {
   padding-top: 32rpx;
   flex: 1;
   text-align: center;

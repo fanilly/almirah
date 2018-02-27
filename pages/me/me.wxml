@@ -24,7 +24,7 @@
       </navigator>
       <navigator url="../messages/messages">
         <view>
-          <view class="pointer"></view>
+          <view class="pointer" wx:if="{{hasNewMsg}}"></view>
           <image src="../../assets/m_btns_02.png" style="width: 65rpx;height: 65rpx"></image>
           <view class="f28 gray04">消息中心</view>
         </view>
@@ -35,12 +35,12 @@
           <view class="f28 gray04">帮助中心</view>
         </view>
       </navigator>
-      <navigator url="../service/service">
+      <view url="" bindtap="handleServices">
         <view>
           <image src="../../assets/m_btns_04.png" style="width: 65rpx;height: 65rpx"></image>
           <view class="f28 gray04">客服中心</view>
         </view>
-      </navigator>
+      </view>
     </view>
     <!-- lists -->
     <view class="lists-box box-shadow">

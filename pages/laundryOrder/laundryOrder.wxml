@@ -9,7 +9,7 @@
   <view class="container">
     <!-- 头部导航 -->
     <view class="header">
-      <scroll-view scroll-x>
+      <scroll-view scroll-x scroll-left="{{scrollLeft}}">
         <view class="wapper">
           <text wx:for="{{datas}}" id="{{index}}" wx:key="key" class="f28 gray01 {{index==curIndex?'main-color':''}}" bindtap="handleCheckoutType">{{item.catName}}</text>
         </view>

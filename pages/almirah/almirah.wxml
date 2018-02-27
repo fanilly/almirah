@@ -16,7 +16,6 @@
     </navigator>
     <navigator url="../selling/selling">
       <view>
-        <view class="pointer"></view>
         <image src="../../assets/o_btns_02.png" style="width: 65rpx;height: 65rpx"></image>
         <view class="f28 gray01">出售衣物</view>
       </view>

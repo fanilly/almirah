@@ -6,7 +6,8 @@ Page({
 
   data: {
     baseUrl: '',
-    loaded:false, //加载完毕
+    scrollLeft: 0,
+    loaded: false, //加载完毕
     isShowTrolley: false, // 是否显示购物车内容编辑模块
     trolleyContent: [], //购物车中的数据
     totalPrice: 0, //购物车中的商品总价
@@ -51,6 +52,7 @@ Page({
   // 头部按钮点击事件
   handleCheckoutType(e) {
     let id = parseInt(e.target.id);
+    console.log(id)
     this.setData({
       curIndex: id,
       lists: this.data.datas[id].children
@@ -152,6 +154,7 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
+    const curType = options.type;
     //绑定baseUrl
     this.setData({
       baseUrl: app.globalData.baseUrl
@@ -188,6 +191,17 @@ Page({
           lists: res.data[0].children || [],
           loaded: true
         });
+        if (curType) {
+          this.setData({
+            curIndex: curType,
+            lists: this.data.datas[curType].children
+          });
+          if (curType * 1 >= 4) {
+            this.setData({
+              scrollLeft: 300
+            });
+          }
+        }
       }
     });
   }

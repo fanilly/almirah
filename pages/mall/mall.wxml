@@ -20,7 +20,6 @@
       </block>
     </swiper>
   </view>
-  <!-- lsit -->
   <!-- hot title -->
   <view class="hot-title">
     <image src="../../assets/fire.png" style="width: 21rpx;height: 29rpx;"></image>

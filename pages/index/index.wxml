@@ -1,0 +1,54 @@
+<!--pages/mall/mall.wxml-->
+<view class="container" id="page">
+  <!-- header -->
+  <view class="header">
+    <navigator url="../search/search" class="f24">搜索商品</navigator>
+    <view>
+      <navigator url="../messages/messages" class="msg-box">
+        <image src="../../assets/m_btns_02_fff.png" style="width:38rpx;height:38rpx;"></image>
+        <view class="pointer" wx:if="{{hasNewMsg}}"></view>
+      </navigator>
+    </view>
+  </view>
+  <!-- banner -->
+  <view class="swiper-wapper">
+    <swiper class="carousel" id="test" style="height:{{swiperHeight}}px" indicator-dots="true" indicator-color="#fff" indicator-active-color="#1aaade" autoplay="true" interval="5000" circular="true">
+      <block wx:for="{{carouselImgs}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{baseUrl}}{{item}}" bindload="imageLoad" mode="widthFix"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- nav -->
+  <view class="nav-wapper">
+    <navigator hover-class="none" url="../laundryOrder/laundryOrder" class="nav-item">
+      <image src="../../assets/nav_icon01.png" style="width: 100rpx;height: 100rpx;"></image>
+      <view class="f28" style="color:#97e3ff">我要洗衣</view>
+    </navigator>
+    <navigator hover-class="none" url="../mall/mall" class="nav-item">
+      <image src="../../assets/nav_icon02.png" style="width: 100rpx;height: 100rpx;"></image>
+      <view class="f28" style="color:#ffb3ec">我要购衣</view>
+    </navigator>
+    <navigator hover-class="none" url="../donation/donation" class="nav-item">
+      <image src="../../assets/nav_icon03.png" style="width: 100rpx;height: 100rpx;"></image>
+      <view class="f28" style="color:#ffb7a5">我要捐赠</view>
+    </navigator>
+    <navigator hover-class="none" url="../laundryOrder/laundryOrder" class="nav-item">
+      <image src="../../assets/nav_icon04.png" style="width: 100rpx;height: 100rpx;"></image>
+      <view class="f28" style="color:#f2acff">成为会员</view>
+    </navigator>
+  </view>
+  <!-- bnts -->
+  <block wx:if="xx">
+    <navigator url="../laundryOrder/laundryOrder">
+      <view class="arc-btn-lg order box-shadow">
+        <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
+      </view>
+    </navigator>
+  </block>
+  <!-- 分类 -->
+  <view class="classification">
+    <navigator wx:for="012345" wx:key="{{index}}" url="../laundryOrder/laundryOrder?type={{index}}"><image src="{{baseUrl}}Public/type_pic/0000{{index+1}}.png" mode="widthFix"></image></navigator>
+  </view>
+</view>

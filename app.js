@@ -75,8 +75,8 @@ App({
     giveAddress: null, //送衣地址
     receiptAddress: null, //商城买衣地址
     buyGoodsLists:[], //结算时选中的商品
-    api: 'https://ybh.hohu.cc/index.php/api',
-    baseUrl: 'https://ybh.hohu.cc/',
+    api: 'https://xiyi.honghuseo.cn/index.php/api',
+    baseUrl: 'https://xiyi.honghuseo.cn/',
     userInfo: {
       nickName: '卮言',
       avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/ywFvlKF6uhng0HAv4Aa53NHfrxStvT9ftibFCSeOP1zxmLq9iaTVSDgkCdtD3taQIGibibhMl03Xz08EDTy7f4w5rw/0"
