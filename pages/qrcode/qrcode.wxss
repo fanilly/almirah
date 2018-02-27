@@ -1,0 +1,90 @@
+/* pages/qrcode/qrcode.wxss */
+page {
+  background-color: #1aaade;
+}
+.qrcode-wapper {
+  margin-top: 220rpx;
+  position: relative;
+  width: 325rpx;
+  height: 325rpx;
+}
+.qrcode {
+  z-index: 10;
+  width: 325rpx;
+  height: 325rpx;
+  border: 9rpx solid #fff;
+  margin:-6rpx 0 0 -10rpx;
+}
+
+.userphoto {
+  width: 142rpx;
+  height: 142rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 15;
+  border-radius: 100%;
+  border: 0;
+  border:1px solid #ccc;
+}
+
+.f32 {
+  color: #fff;
+  padding: 30rpx 0;
+}
+
+.my {
+  background-color: #fff;
+  width:92%;
+  padding:0 2%;
+  height: 160rpx;
+  font-size: 30rpx;
+  border-radius: 10px;
+  line-height: 160rpx;
+  text-align: center;
+  box-shadow: 0 0 10px #fff;
+  margin-top: 120rpx;
+  vertical-align: middle;
+  display: flex;
+}
+
+.f24 {
+  position: absolute;
+  bottom: 20rpx;
+  color: #333;
+}
+
+.my view:first-child {
+  flex: 1;
+}
+
+.commission {
+  background-color: #fff;
+  width: 200rpx;
+  margin:15rpx auto;
+  line-height: 80rpx;
+  box-shadow:  0 0 10px #fff;
+  border-radius: 40rpx;
+  height: 80rpx;
+  margin-top: 40rpx;
+}
+
+/**
+ * 750
+ *
+ * 1184
+ *
+ * 322
+ *
+ * 42.9333333333%
+ * 27.1959459459%
+ *
+ *
+ *
+ *
+ *
+ *
+ */

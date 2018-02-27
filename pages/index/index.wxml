@@ -34,10 +34,10 @@
       <image src="../../assets/nav_icon03.png" style="width: 100rpx;height: 100rpx;"></image>
       <view class="f28" style="color:#ffb7a5">我要捐赠</view>
     </navigator>
-    <navigator hover-class="none" url="../laundryOrder/laundryOrder" class="nav-item">
+    <view url="../register/register" bindtap="handleBuyVip" class="nav-item">
       <image src="../../assets/nav_icon04.png" style="width: 100rpx;height: 100rpx;"></image>
       <view class="f28" style="color:#f2acff">成为会员</view>
-    </navigator>
+    </view>
   </view>
   <!-- bnts -->
   <block wx:if="xx">

@@ -19,6 +19,20 @@ Page({
     lists: [] //列表数据
   },
 
+  //去购买会员
+  handleBuyVip() {
+    if (app.globalData.isVip) {
+      wx.showModal({
+        content: '您已经是会员啦！',
+        showCancel: false
+      });
+    } else {
+      wx.navigateTo({
+        url: '../register/register'
+      });
+    }
+  },
+
   onShow() {
     this.setData({
       totalTrolleyLen: app.globalData.totalTrolleyLen,
@@ -26,7 +40,7 @@ Page({
     });
   },
 
-  onLoad: function() {
+  onLoad: function(options) {
     //获取系统信息
     wx.getSystemInfo({
       success: res => {
@@ -36,6 +50,21 @@ Page({
         });
       }
     });
+
+    //扫码进入
+    if (options.scene) {
+      let getedScene = decodeURIComponent(options.scene);
+      if (app.globalData.userID) {
+        wx.request({
+          url: `${app.globalData.api}/user/modify_parentid?userId=${app.globalData.userID}&parentId=${getedScene}`,
+          success: res => {
+            console.log(res);
+          }
+        });
+      } else {
+        app.globalData.parentID = getedScene;
+      }
+    }
 
     //登陆成功的回调函数
     app.loginSuccessCallback = res => {

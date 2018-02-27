@@ -2,6 +2,7 @@
 const app = getApp();
 Page({
   data: {
+    commission:app.globalData.commission,
     hasNewMsg: app.globalData.hasNewMsg,
     nickName: '',
     avatarUrl: ''
@@ -19,6 +20,13 @@ Page({
   onShow() {
     this.setData({
       hasNewMsg: app.globalData.hasNewMsg
+    });
+  },
+
+  //跳转至分享二维码页面
+  handleGoToQRcode(){
+    wx.navigateTo({
+      url:'../qrcode/qrcode'
     });
   },
 

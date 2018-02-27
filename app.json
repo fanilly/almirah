@@ -1,6 +1,9 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/register/register",
+    "pages/me/me",
+    "pages/qrcode/qrcode",
     "pages/laundryOrder/laundryOrder",
     "pages/bindphone/bindphone",
     "pages/mall/mall",
@@ -26,9 +29,7 @@
     "pages/addressManager/addressManager",
     "pages/newAddress/newAddress",
     "pages/productDetail/productDetail",
-    "pages/me/me",
     "pages/feedback/feedback",
-    "pages/register/register",
     "pages/mallOrder/mallOrder"
   ],
   "tabBar": {
