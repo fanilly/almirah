@@ -22,14 +22,27 @@ Page({
     });
   },
 
+  //联系客服
   handleServices(){
+    wx.showLoading();
     wx.request({
-      url:`${app.globalData.api}/common/about`,
+      url: `${app.globalData.api}/common/about`,
       data:{
         type:2
       },
-      success:res=>{
-        console.log(res);
+      success: res => {
+        wx.hideLoading();
+        wx.makePhoneCall({
+          phoneNumber: res.data.data.articleContent
+        });
+      },
+      fail: res => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '客服繁忙！',
+          image: '../../images/warning.png',
+          duration: 2000
+        });
       }
     });
   }

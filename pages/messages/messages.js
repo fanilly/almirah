@@ -23,6 +23,10 @@ Page({
             loadingStatus:'没有更多消息了'
           });
           flag = true;
+        }else{
+          this.setData({
+            loadingStatus:'暂无消息'
+          });
         }
       }
     });

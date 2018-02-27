@@ -1,7 +1,7 @@
 let timer, //定时器
   timediff = 5, //每次获取验证码的时间间隔
   phoneNumber; //当前输入的手机号
-
+const app = getApp();
 Page({
   data: {
     being: false, //记录获取验证码的状态 如果为真 代表正在获取
@@ -25,7 +25,37 @@ Page({
     wx.showLoading({
       title: '提交中'
     });
-
+    //绑定手机号
+    wx.request({
+      url: `${app.globalData.api}/user/mobile`,
+      data: {
+        userid: app.globalData.userID,
+        mobile: data.phonenumber,
+        passcode: data.verfcode
+      },
+      success: res => {
+        wx.hideLoading();
+        console.log(res);
+        if (res.data * 1 == 1) {
+          app.globalData.phone = data.phonenumber;
+          //绑定成功
+          wx.showToast({
+            title: '绑定成功',
+            image: '../../assets/success.png',
+            duration: 1500
+          });
+          wx.navigateBack({
+            delta: 1
+          });
+        } else {
+          wx.showToast({
+            title: '验证码不正确',
+            image: '../../assets/warning.png',
+            duration: 1500
+          });
+        }
+      }
+    });
   },
 
   //绑定倒计时事件
@@ -54,7 +84,16 @@ Page({
 
 
         // 发送获取验证码请求
-
+        console.log(phoneNumber);
+        wx.request({
+          url: `${app.globalData.api}/user/get_yzm`,
+          data: {
+            mobile: phoneNumber
+          },
+          success: res => {
+            console.log(res);
+          }
+        });
 
 
         //开始倒计时

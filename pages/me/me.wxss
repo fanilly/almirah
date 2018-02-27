@@ -69,6 +69,7 @@
   right: 50rpx;
 }
 
+.btn-list view .f28,
 .btn-list navigator .f28 {
   line-height: 28rpx;
 }

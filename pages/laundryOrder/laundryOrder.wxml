@@ -23,18 +23,17 @@
       <block wx:for="{{lists}}" wx:key="{{index}}">
         <view class="pro-items">
           <view class="lside">
-            <image src="{{baseUrl}}{{item.catThumbs}}" style="width: 190rpx;height: 190rpx;"></image>
+            <image src="{{baseUrl}}{{item.catThumbs}}" mode="widthFix"></image>
           </view>
           <view class="rside">
             <view>
               <view class="title f28 gray01">类型：{{item.catName}}</view>
               <view class="price f28 gray01">价格：
-                <text class="red-color f32">￥{{item.price}}</text>
+                <text class="red-color f30">￥{{item.price}}</text>
               </view>
-              <view class="num gray04 f24">月订单量: {{item.monthNum || 0}}</view>
             </view>
-            <view class="add-pro-btn" bindtap="handleAddProduct" id="{{index}}">
-              <image src="../../assets/order_01.png" style="width: 56rpx;height: 56rpx"></image>
+            <view class="add-pro-btn " bindtap="handleAddProduct" id="{{index}}">
+              <image src="../../assets/order_01.png" style="width: 40rpx;height: 40rpx"></image>
             </view>
           </view>
         </view>

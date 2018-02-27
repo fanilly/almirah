@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/laundryOrder/laundryOrder",
+    "pages/bindphone/bindphone",
     "pages/mall/mall",
     "pages/donation/donation",
     "pages/hello/hello",
@@ -20,13 +22,11 @@
     "pages/washing/washing",
     "components/mGoodsLists/mGoodsLists",
     "components/lorder/lorder",
-    "pages/laundryOrder/laundryOrder",
     "pages/addressChoose/addressChoose",
     "pages/addressManager/addressManager",
     "pages/newAddress/newAddress",
     "pages/productDetail/productDetail",
     "pages/me/me",
-    "pages/bindphone/bindphone",
     "pages/feedback/feedback",
     "pages/register/register",
     "pages/mallOrder/mallOrder"
