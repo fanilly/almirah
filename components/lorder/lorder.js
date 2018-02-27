@@ -24,6 +24,7 @@ Component({
   },
 
   data: {
+    isVip:app.globalData.isVip,
     chooseList: [], //选择出售的订单列表
     isShowChooseGoods: false //是否显示选择出售
   },

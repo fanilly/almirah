@@ -66,17 +66,19 @@
           <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
         </view>
       </navigator>
-      <!-- <navigator url="../mallOrder/mallOrder">
-        <view class="flag-icon">
-          <image src="../../assets/m_list_btns_03.png" style="width: 55rpx;height: 55rpx"></image>
-        </view>
-        <view class="f28 gray01 text-con">
-          我的订单
-        </view>
-        <view class="xs-arrow">
-          <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
-        </view>
-      </navigator> -->
+      <block wx:if="{{!isVip}}">
+        <navigator url="../orders/orders">
+          <view class="flag-icon">
+            <image src="../../assets/m_list_btns_03.png" style="width: 55rpx;height: 55rpx"></image>
+          </view>
+          <view class="f28 gray01 text-con">
+            我的订单
+          </view>
+          <view class="xs-arrow">
+            <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+          </view>
+        </navigator>
+      </block>
       <navigator url="../addressManager/addressManager">
         <view class="flag-icon">
           <image src="../../assets/m_list_btns_04.png" style="width: 55rpx;height: 55rpx"></image>

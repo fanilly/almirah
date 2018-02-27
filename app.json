@@ -30,7 +30,7 @@
     "pages/newAddress/newAddress",
     "pages/productDetail/productDetail",
     "pages/feedback/feedback",
-    "pages/mallOrder/mallOrder"
+    "pages/orders/orders"
   ],
   "tabBar": {
     "list": [

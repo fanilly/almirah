@@ -2,6 +2,7 @@
 const app = getApp();
 Page({
   data: {
+    isVip:app.globalData.isVip,
     commission:app.globalData.commission,
     hasNewMsg: app.globalData.hasNewMsg,
     nickName: '',

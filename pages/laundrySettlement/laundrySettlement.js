@@ -105,7 +105,6 @@ Page({
         "goodsNum": trolleys[i].total
       });
     }
-
     wx.request({
       method: 'POST',
       url: `${app.globalData.api}/buy/buy`,
@@ -122,21 +121,41 @@ Page({
       },
       success: res => {
         wx.hideLoading();
-        console.log(res);
-        console.log(res);
-        if (res.data == 1) {
-          wx.showToast({
-            title: '下单成功',
-            icon: 'success',
-            duration: 1500
-          });
-        } else {
-          wx.showToast({
-            title: '网络异常',
-            image: '../../assets/warning.png',
-            duration: 1500
-          });
-        }
+        let data = res.data;
+        wx.requestPayment({
+          timeStamp: data.timeStamp.toString(),
+          nonceStr: data.nonceStr,
+          paySign: data.paySign,
+          package: data.package,
+          signType: 'MD5',
+          success: res => {
+            console.log(res);
+            if (res.data == 1) {
+              wx.showToast({
+                title: '下单成功',
+                icon: 'success',
+                duration: 1500
+              });
+            } else {
+              wx.showToast({
+                title: '网络异常',
+                image: '../../assets/warning.png',
+                duration: 1500
+              });
+            }
+          },
+          fail: res => {
+            console.log(res);
+            if (res.errMsg == 'requestPayment:fail cancel') {
+              wx.showToast({
+                title: '取消支付',
+                image: '../../images/warning.png',
+                duration: 1500
+              });
+              this.handleHideBuyLayer();
+            }
+          }
+        });
       }
     });
   }

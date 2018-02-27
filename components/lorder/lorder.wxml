@@ -43,7 +43,7 @@
             </view>
           </navigator>
           <view class="o-footer">
-            <view wx:if="{{item.isOver != 1}}" class="o-btn" bindtap="handleCheckSell" id="{{index}}">出售</view>
+            <view wx:if="{{item.isOver != 1 && isVip}}" class="o-btn" bindtap="handleCheckSell" id="{{index}}">出售</view>
             <view wx:if="{{item.isOver != 1}}" class="o-btn" bindtap="handleConfirm" id="{{index}}">确认收货</view>
             <view wx:if="{{item.isOver == 1}}" class="o-btn" bindtap="handleDelOrder" id="{{index}}">删除订单</view>
           </view>

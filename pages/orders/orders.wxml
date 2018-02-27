@@ -1,0 +1,11 @@
+<!--pages/almirah/almirah.wxml-->
+<view class="container">
+  <!-- 最近订单 -->
+  <lorder has-order-list="{{hasOrderList}}" lists="{{lists}}"></lorder>
+  <!-- bnts -->
+  <navigator url="../laundryOrder/laundryOrder">
+    <view class="arc-btn-lg order box-shadow">
+      <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
+    </view>
+  </navigator>
+</view>
