@@ -19,6 +19,11 @@ const formatDate = date => {
   return [year, month, day].map(formatNumber).join('-');
 };
 
+const getNDaysLater = days => {
+  let curDate = new Date().getTime();
+  curDate += days * 24 * 60 * 60 * 1000;
+};
+
 const formatNumber = n => {
   n = n.toString();
   return n[1] ? n : '0' + n;
@@ -26,5 +31,5 @@ const formatNumber = n => {
 
 module.exports = {
   formatTime: formatTime,
-  formatDate:formatDate
+  formatDate: formatDate
 };

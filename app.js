@@ -27,8 +27,7 @@ App({
       });
     }
   },
-  onLaunch() {
-    wx.showLoading({ title: '加载中', mask: true });
+  loginIn() {
     login(this.globalData.api, (user, userInfo) => {
       //登陆成功 隐藏加载动画 并记录返回数据
       if (this.loginSuccessCallback) this.loginSuccessCallback(user);
@@ -50,7 +49,19 @@ App({
       this.globalData.hasNewMsg = user.newMessages == 1 ? true : false;
       console.log(user);
       this.loginAfter(user);
+      //必须授权
+      wx.openSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            this.loginIn();
+          }
+        }
+      });
     });
+  },
+  onLaunch() {
+    wx.showLoading({ title: '加载中', mask: true });
+    this.loginIn();
 
     // 记录商城购物车商品个数
     wx.getStorage({

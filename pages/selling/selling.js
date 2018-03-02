@@ -84,43 +84,50 @@ Page({
 
   //改变状态
   changeStatus(index, type) {
-    wx.showLoading({ title: '请稍后', mask: true });
-    let cIndex = this.data.currentIndex,
-      listsAll = this.data.listsAll;
-    console.log(listsAll[cIndex].lists[index].goodsId);
-    wx.request({
-      url: `${app.globalData.api}/goods/goods_status`,
-      data: {
-        goodsId: listsAll[cIndex].lists[index].goodsId,
-        goodsMark: type
-      },
-      success: res => {
-        wx.hideLoading();
-        if (res.data == 1) {
-          wx.showToast({
-            title: `${switchStatus[type]}成功`,
-            icon: 'success',
-            duration: 1500
-          });
-          listsAll[cIndex].lists.splice(index, 1);
-          if (listsAll[cIndex].lists.length <= 0) {
-            listsAll[cIndex].listsStatus = params.msg[cIndex];
-          }
-          this.setData({ listsAll });
-        } else {
-          wx.showToast({
-            title: `${switchStatus[type]}失败`,
-            image: '../../assets/warning.png',
-            duration: 1500
+    wx.showModal({
+      content: `确认${switchStatus[type]}`,
+      success: (res) => {
+        if (res.confirm) {
+          wx.showLoading({ title: '请稍后', mask: true });
+          let cIndex = this.data.currentIndex,
+            listsAll = this.data.listsAll;
+          console.log(listsAll[cIndex].lists[index].goodsId);
+          wx.request({
+            url: `${app.globalData.api}/goods/goods_status`,
+            data: {
+              goodsId: listsAll[cIndex].lists[index].goodsId,
+              goodsMark: type
+            },
+            success: res => {
+              wx.hideLoading();
+              if (res.data == 1) {
+                wx.showToast({
+                  title: `${switchStatus[type]}成功`,
+                  icon: 'success',
+                  duration: 1500
+                });
+                listsAll[cIndex].lists.splice(index, 1);
+                if (listsAll[cIndex].lists.length <= 0) {
+                  listsAll[cIndex].listsStatus = params.msg[cIndex];
+                }
+                this.setData({ listsAll });
+              } else {
+                wx.showToast({
+                  title: `${switchStatus[type]}失败`,
+                  image: '../../assets/warning.png',
+                  duration: 1500
+                });
+              }
+            },
+            fail() {
+              wx.showToast({
+                title: '网络异常',
+                image: '../../assets/warning.png',
+                duration: 1500
+              });
+            }
           });
         }
-      },
-      fail() {
-        wx.showToast({
-          title: '网络异常',
-          image: '../../assets/warning.png',
-          duration: 1500
-        });
       }
     });
   },
@@ -134,7 +141,7 @@ Page({
     //如果listsStatus的值为努力加载中 代表当前选项的数据未被加载过
     //加载过的数据不进行二次加载 刷新时重新加载当前选项的数据
     if (this.data.listsAll[index].listsStatus == '努力加载中...' || this.data.startRefresh) {
-      getSelling(this,params.num[index], () => {
+      getSelling(this, params.num[index], () => {
         let listsAll = this.data.listsAll;
         listsAll[index].listsStatus = params.msg[index];
         this.setData({ listsAll });

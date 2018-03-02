@@ -151,15 +151,9 @@ Page({
     });
   },
 
-
-  // 生命周期函数--监听页面加载
-  onLoad(options) {
-    const curType = options.type;
-    //绑定baseUrl
-    this.setData({
-      baseUrl: app.globalData.baseUrl
-    });
-
+  onShow() {
+    console.log('--------');
+    trolley = [];
     //从storage中获取购物车数据
     wx.getStorage({
       key: 'laundryTrolley',
@@ -167,6 +161,7 @@ Page({
         // 首先将购物车中获取的数据字符串转换为json
         // 然后记录购物车中商品数量及总价
         trolley = JSON.parse(res.data) || [];
+        console.log(trolley);
         let i, totalTrolley = 0,
           totalPrice = 0;
         for (i = 0; i < trolley.length; i++) {
@@ -178,8 +173,47 @@ Page({
           totalPrice: totalPrice.toFixed(2),
           trolleyContent: trolley
         });
+        console.log('----');
+      },
+      fail: () => {
+        this.setData({
+          totalTrolley: 0,
+          totalPrice: 0,
+          trolleyContent: []
+        });
       }
     });
+  },
+
+
+  // 生命周期函数--监听页面加载
+  onLoad(options) {
+    const curType = options.type;
+    //绑定baseUrl
+    this.setData({
+      baseUrl: app.globalData.baseUrl
+    });
+
+    //从storage中获取购物车数据
+    // wx.getStorage({
+    //   key: 'laundryTrolley',
+    //   success: res => {
+    //     // 首先将购物车中获取的数据字符串转换为json
+    //     // 然后记录购物车中商品数量及总价
+    //     trolley = JSON.parse(res.data) || [];
+    //     let i, totalTrolley = 0,
+    //       totalPrice = 0;
+    //     for (i = 0; i < trolley.length; i++) {
+    //       totalTrolley += parseInt(trolley[i].total);
+    //       totalPrice += parseInt(trolley[i].total) * parseFloat(trolley[i].price);
+    //     }
+    //     this.setData({
+    //       totalTrolley: totalTrolley,
+    //       totalPrice: totalPrice.toFixed(2),
+    //       trolleyContent: trolley
+    //     });
+    //   }
+    // });
 
     //获取商品数据
     wx.request({

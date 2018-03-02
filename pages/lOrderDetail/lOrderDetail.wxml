@@ -9,7 +9,7 @@
   </block>
   <block wx:if="{{loaded}}">
     <view class="main">
-      <view class="f32 gray01 title">已完成</view>
+      <view class="f32 gray01 title">{{content.orderStatus}}</view>
       <view class="f24 gray03 say">感谢您对净衣客的支持，欢迎再次下单</view>
       <view class="content">
         <block wx:for="{{content.goodsList}}" wx:key="{{index}}">
@@ -26,8 +26,8 @@
         <view class="gray03 f26">订单备注：</view>
         <view class="gray03 f26 remark">{{content.orderRemarks?content.orderRemarks:'此订单无备注'}}</view>
       </view>
-      <view class="f24 gray05 footer-info">共{{content.goodsList.length}}件商品 实付
-        <text class="f32 red-color">￥90.00</text>
+      <view class="f24 gray05 footer-info">共{{totalGoods}}件商品 实付
+        <text class="f32 red-color">￥{{content.realTotalMoney}}</text>
       </view>
     </view>
     <view class="placeholder-box120"></view>
@@ -38,10 +38,10 @@
         <image src="../../assets/mall_01.png" style="width: 58rpx;height: 58rpx"></image>
       </view>
     </navigator>
-    <navigator url="../laundryOrder/laundryOrder">
+    <view bindtap="handleCallTel">
       <view class="arc-btn-lg phone">
         <image src="../../assets/services_phone.png" style="width: 45rpx;height: 52rpx"></image>
       </view>
-    </navigator>
+    </view>
   </block>
 </view>

@@ -1,0 +1,11 @@
+/* pages/helpsArticle1/helpsArticle1.wxss */
+
+page {
+  background-color: #fff;
+  padding: 15rpx;
+}
+
+view {
+  line-height: 60rpx;
+  margin-bottom: 15rpx;
+}

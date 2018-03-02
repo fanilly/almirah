@@ -6,11 +6,23 @@ Page({
   data: {
     being: false, //记录获取验证码的状态 如果为真 代表正在获取
     time: 90, //倒计时
+    phone: '',
+    placeholder: '请输入手机号',
     isFocus: false
   },
 
   onLoad(options) {
-
+    this.setData({
+      phone: app.globalData.commission.phone
+    });
+    if (this.data.phone) {
+      this.setData({
+        placeholder: app.globalData.commission.phone
+      });
+      wx.setNavigationBarTitle({
+        title: '切换手机号'
+      });
+    }
   },
 
   //记录手机号
@@ -37,16 +49,18 @@ Page({
         wx.hideLoading();
         console.log(res);
         if (res.data * 1 == 1) {
-          app.globalData.phone = data.phonenumber;
+          app.globalData.commission.phone = data.phonenumber;
           //绑定成功
           wx.showToast({
-            title: '绑定成功',
+            title: this.data.phone ? '修改成功' : '绑定成功',
             image: '../../assets/success.png',
             duration: 1500
           });
-          wx.navigateBack({
-            delta: 1
-          });
+          setTimeout(() => {
+            wx.navigateBack({
+              delta: 1
+            });
+          }, 600);
         } else {
           wx.showToast({
             title: '验证码不正确',
@@ -76,12 +90,23 @@ Page({
             }
           }
         });
+      }else if(phoneNumber == this.data.placeholder){
+        wx.showModal({
+          showCancel: false,
+          content: '不能绑定相同的手机号',
+          success: function(res) {
+            if (res.confirm) {
+              self.setData({
+                isFocus: true
+              });
+            }
+          }
+        });
       } else {
         //显示倒计时
         this.setData({
           being: true
         });
-
 
         // 发送获取验证码请求
         console.log(phoneNumber);
@@ -94,7 +119,6 @@ Page({
             console.log(res);
           }
         });
-
 
         //开始倒计时
         timer = setInterval(function() {

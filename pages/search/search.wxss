@@ -81,3 +81,8 @@ input {
   box-shadow: 0 2px 4px #ccc;
   margin-top: 50rpx;
 }
+
+.search-box input{
+  width: 100%;
+
+}

@@ -32,6 +32,9 @@ module.exports = (files, goodsID) => {
               image: '../../assets/success.png',
               duration: 1500
             });
+            wx.redirectTo({
+              url:'../selling/selling'
+            });
           }
         } else {
           wx.hideLoading();

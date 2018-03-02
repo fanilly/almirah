@@ -9,7 +9,7 @@ const app = getApp(),
       goodsUnit: detail.goodsUnit,
       goodsSpec: detail.goodsSpec,
       marketPrice: detail.marketPrice,
-      shopprice: detail.shopprice
+      shopprice: detail.shopPrice
     };
   };
 Page({
@@ -27,6 +27,7 @@ Page({
 
   //加入购物车
   handleAddToTrolley() {
+    console.log(this.data.detail);
     let detail = this.data.detail,
       mallTrolleyItem = getMallTrolleyItem(detail);
     console.log(mallTrolleyItem);

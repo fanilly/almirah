@@ -1,10 +1,14 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/register/register",
-    "pages/me/me",
-    "pages/qrcode/qrcode",
+    "pages/helpsArticle3/helpsArticle3",
+    "pages/helpsArticle2/helpsArticle2",
+    "pages/helpsArticle1/helpsArticle1",
     "pages/laundryOrder/laundryOrder",
+    "pages/mallSettlement/mallSettlement",
+    "pages/me/me",
+    "pages/register/register",
+    "pages/qrcode/qrcode",
     "pages/bindphone/bindphone",
     "pages/mall/mall",
     "pages/donation/donation",
@@ -18,7 +22,6 @@
     "pages/trolley/trolley",
     "pages/selling/selling",
     "pages/sell/sell",
-    "pages/mallSettlement/mallSettlement",
     "pages/laundrySettlement/laundrySettlement",
     "pages/search/search",
     "pages/washRecord/washRecord",
@@ -59,10 +62,10 @@
     "position": "bottom",
     "borderStyle": "#c0c0c0"
   },
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1aaade",
     "navigationBarTitleText": "净衣客",
-    "navigationBarTextStyle":"#ffffff"
+    "navigationBarTextStyle": "#ffffff"
   }
 }

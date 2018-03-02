@@ -130,7 +130,7 @@ Page({
 
   //跳转到商城页面
   handleNavigateToMall() {
-    wx.switchTab({
+    wx.navigateTo({
       url: '../mall/mall'
     });
   },

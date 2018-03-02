@@ -1,4 +1,4 @@
 <!--pages/washing/washing.wxml-->
 <view class="container">
-  <lorder nav-title="在洗衣物" has-order-list="{{hasOrderList}}" lists="{{lists}}"></lorder>
+  <lorder nav-title="在洗衣物" isvip="{{isVIP}}" has-order-list="{{hasOrderList}}" lists="{{lists}}"></lorder>
 </view>

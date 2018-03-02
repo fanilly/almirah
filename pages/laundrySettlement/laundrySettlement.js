@@ -4,6 +4,10 @@ const app = getApp();
 Page({
 
   data: {
+    countGoodsLength: 0,
+    useCoupons: 0,
+    commission: null,
+    isVIP: false,
     loaded: false, //是否加载完成
     prefetchingTime: '', //选择的预取时间
     startTime: '', //预取时间 开始
@@ -34,9 +38,11 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
-
+    let twoDaysLater = new Date().getTime() + 2 * 24 * 60 * 60 * 1000;
     this.setData({
-      startTime: formatDate(new Date())
+      startTime: formatDate(new Date(twoDaysLater)),
+      isVIP: app.globalData.isVIP,
+      commission: app.globalData.commission
     });
 
     // 从购物车中获取商品渲染
@@ -44,13 +50,22 @@ Page({
       key: 'laundryTrolley',
       success: res => {
         let i, totalPrice = 0,
-          trolley = JSON.parse(res.data) || [];
+          trolley = JSON.parse(res.data) || [],
+          countGoodsLength = 0;
+        console.log(trolley);
         for (i = 0; i < trolley.length; i++) {
+          countGoodsLength += parseInt(trolley[i].total);
           totalPrice += parseInt(trolley[i].total) * parseFloat(trolley[i].price);
         }
         this.setData({
           trolleys: trolley,
-          totalPrice: totalPrice
+          totalPrice: totalPrice,
+          countGoodsLength
+        });
+        let useCoupons = this.data.countGoodsLength <= this.data.commission.freeWash * 1 ? this.data.countGoodsLength : this.data.commission.freeWash
+        console.log(useCoupons);
+        this.setData({
+          useCoupons
         });
       }
     });
@@ -94,6 +109,39 @@ Page({
 
   //购买
   handleBuy() {
+    if (!this.data.takeAddress) {
+      console.log(123)
+      wx.showModal({
+        content: '请选择取衣地址',
+        showCancel: false
+      });
+    } else if (!this.data.giveAddress) {
+      if (app.globalData.isVIP) {
+        wx.showModal({
+          content: '请选择送衣地址',
+          showCancel: false
+        });
+      } else {
+        if (!this.data.prefetchingTime) {
+          wx.showModal({
+            content: '请选择预取时间',
+            showCancel: false
+          });
+        } else {
+          this.startBuy();
+        }
+      }
+    } else if (!this.data.prefetchingTime) {
+      wx.showModal({
+        content: '请选择预取时间',
+        showCancel: false
+      });
+    } else {
+      this.startBuy();
+    }
+  },
+
+  startBuy() {
     wx.showLoading({ title: '提交中' });
     console.log(this.data);
     let i,
@@ -111,15 +159,19 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
         userId: app.globalData.userID,
+        useCoupons: this.data.useCoupons,
         orderScore: 1,
         goods: JSON.stringify(goods),
         userAddressId: this.data.takeAddress.addressId,
-        getAddressId: this.data.giveAddress.addressId,
+        getAddressId: this.data.isVIP ? this.data.giveAddress.addressId : this.data.takeAddress.addressId,
         requireTime: this.data.prefetchingTime,
         deliverType: 0,
         orderRemarks: this.data.remarks
       },
       success: res => {
+        console.log('------')
+        console.log(res);
+        console.log('------')
         wx.hideLoading();
         let data = res.data;
         wx.requestPayment({
@@ -130,12 +182,26 @@ Page({
           signType: 'MD5',
           success: res => {
             console.log(res);
-            if (res.data == 1) {
+
+            if (res.errMsg == 'requestPayment:ok') {
               wx.showToast({
                 title: '下单成功',
                 icon: 'success',
                 duration: 1500
               });
+
+              // 清空购物车
+              wx.removeStorage({
+                key: 'laundryTrolley'
+              });
+
+              app.globalData.commission.freeWash = app.globalData.commission.freeWash * 1 - this.data.useCoupons * 1;
+
+              setTimeout(() => {
+                wx.redirectTo({
+                  url: '../orders/orders'
+                });
+              }, 800);
             } else {
               wx.showToast({
                 title: '网络异常',
@@ -143,16 +209,17 @@ Page({
                 duration: 1500
               });
             }
+
+
           },
           fail: res => {
             console.log(res);
             if (res.errMsg == 'requestPayment:fail cancel') {
               wx.showToast({
                 title: '取消支付',
-                image: '../../images/warning.png',
+                image: '../../assets/warning.png',
                 duration: 1500
               });
-              this.handleHideBuyLayer();
             }
           }
         });

@@ -10,6 +10,11 @@ Component({
       value: 1 //1.加载中 2.隐藏 3.无订单数据
     },
 
+    isvip: {
+      type: Boolean,
+      value: false
+    },
+
     //订单列表数据
     lists: {
       type: Array,
@@ -24,7 +29,6 @@ Component({
   },
 
   data: {
-    isVip:app.globalData.isVip,
     chooseList: [], //选择出售的订单列表
     isShowChooseGoods: false //是否显示选择出售
   },
@@ -37,16 +41,30 @@ Component({
 
     //确认收货
     handleConfirm(e) {
-      wx.showLoading();
-      let id = e.currentTarget.id;
-      changeOrderStatus(this, id, 2);
+      wx.showModal({
+        content: '确认收货',
+        success: (res) => {
+          if (res.confirm) {
+            wx.showLoading();
+            let id = e.currentTarget.id;
+            changeOrderStatus(this, id, 2);
+          }
+        }
+      });
     },
 
     //点击删除按钮删除订单
     handleDelOrder(e) {
-      wx.showLoading();
-      let id = e.currentTarget.id;
-      changeOrderStatus(this, id, 1);
+      wx.showModal({
+        content: '删除订单',
+        success: (res) => {
+          if (res.confirm) {
+            wx.showLoading();
+            let id = e.currentTarget.id;
+            changeOrderStatus(this, id, 1);
+          }
+        }
+      });
     },
 
     // 点击商品跳转出售页面

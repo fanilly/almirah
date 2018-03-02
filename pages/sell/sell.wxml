@@ -45,11 +45,11 @@
           <view class="xs-inputs f28 gray03">
             <view>
               <view> 原价：</view>
-              <input class="gray04" name="oldprice" placeholder-class="gray06 f24" placeholder="买入价格(元)" />
+              <input class="gray04" name="oldprice" placeholder-class="gray06 f24"  type="number" placeholder="买入价格(元)" />
             </view>
             <view>
               <view> 现价：</view>
-              <input class="gray04" name="nowprice" placeholder-class="gray06 f24" placeholder="卖出价格(元)" />
+              <input class="gray04" name="nowprice" placeholder-class="gray06 f24" type="number" placeholder="卖出价格(元)" />
             </view>
           </view>
           <!-- 描述 -->

@@ -2,8 +2,8 @@
 const app = getApp();
 Page({
   data: {
-    isVip:app.globalData.isVip,
-    commission:app.globalData.commission,
+    isVip: app.globalData.isVIP,
+    commission: app.globalData.commission,
     hasNewMsg: app.globalData.hasNewMsg,
     nickName: '',
     avatarUrl: ''
@@ -11,33 +11,38 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
+    console.log(app.globalData.isVIP);
     this.setData({
       nickName: app.globalData.userInfo.nickName,
-      avatarUrl: app.globalData.userInfo.avatarUrl
+      avatarUrl: app.globalData.userInfo.avatarUrl,
+      isVip: app.globalData.isVIP,
+      commission: app.globalData.commission,
+      hasNewMsg: app.globalData.hasNewMsg
     });
   },
 
   // 生命周期函数--监听页面显示
   onShow() {
     this.setData({
+      commission: app.globalData.commission,
       hasNewMsg: app.globalData.hasNewMsg
     });
   },
 
   //跳转至分享二维码页面
-  handleGoToQRcode(){
+  handleGoToQRcode() {
     wx.navigateTo({
-      url:'../qrcode/qrcode'
+      url: '../qrcode/qrcode'
     });
   },
 
   //联系客服
-  handleServices(){
+  handleServices() {
     wx.showLoading();
     wx.request({
       url: `${app.globalData.api}/common/about`,
-      data:{
-        type:2
+      data: {
+        type: 2
       },
       success: res => {
         wx.hideLoading();

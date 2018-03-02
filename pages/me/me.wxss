@@ -38,7 +38,11 @@
 }
 
 .header>view:nth-child(2) view:first-child {
-  padding-top: 26rpx;
+  padding-top: 12rpx;
+}
+
+.commi {
+  margin-top: -6rpx;
 }
 
 .header>view:nth-child(3) {

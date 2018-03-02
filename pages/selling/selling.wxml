@@ -49,7 +49,7 @@
                         </view>
                       </view>
                       <view class="f24 gray03 control">
-                        <view wx:if="{{i==0}}" id="{{index}}">编辑</view>
+                        <!-- <view wx:if="{{i==0}}" id="{{index}}">编辑</view> -->
                         <view wx:if="{{i==0}}" id="{{index}}" bindtap="handlePulloff">下架</view>
                         <view wx:if="{{i==1}}" id="{{index}}" bindtap="handleRecovery">收回</view>
                         <view wx:if="{{i==1}}" id="{{index}}" bindtap="handlePutup">上架</view>

@@ -38,14 +38,18 @@ module.exports = (that, num, type = '') => {
       }
 
       //如果当前是第一页并没有请求到列表数据
-      if (num == 1 && (!lists || lists.length == 0)) {
+      if (num == 1 && (!lists || !lists.length || lists.length == 0)) {
         that.setData({
           loadingStatus: 2
         });
       }
 
       //记录列表数据
-      tempList.push(...lists);
+      console.log(123)
+      if (lists) {
+        tempList.push(...lists);
+      }
+      console.log(456)
       that.setData({
         lists: tempList
       });

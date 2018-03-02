@@ -6,8 +6,11 @@
       <image src="{{avatarUrl}}" style="width: 150rpx;height: 150rpx;border-radius: 50%; border:2px solid #fff;"></image>
     </view>
     <view>
-      <view class="f36">{{nickName}}</view>
-      <view class="f32">{{commission.phone?commission.phone:'未绑定手机号'}}</view>
+      <view class="f32">{{nickName}}</view>
+      <view class="f28">{{commission.phone?commission.phone:'未绑定手机号'}}</view>
+      <view class="f28 commi">我的佣金：
+        <text class="red-color f32"> 0.00</text>
+      </view>
     </view>
     <view>
       <image src="../../assets/lg_arrow.png" style="width: 30rpx;height: 52rpx;"></image>
@@ -49,7 +52,7 @@
           <image src="../../assets/m_list_btns_01.png" style="width: 55rpx;height: 55rpx"></image>
         </view>
         <view class="f28 gray01 text-con">
-          绑定手机号
+          {{commission.phone?'切换':'绑定'}}手机号
         </view>
         <view class="xs-arrow">
           <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
@@ -66,13 +69,26 @@
           <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
         </view>
       </navigator>
-      <block wx:if="{{!isVip}}">
+      <block>
         <navigator url="../orders/orders">
           <view class="flag-icon">
             <image src="../../assets/m_list_btns_03.png" style="width: 55rpx;height: 55rpx"></image>
           </view>
           <view class="f28 gray01 text-con">
-            我的订单
+            洗衣记录
+          </view>
+          <view class="xs-arrow">
+            <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+          </view>
+        </navigator>
+      </block>
+      <block>
+        <navigator url="../sellRecord/sellRecord">
+          <view class="flag-icon">
+            <image src="../../assets/m_list_btns_03.png" style="width: 55rpx;height: 55rpx"></image>
+          </view>
+          <view class="f28 gray01 text-con">
+            购买记录
           </view>
           <view class="xs-arrow">
             <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>

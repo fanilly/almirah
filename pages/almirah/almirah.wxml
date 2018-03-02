@@ -33,7 +33,7 @@
     <text class="f28">最近订单</text>
   </view>
   <!-- 最近订单 -->
-  <lorder has-order-list="{{hasOrderList}}" lists="{{lists}}"></lorder>
+  <lorder has-order-list="{{hasOrderList}}" isvip="{{isVIP}}" lists="{{lists}}"></lorder>
   <!-- bnts -->
   <navigator url="../laundryOrder/laundryOrder">
     <view class="arc-btn-lg order box-shadow">
@@ -41,3 +41,4 @@
     </view>
   </navigator>
 </view>
+<view class="mask" wx:if="{{!isVIP}}"></view>

@@ -1,4 +1,3 @@
-import getMGoodsLists from '../../request/getMGoodsLists.js';
 const app = getApp();
 let currentPageNum = 1; //当前加载的次数
 
@@ -21,7 +20,8 @@ Page({
 
   //去购买会员
   handleBuyVip() {
-    if (app.globalData.isVip) {
+    console.log(app.globalData.isVIP);
+    if (app.globalData.isVIP) {
       wx.showModal({
         content: '您已经是会员啦！',
         showCancel: false
@@ -88,7 +88,6 @@ Page({
     this.setData({
       isLoadMore: true
     });
-    getMGoodsLists(this, currentPageNum);
   },
 
   //banner图片加载

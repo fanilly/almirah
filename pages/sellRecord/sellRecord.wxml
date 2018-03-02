@@ -49,7 +49,7 @@
                         </view>
                       </view>
                       <view class="f24 gray03 control">
-                        <view wx:if="{{i==0}}" id="{{index}}">催促发货</view>
+                        <view wx:if="{{i==0}}" id="{{index}}" bindtap="handleUrge">催促发货</view>
                         <view wx:if="{{i==1}}" id="{{index}}" bindtap="handleConfirm">确认收货</view>
                         <view wx:if="{{i==2}}" id="{{index}}" bindtap="handleDelete">删除</view>
                       </view>

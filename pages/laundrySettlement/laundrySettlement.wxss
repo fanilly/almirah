@@ -25,9 +25,11 @@
 .items-wapper .detail-items:last-child {
   border-bottom: 0;
 }
+
 .details .block-title {
   border-bottom: 1px solid #e2e2e2;
 }
+
 .detail-items {
   display: flex;
   align-items: center;
@@ -82,7 +84,6 @@
   margin: 20rpx auto;
   box-shadow: 0 0 8px #999;
 }
-
 
 .msg-item {
   display: flex;
@@ -154,8 +155,15 @@
 .msg-item2 {
   display: flex;
 }
+
 .msg-item2>view:last-child {
   position: relative;
   padding-left: 20rpx;
   top: -14rpx;
+}
+
+.coupon {
+  padding: 30rpx 15rpx;
+  line-height: 40rpx;
+  margin-bottom: 20rpx;
 }

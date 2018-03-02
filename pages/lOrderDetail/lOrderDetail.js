@@ -2,9 +2,17 @@
 const app = getApp();
 Page({
   data: {
+    totalGoods: 0,
     loaded: false,
     loadingStatus: '努力加载中...',
     content: {}
+  },
+
+  //打电话给商家
+  handleCallTel(e) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.content.shopTel
+    });
   },
 
   // 生命周期函数--监听页面加载
@@ -15,12 +23,19 @@ Page({
         orderId: options.orderId
       },
       success: res => {
-        console.log(res);
         if (res.data.status == 1) {
+          let data = res.data.data,
+            i = 0,
+            totalGoods = 0;
+          for (let i = 0; i < data.goodsList.length; i++) {
+            totalGoods += parseInt(data.goodsList[i].goodsNums);
+          }
           this.setData({
             content: res.data.data,
-            loaded: true
+            loaded: true,
+            totalGoods
           });
+
         } else {
           this.setData({
             loadingStatus: '网络异常~~'

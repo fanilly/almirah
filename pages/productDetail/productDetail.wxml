@@ -15,7 +15,7 @@
           <text class="gray04">￥{{detail.marketPrice}}</text>
         </view>
         <view class="f24 gray02">现价:
-          <text class="red-color f28">￥{{detail.shopprice}}</text>
+          <text class="red-color f28">￥{{detail.shopPrice}}</text>
         </view>
       </view>
       <view class="double-column">

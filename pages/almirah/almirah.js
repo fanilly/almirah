@@ -4,6 +4,7 @@ import getLOrderList from '../../request/getLOrderList.js';
 Page({
 
   data: {
+    isVIP: app.globalData.isVIP,
     isConfirm: false, //是否为已完成订单
     hasOrderList: 1, //1.加载中 2.隐藏 3.无订单数据
     lists: []
@@ -29,5 +30,26 @@ Page({
     this.setData({
       isShowChooseGoods: false
     });
+    this.setData({
+      isVIP: app.globalData.isVIP
+    });
+    if (!this.data.isVIP) {
+      wx.showModal({
+        cancelText: '忽略',
+        confirmText: '成为会员',
+        content: '衣橱功能之后会员可以使用哟~~~',
+        success: function(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../register/register'
+            });
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: '../index/index'
+            });
+          }
+        }
+      });
+    }
   }
 });

@@ -1,12 +1,16 @@
 /* pages/qrcode/qrcode.wxss */
 page {
   background-color: #1aaade;
+  background-image: linear-gradient(to bottom, #1aaade, #2e8fde);
 }
 .qrcode-wapper {
   margin-top: 220rpx;
   position: relative;
   width: 325rpx;
   height: 325rpx;
+  opacity: .9;
+  border-radius: 20px;
+  overflow:hidden;
 }
 .qrcode {
   z-index: 10;
@@ -37,7 +41,7 @@ page {
 }
 
 .my {
-  background-color: #fff;
+  background-color: rgba(255,255,255,.5);
   width:92%;
   padding:0 2%;
   height: 160rpx;
@@ -45,7 +49,6 @@ page {
   border-radius: 10px;
   line-height: 160rpx;
   text-align: center;
-  box-shadow: 0 0 10px #fff;
   margin-top: 120rpx;
   vertical-align: middle;
   display: flex;
@@ -66,7 +69,7 @@ page {
   width: 200rpx;
   margin:15rpx auto;
   line-height: 80rpx;
-  box-shadow:  0 0 10px #fff;
+  /*box-shadow:  0 0 10px rg;*/
   border-radius: 40rpx;
   height: 80rpx;
   margin-top: 40rpx;

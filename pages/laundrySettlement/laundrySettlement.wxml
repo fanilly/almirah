@@ -70,40 +70,42 @@
             </navigator>
           </block>
         </view>
-        <view class="delivery-address gray01 f28 msg-item2">
-          <view>送衣地址:</view>
-          <block wx:if="{{!giveAddress}}">
-            <view>
-              <navigator url="../addressChoose/addressChoose?type=2" hover-class="none">
-                <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
-                <text style="padding-left: 10rpx;" class="gray04">请选择</text>
-              </navigator>
-            </view>
-          </block>
-        </view>
-        <view class="gray02">
-          <block wx:if="{{giveAddress}}">
-            <navigator url="../addressChoose/addressChoose?type=2" class="address-item">
+        <block wx:if="{{isVIP}}">
+          <view class="delivery-address gray01 f28 msg-item2">
+            <view>送衣地址:</view>
+            <block wx:if="{{!giveAddress}}">
               <view>
-                <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+                <navigator url="../addressChoose/addressChoose?type=2" hover-class="none">
+                  <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
+                  <text style="padding-left: 10rpx;" class="gray04">请选择</text>
+                </navigator>
               </view>
-              <view>
+            </block>
+          </view>
+          <view class="gray02">
+            <block wx:if="{{giveAddress}}">
+              <navigator url="../addressChoose/addressChoose?type=2" class="address-item">
                 <view>
+                  <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+                </view>
+                <view>
+                  <view>
+                    <view class="gray04 f28">
+                      <text class="gray01 f28">姓名：</text>{{giveAddress.userName}}</view>
+                    <view class="gray04 f28">
+                      <text class="gray01 f28">手机号：</text>{{giveAddress.userPhone}}
+                      <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+                    </view>
+                  </view>
                   <view class="gray04 f28">
-                    <text class="gray01 f28">姓名：</text>{{giveAddress.userName}}</view>
-                  <view class="gray04 f28">
-                    <text class="gray01 f28">手机号：</text>{{giveAddress.userPhone}}
-                    <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+                    <text class="gray01 f28">地址：</text>{{giveAddress.address}}
+                    <text class="red-color f28" wx:if="{{giveAddress.isDefault*1 == 1}}"> 【默认】</text>
                   </view>
                 </view>
-                <view class="gray04 f28">
-                  <text class="gray01 f28">地址：</text>{{giveAddress.address}}
-                  <text class="red-color f28" wx:if="{{giveAddress.isDefault*1 == 1}}"> 【默认】</text>
-                </view>
-              </view>
-            </navigator>
-          </block>
-        </view>
+              </navigator>
+            </block>
+          </view>
+        </block>
         <view class="msg-item gray01 f28 time">
           <view>预取时间:</view>
           <view class="gray04 picker-time">
@@ -131,12 +133,19 @@
         </view>
       </view>
     </view>
+    <view class="coupon f28 gray02" wx:if="{{isVIP && commission.freeWash*1>0}}">剩余代金券
+      <text class="red-color">{{commission.freeWash}}</text> 张，本次订单使用
+      <text class="red-color">{{useCoupons}}</text>张，优惠
+      <text class="red-color">￥{{countGoodsLength
+        <=commission.freeWash*1?countGoodsLength*10:commission.freeWash*10}}</text>元</view>
     <view class="placeholder-box120"></view>
     <!-- 底部 -->
     <view class="footer">
       <view class="f24">
         总计：
         <text class="red-color f28">￥{{totalPrice}}</text>
+        需付：
+        <text class="red-color f28">￥{{totalPrice-useCoupons*10}}</text>
       </view>
       <view>
         <text class="main-bg f28 main-bgi" bindtap="handleBuy">提交订单</text>
