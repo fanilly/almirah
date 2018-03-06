@@ -22,45 +22,60 @@ Page({
 
   //提现
   handleTiXian() {
-    if (this.data.money * 1 <= 0) {
-      wx.showToast({
-        title: '佣金不足',
-        image: '../../assets/warning.png',
-        duration: 1500
+    if (!app.globalData.commission.phone) {
+      wx.showModal({
+        content: '请先绑定手机号',
+        showCancel: false,
+        success: res => {
+          if (res.confirm) {
+            wx.navigateTo({
+              url:'../bindphone/bindphone'
+            });
+          }
+        }
       });
     } else {
-      wx.request({
-        url: `${app.globalData.api}/commission/tixian`,
-        data: {
-          userId: app.globalData.userID,
-          money: this.data.money
-        },
-        success: res => {
-          if (res.data.status == 1) {
-            wx.showModal({
-              content: '恭喜您，提现成功，提现金额会在24小时之内下发到您的账户',
-              showCancel: false
-            });
-            this.setData({
-              money:0.00
-            });
-            app.globalData.commission.money = 0.00;
-          } else {
+      if (this.data.money * 1 <= 0) {
+        wx.showToast({
+          title: '佣金不足',
+          image: '../../assets/warning.png',
+          duration: 1500
+        });
+      } else {
+        wx.request({
+          url: `${app.globalData.api}/commission/tixian`,
+          data: {
+            userId: app.globalData.userID,
+            money: this.data.money
+          },
+          success: res => {
+            if (res.data.status == 1) {
+              wx.showModal({
+                content: '恭喜您，提现成功，提现金额会在24小时之内下发到您的账户',
+                showCancel: false
+              });
+              this.setData({
+                money: 0.00
+              });
+              app.globalData.commission.money = 0.00;
+            } else {
+              wx.showToast({
+                title: '网络异常',
+                image: '../../assets/warning.png',
+                duration: 1500
+              });
+            }
+          },
+          fail() {
             wx.showToast({
               title: '网络异常',
               image: '../../assets/warning.png',
               duration: 1500
             });
           }
-        },
-        fail() {
-          wx.showToast({
-            title: '网络异常',
-            image: '../../assets/warning.png',
-            duration: 1500
-          });
-        }
-      });
+        });
+      }
     }
+
   }
 });

@@ -7,9 +7,14 @@
 </block>
 <block wx:if="{{loaded}}">
   <view class="container">
-    <image src="{{baseUrl}}{{detail.goodsImg}}" style="width:100%" mode="widthFix"></image>
+    <image src="{{baseUrl}}{{detail.goodsImg}}" style="width:100%; height: 500rpx;" mode="aspectFill"></image>
     <view class="infos">
       <view class="title f28 gray01">{{detail.goodsName}}</view>
+      <view class="double-column">
+        <view class="f24 gray02">新旧程度:
+          <text class="gray04">{{detail.saleTime}}</text>
+        </view>
+      </view>
       <view class="double-column">
         <view class="f24 gray02">原价:
           <text class="gray04">￥{{detail.marketPrice}}</text>
@@ -28,6 +33,11 @@
       </view>
       <view class="f24 gray02 desc-t">商品描述:</view>
       <view class="f24 gray04 desc">{{detail.goodsDesc}}</view>
+    </view>
+    <view class="f24 gray04 notice">
+      <view class="f28 gray02">衣物交易须知</view>
+      <view>1、您知悉并了解闲置衣物交易纠纷风险高于正常商品交易您需在净衣客平台进行详细客观的沟通约定。并遵守相关约定，若交易约定不祥导致交易纠纷除法律明确规定外由您自行承担。</view>
+      <view>2、为了鼓励您在净衣客平台使用积极性，暂不收取交易服务费用，但不排除今后提供的部分服务或新增服务收取费用。届时本公司会采取合理途径以及合理期限提前告知。以确保您有充分的选择权利。</view>
     </view>
     <view class="details">
       <view class="d-title">

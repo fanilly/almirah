@@ -38,10 +38,11 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
-    let twoDaysLater = new Date().getTime() + 2 * 24 * 60 * 60 * 1000;
+    let twoDaysLater = new Date().getTime() + 50 * 24 * 60 * 60 * 1000;
     this.setData({
-      startTime: formatDate(new Date(twoDaysLater)),
+      startTime: formatDate(new Date()),
       isVIP: app.globalData.isVIP,
+      endTime:formatDate(new Date(twoDaysLater)),
       commission: app.globalData.commission
     });
 
@@ -189,6 +190,8 @@ Page({
                 icon: 'success',
                 duration: 1500
               });
+
+              app.globalData.updateAlmirah=true;
 
               // 清空购物车
               wx.removeStorage({

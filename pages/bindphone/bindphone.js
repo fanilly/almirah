@@ -20,7 +20,7 @@ Page({
         placeholder: app.globalData.commission.phone
       });
       wx.setNavigationBarTitle({
-        title: '切换手机号'
+        title: '更换手机号'
       });
     }
   },
@@ -52,7 +52,7 @@ Page({
           app.globalData.commission.phone = data.phonenumber;
           //绑定成功
           wx.showToast({
-            title: this.data.phone ? '修改成功' : '绑定成功',
+            title: this.data.phone ? '更换成功' : '绑定成功',
             image: '../../assets/success.png',
             duration: 1500
           });

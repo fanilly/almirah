@@ -20,17 +20,9 @@ Page({
 
   //去购买会员
   handleBuyVip() {
-    console.log(app.globalData.isVIP);
-    if (app.globalData.isVIP) {
-      wx.showModal({
-        content: '您已经是会员啦！',
-        showCancel: false
-      });
-    } else {
-      wx.navigateTo({
-        url: '../register/register'
-      });
-    }
+    wx.navigateTo({
+      url: '../register/register'
+    });
   },
 
   onShow() {
@@ -54,6 +46,7 @@ Page({
     //扫码进入
     if (options.scene) {
       let getedScene = decodeURIComponent(options.scene);
+      console.log(getedScene);
       if (app.globalData.userID) {
         wx.request({
           url: `${app.globalData.api}/user/modify_parentid?userId=${app.globalData.userID}&parentId=${getedScene}`,

@@ -1,0 +1,25 @@
+/* pages/notice/notice.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.container {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+  color: #353535;
+}
+
+.n-list {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  padding-bottom: 8rpx;
+  color: #666;
+}

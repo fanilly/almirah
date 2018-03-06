@@ -78,6 +78,7 @@ App({
 
   globalData: {
     userID: 2,
+    updateAlmirah:false, //如果为真 显示衣橱页面是重新获取数据
     isVIP: null,
     hasNewMsg: false, //是否存在新消息
     totalTrolleyLen: 0, //商城购物车物品数量

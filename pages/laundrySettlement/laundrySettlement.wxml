@@ -109,7 +109,7 @@
         <view class="msg-item gray01 f28 time">
           <view>预取时间:</view>
           <view class="gray04 picker-time">
-            <picker mode="date" value="{{prefetchingTime}}" start="{{startTime}}" bindchange="handleDateChange">
+            <picker mode="date" value="{{prefetchingTime}}" start="{{startTime}}" end="{{endTime}}" bindchange="handleDateChange">
               <block wx:if="{{prefetchingTime==''}}">
                 <view class="picker-time-text">
                   <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
@@ -130,6 +130,9 @@
               </view>
             </view>
           </view>
+        </view>
+        <view class="f24 gray05 notice">注：点击提交订单暨表示已阅读并同意
+          <navigator class="main-color" url="../notice/notice?type=1">《衣物洗涤须知》</navigator>
         </view>
       </view>
     </view>

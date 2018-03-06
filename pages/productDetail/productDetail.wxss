@@ -94,3 +94,13 @@
   bottom: 135rpx;
   right: 15rpx;
 }
+
+.notice {
+  line-height: 40rpx;
+  padding: 15rpx;
+  text-align: justify;
+}
+
+.notice .f28 {
+  padding-bottom: 15rpx;
+}

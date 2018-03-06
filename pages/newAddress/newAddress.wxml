@@ -47,7 +47,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
           <view class="weui-cell__bd">
-            <textarea maxlength="100" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleAddressContent" placeholder="{{addressContent}}" style="height: 200rpx" class="f24" />
+            <textarea maxlength="100" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="handleAddressContent" value="{{!isAdd?addressContent:''}}" placeholder="{{addressContent}}" style="height: 200rpx" class="f24" />
             <view class="weui-textarea-counter f24">{{textareaValueLen}}/100</view>
           </view>
         </view>

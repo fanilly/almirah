@@ -21,6 +21,21 @@ Page({
     });
   },
 
+  //去购买会员
+  handleBuyVip() {
+    console.log(app.globalData.isVIP);
+    if (app.globalData.isVIP) {
+      wx.showModal({
+        content: '您已经是会员啦！',
+        showCancel: false
+      });
+    } else {
+      wx.navigateTo({
+        url: '../register/register'
+      });
+    }
+  },
+
   // 生命周期函数--监听页面显示
   onShow() {
     this.setData({
@@ -31,9 +46,23 @@ Page({
 
   //跳转至分享二维码页面
   handleGoToQRcode() {
-    wx.navigateTo({
-      url: '../qrcode/qrcode'
-    });
+    if (app.globalData.isVIP) {
+      wx.navigateTo({
+        url: '../qrcode/qrcode'
+      });
+    } else {
+      wx.showModal({
+        content: '您现在还不是会员，只有成为会员之后才能去通过分享二维码赚取佣金哟！',
+        confirmText: '成为会员',
+        success: function(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url:'../register/register'
+            });
+          }
+        }
+      });
+    }
   },
 
   //联系客服

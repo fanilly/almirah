@@ -37,6 +37,15 @@ Page({
     startRefresh: false
   },
 
+  //跳转至编辑页面
+  handleEdit(e){
+    console.log(e);
+    console.log(this.data.listsAll[0]);
+    wx.navigateTo({
+      url:`../edit/edit?id=${e.currentTarget.id}`
+    });
+  },
+
   // 生命周期函数--监听页面加载
   onLoad(options) {
     this.handleCheckout({ currentTarget: { id: this.data.currentIndex } });
@@ -134,6 +143,7 @@ Page({
 
   // 商品类型切换
   handleCheckout(e) {
+    console.log(this.data.listsAll[0].lists);
     let index = parseInt(e.currentTarget.id);
     this.setData({
       currentIndex: index

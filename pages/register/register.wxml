@@ -3,17 +3,23 @@
   <image src="../../assets/lg-logo.png" style="width:228rpx;height: 185rpx;"></image>
   <!-- 羽衣常染烟霞色 不沾红尘桃李花 -->
   <view class="welcome f24 gray04">
-    <text class="f28 main-color">欢迎您</text>成为我们净衣客的一员，如果成为会员可以享受以下特权呦~~~</view>
+    <text class="f28 main-color">欢迎您</text>成为我们净衣客的一员，{{isVIP?'作为会员的您':'如果成为会员'}}可以享受以下特权呦~~~</view>
   <view class="content">
     <view>
-      <view>1： 赠送 8 张 10 元代金券券</view>
-      <view>2： 享受货物流通功能</view>
-      <view>3： 享受出售商品服务</view>
-      <view>更多优惠 敬请期待！</view>
+      <view>1.免费赠送100元洗衣券（10元/每张，共10张）</view>
+      <view>2.免费享受衣物流通服务（限河南省省内，乡镇除外）</view>
+      <view>3.免费享受闲置出售衣物服务</view>
+      <view>4.免费享受清洗衣服储存服务</view>
+      <view>更多惊喜敬请期待！</view>
     </view>
   </view>
-  <view class="remarks gray06 f24">注：成为会员需缴纳78元人民币</view>
-  <view class="payment main-bg main-bgi" bindtap="handlePayment">支付（￥78.00元）</view>
+  <block wx:if="{{!isVIP}}">
+    <view class="remarks gray06 f24">注：成为会员需支付98元</view>
+    <view class="agreement gray06 f24">点击支付暨表示已阅读并同意
+      <navigator url="../agreement/agreement">《用户协议》</navigator>
+    </view>
+    <view class="payment main-bg main-bgi" bindtap="handlePayment">支付（￥98.00元）</view>
+  </block>
   <!-- footer -->
   <view class="weui-footer">
     <view class="weui-footer__text">Copyright © 2018 净衣客</view>

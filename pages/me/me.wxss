@@ -83,11 +83,13 @@
   margin-top: 15rpx;
 }
 
+.lists-box>view,
 .lists-box navigator {
   display: flex;
   height: 85rpx;
 }
 
+.lists-box>view .flag-icon,
 .lists-box navigator .flag-icon {
   width: 76rpx;
   text-align: center;
@@ -95,12 +97,14 @@
   border-bottom: 1rpx solid #e2e2e2;
 }
 
+.lists-box>view .text-con,
 .lists-box navigator .text-con {
   flex: 1;
   border-bottom: 1rpx solid #e2e2e2;
   line-height: 90rpx;
 }
 
+.lists-box>view .xs-arrow,
 .lists-box navigator .xs-arrow {
   width: 50rpx;
   text-align: left;

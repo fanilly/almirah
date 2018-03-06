@@ -98,6 +98,7 @@ Component({
       wx.setNavigationBarTitle({
         title: '选择出售商品'
       });
+      console.log(list);
       //记录选择出售的数据
       this.setData({
         chooseList: list,

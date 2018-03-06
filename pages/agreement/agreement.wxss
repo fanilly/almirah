@@ -1,0 +1,11 @@
+/* pages/agreement/agreement.wxss */
+
+page {
+  background-color: #fff;
+}
+
+view {
+  text-align: justify;
+  padding: 15rpx;
+  text-indent: 2em;
+}

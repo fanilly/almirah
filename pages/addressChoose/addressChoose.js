@@ -16,6 +16,7 @@ Page({
       },
       success: res => {
         wx.hideLoading();
+        console.log(res)
         this.setData({
           lists: res.data.data
         });
@@ -42,6 +43,13 @@ Page({
     }
     wx.navigateBack({
       delta: 1
+    });
+  },
+
+  handleEditAddress(e){
+    let item = this.data.lists[e.target.id];
+    wx.navigateTo({
+      url:`../newAddress/newAddress?title=修改地址&name=${item.userName}&phone=${item.userPhone}&addr=${item.addr}&address=${item.address}&isDefault=${item.isDefault}&addressId=${item.addressId}&latitude=${item.latitude}&longitude=${item.longitude}`
     });
   },
 

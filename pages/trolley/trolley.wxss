@@ -104,18 +104,24 @@
 }
 
 .footer>view:nth-child(1) {
+  padding: 15rpx 8rpx;
+  width: 60rpx;
+  text-align: center;
+}
+
+.footer>view:nth-child(2) {
   flex: 1;
   line-height: 120rpx;
   text-align: right;
   padding-right: 20rpx;
 }
 
-.footer>view:nth-child(2) {
-  width: 300rpx;
+.footer>view:nth-child(3) {
+  width: 240rpx;
   text-align: center;
 }
 
-.footer>view:nth-child(2) view {
+.footer>view:nth-child(3) view {
   height: 80rpx;
   line-height: 80rpx;
   border-radius: 40rpx;
@@ -141,4 +147,16 @@
   border-radius: 50%;
   box-shadow: 0 2px 4px #ccc;
   margin: 50rpx auto;
+}
+
+.guide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  background-color: #fff;
+  box-shadow: 0 0 20px #ccc;
+  height: 52rpx;
+  line-height: 52rpx;
 }

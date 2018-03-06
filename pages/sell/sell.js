@@ -6,9 +6,10 @@ let goodsID, ID, shopID;
 Page({
 
   data: {
+    fewNews:[ '一成新', '二成新', '三成新', '四成新', '五成新', '六成新', '七成新', '八成新', '九成新', '十成新'],
     descLen: 0, //商品描述长度
     endTime: '', //买入时间的最大可选时间
-    buyTime: '', //买入时间
+    fewNew: '', //买入时间
     delIndex: -1, //当前显示删除按钮的图片在files数组中的索引
     files: [] //商品图片
   },
@@ -27,7 +28,7 @@ Page({
   //选择买入时间
   handleDateChange(e) {
     this.setData({
-      buyTime: e.detail.value
+      fewNew: e.detail.value
     });
   },
 
@@ -53,8 +54,8 @@ Page({
       imgs = this.data.files;
     if (!datas.goodsname) {
       this.showMsg('请输入商品名称');
-    } else if (!this.data.buyTime) {
-      this.showMsg('请选择买入时间');
+    } else if (!this.data.fewNew) {
+      this.showMsg('请选择新旧程度');
     } else if (!datas.size) {
       this.showMsg('请输入商品尺码');
     } else if (!datas.color) {
@@ -72,12 +73,13 @@ Page({
       //上传商品 首先上传标题等信息
       //如果上传成功 会返回一个商品id
       //再根据商品ID 上传商品图片
+      //buyTime
       wx.request({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         },
-        url: `${app.globalData.api}/order/putup`,
+        url: `${app.globalData.api}/goods/putup`,
         data: {
           goodsCat: goodsID,
           userId: app.globalData.userID,
@@ -87,9 +89,8 @@ Page({
           goodsColor: datas.color,
           originalPrice: datas.oldprice,
           presentPrice: datas.nowprice,
-          buyTime: this.data.buyTime,
-          goodsDesc: datas.desc,
-          goodsImage: JSON.stringify(this.data.files)
+          buyTime: this.data.fewNews[this.data.fewNew],
+          goodsDesc: datas.desc
         },
         success: res => {
           console.log(res);

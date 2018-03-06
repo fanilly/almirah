@@ -1,8 +1,13 @@
 const app = getApp();
 Page({
-  data: {},
+  data: {
+    isVIP: true
+  },
 
   onLoad(options) {
+    this.setData({
+      isVIP: app.globalData.isVIP
+    });
     console.log(app.globalData);
   },
 
@@ -17,6 +22,7 @@ Page({
         userId: app.globalData.userID
       },
       success: res => {
+        wx.hideLoading();
         console.log(res);
         let data = res.data;
         wx.requestPayment({
@@ -35,6 +41,9 @@ Page({
               });
               app.globalData.isVIP = true;
               //获取用户信息
+              wx.showLoading({
+                title: '状态更新'
+              });
               wx.request({
                 url: `${app.globalData.api}/user/user_info`,
                 data: {

@@ -51,5 +51,9 @@ Page({
         }
       });
     }
+    if(app.globalData.updateAlmirah){
+      getLOrderList(this);
+      app.globalData.updateAlmirah = false;
+    }
   }
 });

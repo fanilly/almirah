@@ -91,6 +91,9 @@
           </view>
         </view>
       </view>
+      <view class="f24 gray05 notice">注：点击提交订单暨表示已阅读并同意
+        <navigator class="main-color" url="../notice/notice?type=2">《衣物交易须知》</navigator>
+      </view>
     </view>
   </view>
   <view class="placeholder-box120"></view>

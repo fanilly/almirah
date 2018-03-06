@@ -1,0 +1,103 @@
+<!--pages/sell/sell.wxml-->
+<view class="container">
+  <view class="main">
+    <!-- 商品参数 -->
+    <form bindsubmit="handleFormSubmit">
+      <view class="details">
+        <view class="wapper">
+          <view class="inputs name f28 gray03 mt30">
+            <view> 商品名称：</view>
+            <input class="gray04" require name="goodsname" value="{{detail.goodsName}}" placeholder="请输入商品名称" placeholder-class="gray06 f24" />
+          </view>
+          <view class="f28 gray03 inputs">
+            <view>新旧程度：</view>
+            <view class="choose-btn">
+              <view class="btn-box"></view>
+              <view class="gray04 picker-time">
+                <picker value="{{index}}" range="{{fewNews}}" bindchange="handleDateChange">
+                  <block wx:if="{{fewNew===''}}">
+                    <view class="picker-time-text">
+                      <text style="padding-left: 10rpx;">请选择</text>
+                    </view>
+                  </block>
+                  <view wx:else class="picker-time-text">{{fewNews[fewNew]}}</view>
+                </picker>
+              </view>
+            </view>
+          </view>
+          <view class="xs-inputs f28 gray03">
+            <view>
+              <view> 尺码：</view>
+              <input class="gray04" name="size" value="{{detail.goodsUnit}}" placeholder-class="gray06 f24" placeholder="请输入尺码" />
+              <!-- <view class="choose-btn">
+              <view class="btn-box">
+                <image src="../../assets/rule.png" style="width:30rpx;height: 30rpx; margin:4rpx 8rpx 0 0"></image>
+              </view>
+              <view class="gray04">请选择</view>
+            </view> -->
+            </view>
+            <view>
+              <view> 颜色：</view>
+              <input class="gray04" value="{{detail.goodsSpec}}" name="color" placeholder-class="gray06 f24" placeholder="请输入颜色" />
+            </view>
+          </view>
+          <view class="xs-inputs f28 gray03">
+            <view>
+              <view> 原价：</view>
+              <input class="gray04" value="{{detail.marketPrice}}" name="oldprice" placeholder-class="gray06 f24"  type="number" placeholder="买入价格(元)" />
+            </view>
+            <view>
+              <view> 现价：</view>
+              <input class="gray04" value="{{detail.shopPrice}}" name="nowprice" placeholder-class="gray06 f24" type="number" placeholder="卖出价格(元)" />
+            </view>
+          </view>
+          <!-- 描述 -->
+          <view class="inputs phone f28 gray03 address-detail">
+            <view>描述信息：</view>
+          </view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea maxlength="100" value="{{detail.goodsDesc}}" name="desc" show-confirm-bar="false" class="weui-textarea" bindinput="handleGoodsDesc" placeholder-class="gray06" placeholder="请输入商品描述信息" style="height: 160rpx" class="f24" />
+                <view class="weui-textarea-counter f24">{{descLen}}/100</view>
+              </view>
+            </view>
+          </view>
+          <!-- 图片 -->
+          <view class="up-img-box">
+            <view class="up-header">
+              <view class="f28 gray03">上传图片：
+                <text class="f24 gray05">(默认第一张图片为封面图片)</text>
+              </view>
+              <view class="f24 gray06">{{files.length}}/8</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                <block wx:for="{{files}}" wx:key="{{index}}">
+                  <view class="weui-uploader__file" bindtap="previewImage" catchlongpress="handleShowDelImage" id="{{index}}">
+                    <image class="weui-uploader__img" src="{{item.isNews?item.url:baseUrl+item.url}}" mode="aspectFill" />
+                    <block wx:if="{{delIndex == index}}">
+                      <view class="del" catchtap="handleHideDelImage">
+                        <view catchtap="handleDelImage">
+                          <image src="../../assets/del.png" style="width:48rpx;height:48rpx;margin:16rpx;"></image>
+                        </view>
+                      </view>
+                    </block>
+                  </view>
+                </block>
+              </view>
+              <block wx:if="{{files.length<8}}">
+                <view class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="f24 gray04" style="padding-left: 20rpx;">注：长按图片可进行删除操作</view>
+          <view class="placeholder-box100"></view>
+          <button formType="submit" class="submit-address f28 main-bg main-bgi">确认修改</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>

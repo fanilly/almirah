@@ -13,7 +13,7 @@
       </view>
     </view>
     <view>
-      <image src="../../assets/lg_arrow.png" style="width: 30rpx;height: 52rpx;"></image>
+      <image src="../../assets/code.png" style="width: 64rpx;height: 64rpx;"></image>
     </view>
   </view>
   <view class="main">
@@ -47,12 +47,23 @@
     </view>
     <!-- lists -->
     <view class="lists-box box-shadow">
+      <view bindtap="handleBuyVip">
+        <view class="flag-icon">
+          <image src="../../assets/m_list_btns_06.png" style="width: 55rpx;height: 55rpx"></image>
+        </view>
+        <view class="f28 gray01 text-con">
+          成为会员
+        </view>
+        <view class="xs-arrow">
+          <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+        </view>
+      </view>
       <navigator url="../bindphone/bindphone">
         <view class="flag-icon">
           <image src="../../assets/m_list_btns_01.png" style="width: 55rpx;height: 55rpx"></image>
         </view>
         <view class="f28 gray01 text-con">
-          {{commission.phone?'切换':'绑定'}}手机号
+          {{commission.phone?'更换':'绑定'}}手机号
         </view>
         <view class="xs-arrow">
           <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>

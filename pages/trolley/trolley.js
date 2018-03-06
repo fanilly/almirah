@@ -9,6 +9,8 @@ let storageMallTrolley = [];
 Page({
 
   data: {
+    isChooseAll: false,
+    showMsg: true,
     showMask: {}, //动画数据 显示遮罩层
     loadingStatus: 0, //加载装填 0 加载中 1 购物车空空 2 显示购物车列表
     currentShowControl: -1, //控制按钮显示的列表
@@ -16,6 +18,30 @@ Page({
     totalCheckedGoods: 0, // 已选中商品的数量
     totalCheckedPrice: 0, // 已选中商品的价格
     baseUrl: app.globalData.baseUrl
+  },
+
+  handleChooseAll() {
+    console.log(1);
+    this.setData({
+      isChooseAll: !this.data.isChooseAll
+    });
+    let i,
+      lists = this.data.lists,
+      totalCheckedGoods = 0,
+      totalCheckedPrice = 0;
+    if (this.data.isChooseAll) { //全选
+      for (i = 0; i < lists.length; i++) {
+        lists[i].checked = true;
+        totalCheckedPrice = parseFloat(totalCheckedPrice) + parseFloat(lists[i].shopprice);
+      }
+      totalCheckedGoods = lists.length;
+      totalCheckedPrice = totalCheckedPrice.toFixed(2);
+    } else { //取消全选
+      for (i = 0; i < lists.length; i++) {
+        lists[i].checked = false;
+      }
+    }
+    this.setData({ lists, totalCheckedGoods, totalCheckedPrice });
   },
 
   // 长按列表项显示控制按钮
@@ -84,6 +110,11 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
+    setTimeout(() => {
+      this.setData({
+        showMsg: false
+      });
+    }, 5000);
     //从缓存中获取购物车数据
     wx.getStorage({
       key: 'mallTrolley',

@@ -1,0 +1,76 @@
+/* pages/commission/commission.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.wapper {
+  width: 100%;
+}
+
+.c-header {
+  width: 100%;
+  display: flex;
+  line-height: 80rpx;
+  height: 80rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.c-header view {
+  flex: 1;
+  text-align: center;
+  height: 50rpx;
+  margin-top: 15rpx;
+  line-height: 50rpx;
+  border-right: 1px solid #e2e2e2;
+}
+
+.c-header view:last-child {
+  border-right: 0;
+}
+
+.placeholder-80rpx {
+  height: 80rpx;
+}
+
+.content {
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.item view {
+  flex: 1;
+  text-align-last: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 15rpx;
+}
+
+.content .item:nth-child(odd) {
+  background: #fff;
+}
+
+.content .item:nth-child(even) {
+  background: #e2e2e2;
+}
+
+.load-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #555;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}

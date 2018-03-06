@@ -86,6 +86,17 @@ page {
   background-color: #fff;
 }
 
+.w-color {
+  color:#fff;
+}
+
+.text-center {
+  text-align:center;
+}
+
+.green-color {
+  color: #1aad19;
+}
 
 /*466ede*/
 
@@ -320,4 +331,13 @@ page {
 
 .public-footer text:last-child {
   margin-left: 20rpx;
+}
+
+
+.notice {
+  padding-top: 15rpx;
+}
+
+.notice navigator {
+  display: inline-block;
 }

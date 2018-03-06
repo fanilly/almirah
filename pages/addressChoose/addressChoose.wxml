@@ -22,9 +22,10 @@
             <view class="gray04 f28">
               <text class="gray01 f28">手机号：</text>{{item.userPhone}}
               <image src="../../assets/garbage.png" style="width:40rpx;height:40rpx;position: absolute;right: 10rpx;top:12rpx;" id="{{index}}" catchtap="handleDelAddress"></image>
+              <image src="../../assets/edit_add.png" style="width:40rpx;height:40rpx;position: absolute;right: 10rpx;top:62rpx;" id="{{index}}" catchtap="handleEditAddress"></image>
             </view>
           </view>
-          <view class="gray04 f28">
+          <view class="gray04 f28" style="padding-right: 50rpx;">
             <text class="gray01 f28">地址：</text>{{item.address}}
             <text class="red-color f28" wx:if="{{item.isDefault*1 == 1}}"> 【默认】 </text>
           </view>

@@ -1,0 +1,24 @@
+<!--pages/commission/commission.wxml-->
+<view class="load-box" wx:if="{{loadingStatus == 1}}">数据加载中</view>
+<view class="load-box" wx:if="{{loadingStatus == 2}}">暂无数据</view>
+<block wx:if="{{loadingStatus == 3}}">
+  <view class="container">
+    <view class="wapper">
+      <view class="c-header f32">
+        <view>来源</view>
+        <view>类型</view>
+        <view>金额</view>
+      </view>
+      <view class="placeholder-80rpx"></view>
+      <view class="content">
+        <block wx:for="{{lists}}" wx:key="{{index}}">
+          <view class="item f28">
+            <view>{{item.userName}}</view>
+            <view>{{item.dataSrc}}</view>
+            <view class="{{item.dataSrc=='提现'?'red-color':'green-color'}}">{{item.dataSrc=='提现'?'-':'+'}}{{item.money}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</block>

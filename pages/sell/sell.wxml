@@ -10,18 +10,17 @@
             <input class="gray04" require name="goodsname" placeholder="请输入商品名称" placeholder-class="gray06 f24" />
           </view>
           <view class="f28 gray03 inputs">
-            <view>买入时间：</view>
+            <view>新旧程度：</view>
             <view class="choose-btn">
               <view class="btn-box"></view>
               <view class="gray04 picker-time">
-                <picker mode="date" value="{{buyTime}}" end="{{endTime}}" bindchange="handleDateChange">
-                  <block wx:if="{{buyTime==''}}">
+                <picker value="{{index}}" range="{{fewNews}}" bindchange="handleDateChange">
+                  <block wx:if="{{fewNew==''}}">
                     <view class="picker-time-text">
-                      <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
                       <text style="padding-left: 10rpx;">请选择</text>
                     </view>
                   </block>
-                  <view wx:else class="picker-time-text">{{buyTime}}</view>
+                  <view wx:else class="picker-time-text">{{fewNews[fewNew]}}</view>
                 </picker>
               </view>
             </view>

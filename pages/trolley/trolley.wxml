@@ -14,6 +14,8 @@
 <block wx:if="{{loadingStatus ==2}}">
   <view class="container">
     <view class="main">
+      <view style="height: 70rpx;" wx:if="{{showMsg}}"></view>
+      <view class="f28 main-color text-center guide" style="padding:15rpx" wx:if="{{showMsg}}">温馨提示：<text class="gray01">长按列表可进行删除或单件购买</text></view>
       <block wx:for="{{lists}}" wx:key="{{index}}">
         <view class="pro-item" catchlongpress="handleShowControl" id="{{index}}">
           <view class="item-content">
@@ -55,6 +57,11 @@
     <view class="placeholder-box100"></view>
     <!-- 底部 -->
     <view class="footer">
+      <view bindtap="handleChooseAll">
+        <icon color="#1aaade" class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!isChooseAll}}"></icon>
+        <icon color="#1aaade" class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{isChooseAll}}"></icon>
+        <view class="f24 text-center">{{isChooseAll?'取消':'全选'}}</view>
+      </view>
       <view class="f24">
         共选中
         <text class="red-color f28"> {{totalCheckedGoods}} </text>件 总计：
