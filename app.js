@@ -77,7 +77,7 @@ App({
   },
 
   globalData: {
-    userID: 2,
+    userID: '',
     updateAlmirah:false, //如果为真 显示衣橱页面是重新获取数据
     isVIP: null,
     hasNewMsg: false, //是否存在新消息
@@ -89,9 +89,6 @@ App({
     api: 'https://xiyi.honghuseo.cn/index.php/api',
     baseUrl: 'https://xiyi.honghuseo.cn/',
     commission: null,
-    userInfo: {
-      nickName: '卮言',
-      avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/ywFvlKF6uhng0HAv4Aa53NHfrxStvT9ftibFCSeOP1zxmLq9iaTVSDgkCdtD3taQIGibibhMl03Xz08EDTy7f4w5rw/0"
-    }
+    userInfo: null
   }
 });

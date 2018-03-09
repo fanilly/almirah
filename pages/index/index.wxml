@@ -24,20 +24,20 @@
   <view class="nav-wapper">
     <navigator hover-class="none" url="../laundryOrder/laundryOrder" class="nav-item">
       <image src="../../assets/nav_icon01.png" style="width: 100rpx;height: 100rpx;"></image>
-      <view class="f28" style="color:#97e3ff">我要洗衣</view>
+      <view class="f28" style="color:#97e3ff">衣物洗涤</view>
     </navigator>
     <navigator hover-class="none" url="../mall/mall" class="nav-item">
       <image src="../../assets/nav_icon02.png" style="width: 100rpx;height: 100rpx;"></image>
-      <view class="f28" style="color:#ffb3ec">我要购衣</view>
+      <view class="f28" style="color:#ffb3ec">衣物交易</view>
     </navigator>
+    <view url="../register/register" bindtap="handleBuyVip" class="nav-item">
+      <image src="../../assets/nav_icon04.png" style="width: 100rpx;height: 100rpx;"></image>
+      <view class="f28" style="color:#f2acff">衣物流通</view>
+    </view>
     <navigator hover-class="none" url="../donation/donation" class="nav-item">
       <image src="../../assets/nav_icon03.png" style="width: 100rpx;height: 100rpx;"></image>
       <view class="f28" style="color:#ffb7a5">我要捐赠</view>
     </navigator>
-    <view url="../register/register" bindtap="handleBuyVip" class="nav-item">
-      <image src="../../assets/nav_icon04.png" style="width: 100rpx;height: 100rpx;"></image>
-      <view class="f28" style="color:#f2acff">成为会员</view>
-    </view>
   </view>
   <!-- bnts -->
   <block wx:if="xx">
@@ -48,7 +48,21 @@
     </navigator>
   </block>
   <!-- 分类 -->
-  <view class="classification">
+  <!-- <view class="classification">
     <navigator wx:for="012345" wx:key="{{index}}" url="../laundryOrder/laundryOrder?type={{index}}"><image src="{{baseUrl}}Public/type_pic/0000{{index+1}}.png" mode="widthFix"></image></navigator>
-  </view>
+  </view> -->
+  <lists lists="{{lists}}" loadingStatus="{{loadingStatus}}"></lists>
+  <!-- loadmore -->
+  <block wx:if="{{isLoadMore}}">
+    <view class="weui-loadmore">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+  </block>
+  <!-- 刷新动画 -->
+  <block wx:if="{{startRefresh}}">
+    <view class="loading-box">
+      <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+    </view>
+  </block>
 </view>

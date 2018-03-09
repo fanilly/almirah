@@ -17,12 +17,19 @@ Page({
 
   // 页面的初始数据
   data: {
+    showDetail:false,
     totalTrolleyLen: 0,
     baseUrl: app.globalData.baseUrl,
     detail: {}, //商品详情数据,
     loadingStatus: -1, //1 到底了 2 未加载到商品
     lists: [], //列表数据
     loaded: false //是否加载完成
+  },
+
+  handleShowDetail(){
+    this.setData({
+      showDetail:true
+    });
   },
 
   //加入购物车

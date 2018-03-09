@@ -11,6 +11,7 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
+    console.log(app.globalData.commission)
     console.log(app.globalData.isVIP);
     this.setData({
       nickName: app.globalData.userInfo.nickName,
@@ -23,17 +24,17 @@ Page({
 
   //去购买会员
   handleBuyVip() {
-    console.log(app.globalData.isVIP);
-    if (app.globalData.isVIP) {
-      wx.showModal({
-        content: '您已经是会员啦！',
-        showCancel: false
-      });
-    } else {
+    // console.log(app.globalData.isVIP);
+    // if (app.globalData.isVIP) {
+    //   wx.showModal({
+    //     content: '您已经是会员啦！',
+    //     showCancel: false
+    //   });
+    // } else {
       wx.navigateTo({
         url: '../register/register'
       });
-    }
+    // }
   },
 
   // 生命周期函数--监听页面显示

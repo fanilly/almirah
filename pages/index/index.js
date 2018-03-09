@@ -1,3 +1,4 @@
+import getMGoodsLists from '../../request/getMGoodsLists.js';
 const app = getApp();
 let currentPageNum = 1; //当前加载的次数
 
@@ -20,9 +21,23 @@ Page({
 
   //去购买会员
   handleBuyVip() {
-    wx.navigateTo({
-      url: '../register/register'
-    });
+    if (!app.globalData.isVIP) {
+      wx.showModal({
+        content: '您现在还不是会员，只有成为会员之后才能使用衣物流通功能哟~',
+        confirmText: '成为会员',
+        success: function(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../register/register'
+            });
+          }
+        }
+      });
+    } else {
+      wx.switchTab({
+        url: '../almirah/almirah'
+      });
+    }
   },
 
   onShow() {
@@ -52,6 +67,7 @@ Page({
           url: `${app.globalData.api}/user/modify_parentid?userId=${app.globalData.userID}&parentId=${getedScene}`,
           success: res => {
             console.log(res);
+            console.log(getedScene);
           }
         });
       } else {
@@ -81,6 +97,33 @@ Page({
     this.setData({
       isLoadMore: true
     });
+    getMGoodsLists(this, currentPageNum);
+  },
+
+  //上拉加载更多
+  onReachBottom() {
+    if (this.data.loadingStatus == -1) {
+      if (this.data.allLoadMore) {
+        currentPageNum++;
+        this.setData({
+          isLoadMore: true
+        });
+        getMGoodsLists(this, currentPageNum);
+      }
+    }
+  },
+
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    wx.stopPullDownRefresh(); //停止微信默认下拉刷新动画
+    currentPageNum = 1;
+    //显示刷新动画 清空上次加载的数据
+    this.setData({
+      startRefresh: true,
+      lists: [],
+      loadingStatus: -1
+    });
+    getMGoodsLists(this, currentPageNum);
   },
 
   //banner图片加载

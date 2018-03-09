@@ -40,11 +40,11 @@
       <view>2、为了鼓励您在净衣客平台使用积极性，暂不收取交易服务费用，但不排除今后提供的部分服务或新增服务收取费用。届时本公司会采取合理途径以及合理期限提前告知。以确保您有充分的选择权利。</view>
     </view>
     <view class="details">
-      <view class="d-title">
+      <view class="d-title" bindtap="handleShowDetail">
         <image src="../../assets/goods_detail.png" style="width:30rpx;height: 30rpx;position: relative;top:4rpx;"></image>
         <text class="f32">商品详情</text>
       </view>
-      <image wx:for="{{detail.imageList}}" wx:key="{{index}}" src="{{baseUrl}}{{item.goodsImg}}" style="width:100%" mode="widthFix"></image>
+      <image wx:if="{{showDetail}}" wx:for="{{detail.imageList}}" wx:key="{{index}}" src="{{baseUrl}}{{item.goodsImg}}" style="width:100%" mode="widthFix"></image>
     </view>
     <block wx:if="{{!isSelf}}">
       <view class="recommend">
