@@ -160,3 +160,9 @@
   height: 52rpx;
   line-height: 52rpx;
 }
+
+.close-msg {
+  position: absolute;
+  right: 15rpx;
+  top: 20rpx;
+}

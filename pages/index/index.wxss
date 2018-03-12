@@ -23,19 +23,10 @@
 }
 */
 
-.header>navigator {
-  flex: 1;
-  text-align: center;
-  background-color: rgba(0, 0, 0, .3);
-  border-radius: 25rpx;
-  margin: 0 40rpx;
-  line-height: 50rpx;
-  color: #ccc;
-}
-
 .header>view {
   width: 90rpx;
-  position: relative;
+  position: absolute;
+  right: 0;
 }
 
 .msg-box {

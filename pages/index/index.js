@@ -63,11 +63,15 @@ Page({
       let getedScene = decodeURIComponent(options.scene);
       console.log(getedScene);
       if (app.globalData.userID) {
+        console.log(`${app.globalData.api}/user/modify_parentid?userId=${app.globalData.userID}&parentId=${getedScene}`);
         wx.request({
           url: `${app.globalData.api}/user/modify_parentid?userId=${app.globalData.userID}&parentId=${getedScene}`,
           success: res => {
             console.log(res);
-            console.log(getedScene);
+            wx.showModal({
+              content: res.data.msg,
+              showCancel: false
+            });
           }
         });
       } else {
@@ -124,6 +128,20 @@ Page({
       loadingStatus: -1
     });
     getMGoodsLists(this, currentPageNum);
+  },
+
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: '/pages/index/index',
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
   },
 
   //banner图片加载

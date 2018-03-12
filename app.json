@@ -1,11 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/trolley/trolley",
+    "pages/productDetail/productDetail",
+    "pages/laundryOrder/laundryOrder",
     "pages/notice/notice",
     "pages/register/register",
     "pages/almirah/almirah",
     "pages/me/me",
-    "pages/trolley/trolley",
     "pages/addressChoose/addressChoose",
     "pages/agreement/agreement",
     "pages/edit/edit",
@@ -16,7 +18,6 @@
     "pages/helpsArticle3/helpsArticle3",
     "pages/helpsArticle2/helpsArticle2",
     "pages/helpsArticle1/helpsArticle1",
-    "pages/laundryOrder/laundryOrder",
     "pages/mallSettlement/mallSettlement",
     "pages/bindphone/bindphone",
     "pages/mall/mall",
@@ -36,7 +37,6 @@
     "components/lorder/lorder",
     "pages/addressManager/addressManager",
     "pages/newAddress/newAddress",
-    "pages/productDetail/productDetail",
     "pages/feedback/feedback",
     "pages/orders/orders"
   ],

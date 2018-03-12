@@ -53,9 +53,10 @@
 
 .d-title {
   background-color: #fff;
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
-  padding: 20rpx 0 30rpx;
+  padding: 15rpx 15rpx 30rpx;
+  box-sizing: border-box;
 }
 
 .d-title image {
@@ -80,15 +81,27 @@
   /*background-image: linear-gradient(to bottom,#fff,rgba(255,255,255,0.1));*/
   bottom: 0;
   left: 0;
-  display: flex;
+  box-shadow:  0 0 20px rgba(0,0,0,.2);
 }
 
 .footer view {
-  flex: 1;
+  width: 260rpx;
+  border-radius: 40rpx;
+  margin:20rpx;
+  height: 80rpx;
   text-align:center;
-  line-height: 120rpx;
+  line-height: 80rpx;
+  float: right;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
-
+.footer .add-trolley {
+  height: 72rpx;
+  line-height: 72rpx;
+  background-color: rgba(26,170,222,.2);
+  background-image: none;
+  border:4rpx solid #1aaade;
+  color:#1aaade;
+}
 .trolley {
   position: fixed;
   bottom: 135rpx;
@@ -103,4 +116,8 @@
 
 .notice .f28 {
   padding-bottom: 15rpx;
+}
+
+.no-detail {
+  padding: 0 15rpx 20rpx 15rpx;
 }

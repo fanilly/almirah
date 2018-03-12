@@ -16,13 +16,15 @@ App({
         this.globalData.commission = res.data.data;
       }
     });
-
     //如果存在parentID 需要记录
     if (this.globalData.parentID) {
       wx.request({
-        url: `${api}user/modify_parentid?userId=${res.data}&parentId=${this.globalData.parentID}`,
+        url: `${this.globalData.api}/user/modify_parentid?userId=${user.userId}&parentId=${this.globalData.parentID}`,
         success: res => {
-          console.log(res);
+          wx.showModal({
+            content: res.data.msg,
+            showCancel: false
+          });
         }
       });
     }
@@ -78,7 +80,7 @@ App({
 
   globalData: {
     userID: '',
-    updateAlmirah:false, //如果为真 显示衣橱页面是重新获取数据
+    updateAlmirah: false, //如果为真 显示衣橱页面是重新获取数据
     isVIP: null,
     hasNewMsg: false, //是否存在新消息
     totalTrolleyLen: 0, //商城购物车物品数量

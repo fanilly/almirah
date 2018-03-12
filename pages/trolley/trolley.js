@@ -20,6 +20,13 @@ Page({
     baseUrl: app.globalData.baseUrl
   },
 
+  //关闭温馨提示
+  handleCloseMsg(){
+    this.setData({
+      showMsg:false
+    });
+  },
+
   handleChooseAll() {
     console.log(1);
     this.setData({
@@ -110,11 +117,6 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
-    setTimeout(() => {
-      this.setData({
-        showMsg: false
-      });
-    }, 5000);
     //从缓存中获取购物车数据
     wx.getStorage({
       key: 'mallTrolley',

@@ -15,7 +15,7 @@
   <view class="container">
     <view class="main">
       <view style="height: 70rpx;" wx:if="{{showMsg}}"></view>
-      <view class="f28 main-color text-center guide" style="padding:15rpx" wx:if="{{showMsg}}">温馨提示：<text class="gray01">长按列表可进行删除或单件购买</text></view>
+      <view class="f28 main-color text-center guide" style="padding:15rpx" wx:if="{{showMsg}}">温馨提示：<text class="gray01">长按列表可进行删除或单件购买</text><image bindtap="handleCloseMsg" class="close-msg" src="../../assets/close.png" style="width: 40rpx;height: 40rpx;"></image></view>
       <block wx:for="{{lists}}" wx:key="{{index}}">
         <view class="pro-item" catchlongpress="handleShowControl" id="{{index}}">
           <view class="item-content">

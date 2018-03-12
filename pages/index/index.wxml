@@ -2,7 +2,6 @@
 <view class="container" id="page">
   <!-- header -->
   <view class="header">
-    <navigator url="../search/search" class="f24">搜索商品</navigator>
     <view>
       <navigator url="../messages/messages" class="msg-box">
         <image src="../../assets/m_btns_02_fff.png" style="width:38rpx;height:38rpx;"></image>
@@ -36,7 +35,7 @@
     </view>
     <navigator hover-class="none" url="../donation/donation" class="nav-item">
       <image src="../../assets/nav_icon03.png" style="width: 100rpx;height: 100rpx;"></image>
-      <view class="f28" style="color:#ffb7a5">我要捐赠</view>
+      <view class="f28" style="color:#ffb7a5">衣物储存</view>
     </navigator>
   </view>
   <!-- bnts -->
