@@ -21,8 +21,13 @@
   height: 190rpx;
 }
 
+.receipt-address {
+  padding: 15px 0 10px 15rpx;
+  background-color: #fff;
+}
+
 .details .wapper {
-  padding-bottom: 30rpx;
+  padding-bottom: 15rpx;
 }
 
 .detail-items .lside image {
@@ -58,6 +63,7 @@
 
 .items-wapper {
   padding: 10rpx 15rpx;
+  margin-top: 15rpx;
 }
 
 .items-wapper .detail-items:last-child {
@@ -94,6 +100,7 @@
   text-align: center;
   line-height: 120rpx;
 }
+
 .footer>view:last-child text {
   display: block;
   height: 80rpx;
@@ -103,13 +110,14 @@
   margin: 20rpx auto;
   box-shadow: 0 0 8px #999;
 }
+
 .msg-item {
   display: flex;
   margin-bottom: 15rpx;
 }
 
 .messages .wapper {
-  padding: 30rpx 15rpx;
+  padding: 10rpx 15rpx;
 }
 
 .msg-item>view:first-child {
@@ -170,4 +178,17 @@
   position: relative;
   padding-left: 20rpx;
   top: -8rpx;
+}
+
+.address-item {
+  border: 0;
+  background-color: #fff;
+  margin-top: 0;
+}
+
+.progress {
+  width: 100%;
+  height: 4px;
+  background-image: linear-gradient(to right, #e2e2e2 0%, #e2e2e2 50%, #1aaade 50%, #1aaade 100%);
+  background-size: 20px;
 }

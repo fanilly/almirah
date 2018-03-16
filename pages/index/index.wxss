@@ -30,10 +30,10 @@
 }
 
 .msg-box {
-  width: 50rpx;
-  height: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
   background-color: rgba(0, 0, 0, .3);
-  border-radius: 25rpx;
+  border-radius: 16rpx;
   text-align: center;
   position: relative;
 }

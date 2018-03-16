@@ -29,9 +29,17 @@ Page({
     console.log(type);
     switch (type) {
       case 1:
+        wx.setStorage({
+          key: 'takeAddress',
+          data: JSON.stringify(this.data.lists[id])
+        });
         app.globalData.takeAddress = this.data.lists[id];
         break;
       case 2:
+        wx.setStorage({
+          key: 'giveAddress',
+          data: JSON.stringify(this.data.lists[id])
+        });
         app.globalData.giveAddress = this.data.lists[id];
         break;
       case 3:
@@ -46,10 +54,10 @@ Page({
     });
   },
 
-  handleEditAddress(e){
+  handleEditAddress(e) {
     let item = this.data.lists[e.target.id];
     wx.navigateTo({
-      url:`../newAddress/newAddress?title=修改地址&name=${item.userName}&phone=${item.userPhone}&addr=${item.addr}&address=${item.address}&isDefault=${item.isDefault}&addressId=${item.addressId}&latitude=${item.latitude}&longitude=${item.longitude}`
+      url: `../newAddress/newAddress?title=修改地址&name=${item.userName}&phone=${item.userPhone}&addr=${item.addr}&address=${item.address}&isDefault=${item.isDefault}&addressId=${item.addressId}&latitude=${item.latitude}&longitude=${item.longitude}`
     });
   },
 

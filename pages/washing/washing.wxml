@@ -1,4 +1,21 @@
 <!--pages/washing/washing.wxml-->
 <view class="container">
-  <lorder nav-title="在洗衣物" isvip="{{isVIP}}" has-order-list="{{hasOrderList}}" lists="{{lists}}"></lorder>
+  <view class="placeholder-box100"></view>
+  <view class="header">
+    <view wx:for="{{btns}}" wx:key="{{index}}" class="f28 gray01 {{index == currentIndex?'active':''}}" bindtap="handleCheckout" id="{{index}}">{{item}}</view>
+  </view>
+  <!-- 刷新动画 -->
+  <block wx:if="{{startRefresh}}">
+    <view class="loading-box">
+      <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+    </view>
+  </block>
+  <lorder wx:if="{{listsAll[currentIndex].listsStatus==1 && !startRefresh}}" nav-title="在洗衣物" isvip="{{isVIP}}" has-order-list="{{hasOrderList}}" lists="{{listsAll[currentIndex].lists}}"></lorder>
+  <!-- 加载 -->
+  <block wx:if="{{listsAll[currentIndex].listsStatus!=1}}">
+    <view class="container loadbox">
+      <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+      <text class="f24 gray05">{{listsAll[currentIndex].listsStatus}}</text>
+    </view>
+  </block>
 </view>

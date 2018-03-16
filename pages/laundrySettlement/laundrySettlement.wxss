@@ -163,7 +163,37 @@
 }
 
 .coupon {
-  padding: 30rpx 15rpx;
+  padding: 30rpx 70rpx 0;
   line-height: 40rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 0rpx;
+}
+
+.address-item {
+  border: 0;
+  background-color: #fff;
+  margin-top: 0;
+}
+
+.progress {
+  width: 100%;
+  height: 4px;
+  background-image: linear-gradient(to right, #e2e2e2 0%, #e2e2e2 50%, #1aaade 50%, #1aaade 100%);
+  background-size: 20px;
+}
+
+.receipt-address,
+.delivery-address {
+  padding: 15rpx 0 0 15rpx;
+  background-color: #fff;
+  margin-top: 0;
+}
+
+.msg-item {
+  padding: 15rpx;
+  background-color: #fff;
+  margin: 15rpx 0;
+}
+
+.use-coupon {
+  /*padding-top: 30rpx;*/
 }

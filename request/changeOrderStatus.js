@@ -32,7 +32,8 @@ module.exports = (that, index, type) => {
         } else {
           let lists = that.data.lists;
           lists[index].isOver = 1;
-          lists[index].orderStatus = '订单完成';
+          lists[index].orderMark = '送衣完成';
+          lists[index].orderMark = 8;
           that.setData({
             lists: lists
           });

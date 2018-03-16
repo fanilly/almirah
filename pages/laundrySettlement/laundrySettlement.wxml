@@ -9,11 +9,92 @@
   <view class="container">
     <!-- 订单明细 -->
     <view class="details">
-      <view class="wapper">
-        <view class="block-title">
-          <image src="../../assets/settlement_01.png" style="width: 23rpx;height: 23rpx"></image>
-          <text>订单明细</text>
+      <view wx:if="{{!takeAddress}}" class="receipt-address gray01 f28 msg-item2">
+        <view></view>
+        <block wx:if="{{!takeAddress}}">
+          <view>
+            <navigator url="../addressChoose/addressChoose?type=1" hover-class="none">
+              <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
+              <text style="padding-left: 10rpx;" class="gray04">请选择取衣地址</text>
+            </navigator>
+          </view>
+        </block>
+      </view>
+      <view class="gray02">
+        <block wx:if="{{takeAddress}}">
+          <navigator url="../addressChoose/addressChoose?type=1" class="address-item">
+            <view>
+              <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+            </view>
+            <view>
+              <view>
+                <view class="gray04 f28">
+                  <text class="gray01 f28">姓名：</text>{{takeAddress.userName}}</view>
+                <view class="gray04 f28">
+                  <text class="gray01 f28">手机号：</text>{{takeAddress.userPhone}}
+                  <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+                </view>
+              </view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">取衣地址：</text>{{takeAddress.address}}({{takeAddress.addr}})
+                <text class="red-color f28" wx:if="{{takeAddress.isDefault*1 == 1}}"> 【默认】</text>
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+      <block wx:if="{{isVIP}}">
+        <view wx:if="{{!giveAddress}}" class="delivery-address gray01 f28 msg-item2">
+          <view></view>
+          <block wx:if="{{!giveAddress}}">
+            <view>
+              <navigator url="../addressChoose/addressChoose?type=2" hover-class="none">
+                <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
+                <text style="padding-left: 10rpx;" class="gray04">请选择送衣地址</text>
+              </navigator>
+            </view>
+          </block>
         </view>
+        <view class="gray02">
+          <block wx:if="{{giveAddress}}">
+            <navigator url="../addressChoose/addressChoose?type=2" class="address-item">
+              <view>
+                <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+              </view>
+              <view>
+                <view>
+                  <view class="gray04 f28">
+                    <text class="gray01 f28">姓名：</text>{{giveAddress.userName}}</view>
+                  <view class="gray04 f28">
+                    <text class="gray01 f28">手机号：</text>{{giveAddress.userPhone}}
+                    <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
+                  </view>
+                </view>
+                <view class="gray04 f28">
+                  <text class="gray01 f28">送衣地址：</text>{{giveAddress.address}}({{giveAddress.addr}})
+                  <text class="red-color f28" wx:if="{{giveAddress.isDefault*1 == 1}}"> 【默认】</text>
+                </view>
+              </view>
+            </navigator>
+          </block>
+        </view>
+      </block>
+      <view class="progress"></view>
+      <view class="msg-item gray01 f28 time">
+        <view>预取时间:</view>
+        <view class="gray04 picker-time">
+          <picker mode="date" value="{{prefetchingTime}}" start="{{startTime}}" end="{{endTime}}" bindchange="handleDateChange">
+            <block wx:if="{{prefetchingTime==''}}">
+              <view class="picker-time-text">
+                <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
+                <text style="padding-left: 10rpx;" class="main-color">请选择</text>
+              </view>
+            </block>
+            <view wx:else class="picker-time-text main-color">{{prefetchingTime}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="wapper">
         <view class="items-wapper">
           <block wx:for="{{trolleys}}" wx:key="{{index}}">
             <view class="detail-items">
@@ -36,99 +117,26 @@
     <!-- 地址等备注信息 -->
     <view class="messages">
       <view class="wapper">
-        <view class="receipt-address gray01 f28 msg-item2">
-          <view>取衣地址:</view>
-          <block wx:if="{{!takeAddress}}">
-            <view>
-              <navigator url="../addressChoose/addressChoose?type=1" hover-class="none">
-                <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
-                <text style="padding-left: 10rpx;" class="gray04">请选择</text>
-              </navigator>
-            </view>
-          </block>
-        </view>
-        <view class="gray02">
-          <block wx:if="{{takeAddress}}">
-            <navigator url="../addressChoose/addressChoose?type=1" class="address-item">
-              <view>
-                <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
-              </view>
-              <view>
-                <view>
-                  <view class="gray04 f28">
-                    <text class="gray01 f28">姓名：</text>{{takeAddress.userName}}</view>
-                  <view class="gray04 f28">
-                    <text class="gray01 f28">手机号：</text>{{takeAddress.userPhone}}
-                    <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
-                  </view>
-                </view>
-                <view class="gray04 f28">
-                  <text class="gray01 f28">地址：</text>{{takeAddress.address}}
-                  <text class="red-color f28" wx:if="{{takeAddress.isDefault*1 == 1}}"> 【默认】</text>
-                </view>
-              </view>
-            </navigator>
-          </block>
-        </view>
-        <block wx:if="{{isVIP}}">
-          <view class="delivery-address gray01 f28 msg-item2">
-            <view>送衣地址:</view>
-            <block wx:if="{{!giveAddress}}">
-              <view>
-                <navigator url="../addressChoose/addressChoose?type=2" hover-class="none">
-                  <image src="../../assets/m_list_btns_04.png" style="width:44rpx;height:44rpx;position:relative;top:10rpx;"></image>
-                  <text style="padding-left: 10rpx;" class="gray04">请选择</text>
-                </navigator>
-              </view>
-            </block>
-          </view>
-          <view class="gray02">
-            <block wx:if="{{giveAddress}}">
-              <navigator url="../addressChoose/addressChoose?type=2" class="address-item">
-                <view>
-                  <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
-                </view>
-                <view>
-                  <view>
-                    <view class="gray04 f28">
-                      <text class="gray01 f28">姓名：</text>{{giveAddress.userName}}</view>
-                    <view class="gray04 f28">
-                      <text class="gray01 f28">手机号：</text>{{giveAddress.userPhone}}
-                      <image src="../../assets/switch.png" style="width:30rpx;height:30rpx;position: absolute;right: 10rpx;top:12rpx;"></image>
-                    </view>
-                  </view>
-                  <view class="gray04 f28">
-                    <text class="gray01 f28">地址：</text>{{giveAddress.address}}
-                    <text class="red-color f28" wx:if="{{giveAddress.isDefault*1 == 1}}"> 【默认】</text>
-                  </view>
-                </view>
-              </navigator>
-            </block>
-          </view>
-        </block>
-        <view class="msg-item gray01 f28 time">
-          <view>预取时间:</view>
-          <view class="gray04 picker-time">
-            <picker mode="date" value="{{prefetchingTime}}" start="{{startTime}}" end="{{endTime}}" bindchange="handleDateChange">
-              <block wx:if="{{prefetchingTime==''}}">
-                <view class="picker-time-text">
-                  <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
-                  <text style="padding-left: 10rpx;">请选择</text>
-                </view>
-              </block>
-              <view wx:else class="picker-time-text">{{prefetchingTime}}</view>
-            </picker>
-          </view>
-        </view>
         <view class="remarks gray01 f28">
           <view>添加备注:</view>
           <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
               <view class="weui-cell__bd">
-                <textarea maxlength="300" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="bindTextAreaBlur" placeholder="选填：请输入备注信息（长度不得大于300个字符）" style="height: 180rpx" class="f24" />
+                <textarea maxlength="300" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="bindTextAreaBlur" placeholder="选填：请输入备注信息（长度不得大于300个字符）" style="height: 120rpx" class="f24" />
                 <view class="weui-textarea-counter f24">{{remarksLen}}/300</view>
               </view>
             </view>
+          </view>
+        </view>
+        <view class="coupon f24 gray02" wx:if="{{isVIP && commission.freeWash*1>0}}">
+          剩余代金券
+          <text class="red-color">{{commission.freeWash}}</text> 张
+        </view>
+        <view class="use-coupon f24 gray02" bindtap="handleCheckout"  wx:if="{{isVIP && commission.freeWash*1>0}}">
+          <view class="checkbox" id="{{index}}">
+            <icon color="#1aaade" class="weui-icon-checkbox_circle" style="position: relative;top:-28rpx;" type="circle" size="20" wx:if="{{!couponChecked}}"></icon>
+            <icon color="#1aaade" style="position: relative;top:-28rpx;" class="weui-icon-checkbox_success" type="success" size="20" wx:if="{{couponChecked}}"></icon>
+            是否使用代金券<text class="gray05">（注：每个订单只能使用一张）</text>
           </view>
         </view>
         <view class="f24 gray05 notice">注：点击提交订单暨表示已阅读并同意
@@ -136,19 +144,14 @@
         </view>
       </view>
     </view>
-    <view class="coupon f28 gray02" wx:if="{{isVIP && commission.freeWash*1>0}}">剩余代金券
-      <text class="red-color">{{commission.freeWash}}</text> 张，本次订单使用
-      <text class="red-color">{{useCoupons}}</text>张，优惠
-      <text class="red-color">￥{{countGoodsLength
-        <=commission.freeWash*1?countGoodsLength*10:commission.freeWash*10}}</text>元</view>
     <view class="placeholder-box120"></view>
     <!-- 底部 -->
     <view class="footer">
       <view class="f24">
+        已优惠：
+        <text class="red-color f28">￥{{couponChecked?'10':'0'}}元</text>
         总计：
-        <text class="red-color f28">￥{{totalPrice}}</text>
-        需付：
-        <text class="red-color f28">￥{{totalPrice-useCoupons*10}}</text>
+        <text class="red-color f28">￥{{totalPrice}}元</text>
       </view>
       <view>
         <text class="main-bg f28 main-bgi" bindtap="handleBuy">提交订单</text>

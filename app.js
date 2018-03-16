@@ -21,12 +21,23 @@ App({
       wx.request({
         url: `${this.globalData.api}/user/modify_parentid?userId=${user.userId}&parentId=${this.globalData.parentID}`,
         success: res => {
-          wx.showModal({
-            content: res.data.msg,
-            showCancel: false
-          });
+          // wx.showModal({
+          //   content: res.data.msg,
+          //   showCancel: false
+          // });
         }
       });
+      if (this.globalData.isVIP) {
+        wx.showModal({
+          title: '温馨提示！',
+          content: '您已是衣随行会员，无需重复操作！感谢您的支持，祝您生活愉快！',
+          showCancel: false
+        });
+      } else {
+        wx.navigateTo({
+          url: '/pages/register/register'
+        });
+      }
     }
   },
   loginIn() {

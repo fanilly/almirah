@@ -5,8 +5,8 @@ Page({
 
   data: {
     countGoodsLength: 0,
-    useCoupons: 0,
     commission: null,
+    couponChecked: false, //是否使用代金券
     isVIP: false,
     loaded: false, //是否加载完成
     prefetchingTime: '', //选择的预取时间
@@ -35,6 +35,44 @@ Page({
     }
   },
 
+  getTakeAddressAndGiveAddress(defaultAddress) {
+    //从storage中取衣地址及送衣地址
+    wx.getStorage({
+      key: 'takeAddress',
+      success: res => {
+        this.setData({
+          takeAddress: JSON.parse(res.data),
+          loaded: true
+        });
+      },
+      fail: err => {
+        if (defaultAddress) {
+          this.setData({
+            takeAddress: defaultAddress,
+            loaded: true
+          });
+        }
+      }
+    });
+    wx.getStorage({
+      key: 'giveAddress',
+      success: res => {
+        this.setData({
+          giveAddress: JSON.parse(res.data),
+          loaded: true
+        });
+      },
+      fail: err => {
+        if (defaultAddress) {
+          this.setData({
+            giveAddress: defaultAddress,
+            loaded: true
+          });
+        }
+      }
+    });
+  },
+
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
@@ -42,9 +80,11 @@ Page({
     this.setData({
       startTime: formatDate(new Date()),
       isVIP: app.globalData.isVIP,
-      endTime:formatDate(new Date(twoDaysLater)),
+      endTime: formatDate(new Date(twoDaysLater)),
       commission: app.globalData.commission
     });
+
+
 
     // 从购物车中获取商品渲染
     wx.getStorage({
@@ -63,11 +103,6 @@ Page({
           totalPrice: totalPrice,
           countGoodsLength
         });
-        let useCoupons = this.data.countGoodsLength <= this.data.commission.freeWash * 1 ? this.data.countGoodsLength : this.data.commission.freeWash
-        console.log(useCoupons);
-        this.setData({
-          useCoupons
-        });
       }
     });
 
@@ -79,13 +114,21 @@ Page({
       },
       success: res => {
         if (res.data.status == 1) {
-          this.setData({
-            takeAddress: res.data.data,
-            giveAddress: res.data.data,
-            loaded: true
-          });
+          this.getTakeAddressAndGiveAddress(res.data.data);
+        } else {
+          this.getTakeAddressAndGiveAddress();
         }
+      },
+      fail: err => {
+        this.getTakeAddressAndGiveAddress();
       }
+    });
+  },
+
+  // 切换是否使用代金券
+  handleCheckout() {
+    this.setData({
+      couponChecked: !this.data.couponChecked
     });
   },
 
@@ -111,7 +154,7 @@ Page({
   //购买
   handleBuy() {
     if (!this.data.takeAddress) {
-      console.log(123)
+      console.log(123);
       wx.showModal({
         content: '请选择取衣地址',
         showCancel: false
@@ -160,7 +203,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
         userId: app.globalData.userID,
-        useCoupons: this.data.useCoupons,
+        useCoupons: this.data.couponChecked ? 1 : 0,
         orderScore: 1,
         goods: JSON.stringify(goods),
         userAddressId: this.data.takeAddress.addressId,
@@ -170,9 +213,9 @@ Page({
         orderRemarks: this.data.remarks
       },
       success: res => {
-        console.log('------')
+        console.log('------');
         console.log(res);
-        console.log('------')
+        console.log('------');
         wx.hideLoading();
         let data = res.data;
         wx.requestPayment({
@@ -191,18 +234,18 @@ Page({
                 duration: 1500
               });
 
-              app.globalData.updateAlmirah=true;
+              app.globalData.updateAlmirah = true;
 
               // 清空购物车
               wx.removeStorage({
                 key: 'laundryTrolley'
               });
 
-              app.globalData.commission.freeWash = app.globalData.commission.freeWash * 1 - this.data.useCoupons * 1;
+              app.globalData.commission.freeWash = this.data.couponChecked ? app.globalData.commission.freeWash * 1 - 1 : app.globalData.commission.freeWash;
 
               setTimeout(() => {
                 wx.redirectTo({
-                  url: '../orders/orders'
+                  url: `../success/success?type=laundry&orderId=${data.orderId}&createTime=${data.creatime}`
                 });
               }, 800);
             } else {
@@ -211,6 +254,11 @@ Page({
                 image: '../../assets/warning.png',
                 duration: 1500
               });
+              // setTimeout(() => {
+              //   wx.redirectTo({
+              //     url: '../fail/fail?type=laundry'
+              //   });
+              // }, 800);
             }
 
 

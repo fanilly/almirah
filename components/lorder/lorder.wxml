@@ -43,17 +43,20 @@
             </view>
           </navigator>
           <view class="o-footer">
-            <view wx:if="{{item.isOver != 1 && isvip}}" class="o-btn" bindtap="handleCheckSell" id="{{index}}">出售</view>
-            <view wx:if="{{item.isOver != 1}}" class="o-btn" bindtap="handleConfirm" id="{{index}}">确认收货</view>
-            <view wx:if="{{item.isOver == 1}}" class="o-btn" bindtap="handleDelOrder" id="{{index}}">删除订单</view>
+            <view wx:if="{{item.orderMark == 1 || item.orderMark == 2}}" class="o-btn" bindtap="handleUrge" id="{{index}}">催促取衣</view>
+            <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" id="{{index}}">出售</view>
+            <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" id="{{index}}">存储</view>
+            <view wx:if="{{item.orderMark*1 >= 3 && item.orderMark*1 <= 7}}" class="o-btn" bindtap="handleConfirm" id="{{index}}">确认收货</view>
+            <view wx:if="{{item.orderMark == 8}}" class="o-btn" bindtap="handleGoEvaluate" id="{{index}}" data-order="{{item.orderId}}">立即评价</view>
+            <view wx:if="{{item.orderMark == 9}}" class="o-btn" bindtap="handleDelOrder" id="{{index}}">删除订单</view>
+            <view wx:if="{{item.orderMark == 0}}" class="o-btn" bindtap="handlePayment" id="{{index}}">立即付款</view>
           </view>
         </view>
       </block>
     </view>
     <!-- 底线 -->
     <view class="public-footer">
-      <text></text>我是有底线的
-      <text></text>
+      已加载全部数据
     </view>
   </block>
   <!-- 选择出售商品 -->

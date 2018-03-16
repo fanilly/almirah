@@ -1,0 +1,124 @@
+<!--pages/evaluate/evaluate.wxml-->
+<view class="contaier">
+  <view class="main">
+    <view id="5" catchtap="evaluate">
+      <view>
+        <image src="{{score == 5 ? '../../assets/icon10-active.png' : '../../assets/icon10.png'}}"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>非常满意</view>
+    </view>
+    <view id="4" catchtap="evaluate">
+      <view>
+        <image src="{{score == 4 ? '../../assets/icon10-active.png' : '../../assets/icon10.png'}}"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>满意</view>
+    </view>
+    <view id="3" catchtap="evaluate">
+      <view>
+        <image src="{{score == 3 ? '../../assets/icon10-active.png' : '../../assets/icon10.png'}}"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>一般</view>
+    </view>
+    <view id="2" catchtap="evaluate">
+      <view>
+        <image src="{{score == 2 ? '../../assets/icon10-active.png' : '../../assets/icon10.png'}}"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>不满意</view>
+    </view>
+    <view id="1" catchtap="evaluate">
+      <view>
+        <image src="{{score == 1 ? '../../assets/icon10-active.png' : '../../assets/icon10.png'}}"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>
+        <image src="../../assets/icon11-active.png"></image>
+      </view>
+      <view>非常不满意</view>
+    </view>
+  </view>
+  <view class="remarks gray01 f28">
+    <view class="title">文字叙述:</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea maxlength="200" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="bindTextAreaBlur" placeholder="选填：本次洗涤服务满足您的期待吗？" style="height: 120rpx" class="f24" />
+          <view class="weui-textarea-counter f24">{{remarksLen}}/200</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <text bindtap="handleSubmitEvaluate" class="main-bgi">提交</text>
+  </view>
+</view>

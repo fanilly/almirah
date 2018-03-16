@@ -26,6 +26,12 @@
         <view class="f28 gray01">衣物交易</view>
       </view>
     </navigator>
+    <navigator url="../selling/selling">
+      <view>
+        <image src="../../assets/o_btns_05.png" style="width: 65rpx;height: 65rpx"></image>
+        <view class="f28 gray01">出售衣物</view>
+      </view>
+    </navigator>
   </view>
   <!-- title -->
   <view class="hot-title">

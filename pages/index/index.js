@@ -68,12 +68,23 @@ Page({
           url: `${app.globalData.api}/user/modify_parentid?userId=${app.globalData.userID}&parentId=${getedScene}`,
           success: res => {
             console.log(res);
-            wx.showModal({
-              content: res.data.msg,
-              showCancel: false
-            });
+            // wx.showModal({
+            //   content: res.data.msg,
+            //   showCancel: false
+            // });
           }
         });
+        if (app.globalData.isVIP) {
+          wx.showModal({
+            title: '温馨提示！',
+            content: '您已是衣随行会员，无需重复操作！感谢您的支持，祝您生活愉快！',
+            showCancel: false
+          });
+        } else {
+          wx.navigateTo({
+            url: '../register/register'
+          });
+        }
       } else {
         app.globalData.parentID = getedScene;
       }
@@ -142,6 +153,15 @@ Page({
         console.log('fail');
       }
     };
+  },
+
+  handleScanCode() {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: (res) => {
+        console.log(res)
+      }
+    });
   },
 
   //banner图片加载

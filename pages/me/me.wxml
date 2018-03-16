@@ -81,19 +81,6 @@
         </view>
       </navigator>
       <block>
-        <navigator url="../orders/orders">
-          <view class="flag-icon">
-            <image src="../../assets/m_list_btns_03.png" style="width: 55rpx;height: 55rpx"></image>
-          </view>
-          <view class="f28 gray01 text-con">
-            洗衣记录
-          </view>
-          <view class="xs-arrow">
-            <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
-          </view>
-        </navigator>
-      </block>
-      <block>
         <navigator url="../sellRecord/sellRecord">
           <view class="flag-icon">
             <image src="../../assets/m_list_btns_03.png" style="width: 55rpx;height: 55rpx"></image>

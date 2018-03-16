@@ -34,7 +34,7 @@ Page({
             break;
           }
         }
-        let list = res.data.imageList;
+        let list = res.data.imageList || [];
         for (i = 0; i < list.length; i++) {
           files.push({
             url: list[i].goodsImg,

@@ -4,27 +4,23 @@ const app = getApp();
  * @param  {[Object]} that [app 对象]
  * @return {[void]}      [无返回值]
  */
-module.exports = (that,orderMark) => {
-  that.setData({
-    hasOrderList: 1
-  });
+module.exports = (that, orderMark, fn1, fn2) => {
+  let data = {
+    userId: app.globalData.userID
+  };
+  if (orderMark) data.orderMark = orderMark;
   wx.request({
     url: `${app.globalData.api}/order/order_list`,
-    data: {
-      userId: app.globalData.userID,
-      orderMark: orderMark || ''
-    },
+    data,
     success: res => {
-      console.log(res);
-      if (res.data) {
-        that.setData({
-          lists: res.data,
-          hasOrderList: 2
-        });
+      // 隐藏加载动画
+      that.setData({
+        startRefresh: false
+      });
+      if (!res.data || res.data.length <= 0) {
+        if (fn1) fn1();
       } else {
-        that.setData({
-          hasOrderList: 3
-        });
+        if (fn2) fn2(res.data);
       }
     }
   });

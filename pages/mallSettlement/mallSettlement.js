@@ -74,7 +74,8 @@ Page({
         orderRemarks: leavingMessage
       },
       success: res => {
-
+        console.log(res)
+        wx.hideLoading();
         let data = res.data;
         wx.requestPayment({
           timeStamp: data.timeStamp.toString(),
@@ -99,9 +100,8 @@ Page({
               });
 
               setTimeout(() => {
-                //跳转
                 wx.redirectTo({
-                  url: '../sellRecord/sellRecord'
+                  url: `../success/success?type=mall&orderId=${data.orderId}&createTime=${data.creatime}`
                 });
               }, 800);
 
@@ -111,6 +111,11 @@ Page({
                 image: '../../assets/warning.png',
                 duration: 1500
               });
+              // setTimeout(() => {
+              //   wx.redirectTo({
+              //     url: '../fail/fail?type=mall'
+              //   });
+              // }, 800);
             }
 
           },

@@ -1,5 +1,26 @@
 /* pages/washing/washing.wxss */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  padding: 0 15rpx;
+  background-color: #fff;
+  box-shadow: 0 3px 8px #e2e2e2;
+  display: flex;
+  box-sizing: border-box;
+}
 
+.header view {
+  width: 150rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.header view.active {
+  border-bottom: 4rpx #1aaade solid;
+}
 .order {
   position: fixed;
   bottom: 15rpx;
@@ -7,7 +28,7 @@
 }
 
 .loadbox {
-  height: 280rpx;
+  height: 190rpx;
 }
 
 .btn {
@@ -62,4 +83,13 @@
 .goods-list-box view {
   display: inline-block;
   padding: 20rpx 30rpx;
+}
+
+.loading-box {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px #ccc;
+  margin: 60rpx auto;
 }

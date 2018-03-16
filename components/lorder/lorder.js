@@ -39,6 +39,14 @@ Component({
       console.log('stop propagation');
     },
 
+    //去评价
+    handleGoEvaluate(e){
+      let orderId = e.currentTarget.dataset.order;
+      wx.navigateTo({
+        url:`../evaluate/evaluate?orderId=${orderId}`
+      });
+    },
+
     //确认收货
     handleConfirm(e) {
       wx.showModal({

@@ -13,13 +13,38 @@ Page({
   //生命周期函数--监听页面加载
   onLoad(options) {
     //获取订单数据
-    getLOrderList(this);
+    getLOrderList(this, false, () => {
+      this.setData({
+        hasOrderList: 3,
+        lists: res
+      });
+    }, (res) => {
+      this.setData({
+        hasOrderList: 2,
+        lists: res
+      });
+    });
   },
 
   // 下拉刷新
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh(); //停止下拉刷新
-    getLOrderList(this);
+    // getLOrderList(this);
+    this.setData({
+      lists: [],
+      hasOrderList: 1
+    });
+    getLOrderList(this, false, () => {
+      this.setData({
+        hasOrderList: 3,
+        lists: res
+      });
+    }, (res) => {
+      this.setData({
+        hasOrderList: 2,
+        lists: res
+      });
+    });
   },
 
   // 生命周期函数--监听页面显示
@@ -51,8 +76,19 @@ Page({
         }
       });
     }
-    if(app.globalData.updateAlmirah){
-      getLOrderList(this);
+    if (app.globalData.updateAlmirah) {
+      //获取订单数据
+      getLOrderList(this, false, () => {
+        this.setData({
+          hasOrderList: 3,
+          lists: res
+        });
+      }, (res) => {
+        this.setData({
+          hasOrderList: 2,
+          lists: res
+        });
+      });
       app.globalData.updateAlmirah = false;
     }
   }

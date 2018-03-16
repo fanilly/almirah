@@ -1,9 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/trolley/trolley",
-    "pages/productDetail/productDetail",
+    "pages/mall/mall",
     "pages/laundryOrder/laundryOrder",
+    "pages/laundrySettlement/laundrySettlement",
+    "pages/trolley/trolley",
+    "pages/mallSettlement/mallSettlement",
+    "pages/productDetail/productDetail",
     "pages/notice/notice",
     "pages/register/register",
     "pages/almirah/almirah",
@@ -18,9 +21,7 @@
     "pages/helpsArticle3/helpsArticle3",
     "pages/helpsArticle2/helpsArticle2",
     "pages/helpsArticle1/helpsArticle1",
-    "pages/mallSettlement/mallSettlement",
     "pages/bindphone/bindphone",
-    "pages/mall/mall",
     "pages/donation/donation",
     "pages/hello/hello",
     "pages/messages/messages",
@@ -29,7 +30,6 @@
     "pages/helps/helps",
     "pages/sellRecord/sellRecord",
     "pages/selling/selling",
-    "pages/laundrySettlement/laundrySettlement",
     "pages/search/search",
     "pages/washRecord/washRecord",
     "pages/washing/washing",
@@ -38,6 +38,9 @@
     "pages/addressManager/addressManager",
     "pages/newAddress/newAddress",
     "pages/feedback/feedback",
+    "pages/evaluate/evaluate",
+    "pages/success/success",
+    "pages/fail/fail",
     "pages/orders/orders"
   ],
   "tabBar": {
