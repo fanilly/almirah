@@ -10,7 +10,7 @@
   <block wx:if="{{loaded}}">
     <view class="main">
       <view class="f32 gray01 title">{{content.orderStatus}}</view>
-      <view class="f24 gray03 say">感谢您对净衣客的支持，欢迎再次下单</view>
+      <view class="f24 gray03 say">{{content.orderStatus == '支付成功' ? '已通知商家上门取件' : '感谢您对净衣客的支持，欢迎再次下单'}}</view>
       <view class="content">
         <block wx:for="{{content.goodsList}}" wx:key="{{index}}">
           <view class="goods-list gray03 f26">
@@ -21,8 +21,44 @@
         <view class="gray03 f26">订单号：{{content.orderId}}</view>
         <view class="gray03 f26">下单时间：{{content.createTime}}</view>
         <view class="gray03 f26">预取时间：{{content.requireTime}}</view>
-        <view class="gray03 f26">店家地址：{{content.shopName}}</view>
+        <view class="gray03 f26">店家名称：{{content.shopName}}</view>
         <view class="gray03 f26">店家电话：{{content.shopTel}}</view>
+        <view class="gray03 f26">店家地址：{{content.shopAddress}}</view>
+        <view class="gray03 f26">使用优惠券：{{content.useCoupons}}张</view>
+        <view class="address-item">
+          <view>
+            <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+          </view>
+          <view>
+            <view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">姓名：</text>{{content.getName}}</view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">手机号：</text>{{content.getPhone}}
+              </view>
+            </view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">取衣地址：</text>{{content.getAddress}}
+            </view>
+          </view>
+        </view>
+        <view class="address-item" wx:if="{{isVIP}}">
+          <view>
+            <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+          </view>
+          <view>
+            <view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">姓名：</text>{{content.userName}}</view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">手机号：</text>{{content.userPhone}}
+              </view>
+            </view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">送衣地址：</text>{{content.userAddress}}
+            </view>
+          </view>
+        </view>
         <view class="gray03 f26">订单备注：</view>
         <view class="gray03 f26 remark">{{content.orderRemarks?content.orderRemarks:'此订单无备注'}}</view>
       </view>

@@ -20,7 +20,7 @@ Page({
   },
 
   //去购买会员
-  handleBuyVip() {
+  handleGoExpress() {
     if (!app.globalData.isVIP) {
       wx.showModal({
         content: '您现在还不是会员，只有成为会员之后才能使用衣物流通功能哟~',
@@ -34,8 +34,28 @@ Page({
         }
       });
     } else {
-      wx.switchTab({
-        url: '../almirah/almirah'
+      wx.navigateTo({
+        url: '../express/express'
+      });
+    }
+  },
+
+  handleGoWashRecord() {
+    if (!app.globalData.isVIP) {
+      wx.showModal({
+        content: '您现在还不是会员，只有成为会员之后才能使用衣物储存功能哟~',
+        confirmText: '成为会员',
+        success: function(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../register/register'
+            });
+          }
+        }
+      });
+    } else {
+      wx.navigateTo({
+        url: '../washRecord/washRecord'
       });
     }
   },
@@ -159,7 +179,7 @@ Page({
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
-        console.log(res)
+        console.log(res);
       }
     });
   },

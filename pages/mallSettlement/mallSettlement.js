@@ -42,7 +42,6 @@ Page({
       }
     });
 
-
   },
 
   startBuy() {
@@ -74,62 +73,95 @@ Page({
         orderRemarks: leavingMessage
       },
       success: res => {
-        console.log(res)
+        console.log(res);
         wx.hideLoading();
-        let data = res.data;
-        wx.requestPayment({
-          timeStamp: data.timeStamp.toString(),
-          nonceStr: data.nonceStr,
-          paySign: data.paySign,
-          package: data.package,
-          signType: 'MD5',
-          success: res => {
-            console.log(res);
-
-            if (res.errMsg == 'requestPayment:ok') {
-              wx.showToast({
-                title: '下单成功',
-                icon: 'success',
-                duration: 1500
-              });
-
-              //删除购物车中数据
-              wx.setStorage({
-                key: 'mallTrolley',
-                data: JSON.stringify(mallTrolley)
-              });
-
-              setTimeout(() => {
-                wx.redirectTo({
-                  url: `../success/success?type=mall&orderId=${data.orderId}&createTime=${data.creatime}`
+        if (res.data.status && res.data.status == 2) {
+          wx.showModal({
+            content: '购物车中已有商品被卖出，是否清空购物车?',
+            confirmText: '清空',
+            success: res => {
+              if (res.confirm) {
+                wx.removeStorage({
+                  key: 'mallTrolley',
+                  success: res => {
+                    //弹出提示
+                    wx.showToast({
+                      title: '清空成功',
+                      icon: 'success',
+                      duration: 1500
+                    });
+                    app.globalData.totalTrolleyLen = 0;
+                    setTimeout(() => {
+                      wx.switchTab({
+                        url: '../index/index'
+                      });
+                    }, 600);
+                  }
                 });
-              }, 800);
-
-            } else {
-              wx.showToast({
-                title: '网络异常',
-                image: '../../assets/warning.png',
-                duration: 1500
-              });
-              // setTimeout(() => {
-              //   wx.redirectTo({
-              //     url: '../fail/fail?type=mall'
-              //   });
-              // }, 800);
+              }
             }
+          });
+        } else {
+          let data = res.data;
+          wx.requestPayment({
+            timeStamp: data.timeStamp.toString(),
+            nonceStr: data.nonceStr,
+            paySign: data.paySign,
+            package: data.package,
+            signType: 'MD5',
+            success: res => {
+              console.log(res);
 
-          },
-          fail: res => {
-            console.log(res);
-            if (res.errMsg == 'requestPayment:fail cancel') {
-              wx.showToast({
-                title: '取消支付',
-                image: '../../assets/warning.png',
-                duration: 1500
-              });
+              if (res.errMsg == 'requestPayment:ok') {
+                wx.showToast({
+                  title: '下单成功',
+                  icon: 'success',
+                  duration: 1500
+                });
+
+                //删除购物车中数据
+                wx.setStorage({
+                  key: 'mallTrolley',
+                  data: JSON.stringify(mallTrolley)
+                });
+
+                wx.switchTab({
+                  url: '../almirah/almirah'
+                });
+
+                // setTimeout(() => {
+                //   wx.redirectTo({
+                //     url: `../success/success?type=mall&orderId=${data.goodsId}&createTime=${data.creatime}`
+                //   });
+                // }, 800);
+
+              } else {
+                wx.showToast({
+                  title: '网络异常',
+                  image: '../../assets/warning.png',
+                  duration: 1500
+                });
+                // setTimeout(() => {
+                //   wx.redirectTo({
+                //     url: '../fail/fail?type=mall'
+                //   });
+                // }, 800);
+              }
+
+            },
+            fail: res => {
+              console.log(res);
+              if (res.errMsg == 'requestPayment:fail cancel') {
+                wx.showToast({
+                  title: '取消支付',
+                  image: '../../assets/warning.png',
+                  duration: 1500
+                });
+              }
             }
-          }
-        });
+          });
+        }
+
       },
       fail() {
         wx.showToast({

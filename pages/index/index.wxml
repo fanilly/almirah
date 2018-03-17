@@ -28,14 +28,14 @@
       <image src="../../assets/nav_icon02.png" style="width: 100rpx;height: 100rpx;"></image>
       <view class="f28" style="color:#ffb3ec">衣物交易</view>
     </navigator>
-    <view url="../register/register" bindtap="handleBuyVip" class="nav-item">
+    <view bindtap="handleGoExpress" class="nav-item">
       <image src="../../assets/nav_icon04.png" style="width: 100rpx;height: 100rpx;"></image>
       <view class="f28" style="color:#f2acff">衣物流通</view>
     </view>
-    <navigator hover-class="none" url="../donation/donation" class="nav-item">
+    <view url="../washRecord/washRecord" bindtap="handleGoWashRecord" class="nav-item">
       <image src="../../assets/nav_icon03.png" style="width: 100rpx;height: 100rpx;"></image>
       <view class="f28" style="color:#ffb7a5">衣物储存</view>
-    </navigator>
+    </view>
   </view>
   <!-- bnts -->
   <block wx:if="xx">

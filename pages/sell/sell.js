@@ -2,27 +2,37 @@
 const app = getApp();
 import { formatDate } from '../../utils/util.js';
 import uploadImages from '../../request/uploadImages.js';
-let goodsID, ID, shopID;
+let goodsID, ID, shopID, flag;
 Page({
 
   data: {
-    fewNews:[ '一成新', '二成新', '三成新', '四成新', '五成新', '六成新', '七成新', '八成新', '九成新', '十成新'],
+    fewNews: ['一成新', '二成新', '三成新', '四成新', '五成新', '六成新', '七成新', '八成新', '九成新', '十成新'],
     descLen: 0, //商品描述长度
     endTime: '', //买入时间的最大可选时间
     fewNew: '', //买入时间
     delIndex: -1, //当前显示删除按钮的图片在files数组中的索引
-    files: [] //商品图片
+    files: [], //商品图片
+    isSell: false,
+    flag: 'sell'
   },
 
   // 生命周期函数--监听页面加载
   onLoad(options) {
-    //设置买入时间的最大可选范围
-    this.setData({
-      endTime: formatDate(new Date())
-    });
     goodsID = options.goodsID;
     ID = options.ID;
     shopID = options.shopID;
+    flag = options.flag;
+    //设置买入时间的最大可选范围
+    this.setData({
+      endTime: formatDate(new Date()),
+      isSell: flag == 'sell' ? true : false,
+      flag: flag
+    });
+    if (flag == 'storage') {
+      wx.setNavigationBarTitle({ title: '商品存储' });
+    } else if (flag == 'express') {
+      wx.setNavigationBarTitle({ title: '商品流通' });
+    }
   },
 
   //选择买入时间
@@ -52,61 +62,141 @@ Page({
   handleFormSubmit(e) {
     let datas = e.detail.value,
       imgs = this.data.files;
-    if (!datas.goodsname) {
-      this.showMsg('请输入商品名称');
-    } else if (!this.data.fewNew) {
-      this.showMsg('请选择新旧程度');
-    } else if (!datas.size) {
-      this.showMsg('请输入商品尺码');
-    } else if (!datas.color) {
-      this.showMsg('请输入商品颜色');
-    } else if (!datas.oldprice) {
-      this.showMsg('请输入商品原价');
-    } else if (!datas.nowprice) {
-      this.showMsg('请输入商品现价');
-    } else if (!datas.desc) {
-      this.showMsg('请输入商品描述');
-    } else if (imgs.length < 1) {
-      this.showMsg('请至少上传一张商品图片');
-    } else {
-      wx.showLoading({ title: '上传中' });
-      //上传商品 首先上传标题等信息
-      //如果上传成功 会返回一个商品id
-      //再根据商品ID 上传商品图片
-      //buyTime
-      wx.request({
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        url: `${app.globalData.api}/goods/putup`,
-        data: {
-          goodsCat: goodsID,
-          userId: app.globalData.userID,
-          shopId: shopID,
-          goodsName: datas.goodsname,
-          goodsSize: datas.size,
-          goodsColor: datas.color,
-          originalPrice: datas.oldprice,
-          presentPrice: datas.nowprice,
-          buyTime: this.data.fewNews[this.data.fewNew],
-          goodsDesc: datas.desc
-        },
-        success: res => {
-          console.log(res);
-          if (res.data.status == 1) {
-            uploadImages(imgs, res.data.data);
-          } else {
-            wx.hideLoading();
-            wx.showToast({
-              title: '网络异常',
-              image: '../../assets/warning.png',
-              duration: 1500
-            });
+    if (this.data.flag == 'sell') { //出售
+      if (!datas.goodsname) {
+        this.showMsg('请输入商品名称');
+      } else if (!this.data.fewNew) {
+        this.showMsg('请选择新旧程度');
+      } else if (!datas.size) {
+        this.showMsg('请输入商品尺码');
+      } else if (!datas.color) {
+        this.showMsg('请输入商品颜色');
+      } else if (!datas.oldprice) {
+        this.showMsg('请输入商品原价');
+      } else if (!datas.nowprice) {
+        this.showMsg('请输入商品现价');
+      } else if (!datas.desc) {
+        this.showMsg('请输入商品描述');
+      } else if (imgs.length < 1) {
+        this.showMsg('请至少上传一张商品图片');
+      } else {
+        wx.showLoading({ title: '上传中' });
+        //上传商品 首先上传标题等信息
+        //如果上传成功 会返回一个商品id
+        //再根据商品ID 上传商品图片
+        //buyTime
+        wx.request({
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          url: `${app.globalData.api}/goods/putup`,
+          data: {
+            goodsType: 3,
+            goodsStatus: 0,
+            goodsCat: goodsID,
+            userId: app.globalData.userID,
+            shopId: shopID,
+            goodsName: datas.goodsname,
+            goodsSize: datas.size,
+            goodsColor: datas.color,
+            originalPrice: datas.oldprice,
+            presentPrice: datas.nowprice,
+            buyTime: this.data.fewNews[this.data.fewNew],
+            goodsDesc: datas.desc
+          },
+          success: res => {
+            console.log(res);
+            if (res.data.status == 1) {
+              uploadImages(imgs, res.data.data);
+            } else {
+              wx.hideLoading();
+              wx.showToast({
+                title: '网络异常',
+                image: '../../assets/warning.png',
+                duration: 1500
+              });
+            }
           }
-        }
-      });
+        });
+      }
+    } else if (this.data.flag == 'storage') { //存储
+      if (imgs.length < 3) {
+        this.showMsg('请至少上传三张图片（注：一张为整体照片、一张为细节照片、一张为商标照片）')
+      } else {
+        wx.showLoading({ title: '上传中' });
+        wx.request({
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          url: `${app.globalData.api}/goods/putup`,
+          data: {
+            goodsType: 1,
+            goodsStatus: 0,
+            goodsCat: goodsID,
+            userId: app.globalData.userID,
+            shopId: shopID
+          },
+          success: res => {
+            console.log(res);
+            if (res.data.status == 1) {
+              uploadImages(imgs, res.data.data, 'storage');
+            } else {
+              wx.hideLoading();
+              wx.showToast({
+                title: '网络异常',
+                image: '../../assets/warning.png',
+                duration: 1500
+              });
+            }
+          }
+        });
+      }
+    } else {
+      if (!datas.uName) {
+        this.showMsg('请填写收货人姓名');
+      } else if (!datas.uPhone) {
+        this.showMsg('请填写收货人手机号');
+      } else if (!datas.addressDesc) {
+        this.showMsg('请填写收货人详细地址');
+      } else if (imgs.length < 1) {
+        this.showMsg('请至少上传一张图片');
+      } else {
+        wx.showLoading({ title: '上传中' });
+        wx.request({
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          url: `${app.globalData.api}/goods/putup`,
+          data: {
+            goodsType: 2,
+            goodsStatus: 0,
+            goodsCat: goodsID,
+            userId: app.globalData.userID,
+            shopId: shopID,
+            goodsName: datas.uName,
+            goodsSize: datas.uPhone,
+            goodsDesc: datas.addressDesc
+          },
+          success: res => {
+            console.log(res);
+            if (res.data.status == 1) {
+              uploadImages(imgs, res.data.data, 'express');
+            } else {
+              wx.hideLoading();
+              wx.showToast({
+                title: '网络异常',
+                image: '../../assets/warning.png',
+                duration: 1500
+              });
+            }
+          }
+        });
+      }
     }
+
   },
 
   //长按选择删除图片

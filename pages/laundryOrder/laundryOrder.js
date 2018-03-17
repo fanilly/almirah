@@ -284,9 +284,32 @@ Page({
           totalPrice: totalPrice.toFixed(2),
           trolleyContent: trolley
         });
+
+        console.log('++++++++++++++++++++++++++++++++++++')
+        console.log(totalTrolley);
+        console.log('++++++++++++++++++++++++++++++++++++')
+
+
         console.log('----');
+
+
       },
       fail: () => {
+        //如果结算返回 初始化页面显示的数据
+        console.log('已结算 开始初始化页面数据');
+        if (this.data.datas.length) {
+
+          let datas = this.data.datas;
+          for (let h = 0; h < datas.length; h++) {
+            for (let j = 0; j < datas[h].children.length; j++) {
+              datas[h].children[j].total = 0;
+            }
+          }
+          this.setData({
+            datas: datas,
+            lists: datas[this.data.curIndex].children
+          });
+        }
         this.setData({
           totalTrolley: 0,
           totalPrice: 0,

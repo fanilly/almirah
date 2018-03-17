@@ -35,7 +35,7 @@ Page({
     }
   },
   handleGoIndex() {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../index/index'
     });
   }

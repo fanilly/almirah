@@ -213,6 +213,7 @@ Page({
         orderRemarks: this.data.remarks
       },
       success: res => {
+        app.globalData.updateAlmirah = true;
         console.log('------');
         console.log(res);
         console.log('------');

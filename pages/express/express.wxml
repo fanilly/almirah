@@ -1,4 +1,4 @@
-<!--pages/washRecord/washRecord.wxml-->
+<!--pages/selling/selling.wxml-->
 <view class="container">
   <view class="main">
     <!-- 头部 -->
@@ -25,36 +25,25 @@
                       <image src="{{baseUrl}}{{item.goodsThums}}" mode="aspectFill"></image>
                     </view>
                     <view class="rside f32 gray05">
-                      <view class="f26 gray04 pro-title" id="{{item.goodsId}}" bindtap="handleGoDetail">
-                        存储时间：{{item.createTime}}
-                      </view>
+                      <!-- <view class="f26 gray04 pro-title" id="{{item.goodsId}}" bindtap="handleGoDetail">
+                        {{item.goodsName}}
+                      </view> -->
                       <view class="f24 gray04 settings" id="{{item.goodsId}}" bindtap="handleGoDetail">
                         <view>
-                          <!-- 尺码： -->
-                          <!-- <text class="gray05">{{item.goodsUnit}}</text> -->
-                        </view>
-                        <view>
-                          <!-- 颜色： -->
-                          <!-- <text class="gray05">{{item.goodsSpec}}</text> -->
+                          {{item.goodsName}}
+                          <text class="gray05">{{item.goodsSize}}</text>
                         </view>
                       </view>
                       <view class="f24 gray04 settings" id="{{item.goodsId}}" bindtap="handleGoDetail">
                         <view>
                           <!-- 原价： -->
-                          <!-- <text class="gray05">￥{{item.marketPrice}}</text> -->
-                        </view>
-                        <view>
-                          <!-- 现价： -->
-                          <!-- <text class="red-color">￥{{item.shopPrice}}</text> -->
+                          <text class="gray05">{{item.goodsDesc}}</text>
                         </view>
                       </view>
                       <view class="f24 gray03 control">
-                        <view wx:if="{{item.goodsStatus == 0}}" id="{{index}}" bindtap="handleUrgeDelivery">催促</view>
-                        <view wx:if="{{item.goodsStatus == 1}}" id="{{index}}" bindtap="handleRetrieve">取回</view>
-                        <view wx:if="{{item.goodsStatus == 1}}" id="{{item.goodsId}}" bindtap="handleExpress">流通</view>
-                        <view wx:if="{{item.goodsStatus == 1}}" id="{{item.goodsId}}" bindtap="handleSell">交易</view>
-                        <view wx:if="{{item.goodsStatus == 2}}" id="{{index}}" bindtap="handleConfirm">确认收货</view>
-                        <view wx:if="{{item.goodsStatus == 3}}" id="{{index}}" bindtap="handleDelete">删除</view>
+                        <view wx:if="{{item.goodsStatus == 0}}" id="{{index}}" bindtap="handleUrge">催促</view>
+                        <view wx:if="{{item.goodsStatus == 1}}" id="{{index}}" bindtap="handleConfirm">确认收货</view>
+                        <view wx:if="{{item.goodsStatus == 2}}" id="{{index}}" bindtap="handleDelete">删除</view>
                       </view>
                     </view>
                   </view>

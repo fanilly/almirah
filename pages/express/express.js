@@ -1,25 +1,18 @@
-// pages/sellRecord/sellRecord.js
-// 时间一直走 没有尽头 只有路口
+// pages/selling/selling.js
 import getSelling from '../../request/getSelling.js';
-import changeStatus from '../../request/changeStatus.js';
 import deleteGoods from '../../request/deleteGoods.js';
+import changeStatus from '../../request/changeStatus.js';
 import sendMessage from '../../request/sendMessage.js';
 const app = getApp(),
   params = {
     num: [100, 0, 1, 2],
-    msg: ['暂购买商品', '暂无待发货商品', '暂无配送中商品', '暂无已完成商品']
-  },
-  switchStatus = {
-    UserDelete: '删除',
-    Pulloff: '下架',
-    Putup: '上架',
-    Recovery: '收回'
+    msg: ['暂无流通商品', '暂无待流通商品', '暂无流通中商品', '暂无已流通商品']
   };
 
 Page({
 
   data: {
-    btns: ['全部', '待发货', '配送中', '已完成'],
+    btns: ['全部', '待流通', '流通中', '已完成'],
     baseUrl: app.globalData.baseUrl,
     listsAll: [{
       lists: [],
@@ -43,14 +36,6 @@ Page({
     this.handleCheckout({ currentTarget: { id: this.data.currentIndex } });
   },
 
-  //跳转至详情
-  handleGoDetail(e) {
-    console.log(e.currentTarget.id);
-    wx.navigateTo({
-      url: `../productDetail/productDetail?id=${e.currentTarget.id}&self=1`
-    });
-  },
-
   //下拉刷新
   onPullDownRefresh() {
     wx.stopPullDownRefresh();
@@ -63,19 +48,19 @@ Page({
     this.handleCheckout({ currentTarget: { id: this.data.currentIndex } });
   },
 
-  //催促发货
-  handleUrgeDelivery(e) {
-    sendMessage(this, e.currentTarget.id, 'delivery');
-  },
-
-  //确认收货
+  //收货
   handleConfirm(e) {
-    changeStatus(this, e.currentTarget.id, 4, 2, '收货', params);
+    changeStatus(this, e.currentTarget.id, 2, 2, '收货', params);
   },
 
   //删除
   handleDelete(e) {
     deleteGoods(this, e.currentTarget.id, params);
+  },
+
+  //催促
+  handleUrge(e) {
+    sendMessage(this, e.currentTarget.id, 'express');
   },
 
   // 商品类型切换
@@ -88,7 +73,7 @@ Page({
     //如果listsStatus的值为努力加载中 代表当前选项的数据未被加载过
     //加载过的数据不进行二次加载 刷新时重新加载当前选项的数据
     if (this.data.listsAll[index].listsStatus == '努力加载中...' || this.data.startRefresh) {
-      getSelling(4, this, params.num[index], () => {
+      getSelling(2,this, params.num[index], () => {
         let listsAll = this.data.listsAll;
         listsAll[index].listsStatus = params.msg[index];
         this.setData({ listsAll });

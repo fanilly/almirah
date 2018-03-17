@@ -1,9 +1,10 @@
 // pages/selling/selling.js
 import getSelling from '../../request/getSelling.js';
+import deleteGoods from '../../request/deleteGoods.js';
 const app = getApp(),
   params = {
-    num: [1, 2, 3, 0, 4],
-    msg: ['暂无已上架商品', '暂无已下架商品', '暂无已收回商品', '暂无待审核商品', '暂无已售出商品']
+    num: [100, 0, 1, 2],
+    msg: ['暂无出售商品', '暂无待审核商品', '暂无在售商品', '暂无已售出商品']
   },
   switchStatus = {
     UserDelete: '删除',
@@ -15,12 +16,9 @@ const app = getApp(),
 Page({
 
   data: {
-    btns: ['已上架', '已下架', '已收回', '待审核', '已售出'],
+    btns: ['全部', '待审核', '在售', '已售出'],
     baseUrl: app.globalData.baseUrl,
     listsAll: [{
-      lists: [],
-      listsStatus: '努力加载中...'
-    }, {
       lists: [],
       listsStatus: '努力加载中...'
     }, {
@@ -71,74 +69,9 @@ Page({
     this.handleCheckout({ currentTarget: { id: this.data.currentIndex } });
   },
 
-  //下架
-  handlePulloff(e) {
-    this.changeStatus(e.currentTarget.id, 'Pulloff');
-  },
-
-  //上架
-  handlePutup(e) {
-    this.changeStatus(e.currentTarget.id, 'Putup');
-  },
-
-  //收回
-  handleRecovery(e) {
-    this.changeStatus(e.currentTarget.id, 'Recovery');
-  },
-
   //删除
   handleDelete(e) {
-    this.changeStatus(e.currentTarget.id, 'UserDelete');
-  },
-
-  //改变状态
-  changeStatus(index, type) {
-    wx.showModal({
-      content: `确认${switchStatus[type]}`,
-      success: (res) => {
-        if (res.confirm) {
-          wx.showLoading({ title: '请稍后', mask: true });
-          let cIndex = this.data.currentIndex,
-            listsAll = this.data.listsAll;
-          console.log(listsAll[cIndex].lists[index].goodsId);
-          wx.request({
-            url: `${app.globalData.api}/goods/goods_status`,
-            data: {
-              goodsId: listsAll[cIndex].lists[index].goodsId,
-              goodsMark: type
-            },
-            success: res => {
-              wx.hideLoading();
-              if (res.data == 1) {
-                wx.showToast({
-                  title: `${switchStatus[type]}成功`,
-                  icon: 'success',
-                  duration: 1500
-                });
-                listsAll[cIndex].lists.splice(index, 1);
-                if (listsAll[cIndex].lists.length <= 0) {
-                  listsAll[cIndex].listsStatus = params.msg[cIndex];
-                }
-                this.setData({ listsAll });
-              } else {
-                wx.showToast({
-                  title: `${switchStatus[type]}失败`,
-                  image: '../../assets/warning.png',
-                  duration: 1500
-                });
-              }
-            },
-            fail() {
-              wx.showToast({
-                title: '网络异常',
-                image: '../../assets/warning.png',
-                duration: 1500
-              });
-            }
-          });
-        }
-      }
-    });
+    deleteGoods(this, e.currentTarget.id, params);
   },
 
   // 商品类型切换
@@ -151,7 +84,7 @@ Page({
     //如果listsStatus的值为努力加载中 代表当前选项的数据未被加载过
     //加载过的数据不进行二次加载 刷新时重新加载当前选项的数据
     if (this.data.listsAll[index].listsStatus == '努力加载中...' || this.data.startRefresh) {
-      getSelling(this, params.num[index], () => {
+      getSelling(3,this, params.num[index], () => {
         let listsAll = this.data.listsAll;
         listsAll[index].listsStatus = params.msg[index];
         this.setData({ listsAll });

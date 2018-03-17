@@ -5,7 +5,7 @@ const app = getApp();
  * @param  {[Number]} goodsID [本次商品生成的ID]
  * @return {[void]}         [无返回值]
  */
-module.exports = (files, goodsID) => {
+module.exports = (files, goodsID, msg) => {
   let i = 0;
   // 使用递归的方式上传多张图片
   const uploadImage = () => {
@@ -29,13 +29,20 @@ module.exports = (files, goodsID) => {
             } else {
               wx.hideLoading();
               wx.showToast({
-                title: '修改成功',
+                title: `${msg}成功`,
                 image: '../../assets/success.png',
                 duration: 1500
               });
-              wx.redirectTo({
-                url: '../selling/selling'
-              });
+              if (msg == '流通') {
+                wx.redirectTo({
+                  url: '../express/express'
+                });
+              } else {
+                app.globalData.updateWashRecord = true;
+                wx.redirectTo({
+                  url: '../selling/selling'
+                });
+              }
             }
           } else {
             wx.hideLoading();
@@ -49,7 +56,7 @@ module.exports = (files, goodsID) => {
         fail: err => {
           wx.hideLoading();
           wx.showToast({
-            title: '修改失败',
+            title: `${msg}失败`,
             image: '../../assets/warning.png',
             duration: 1500
           });
@@ -65,10 +72,10 @@ module.exports = (files, goodsID) => {
               imageId: files[i].id,
               goodsId: goodsID
             },
-            success:res=>{
+            success: res => {
               console.log(res);
             },
-            fail(err){
+            fail(err) {
               console.log(err);
             }
           });
@@ -78,13 +85,20 @@ module.exports = (files, goodsID) => {
       } else {
         wx.hideLoading();
         wx.showToast({
-          title: '修改成功',
+          title: `${msg}成功`,
           image: '../../assets/success.png',
           duration: 1500
         });
-        wx.redirectTo({
-          url: '../selling/selling'
-        });
+        if (msg == '流通') {
+          wx.redirectTo({
+            url: '../express/express'
+          });
+        } else {
+          app.globalData.updateWashRecord = true;
+          wx.redirectTo({
+            url: '../selling/selling'
+          });
+        }
       }
     }
 

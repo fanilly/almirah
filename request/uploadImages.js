@@ -5,7 +5,7 @@ const app = getApp();
  * @param  {[Number]} goodsID [本次商品生成的ID]
  * @return {[void]}         [无返回值]
  */
-module.exports = (files, goodsID) => {
+module.exports = (files, goodsID, flag) => {
   let i = 0;
   // 使用递归的方式上传多张图片
   const uploadImage = () => {
@@ -32,9 +32,21 @@ module.exports = (files, goodsID) => {
               image: '../../assets/success.png',
               duration: 1500
             });
-            wx.redirectTo({
-              url:'../selling/selling'
-            });
+            if (flag) {
+              if (flag == 'storage') {
+                wx.redirectTo({
+                  url: '../washRecord/washRecord'
+                });
+              } else {
+                wx.redirectTo({
+                  url: '../express/express'
+                });
+              }
+            } else {
+              wx.redirectTo({
+                url: '../selling/selling'
+              });
+            }
           }
         } else {
           wx.hideLoading();

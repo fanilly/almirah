@@ -28,6 +28,15 @@ page {
   padding-right: 20rpx;
 }
 
+.inputs1 {
+  margin: 0;
+}
+
+.inputs1>view:first-child {
+  text-align: left;
+  padding-left: 10rpx;
+}
+
 .weui-cells {
   margin: 0 20rpx;
 }
@@ -41,6 +50,10 @@ page {
 .mt30,
 .address-detail {
   margin-top: 40rpx;
+}
+
+.address-detail1 {
+  margin-top: 0rpx !important;
 }
 
 .submit-address {
@@ -137,4 +150,9 @@ page {
   border-radius: 40rpx;
   background-color: #e8380d;
   opacity: .8;
+}
+
+.weui-uploader__img {
+  width: 76px;
+  height: 76px;
 }

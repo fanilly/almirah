@@ -11,7 +11,6 @@ page {
 
 .say {
   text-align: center;
-
 }
 
 .content {
@@ -61,4 +60,37 @@ page {
   position: fixed;
   bottom: 130rpx;
   right: 15rpx;
+}
+
+
+.address-item {
+  display: flex;
+  background-color: #fff;
+  margin-top: 15rpx;
+  padding: 22rpx 0;
+  border-radius: 2rpx;
+  box-shadow: 0 3rpx 10rpx #ccc;
+  position: relative;
+}
+
+.address-item>view:first-child {
+  width: 50rpx;
+  padding: 0 35rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.address-item>view:last-child{
+  padding-right: 15rpx;
+}
+
+.address-item>view:last-child view {
+  line-height:44rpx;
+}
+
+.address-item>view:last-child view:first-child {
+  display: flex;
+}
+.address-item>view:last-child view:first-child view:first-child {
+  width: 220rpx;
 }

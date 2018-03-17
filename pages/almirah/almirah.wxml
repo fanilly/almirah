@@ -14,7 +14,7 @@
         <view class="f28 gray01">衣物储存</view>
       </view>
     </navigator>
-    <navigator url="../selling/selling">
+    <navigator url="../express/express">
       <view>
         <image src="../../assets/o_btns_02.png" style="width: 65rpx;height: 65rpx"></image>
         <view class="f28 gray01">衣物流通</view>
@@ -23,7 +23,7 @@
     <navigator url="../sellRecord/sellRecord">
       <view>
         <image src="../../assets/o_btns_04.png" style="width: 65rpx;height: 65rpx"></image>
-        <view class="f28 gray01">衣物交易</view>
+        <view class="f28 gray01">购买衣物</view>
       </view>
     </navigator>
     <navigator url="../selling/selling">

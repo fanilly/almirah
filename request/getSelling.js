@@ -7,12 +7,13 @@ const app = getApp();
  * @param  {[Function]} fn2  [有数据的回调函数]
  * @return {[void]}      [无返回值]
  */
-module.exports = (that, num, fn1, fn2) => {
+module.exports = (goodsType, that, goodsStatus, fn1, fn2) => {
   wx.request({
     url: `${app.globalData.api}/goods/goods_list`,
     data: {
-      userId: app.globalData.userID,
-      goodsMark: num
+      goodsType: goodsType,
+      goodsStatus:goodsStatus,
+      userId: app.globalData.userID
     },
     success: res => {
       // 隐藏加载动画

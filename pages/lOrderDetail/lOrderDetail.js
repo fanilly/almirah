@@ -17,12 +17,17 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad: function(options) {
+    this.setData({
+      isVIP:app.globalData.isVIP
+    });
+    console.log(options.orderId);
     wx.request({
       url: `${app.globalData.api}/order/order_info`,
       data: {
         orderId: options.orderId
       },
       success: res => {
+        console.log(res);
         if (res.data.status == 1) {
           let data = res.data.data,
             i = 0,

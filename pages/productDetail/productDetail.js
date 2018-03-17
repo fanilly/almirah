@@ -22,6 +22,7 @@ Page({
     detail: {}, //商品详情数据,
     loadingStatus: -1, //1 到底了 2 未加载到商品
     lists: [], //列表数据
+    isStorage: true,
     loaded: false //是否加载完成
   },
 
@@ -114,7 +115,8 @@ Page({
     this.setData({
       totalTrolleyLen: app.globalData.totalTrolleyLen,
       //如果是从出售商品页面进来的表示是自己的商品 此时应只显示详情无不相关内容
-      isSelf: options.self ? true : false
+      isSelf: options.self ? true : false,
+      isStorage: options.isStorage ? false : true
     });
     //请求商品详情数据
     wx.request({

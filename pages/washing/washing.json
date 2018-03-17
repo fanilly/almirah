@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText":"在洗衣物",
+  "navigationBarTitleText":"衣物洗涤",
   "usingComponents":{
     "lorder":"../../components/lorder/lorder"
   },

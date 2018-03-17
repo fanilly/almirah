@@ -122,3 +122,21 @@
 .weui-footer {
   margin: 40rpx 0;
 }
+
+.contact-button {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #1aaade;
+  color: #fff;
+  border-radius: 50rpx;
+  position: relative;
+  margin: 20rpx auto;
+  text-align: center;
+  background-image: linear-gradient(to right, #1aaade, #2e8fde);
+  box-shadow: 0 0 20px #999;
+  position: fixed;
+  right: 15rpx;
+  bottom: 15rpx;
+  box-sizing: border-box;
+  padding-top: 30rpx;
+}

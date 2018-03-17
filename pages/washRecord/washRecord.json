@@ -1,7 +1,4 @@
 {
-  "navigationBarTitleText":"交易记录",
-  "usingComponents":{
-    "lorder":"../../components/lorder/lorder"
-  },
+  "navigationBarTitleText":"衣物存储",
   "enablePullDownRefresh":true
 }
