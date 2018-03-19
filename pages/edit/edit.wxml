@@ -120,7 +120,12 @@
           <view class="f24 gray04" style="padding-left: 20rpx;">注：长按图片可进行删除操作</view>
           <view class="placeholder-box100"></view>
           <view class="placeholder-box100"></view>
-          <button formType="submit" class="submit-address f28 main-bg main-bgi">{{isSell ? '确认出售' : isExpress ? '确认流通' : '确认修改'}}</button>
+          <view class="footer-btn">
+            <view class="f24 gray04" style="padding-left: 20rpx;">注：点击{{isSell ? '确认出售' : isExpress ? '确认流通' : '确认修改'}}暨表示已阅读并同意
+              <navigator class="main-color" url="../notice/notice?type={{isSell ? 2 : isExpress ? 3 : 2}}">《衣物{{isSell ? '交易' : isExpress ? '流通' : '交易'}}须知》</navigator>
+            </view>
+            <button formType="submit" class="submit-address f28 main-bg main-bgi">{{isSell ? '确认出售' : isExpress ? '确认流通' : '确认修改'}}</button>
+          </view>
         </view>
       </view>
     </form>

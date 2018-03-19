@@ -5,8 +5,9 @@
     <form bindsubmit="handleFormSubmit">
       <view class="details">
         <view class="wapper">
+          <view class="inputs f28 gray02 mt30" wx:if="{{orderId}}"><view> 订单编号：</view><view>{{orderId}}</view></view>
           <block wx:if="{{isSell}}">
-            <view class="inputs name f28 gray03 mt30">
+            <view class="inputs name f28 gray03">
               <view> 商品名称：</view>
               <input class="gray04" require name="goodsname" placeholder="请输入商品名称" placeholder-class="gray06 f24" />
             </view>
@@ -119,7 +120,10 @@
           </view>
           <view class="placeholder-box100"></view>
           <view class="placeholder-box100"></view>
-          <button formType="submit" class="submit-address f28 main-bg main-bgi">确认{{flag == 'stroage' ? '存储' : flag == 'express' ? '流通' : '出售'}}</button>
+          <view class="footer-btn">
+            <view class="f24 gray04" style="padding-left: 20rpx;">注：点击确认{{flag == 'storage' ? '存储' : flag == 'express' ? '流通' : '出售'}}暨表示已阅读并同意<navigator class="main-color" url="../notice/notice?type={{flag == 'storage' ? 4 : flag == 'express' ? 3 : 2}}">《衣物{{flag == 'storage' ? '存储' : flag == 'express' ? '流通' : '交易'}}须知》</navigator></view>
+            <button formType="submit" class="submit-address f28 main-bg main-bgi">确认{{flag == 'storage' ? '存储' : flag == 'express' ? '流通' : flag == 'sell' ? '出售' : ''}}</button>
+          </view>
         </view>
       </view>
     </form>

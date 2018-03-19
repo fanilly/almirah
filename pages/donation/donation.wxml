@@ -1,5 +1,0 @@
-<!--pages/donation/donation.wxml-->
-<view class="container">
-  <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
-  <text class="f24 gray05">此功能正在开发中，敬请期待！</text>
-</view>

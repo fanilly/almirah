@@ -7,7 +7,7 @@ import sendMessage from '../../request/sendMessage.js';
 const app = getApp(),
   params = {
     num: [100, 0, 1, 2],
-    msg: ['暂购买商品', '暂无待发货商品', '暂无配送中商品', '暂无已完成商品']
+    msg: ['暂无买商品', '暂无待发货商品', '暂无配送中商品', '暂无已完成商品']
   },
   switchStatus = {
     UserDelete: '删除',
@@ -47,7 +47,7 @@ Page({
   handleGoDetail(e) {
     console.log(e.currentTarget.id);
     wx.navigateTo({
-      url: `../productDetail/productDetail?id=${e.currentTarget.id}&self=1`
+      url: `../orderDetail/orderDetail?orderId=${e.currentTarget.id}&goodsId=${e.currentTarget.dataset.goodsid}`
     });
   },
 

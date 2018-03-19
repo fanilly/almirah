@@ -15,7 +15,7 @@ Page({
     fewNew: '', //买入时间
     isExpress: false,
     delIndex: -1, //当前显示删除按钮的图片在files数组中的索引
-    files: ['https://xiyi.honghuseo.cn/Upload/goods/2018-03/152023610912691526142103277940_thumb.jpg'] //商品图片
+    files: [] //商品图片
   },
 
   // 生命周期函数--监听页面加载

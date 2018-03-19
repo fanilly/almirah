@@ -14,11 +14,12 @@ Page({
   onLoad(options) {
     //获取订单数据
     getLOrderList(this, false, () => {
+      console.log('geted')
       this.setData({
-        hasOrderList: 3,
-        lists: res
+        hasOrderList: 3
       });
     }, (res) => {
+      console.log('no')
       this.setData({
         hasOrderList: 2,
         lists: res
@@ -36,8 +37,7 @@ Page({
     });
     getLOrderList(this, false, () => {
       this.setData({
-        hasOrderList: 3,
-        lists: res
+        hasOrderList: 3
       });
     }, (res) => {
       this.setData({

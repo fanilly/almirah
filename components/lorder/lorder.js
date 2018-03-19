@@ -1,7 +1,7 @@
 // components/lorder/lorder.js
 import changeOrderStatus from '../../request/changeOrderStatus.js';
 const app = getApp();
-let shopId, flag;
+let shopId, flag, orderId;
 Component({
   properties: {
     // 订单列表渲染状态
@@ -121,9 +121,15 @@ Component({
       this.setData({
         isShowChooseGoods: false
       });
-      wx.navigateTo({
-        url: `../sell/sell?goodsID=${goodsID}&ID=${ID}&shopID=${shopId}&flag=${flag}`
-      });
+      if (orderId) {
+        wx.navigateTo({
+          url: `../sell/sell?goodsID=${goodsID}&ID=${ID}&shopID=${shopId}&flag=${flag}&orderId=${orderId}`
+        });
+      } else {
+        wx.navigateTo({
+          url: `../sell/sell?goodsID=${goodsID}&ID=${ID}&shopID=${shopId}&flag=${flag}`
+        });
+      }
     },
 
     handlePayment(e) {
@@ -205,14 +211,22 @@ Component({
       let id = e.currentTarget.id,
         list = this.data.lists[id].list;
       flag = e.currentTarget.dataset.flag;
+      orderId = e.currentTarget.dataset.orderid || false;
+      console.log(flag);
 
       //api工程师要求需要shopId
       shopId = this.data.lists[id].shopId;
       //如果本订单的商品个数为1 直接去储藏或出售
       if (list.length == 1) {
-        wx.navigateTo({
-          url: `../sell/sell?goodsID=${list[0].goodsId}&ID=${list[0].id}&shopID=${shopId}&flag=${flag}`
-        });
+        if (orderId) {
+          wx.navigateTo({
+            url: `../sell/sell?goodsID=${list[0].goodsId}&ID=${list[0].id}&shopID=${shopId}&flag=${flag}&orderId=${orderId}`
+          });
+        } else {
+          wx.navigateTo({
+            url: `../sell/sell?goodsID=${list[0].goodsId}&ID=${list[0].id}&shopID=${shopId}&flag=${flag}`
+          });
+        }
       } else {
         //改变标题栏
         wx.setNavigationBarTitle({

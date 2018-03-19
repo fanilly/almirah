@@ -52,7 +52,35 @@ page {
   margin-top: 40rpx;
 }
 
+.footer-btn {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 170rpx;
+  background-color: #fff;
+  padding: 15rpx 20rpx;
+  left: 0;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px #ccc;
+}
+
+.footer-btn view {
+  line-height: 50rpx;
+}
+
+.footer-btn view navigator {
+  display: inline-block;
+}
+
 .submit-address {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  box-shadow: 0 0 8px #ccc;
+}
+
+/*.submit-address {
   width: 92%;
   height: 80rpx;
   line-height: 80rpx;
@@ -62,7 +90,7 @@ page {
   position: fixed;
   bottom: 30rpx;
   left: 4%;
-}
+}*/
 
 .xs-inputs {
   display: flex;

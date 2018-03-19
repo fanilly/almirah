@@ -13,6 +13,14 @@ Page({
       wx.setNavigationBarTitle({
         title: '衣物交易须知'
       });
+    }else if(options.type == 3){
+      wx.setNavigationBarTitle({
+        title: '衣物流通须知'
+      });
+    }else if(options.type == 4){
+      wx.setNavigationBarTitle({
+        title: '衣物储存须知'
+      });
     }
   }
 

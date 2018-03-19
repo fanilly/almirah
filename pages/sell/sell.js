@@ -26,7 +26,8 @@ Page({
     this.setData({
       endTime: formatDate(new Date()),
       isSell: flag == 'sell' ? true : false,
-      flag: flag
+      flag: flag,
+      orderId: options.orderId || false
     });
     if (flag == 'storage') {
       wx.setNavigationBarTitle({ title: '商品存储' });

@@ -46,8 +46,17 @@
 }
 
 .header>view:nth-child(3) {
-  display: flex;
+  /*display: flex;*/
   align-items: center;
+  padding-top: 40rpx;
+}
+
+.header>view:nth-child(3) view {
+  /*display: flex;*/
+  height: 30rpx;
+  position: relative;
+  left: -4rpx;
+  top: -4rpx;
 }
 
 .btn-list {

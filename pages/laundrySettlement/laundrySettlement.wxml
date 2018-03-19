@@ -122,7 +122,7 @@
           <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
               <view class="weui-cell__bd">
-                <textarea maxlength="300" show-confirm-bar="false" focus="{{focus}}" class="weui-textarea" bindinput="bindTextAreaBlur" placeholder="选填：请输入备注信息（长度不得大于300个字符）" style="height: 120rpx" class="f24" />
+                <textarea maxlength="300" show-confirm-bar="{{showConfirm}}" focus="{{focus}}" class="weui-textarea" bindinput="bindTextAreaBlur" placeholder="选填：请输入备注信息（长度不得大于300个字符）" style="height: 120rpx" class="f24" />
                 <view class="weui-textarea-counter f24">{{remarksLen}}/300</view>
               </view>
             </view>

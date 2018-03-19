@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/orderDetail/orderDetail",
+    "pages/success/success",
     "pages/mall/mall",
     "pages/laundryOrder/laundryOrder",
     "pages/laundrySettlement/laundrySettlement",
@@ -22,7 +24,6 @@
     "pages/helpsArticle2/helpsArticle2",
     "pages/helpsArticle1/helpsArticle1",
     "pages/bindphone/bindphone",
-    "pages/donation/donation",
     "pages/hello/hello",
     "pages/messages/messages",
     "pages/lOrderDetail/lOrderDetail",
@@ -40,7 +41,6 @@
     "pages/newAddress/newAddress",
     "pages/feedback/feedback",
     "pages/evaluate/evaluate",
-    "pages/success/success",
     "pages/fail/fail",
     "pages/orders/orders"
   ],

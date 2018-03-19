@@ -1,3 +1,18 @@
-page{
-    background-color: #FFFFFF;
+page {
+  background-color: #FFFFFF;
+}
+
+.pub-btn {
+  height: 80rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  background-color: #1aaade;
+  color: #fff;
+  border: 0;
+}
+
+.pub-btn-gray {
+  background-color: #f0f0f0;
+  color: #333;
+  margin-top: 30rpx;
 }

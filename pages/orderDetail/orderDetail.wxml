@@ -1,0 +1,75 @@
+<!--pages/mallSettlement/mallSettlement.wxml-->
+<view class="container">
+  <!-- 订单明细 -->
+  <view class="details">
+    <view class="gray02">
+      <view class="address-item">
+        <view>
+          <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+        </view>
+        <view>
+          <view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">姓名：</text>{{orderInfo.getName}}</view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">手机号：</text>{{orderInfo.getPhone}}
+            </view>
+          </view>
+          <view class="gray04 f28">
+            <text class="gray01 f28">地址：</text>{{orderInfo.getAddress}}
+            <text class="red-color f28" wx:if="{{receiptAddress.isDefault*1 == 1}}"> 【默认】</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="progress"></view>
+    <view class="wapper">
+      <view class="items-wapper">
+        <block wx:for="{{lists}}" wx:key="{{index}}">
+          <view class="detail-items" bindtap="handleGoToDetail" data-goodsid="{{item.goodsId}}">
+            <view class="lside">
+              <image src="{{baseUrl}}{{item.goodsThums}}" mode="aspectFill"></image>
+            </view>
+            <view class="rside f32 gray05">
+              <view class="f24 gray04 pro-title">
+                {{item.goodsName}}
+              </view>
+              <view class="f24 gray05 settings">
+                <view>
+                  尺码：
+                  <text class="gray04">{{item.goodsUnit}}</text>
+                </view>
+                <view>
+                  颜色：
+                  <text class="gray04">{{item.goodsSpec}}</text>
+                </view>
+              </view>
+              <view class="f24 gray05 settings">
+                <view>
+                  原价
+                  <text class="gray04">￥{{item.marketPrice}}</text>
+                </view>
+                <view>
+                  现价
+                  <text class="red-color">￥{{item.shopPrice}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 地址等备注信息 -->
+  <view class="messages">
+    <view class="wapper">
+      <view class="remarks gray01 f28">
+        <view>订单号: <text class="gray05">{{orderInfo.orderId}}</text></view>
+        <view>下单时间: <text class="gray05">{{orderInfo.createTime}}</text></view>
+        <view>我的留言:</view>
+        <view class="f24 gray05 notice">{{orderInfo.orderRemarks}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="placeholder-box120"></view>
+</view>

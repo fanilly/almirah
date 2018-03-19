@@ -18,8 +18,8 @@
     <view class="agreement gray06 f24">点击支付暨表示已阅读并同意
       <navigator url="../agreement/agreement">《用户协议》</navigator>
     </view>
-    <view class="payment main-bg main-bgi" bindtap="handlePayment">支付（￥98.00元）</view>
   </block>
+    <view class="payment main-bg main-bgi" bindtap="handlePayment">{{isVIP ? '您已成为衣随行会员' : '支付（￥98.00元）'}}</view>
   <!-- footer -->
   <view class="weui-footer">
     <view class="weui-footer__text">Copyright © 2018 净衣客</view>

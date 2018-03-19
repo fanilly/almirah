@@ -24,7 +24,7 @@
         <view class="gray03 f26">店家名称：{{content.shopName}}</view>
         <view class="gray03 f26">店家电话：{{content.shopTel}}</view>
         <view class="gray03 f26">店家地址：{{content.shopAddress}}</view>
-        <view class="gray03 f26">使用优惠券：{{content.useCoupons}}张</view>
+        <view class="gray03 f26"></view>
         <view class="address-item">
           <view>
             <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
@@ -62,8 +62,13 @@
         <view class="gray03 f26">订单备注：</view>
         <view class="gray03 f26 remark">{{content.orderRemarks?content.orderRemarks:'此订单无备注'}}</view>
       </view>
-      <view class="f24 gray05 footer-info">共{{totalGoods}}件商品 实付
-        <text class="f32 red-color">￥{{content.realTotalMoney}}</text>
+      <view class="f24 gray05 footer-info">共{{totalGoods}}件商品 使用优惠券：{{content.useCoupons}}张
+      </view>
+      <view class="f24 gray05 footer-info">总计
+        <text class="f24 red-color">￥{{content.totalMoney}}</text>
+      </view>
+      <view class="f24 gray05 footer-info">实付
+        <text class="f36 red-color">￥{{content.realTotalMoney}}</text>
       </view>
     </view>
     <view class="placeholder-box120"></view>

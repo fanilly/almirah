@@ -129,6 +129,12 @@ Page({
                   url: '../almirah/almirah'
                 });
 
+                setTimeout(() => {
+                  wx.navigateTo({
+                    url: `../success/success?type=mall&orderId=${data.orderId}&createTime=${data.createTime}`
+                  });
+                }, 800);
+
                 // setTimeout(() => {
                 //   wx.redirectTo({
                 //     url: `../success/success?type=mall&orderId=${data.goodsId}&createTime=${data.creatime}`

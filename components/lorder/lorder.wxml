@@ -33,6 +33,7 @@
                 <view class="item-rside f24 gray04">x{{item.goodsNums}}</view>
               </view>
             </block>
+            <view class="f24 gray02">订单编号：{{item.orderId}}</view>
             <view>
               <view class="gray05 item-lside">
                 <text wx:if="{{item.list.length>=4}}">......</text>
@@ -44,7 +45,7 @@
           </navigator>
           <view class="o-footer">
             <view wx:if="{{item.orderMark == 1 || item.orderMark == 2}}" class="o-btn" bindtap="handleUrge" id="{{index}}" data-shopid="{{item.shopId}}" data-orderid="{{item.orderId}}">催促取衣</view>
-            <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-flag="sell" id="{{index}}">出售</view>
+            <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-orderid="{{item.orderId}}" data-flag="sell" id="{{index}}">出售</view>
             <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-flag="storage" id="{{index}}">存储</view>
             <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-flag="express" id="{{index}}">流通</view>
             <view wx:if="{{item.orderMark*1 >= 3 && item.orderMark*1 <= 7}}" class="o-btn" bindtap="handleConfirm" id="{{index}}">确认收货</view>

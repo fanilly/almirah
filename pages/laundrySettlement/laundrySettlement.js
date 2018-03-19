@@ -4,6 +4,7 @@ const app = getApp();
 Page({
 
   data: {
+    showConfirm:false,
     countGoodsLength: 0,
     commission: null,
     couponChecked: false, //是否使用代金券
@@ -246,9 +247,9 @@ Page({
 
               setTimeout(() => {
                 wx.redirectTo({
-                  url: `../success/success?type=laundry&orderId=${data.orderId}&createTime=${data.creatime}`
+                  url: `../success/success?type=laundry&orderId=${data.orderId}&createTime=${data.creatime}&shopName=${data.shopName}&shopTel=${data.shopTel}&shopAddress=${data.shopAddress}`
                 });
-              }, 800);
+              }, 600);
             } else {
               wx.showToast({
                 title: '网络异常',

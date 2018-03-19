@@ -25,10 +25,10 @@
                       <image src="{{baseUrl}}{{item.goodsThums}}" mode="aspectFill"></image>
                     </view>
                     <view class="rside f32 gray05">
-                      <view class="f26 gray04 pro-title" id="{{item.goodsId}}" bindtap="handleGoDetail">
+                      <view class="f26 gray04 pro-title" id="{{item.orderId}}" data-goodsid="{{item.goodsId}}" bindtap="handleGoDetail">
                         {{item.goodsName}}
                       </view>
-                      <view class="f24 gray04 settings" id="{{item.goodsId}}" bindtap="handleGoDetail">
+                      <view class="f24 gray04 settings" id="{{item.orderId}}" data-goodsid="{{item.goodsId}}" bindtap="handleGoDetail">
                         <view>
                           尺码：
                           <text class="gray05">{{item.goodsUnit}}</text>
@@ -38,7 +38,7 @@
                           <text class="gray05">{{item.goodsSpec}}</text>
                         </view>
                       </view>
-                      <view class="f24 gray04 settings" id="{{item.goodsId}}" bindtap="handleGoDetail">
+                      <view class="f24 gray04 settings" id="{{item.orderId}}" data-goodsid="{{item.goodsId}}" bindtap="handleGoDetail">
                         <view>
                           原价：
                           <text class="gray05">￥{{item.marketPrice}}</text>
