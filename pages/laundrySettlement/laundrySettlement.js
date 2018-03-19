@@ -4,7 +4,7 @@ const app = getApp();
 Page({
 
   data: {
-    showConfirm:false,
+    showConfirm: false,
     countGoodsLength: 0,
     commission: null,
     couponChecked: false, //是否使用代金券
@@ -52,6 +52,10 @@ Page({
             takeAddress: defaultAddress,
             loaded: true
           });
+        } else {
+          this.setData({
+            loaded: true
+          });
         }
       }
     });
@@ -67,6 +71,10 @@ Page({
         if (defaultAddress) {
           this.setData({
             giveAddress: defaultAddress,
+            loaded: true
+          });
+        } else {
+          this.setData({
             loaded: true
           });
         }

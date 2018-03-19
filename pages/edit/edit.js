@@ -299,7 +299,7 @@ Page({
       tempFiles.push(item.isNews ? item.url : baseUrl + item.url);
     });
     wx.previewImage({
-      current: e.currentTarget.id, // 当前显示图片的http链接
+      current: tempFiles[e.currentTarget.id], // 当前显示图片的http链接
       urls: tempFiles // 需要预览的图片http链接列表
     });
   }
