@@ -20,10 +20,18 @@ Page({
     baseUrl: app.globalData.baseUrl
   },
 
+  test() {
+    if (this.data.currentShowControl != -1) {
+      this.setData({
+        currentShowControl: -1
+      });
+    }
+  },
+
   //关闭温馨提示
-  handleCloseMsg(){
+  handleCloseMsg() {
     this.setData({
-      showMsg:false
+      showMsg: false
     });
   },
 
@@ -159,6 +167,23 @@ Page({
       totalCheckedPrice = totalCheckedPrice.toFixed(2);
     }
     this.setData({ lists, totalCheckedGoods, totalCheckedPrice });
+
+    let tempFlag = true;
+    for (let i = 0; i < lists.length; i++) {
+      if (!lists[i].checked) {
+        tempFlag = false;
+        break;
+      }
+    }
+    if (tempFlag) {
+      this.setData({
+        isChooseAll: true
+      });
+    } else {
+      this.setData({
+        isChooseAll: false
+      });
+    }
   },
 
   //跳转到商城页面

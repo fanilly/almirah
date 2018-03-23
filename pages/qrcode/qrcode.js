@@ -37,7 +37,7 @@ Page({
     } else {
       if (this.data.money * 1 <= 0) {
         wx.showToast({
-          title: '佣金不足',
+          title: '金币不足',
           image: '../../assets/warning.png',
           duration: 1500
         });
@@ -51,7 +51,7 @@ Page({
           success: res => {
             if (res.data.status == 1) {
               wx.showModal({
-                content: '恭喜您，提现成功，提现金额会在24小时之内下发到您的账户',
+                content: '恭喜您，提现成功，提现金额会在24小时之内下发到您的账户，请注意查收',
                 showCancel: false
               });
               this.setData({

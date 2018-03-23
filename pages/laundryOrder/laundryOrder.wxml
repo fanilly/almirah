@@ -8,7 +8,7 @@
 <block wx:if="{{loaded}}">
   <view class="container">
     <!-- 头部导航 -->
-    <view class="header" style="height: {{isShowAllClass?'220rpx':'100rpx'}}">
+    <view class="header" style="height: {{isShowAllClass?'320rpx':'100rpx'}}">
       <scroll-view scroll-x scroll-left="{{scrollLeft}}">
         <view class="wapper" style="white-space: {{isShowAllClass?'normal':'nowrap'}};">
           <text wx:for="{{datas}}" id="{{index}}" wx:key="key" class="f28 gray01 {{index==curIndex?'main-color':''}}" bindtap="handleCheckoutType">{{item.catName}}</text>
@@ -21,7 +21,7 @@
     <!-- 产品列表 -->
     <view class="main">
       <block wx:for="{{lists}}" wx:key="{{index}}">
-        <view class="pro-items">
+        <view class="pro-items" style="{{lists.length <= 3 ? 'float: left; height: 480rpx;' : ''}}">
           <view class="lside">
             <image src="{{baseUrl}}{{item.catThumbs}}" mode="widthFix"></image>
           </view>

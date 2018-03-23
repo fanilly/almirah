@@ -1,4 +1,7 @@
 /* pages/trolley/trolley.wxss */
+.test-container {
+  min-height: 1184rpx;
+}
 
 .main {
   width: 100%;
@@ -165,4 +168,8 @@
   position: absolute;
   right: 15rpx;
   top: 20rpx;
+}
+
+.though {
+  text-decoration: line-through;
 }

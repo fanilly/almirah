@@ -1,7 +1,6 @@
 <!--pages/register/register.wxml-->
 <view class="container">
   <image src="../../assets/lg-logo.png" style="width:228rpx;height: 185rpx;"></image>
-  <!-- 羽衣常染烟霞色 不沾红尘桃李花 -->
   <view class="welcome f24 gray04">
     <text class="f28 main-color">欢迎您</text>成为我们净衣客的一员，{{isVIP?'作为会员的您':'如果成为会员'}}可以享受以下特权呦~~~</view>
   <view class="content">
@@ -19,7 +18,7 @@
       <navigator url="../agreement/agreement">《用户协议》</navigator>
     </view>
   </block>
-    <view class="payment main-bg main-bgi" bindtap="handlePayment">{{isVIP ? '您已成为衣随行会员' : '支付（￥98.00元）'}}</view>
+    <view class="payment main-bg {{isVIP ? 'gray-bgi' : 'main-bgi'}}" bindtap="handlePayment">{{isVIP ? '您已成为衣随行会员' : '支付（￥98.00元）'}}</view>
   <!-- footer -->
   <view class="weui-footer">
     <view class="weui-footer__text">Copyright © 2018 净衣客</view>

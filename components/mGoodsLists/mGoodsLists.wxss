@@ -67,3 +67,8 @@
 .goods-null {
   margin-top: 50rpx;
 }
+
+
+.underline {
+  text-decoration: line-through;
+}

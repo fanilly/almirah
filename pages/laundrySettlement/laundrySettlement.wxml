@@ -36,14 +36,14 @@
                 </view>
               </view>
               <view class="gray04 f28">
-                <text class="gray01 f28">取衣地址：</text>{{takeAddress.address}}({{takeAddress.addr}})
-                <text class="red-color f28" wx:if="{{takeAddress.isDefault*1 == 1}}"> 【默认】</text>
+                <text class="red-color f28">取衣地址：</text>{{takeAddress.addr}} {{takeAddress.address}}
+
               </view>
             </view>
           </navigator>
         </block>
       </view>
-      <block wx:if="{{isVIP}}">
+      <block wx:if="{{isVIPs}}">
         <view wx:if="{{!giveAddress}}" class="delivery-address gray01 f28 msg-item2">
           <view></view>
           <block wx:if="{{!giveAddress}}">
@@ -71,8 +71,8 @@
                   </view>
                 </view>
                 <view class="gray04 f28">
-                  <text class="gray01 f28">送衣地址：</text>{{giveAddress.address}}({{giveAddress.addr}})
-                  <text class="red-color f28" wx:if="{{giveAddress.isDefault*1 == 1}}"> 【默认】</text>
+                  <text class="red-color f28">送衣地址：</text>{{giveAddress.addr}} {{giveAddress.address}}
+
                 </view>
               </view>
             </navigator>
@@ -151,7 +151,7 @@
         已优惠：
         <text class="red-color f28">￥{{couponChecked?'10':'0'}}元</text>
         总计：
-        <text class="red-color f28">￥{{totalPrice}}元</text>
+        <text class="red-color f28">￥{{couponChecked ? totalPrice*1 - 10 : totalPrice }}元</text>
       </view>
       <view>
         <text class="main-bg f28 main-bgi" bindtap="handleBuy">提交订单</text>

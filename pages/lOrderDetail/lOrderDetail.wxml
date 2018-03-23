@@ -10,21 +10,29 @@
   <block wx:if="{{loaded}}">
     <view class="main">
       <view class="f32 gray01 title">{{content.orderStatus}}</view>
-      <view class="f24 gray03 say">{{content.orderStatus == '支付成功' ? '已通知商家上门取件' : '感谢您对净衣客的支持，欢迎再次下单'}}</view>
+
+      <!-- <view class="f24 gray03 say" wx:if="{{!showTime}}">{{content.orderStatus == '支付成功' ? '已通知商家上门取件' : '感谢您对净衣客的支持，欢迎再次下单'}}</view> -->
+      <view class="f24 gray03 say" wx:if="{{!showTime}}">{{msg}}</view>
+      <view class="f24 gray03 say" wx:if="{{showTime}}">{{time}}</view>
       <view class="content">
-        <block wx:for="{{content.goodsList}}" wx:key="{{index}}">
-          <view class="goods-list gray03 f26">
-            <view>{{item.goodsName}}</view>
-            <view>x{{item.goodsNums}}</view>
-          </view>
-        </block>
-        <view class="gray03 f26">订单号：{{content.orderId}}</view>
-        <view class="gray03 f26">下单时间：{{content.createTime}}</view>
         <view class="gray03 f26">预取时间：{{content.requireTime}}</view>
-        <view class="gray03 f26">店家名称：{{content.shopName}}</view>
-        <view class="gray03 f26">店家电话：{{content.shopTel}}</view>
-        <view class="gray03 f26">店家地址：{{content.shopAddress}}</view>
-        <view class="gray03 f26"></view>
+        <!-- <view class="address-item" wx:if="{{isVIP}}">
+          <view>
+            <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
+          </view>
+          <view>
+            <view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">姓名：</text>{{content.userName}}</view>
+              <view class="gray04 f28">
+                <text class="gray01 f28">手机号：</text>{{content.userPhone}}
+              </view>
+            </view>
+            <view class="gray04 f28">
+              <text class="gray01 f28">送衣地址：</text>{{content.userAddress}}
+            </view>
+          </view>
+        </view> -->
         <view class="address-item">
           <view>
             <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
@@ -42,25 +50,25 @@
             </view>
           </view>
         </view>
-        <view class="address-item" wx:if="{{isVIP}}">
-          <view>
-            <image src="../../assets/lg-address.png" style="width:50rpx;height: 60rpx"></image>
-          </view>
-          <view>
-            <view>
-              <view class="gray04 f28">
-                <text class="gray01 f28">姓名：</text>{{content.userName}}</view>
-              <view class="gray04 f28">
-                <text class="gray01 f28">手机号：</text>{{content.userPhone}}
-              </view>
-            </view>
-            <view class="gray04 f28">
-              <text class="gray01 f28">送衣地址：</text>{{content.userAddress}}
-            </view>
-          </view>
-        </view>
         <view class="gray03 f26">订单备注：</view>
         <view class="gray03 f26 remark">{{content.orderRemarks?content.orderRemarks:'此订单无备注'}}</view>
+        <view class="line"></view>
+        <block wx:for="{{content.goodsList}}" wx:key="{{index}}">
+          <view class="goods-list gray03 f26">
+            <view>
+              <image src="{{baseUrl}}{{item.goodsThums}}" style="width: 60rpx;height: 50rpx;"></image>
+            </view>
+            <view>{{item.goodsName}}</view>
+            <view>x{{item.goodsNums}}</view>
+          </view>
+        </block>
+        <view class="line"></view>
+        <view class="gray03 f26">店家名称：{{content.shopName}}</view>
+        <view class="gray03 f26">店家电话：{{content.shopTel}}</view>
+        <view class="gray03 f26">店家地址：{{content.shopAddress}}</view>
+        <view class="gray03 f26">订单号：{{content.orderId}}</view>
+        <view class="gray03 f26">下单时间：{{content.createTime}}</view>
+        <view class="gray03 f26"></view>
       </view>
       <view class="f24 gray05 footer-info">共{{totalGoods}}件商品 使用优惠券：{{content.useCoupons}}张
       </view>
@@ -83,6 +91,28 @@
       <view class="arc-btn-lg phone">
         <image src="../../assets/services_phone.png" style="width: 45rpx;height: 52rpx"></image>
       </view>
+    </view>
+    <view class="o-footer">
+      <view wx:if="{{content.Status == 1 || content.Status == 2}}" class="o-btn" bindtap="handleUrge" id="{{index}}" data-shopid="{{content.shopId}}" data-orderid="{{content.orderId}}">提醒取件</view>
+      <view wx:if="{{content.Status == 1 || content.Status == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-orderid="{{content.orderId}}" data-flag="sell" id="{{index}}">出售</view>
+      <view wx:if="{{content.Status == 1 || content.Status == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-flag="storage" id="{{index}}">存储</view>
+      <view wx:if="{{content.Status == 1 || content.Status == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-flag="express" id="{{index}}">流通</view>
+      <view wx:if="{{content.Status*1 >= 3 && content.Status*1 <= 7}}" class="o-btn" data-orderid="{{content.orderId}}" bindtap="handleConfirm" id="{{index}}">确认收货</view>
+      <view wx:if="{{content.Status == 8}}" class="o-btn" bindtap="handleGoEvaluate" id="{{index}}" data-order="{{content.orderId}}">立即评价</view>
+      <view wx:if="{{content.Status == 9}}" class="o-btn" bindtap="handleDelOrder" id="{{index}}" data-orderid="{{content.orderId}}">删除订单</view>
+      <view wx:if="{{content.Status == 0}}" class="o-btn" bindtap="handleDelOrder" id="{{index}}" data-orderid="{{content.orderId}}">删除订单</view>
+      <view wx:if="{{content.Status == 0 && content.passTime*1 <= 1800}}" class="o-btn o-btn1" data-orderid="{{content.orderId}}" bindtap="handlePayment" id="{{index}}">立即付款</view>
+      <view wx:if="{{content.Status == 0 && content.passTime*1 > 1800}}" class="o-btn" bindtap="handleRePayment" data-orderid="{{content.orderId}}" bindtap="handlePayment" id="{{index}}">重新下单</view>
+    </view>
+  </block>
+  <!-- 选择出售商品 -->
+  <block wx:if="{{isShowChooseGoods}}">
+    <view class="goods-box" catchtap="handleCloseChooseGoods">
+      <scroll-view scroll-x class="goods-control" catchtap="handleStopPropagation">
+        <view class="goods-list-box">
+          <view wx:for="{{content.goodsList}}" wx:key="{{index}}" id="{{index}}" class="goods-item f28 gray02" bindtap="handleGoToSell">{{item.goodsName}}</view>
+        </view>
+      </scroll-view>
     </view>
   </block>
 </view>

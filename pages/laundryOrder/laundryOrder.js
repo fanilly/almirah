@@ -56,8 +56,21 @@ Page({
     console.log(id);
     this.setData({
       curIndex: id,
+      isShowAllClass: false,
       lists: this.data.datas[id].children
     });
+
+    if (id * 1 >= 7) {
+      this.setData({
+        scrollLeft: 500
+      });
+    } else if (id * 1 >= 4) {
+      this.setData({
+        scrollLeft: 300
+      });
+    }
+
+
   },
 
   // 产品列表中的加号点击事件

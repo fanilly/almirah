@@ -169,12 +169,12 @@ Page({
         showCancel: false
       });
     } else if (!this.data.giveAddress) {
-      if (app.globalData.isVIP) {
-        wx.showModal({
-          content: '请选择送衣地址',
-          showCancel: false
-        });
-      } else {
+      // if (app.globalData.isVIP) {
+      //   wx.showModal({
+      //     content: '请选择送衣地址',
+      //     showCancel: false
+      //   });
+      // } else {
         if (!this.data.prefetchingTime) {
           wx.showModal({
             content: '请选择预取时间',
@@ -183,7 +183,7 @@ Page({
         } else {
           this.startBuy();
         }
-      }
+      // }
     } else if (!this.data.prefetchingTime) {
       wx.showModal({
         content: '请选择预取时间',
@@ -216,7 +216,8 @@ Page({
         orderScore: 1,
         goods: JSON.stringify(goods),
         userAddressId: this.data.takeAddress.addressId,
-        getAddressId: this.data.isVIP ? this.data.giveAddress.addressId : this.data.takeAddress.addressId,
+        // getAddressId: this.data.isVIP ? this.data.giveAddress.addressId : this.data.takeAddress.addressId,
+        getAddressId: this.data.takeAddress.addressId,
         requireTime: this.data.prefetchingTime,
         deliverType: 0,
         orderRemarks: this.data.remarks

@@ -25,7 +25,7 @@
             </view>
           </view>
           <view class="gray04 f28">
-            <text class="gray01 f28">地址：</text>{{item.address}}({{item.addr}})
+            <text class="gray01 f28">地址：</text>{{item.addr}} {{item.address}}
             <text class="red-color f28" wx:if="{{item.isDefault*1 == 1}}"> 【默认】 </text>
           </view>
         </view>

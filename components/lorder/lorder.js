@@ -29,6 +29,7 @@ Component({
   },
 
   data: {
+    baseUrl: app.globalData.baseUrl,
     chooseList: [], //选择出售的订单列表
     isShowChooseGoods: false //是否显示选择出售
   },
@@ -37,6 +38,12 @@ Component({
     //阻止冒泡
     handleStopPropagation() {
       console.log('stop propagation');
+    },
+
+    handleRePayment(){
+      wx.navigateTo({
+        url:'../laundryOrder/laundryOrder'
+      });
     },
 
     //去评价
@@ -63,26 +70,26 @@ Component({
 
     //handleUrge 催促取衣
     handleUrge(e) {
-      wx.showLoading({ title: '催促中', mask: true });
+      wx.showLoading({ title: '提醒中', mask: true });
       wx.request({
         url: `${app.globalData.api}/message/send_message`,
         data: {
           userId: app.globalData.userID,
           shopId: e.currentTarget.dataset.shopid,
-          msgContent: `编号为${app.globalData.userID}的用户催促编号为：${e.currentTarget.dataset.orderid}的订单速度取衣`
+          msgContent: `编号为${app.globalData.userID}的用户催促编号为：${e.currentTarget.dataset.orderid}的订单速度取件`
         },
         success: res => {
           console.log(res);
           wx.hideLoading();
           if (res.data.status == 1) {
             wx.showToast({
-              title: `催促成功`,
+              title: `提醒成功`,
               icon: 'success',
               duration: 1500
             });
           } else {
             wx.showToast({
-              title: `催促失败`,
+              title: `提醒失败`,
               image: '../../assets/warning.png',
               duration: 1500
             });
@@ -162,7 +169,7 @@ Component({
                 app.globalData.updateAlmirah = true;
                 setTimeout(() => {
                   wx.redirectTo({
-                    url: `../success/success?type=laundry&orderId=${data.orderId}&createTime=${data.creatime}`
+                    url: `../success/success?type=laundry&orderId=${data.orderId}&createTime=${data.creatime}&shopName=${data.shopName}&shopTel=${data.shopTel}&shopAddress=${data.shopAddress}`
                   });
                 }, 800);
               } else {
@@ -208,6 +215,7 @@ Component({
 
     //选择衣物进行出售
     handleCheckSell(e) {
+      console.log(this.data.lists);
       let id = e.currentTarget.id,
         list = this.data.lists[id].list;
       flag = e.currentTarget.dataset.flag;

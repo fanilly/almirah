@@ -23,7 +23,9 @@
   <block wx:if="{{type==4}}">
     <view class="title">《衣物储存须知》</view>
     <view class="n-list">1、本公司进行定位管理即不同衣物、不同价值衣物会进行分类分区管理存放。</view>
+    <view style="height: 10rpx;"></view>
     <view class="n-list">2、存放位置区域确定后将于平台体现并公布。</view>
+    <view style="height: 10rpx;"></view>
     <view class="n-list">3、衣物储存保证干燥整洁、温度适宜、无阳光直射。延长衣物使用寿命。鞋包储存保证干燥整洁、温度适宜、无阳光直射外合理进行定型以延长使用寿命。</view>
   </block>
 </view>

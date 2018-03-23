@@ -100,3 +100,7 @@
   box-shadow: 0 2px 4px #ccc;
   margin: 60rpx auto;
 }
+
+.btn {
+  width: 130rpx;
+}

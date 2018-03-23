@@ -1,4 +1,5 @@
 /* pages/register/register.wxss */
+
 page {
   background-color: #fff;
 }
@@ -10,7 +11,7 @@ page {
 .welcome {
   padding: 50rpx 30rpx 0;
   text-indent: 2em;
-  text-align: justify;
+  text-align: center;
 }
 
 .content {
@@ -52,22 +53,25 @@ page {
   line-height: 50rpx;
   padding-left: 30rpx;
   color: #666;
-  text-align: center;
+  text-align: left;
 }
+
 .remarks {
   margin-top: 30rpx;
 }
+
 .agreement navigator {
   display: inline-block;
-  color:#1aaade;
+  color: #1aaade;
 }
+
 .payment {
   width: 90%;
   height: 80rpx;
   line-height: 80rpx;
   font-size: 28rpx;
   border-radius: 40rpx;
-  box-shadow: 0 0 10rpx rgba(150,150,150,.2);
+  box-shadow: 0 0 10rpx rgba(150, 150, 150, .2);
   text-align: center;
   margin-top: 15rpx;
 }
@@ -77,3 +81,7 @@ page {
   bottom: 20rpx;
 }
 
+.gray-bgi {
+  background-color: #fff;
+  color: #1aaade;
+}

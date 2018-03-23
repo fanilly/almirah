@@ -1,3 +1,4 @@
+let isAlmirah;
 Page({
   data: {
     type: '',

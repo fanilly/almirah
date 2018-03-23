@@ -22,4 +22,8 @@ page {
   line-height: 42rpx;
   padding-bottom: 8rpx;
   color: #666;
+  text-align: left;
+  padding-left: 0;
+  text-indent: 0;
+  width: 100%;
 }

@@ -29,8 +29,7 @@
               </view>
             </view>
             <view class="gray04 f28">
-              <text class="gray01 f28">地址：</text>{{receiptAddress.address}}({{receiptAddress.addr}})
-              <text class="red-color f28" wx:if="{{receiptAddress.isDefault*1 == 1}}"> 【默认】</text>
+              <text class="red-color f28">地址：</text>{{receiptAddress.addr}} {{receiptAddress.address}}
             </view>
           </view>
         </navigator>

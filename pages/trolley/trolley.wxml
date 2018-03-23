@@ -12,7 +12,7 @@
   </view>
 </block>
 <block wx:if="{{loadingStatus ==2}}">
-  <view class="container">
+  <view class="container test-container" bindtap="test">
     <view class="main">
       <view style="height: 70rpx;" wx:if="{{showMsg}}"></view>
       <view class="f28 main-color text-center guide" style="padding:15rpx" wx:if="{{showMsg}}">温馨提示：<text class="gray01">长按列表可进行删除或单件购买</text><image bindtap="handleCloseMsg" class="close-msg" src="../../assets/close.png" style="width: 40rpx;height: 40rpx;"></image></view>
@@ -34,7 +34,7 @@
               </view>
               <view class="f24 gray04">
                 原价:
-                <text class="gray01 f28">￥{{item.marketPrice}}</text>
+                <text class="gray06 f28 though">￥{{item.marketPrice}}</text>
                 现价:
                 <text class="red-color f28">￥{{item.shopprice}}</text>
               </view>

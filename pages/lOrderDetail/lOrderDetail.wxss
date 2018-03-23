@@ -29,6 +29,11 @@ page {
 }
 
 .goods-list view:first-child {
+  width: 80rpx;
+
+}
+
+.goods-list view:nth-child(2) {
   flex: 1;
   text-align: left;
   overflow: hidden;
@@ -52,13 +57,13 @@ page {
 
 .order {
   position: fixed;
-  bottom: 15rpx;
+  bottom: 105rpx;
   right: 15rpx;
 }
 
 .phone {
   position: fixed;
-  bottom: 130rpx;
+  bottom: 220rpx;
   right: 15rpx;
 }
 
@@ -93,4 +98,87 @@ page {
 }
 .address-item>view:last-child view:first-child view:first-child {
   width: 220rpx;
+}
+.line {
+  border-bottom: 1px dashed #f0f0f0;
+  margin: 15rpx 0;
+}
+
+.o-footer {
+  text-align: center;
+  margin-top: 10rpx;
+  padding: 15rpx 0;
+  position: fixed;
+  bottom:0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+.o-btn {
+  display: inline-block;
+  font-size: 24rpx;
+  padding: 0 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 1px solid #e2e2e2;
+  border-radius: 30rpx;
+  color: #999;
+  margin-left: 15rpx;
+}
+.ddd {
+  line-height: 20rpx;
+  padding-left: 20rpx;
+  font-size: 28rpx;
+}
+.o-btn1 {
+  border-color: #1aaade;
+  color: #1aaade;
+}
+
+.goods-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 9999;
+  box-sizing: border-box;
+  padding: 15rpx;
+}
+
+.goods-control {
+  position: fixed;
+  width: 96%;
+  background-color: #fff;
+  height: 108rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  box-shadow: 0 0 20rpx #ccc;
+  border-radius: 10rpx;
+  padding: 2rpx 0;
+}
+
+.goods-item {
+  display: flex;
+  padding-right: 15rpx;
+  margin-top: 15rpx;
+}
+
+.goods-list-box {
+  white-space: nowrap;
+}
+
+.goods-list-box view {
+  display: inline-block;
+  padding: 20rpx 50rpx;
+  border-right: 1px solid #f0f0f0;
+}
+
+.goods-list-box view:last-child {
+  border-right: none;
 }

@@ -18,6 +18,25 @@ Page({
     files: [] //商品图片
   },
 
+  //过滤特殊字符
+  handleFilter(e) {
+    let value = e.detail.value;
+    // [^\u4E00-\u9FA5]/g
+    return {
+      value: value.replace(/[~'!@#$%^&*()-+_=:]/g, '')
+    };
+  },
+
+  //只能为汉字
+  handleFilter1(e) {
+    let value = e.detail.value;
+    // [^\u4E00-\u9FA5]/g
+    return {
+      value: value.replace(/[~'!@#$%^&*()-+_=:]/g, '')
+    };
+  },
+
+
   // 生命周期函数--监听页面加载
   onLoad(options) {
 

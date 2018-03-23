@@ -8,12 +8,12 @@
           <image src="{{baseUrl}}{{item.goodsThums}}" mode="aspectFill"></image>
           <view class="info">
             <view class="f24 gray04 pro-title">{{item.goodsName}}</view>
-            <view class="f24 gray05">尺码：
+            <!-- <view class="f24 gray05">尺码：
               <text class="gray04">{{item.goodsUnit}}</text> 颜色：
               <text class="gray04">{{item.goodsSpec}}</text>
-            </view>
+            </view> -->
             <view class="f24 gray05">原价
-              <text class="gray04">￥{{item.marketPrice}}</text> 现价
+              <text class="gray04 underline">￥{{item.marketPrice}}</text> 现价
               <text class="f32 red-color">￥{{item.shopprice}}</text>
             </view>
           </view>
@@ -29,12 +29,12 @@
           <image src="{{baseUrl}}{{item.goodsThums}}" mode="aspectFill"></image>
           <view class="info">
             <view class="f24 gray04 pro-title">{{item.goodsName}}</view>
-            <view class="f24 gray05">尺码：
+            <!-- <view class="f24 gray05">尺码：
               <text class="gray04">{{item.goodsUnit}}</text> 颜色：
               <text class="gray04">{{item.goodsSpec}}</text>
-            </view>
+            </view> -->
             <view class="f24 gray05">原价
-              <text class="gray04">￥{{item.marketPrice}}</text> 现价
+              <text class="gray04 underline">￥{{item.marketPrice}}</text> 现价
               <text class="f32 red-color">￥{{item.shopprice}}</text>
             </view>
           </view>

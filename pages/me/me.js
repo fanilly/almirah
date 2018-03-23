@@ -22,6 +22,20 @@ Page({
     });
   },
 
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    wx.stopPullDownRefresh(); //停止下拉刷新
+    wx.request({
+      url: `${app.globalData.api}/user/user_info`,
+      data: {
+        userId: app.globalData.userID
+      },
+      success: res => {
+        app.globalData.commission = res.data.data;
+      }
+    });
+  },
+
   //去购买会员
   handleBuyVip() {
     // console.log(app.globalData.isVIP);
@@ -31,9 +45,9 @@ Page({
     //     showCancel: false
     //   });
     // } else {
-      wx.navigateTo({
-        url: '../register/register'
-      });
+    wx.navigateTo({
+      url: '../register/register'
+    });
     // }
   },
 
@@ -58,7 +72,7 @@ Page({
         success: function(res) {
           if (res.confirm) {
             wx.navigateTo({
-              url:'../register/register'
+              url: '../register/register'
             });
           }
         }

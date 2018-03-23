@@ -1,4 +1,4 @@
 <!--pages/helpsArticle1/helpsArticle1.wxml-->
 <view class="f36 gray02">成为会员时赠送的代金券如何使用？</view>
-<view class="f32">在洗衣下单时如果有优惠券会自动使用 如下图：</view>
+<view class="f32">在洗衣下单时如果有优惠券选择使用即可 如下图：</view>
 <image src="{{baseUrl}}Public/help/003.png" mode="widthFix"></image>

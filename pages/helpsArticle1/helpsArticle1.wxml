@@ -1,4 +1,4 @@
 <!--pages/helpsArticle1/helpsArticle1.wxml-->
 <view class="f36 gray02">如何洗衣?</view>
-<view class="f32">在首页点击我要洗衣或下单按钮即可 如下图：</view>
+<view class="f32">在首页点击衣物洗涤或下单按钮即可 如下图：</view>
 <image src="{{baseUrl}}Public/help/001.png" mode="widthFix"></image>

@@ -36,6 +36,24 @@ Page({
     }
   },
 
+  //过滤特殊字符
+  handleFilter(e) {
+    let value = e.detail.value;
+    // [^\u4E00-\u9FA5]/g
+    return {
+      value: value.replace(/[~'!@#$%^&*()-+_=:]/g, '')
+    };
+  },
+
+  //只能为汉字
+  handleFilter1(e) {
+    let value = e.detail.value;
+    // [^\u4E00-\u9FA5]/g
+    return {
+      value: value.replace(/[~'!@#$%^&*()-+_=:]/g, '')
+    };
+  },
+
   //选择买入时间
   handleDateChange(e) {
     this.setData({
@@ -80,6 +98,8 @@ Page({
         this.showMsg('请输入商品描述');
       } else if (imgs.length < 1) {
         this.showMsg('请至少上传一张商品图片');
+      } else if (datas.nowprice * 1 > datas.oldprice * 1) {
+        this.showMsg('商品现价不可大于原价');
       } else {
         wx.showLoading({ title: '上传中' });
         //上传商品 首先上传标题等信息
@@ -125,34 +145,43 @@ Page({
       if (imgs.length < 3) {
         this.showMsg('请至少上传三张图片（注：一张为整体照片、一张为细节照片、一张为商标照片）')
       } else {
-        wx.showLoading({ title: '上传中' });
-        wx.request({
-          method: 'POST',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          url: `${app.globalData.api}/goods/putup`,
-          data: {
-            goodsType: 1,
-            goodsStatus: 0,
-            goodsCat: goodsID,
-            userId: app.globalData.userID,
-            shopId: shopID
-          },
+        wx.showModal({
+          title: '衣物存储须知',
+          content: '1、本公司进行定位管理即不同衣物、不同价值衣物会进行分类分区管理存放。2、存放位置区域确定后将于平台体现并公布。3、衣物储存保证干燥整洁、温度适宜、无阳光直射。延长衣物使用寿命。鞋包储存保证干燥整洁、温度适宜、无阳光直射外合理进行定型以延长使用寿命。',
           success: res => {
-            console.log(res);
-            if (res.data.status == 1) {
-              uploadImages(imgs, res.data.data, 'storage');
-            } else {
-              wx.hideLoading();
-              wx.showToast({
-                title: '网络异常',
-                image: '../../assets/warning.png',
-                duration: 1500
+            if (res.confirm) {
+              wx.showLoading({ title: '上传中' });
+              wx.request({
+                method: 'POST',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                url: `${app.globalData.api}/goods/putup`,
+                data: {
+                  goodsType: 1,
+                  goodsStatus: 0,
+                  goodsCat: goodsID,
+                  userId: app.globalData.userID,
+                  shopId: shopID
+                },
+                success: res => {
+                  console.log(res);
+                  if (res.data.status == 1) {
+                    uploadImages(imgs, res.data.data, 'storage');
+                  } else {
+                    wx.hideLoading();
+                    wx.showToast({
+                      title: '网络异常',
+                      image: '../../assets/warning.png',
+                      duration: 1500
+                    });
+                  }
+                }
               });
             }
           }
         });
+
       }
     } else {
       if (!datas.uName) {

@@ -175,11 +175,36 @@ Page({
     };
   },
 
+  //扫码
   handleScanCode() {
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
-        console.log(res);
+        console.log('成功获取二维码携带参数');
+        console.log(res.path);
+        let path = res.path;
+        let arr = path.split('?'),
+          name = arr[1].split('=')[0],
+          val = arr[1].split('=')[1];
+        if (name == 'scene') {
+          wx.request({
+            url: `${app.globalData.api}/user/modify_parentid?userId=${app.globalData.userID}&parentId=${val}`,
+            success: res => {
+              console.log(res);
+            }
+          });
+          if (app.globalData.isVIP) {
+            wx.showModal({
+              title: '温馨提示！',
+              content: '您已是衣随行会员，无需重复操作！感谢您的支持，祝您生活愉快！',
+              showCancel: false
+            });
+          } else {
+            wx.navigateTo({
+              url: '../register/register'
+            });
+          }
+        }
       }
     });
   },

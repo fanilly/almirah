@@ -38,6 +38,12 @@ Page({
     startRefresh: false
   },
 
+  handleNavigateToMall(){
+    wx.navigateTo({
+      url:'../mall/mall'
+    });
+  },
+
   // 生命周期函数--监听页面加载
   onLoad(options) {
     this.handleCheckout({ currentTarget: { id: this.data.currentIndex } });

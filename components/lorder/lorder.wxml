@@ -20,22 +20,23 @@
       <block wx:for="{{lists}}" wx:key="{{index}}">
         <view class="order-list-item">
           <view class="o-header">
-            <view class="f28 gray01">订单时间:
-              <text class="gray04">{{item.createTime}}</text>
+            <view class="f28 gray01"><!-- 订单时间:
+              <text class="gray04">{{item.createTime}}</text> -->
             </view>
             <view class="f26">
-              <text class="pointer"></text>{{item.orderStatus}}</view>
+              <text class="main-color">{{item.orderMark == 0 && item.passTime*1 <= 1800 ? '待支付' : item.orderMark == 0 && item.passTime*1 > 1800 ? '交易关闭' : item.orderStatus}}</text></view>
           </view>
           <navigator url="../lOrderDetail/lOrderDetail?orderId={{item.orderId}}" class="o-body">
             <block wx:for="{{item.list}}" wx:key="{{index}}" wx:if="{{index<3}}">
               <view>
-                <view class="item-lside f24 gray02">{{item.catName}}</view>
-                <view class="item-rside f24 gray04">x{{item.goodsNums}}</view>
+                <view class="item-lside f24 gray02 img-item-list"><image src="{{baseUrl}}{{item.catThumbs}}" style="width: 60rpx;height: 50rpx;"></image></view>
+                <view class="item-lside f24 gray02 flex1">{{item.catName}}</view>
+                <view class="item-rside f24 gray04 item-index-list">x{{item.goodsNums}}</view>
               </view>
             </block>
-            <view class="f24 gray02">订单编号：{{item.orderId}}</view>
+            <!-- <view class="f24 gray02">订单编号：{{item.orderId}}</view> -->
             <view>
-              <view class="gray05 item-lside">
+              <view class="gray05 item-lside flex1 ddd">
                 <text wx:if="{{item.list.length>=4}}">......</text>
               </view>
               <view class="item-rside f24 gray05">共{{item.list.length}}件商品 实付
@@ -44,7 +45,7 @@
             </view>
           </navigator>
           <view class="o-footer">
-            <view wx:if="{{item.orderMark == 1 || item.orderMark == 2}}" class="o-btn" bindtap="handleUrge" id="{{index}}" data-shopid="{{item.shopId}}" data-orderid="{{item.orderId}}">催促取衣</view>
+            <view wx:if="{{item.orderMark == 1 || item.orderMark == 2}}" class="o-btn" bindtap="handleUrge" id="{{index}}" data-shopid="{{item.shopId}}" data-orderid="{{item.orderId}}">提醒取件</view>
             <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-orderid="{{item.orderId}}" data-flag="sell" id="{{index}}">出售</view>
             <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-flag="storage" id="{{index}}">存储</view>
             <view wx:if="{{item.orderMark == 1 || item.orderMark == 2 && isvip}}" class="o-btn" bindtap="handleCheckSell" data-flag="express" id="{{index}}">流通</view>
@@ -52,7 +53,8 @@
             <view wx:if="{{item.orderMark == 8}}" class="o-btn" bindtap="handleGoEvaluate" id="{{index}}" data-order="{{item.orderId}}">立即评价</view>
             <view wx:if="{{item.orderMark == 9}}" class="o-btn" bindtap="handleDelOrder" id="{{index}}">删除订单</view>
             <view wx:if="{{item.orderMark == 0}}" class="o-btn" bindtap="handleDelOrder" id="{{index}}">删除订单</view>
-            <view wx:if="{{item.orderMark == 0}}" class="o-btn" data-orderid="{{item.orderId}}" bindtap="handlePayment" id="{{index}}">立即付款</view>
+            <view wx:if="{{item.orderMark == 0 && item.passTime*1 <= 1800}}" class="o-btn o-btn1" data-orderid="{{item.orderId}}" bindtap="handlePayment" id="{{index}}">立即付款</view>
+            <view wx:if="{{item.orderMark == 0 && item.passTime*1 > 1800}}" class="o-btn" data-orderid="{{item.orderId}}" bindtap="handleRePayment" id="{{index}}">重新下单</view>
           </view>
         </view>
       </block>
