@@ -18,6 +18,22 @@ Page({
       userInfo: app.globalData.userInfo,
       url: `${app.globalData.baseUrl}${app.globalData.commission.rqcode}`
     });
+
+    setInterval(() => {
+      wx.request({
+        url: `${app.globalData.api}/user/user_info`,
+        data: {
+          userId: app.globalData.userID
+        },
+        success: res => {
+          app.globalData.commission = res.data.data;
+          this.setData({
+            money: app.globalData.commission.money
+          });
+          wx.hideLoading();
+        }
+      });
+    }, 8000);
   },
 
   //提现
@@ -29,7 +45,7 @@ Page({
         success: res => {
           if (res.confirm) {
             wx.navigateTo({
-              url:'../bindphone/bindphone'
+              url: '../bindphone/bindphone'
             });
           }
         }

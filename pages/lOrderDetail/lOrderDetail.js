@@ -14,6 +14,24 @@ Page({
     content: {}
   },
 
+  //定位
+  handleGoMap(e) {
+    let rel = e.currentTarget.dataset;
+    if (rel == 1) {
+      wx.openLocation({
+        latitude: parseFloat(this.data.content.userLatitude),
+        longitude: parseFloat(this.data.content.userLongitude),
+        scale: 18
+      });
+    } else {
+      wx.openLocation({
+        latitude: parseFloat(this.data.content.latitude),
+        longitude: parseFloat(this.data.content.longitude),
+        scale: 18
+      });
+    }
+  },
+
   //打电话给商家
   handleCallTel(e) {
     wx.makePhoneCall({
@@ -101,6 +119,9 @@ Page({
               }
             }, 1000);
           }
+
+
+          console.log(this.data.content)
 
         } else {
           this.setData({

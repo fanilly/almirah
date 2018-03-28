@@ -68,6 +68,21 @@ Page({
   },
 
   onLoad: function(options) {
+
+    wx.getLocation({
+      type: 'wgs84',
+      success: function(res) {
+        console.log(res)
+        var latitude = res.latitude
+        var longitude = res.longitude
+
+        wx.chooseLocation({
+          success:function(res){
+            console.log(res)
+          }
+        })
+      }
+    });
     //获取系统信息
     wx.getSystemInfo({
       success: res => {

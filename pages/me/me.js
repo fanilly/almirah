@@ -9,9 +9,21 @@ Page({
     avatarUrl: ''
   },
 
+  handleGoBusinessAdmin() {
+    if (app.globalData.business.isLogin) {
+      wx.navigateTo({
+        url: '../businessAdmin/businessAdmin'
+      });
+    }else{
+      wx.navigateTo({
+        url: '../businessLogin/businessLogin'
+      });
+    }
+  },
+
   // 生命周期函数--监听页面加载
   onLoad(options) {
-    console.log(app.globalData.commission)
+    console.log(app.globalData.commission);
     console.log(app.globalData.isVIP);
     this.setData({
       nickName: app.globalData.userInfo.nickName,
@@ -25,6 +37,7 @@ Page({
   // 下拉刷新
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh(); //停止下拉刷新
+    wx.showLoading({ title: '正在刷新' });
     wx.request({
       url: `${app.globalData.api}/user/user_info`,
       data: {
@@ -32,6 +45,10 @@ Page({
       },
       success: res => {
         app.globalData.commission = res.data.data;
+        this.setData({
+          commission: app.globalData.commission
+        });
+        wx.hideLoading();
       }
     });
   },

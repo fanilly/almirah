@@ -94,6 +94,15 @@ App({
     updateAlmirah: false, //如果为真 显示衣橱页面是重新获取数据
     updateWashRecord: false, //如果为真 显示衣橱存储页面时重新获取数据
     isVIP: null,
+    business: {
+      isLogin: false,
+      shopId: '',
+      driveId: '',
+      driveName: ''
+    },
+    testData:null,
+    connectedPrint: false,
+    refreshBusinessAdmin: false,
     hasNewMsg: false, //是否存在新消息
     totalTrolleyLen: 0, //商城购物车物品数量
     takeAddress: null, //取衣地址

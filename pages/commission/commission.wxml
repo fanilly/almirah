@@ -7,7 +7,7 @@
       <view class="c-header f32">
         <view>来源</view>
         <view>类型</view>
-        <view>金额</view>
+        <view>金币</view>
       </view>
       <view class="placeholder-80rpx"></view>
       <view class="content">

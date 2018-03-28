@@ -1,10 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/businessLogin/businessLogin",
+    "pages/businessAdmin/businessAdmin",
     "pages/orderDetail/orderDetail",
     "pages/success/success",
     "pages/mall/mall",
     "pages/laundryOrder/laundryOrder",
+    "pages/businessOrderDetail/businessOrderDetail",
     "pages/laundrySettlement/laundrySettlement",
     "pages/trolley/trolley",
     "pages/mallSettlement/mallSettlement",

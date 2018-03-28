@@ -1,0 +1,89 @@
+<!--pages/businessAdmin/businessAdmin.wxml-->
+<view class="container">
+  <view class="placeholder-box100"></view>
+  <view class="header" style="height: {{isShowAllClass?'320rpx':'100rpx'}}">
+    <scroll-view scroll-x scroll-left="{{scrollLeft}}">
+      <view class="wapper" style="white-space: {{isShowAllClass?'normal':'nowrap'}};">
+        <view wx:for="{{btns}}" id="{{index}}" wx:key="key" class="f28 gray01 {{index==currentIndex?'main-color':''}}" bindtap="handleCheckoutType">{{item}}({{totalList[index]}})</view>
+      </view>
+    </scroll-view>
+    <image src="../../assets/more.png" bindtap="handleShowAllClass" style="width:32rpx;height:32rpx;position: absolute;right: 28rpx;top:32rpx; padding-left:4px; background-color:#fff; box-shadow: -8px 0 10px #fff;"></image>
+  </view>
+  <block wx:if="{{startRefresh}}">
+    <view class="loading-box">
+      <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+    </view>
+  </block>
+  <block wx:for="{{listsAll}}" wx:for-index="i" wx:for-item="obj" wx:key="{{i}}">
+    <view class="order-list" wx:if="{{currentIndex==i}}">
+      <block wx:for="{{obj.lists}}" wx:for-index="j" wx:for-item="objj" wx:key="{{j}}">
+        <view class="order-list-item">
+          <view class="o-header">
+            <view class="f28 gray01">
+              订单时间:
+              <text class="gray04">{{objj.createTime}}</text>
+            </view>
+            <view class="f26">
+              <text class="main-color">{{btns[i]}}</text>
+            </view>
+          </view>
+          <navigator url="../businessOrderDetail/businessOrderDetail?orderId={{objj.orderId}}&statusMark={{btns[i]}}" hover-class="none" class="o-body">
+            <block wx:for="{{objj.goodslist}}" wx:key="{{index}}" wx:if="{{index<3}}">
+              <view>
+                <view class="item-lside f24 gray02 img-item-list">
+                  <image src="{{baseUrl}}{{item.goodsThums}}" style="width: 60rpx;height: 50rpx;"></image>
+                </view>
+                <view class="item-lside f24 gray02 flex1">{{item.goodsName}}</view>
+                <view class="item-rside f24 gray04 item-index-list">x{{item.goodsNums}}</view>
+              </view>
+            </block>
+            <!-- <view class="f24 gray02">订单编号：{{item.orderId}}</view> -->
+            <view>
+              <view class="gray05 item-lside flex1 ddd">
+                <text wx:if="{{objj.goodslist.length>=4}}">......</text>
+              </view>
+              <view class="item-rside f24 gray05">共{{objj.goodslist.length}}件商品 实付
+                <text class="red-color f28">￥{{objj.totalMoney}}</text>
+              </view>
+            </view>
+          </navigator>
+          <view class="o-footer">
+            <view class="o-btn" wx:if="{{objj.orderStatus == 1}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="2" data-msg="上门取衣" bindtap="handleChangeStatus">上门取衣</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 1}}" data-orderid="{{objj.orderId}}" bindtap="handlePrintLaundryOrder">打印订单</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 2}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="3" data-msg="取衣成功" bindtap="handleChangeStatus">取衣成功</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 3}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="4" data-msg="正在清洗" bindtap="handleChangeStatus">正在清洗</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 4}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="5" data-msg="清洗完成" bindtap="handleChangeStatus">清洗完成</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 5}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="7" data-msg="上门送衣" bindtap="handleChangeStatus">上门送衣</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 7}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="8" data-msg="送衣完成" data-msg="上门取衣" bindtap="handleChangeStatus">送衣完成</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 8}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="9" data-msg="订单完成" bindtap="handleChangeStatus">订单完成</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 9}}" data-orderid="{{objj.orderId}}" bindtap="handlePrintLaundryOrder">打印订单</view>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{obj.isLoadMore}}">
+        <view class="weui-loadmore">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+      </block>
+      <block wx:if="{{currentIndex==i&&obj.listsStatus!=1}}">
+        <view class="container loadbox">
+          <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+          <text class="f24 gray05">{{obj.listsStatus}}</text>
+        </view>
+      </block>
+    </view>
+  </block>
+  <view class="arc-btn-lg order box-shadow" bindtap="handleConnectPrientDev">
+    <image src="../../assets/print.png" style="width: 58rpx;height: 58rpx"></image>
+  </view>
+  <view wx:if="{{hide}}" class="container loadbox">
+    <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+    <text class="f24 gray05">暂无订单数据</text>
+  </view>
+  <!-- 底线 -->
+  <view class="public-footer" wx:if="{{listsAll[currentIndex].noMoreData}}">
+    已加载全部数据
+  </view>
+  <!-- <view class="placeholder-box100"></view> -->
+</view>
