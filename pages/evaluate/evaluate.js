@@ -12,6 +12,20 @@ Page({
     score: 5
   },
 
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

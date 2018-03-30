@@ -1,4 +1,5 @@
 <!--pages/productDetail/productDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
 <block wx:if="{{!loaded}}">
   <view class="container loadbox">
     <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
@@ -33,7 +34,7 @@
           </view>
         </view>
         <view class="f24 gray02 desc-t">商品描述:</view>
-        <view class="f24 gray04 desc">{{detail.goodsDesc}}</view>
+        <view class="f24 gray04 desc"><template is="wxParse" data="{{wxParseData:article.nodes}}"/></view>
       </view>
       <view class="f24 gray04 notice">
         <view class="f28 gray02">衣物交易须知</view>

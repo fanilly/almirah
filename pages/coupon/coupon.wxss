@@ -1,0 +1,12 @@
+@import '../../view/coupon.wxss';
+.coupon-warp {
+  width: 100%;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+
+.page-on-load {
+  font-size: 32rpx;
+  text-align: center;
+  padding: 20px 0;
+}

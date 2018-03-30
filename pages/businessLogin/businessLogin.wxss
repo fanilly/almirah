@@ -1,5 +1,4 @@
 /* pages/bindphone/bindphone.wxss */
-
 page {
   background-color: #fff;
 }

@@ -23,6 +23,20 @@ Page({
 
   },
 
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
+  },
+
   // 去结算
   handleGoSettlement() {
     if (this.data.totalTrolley <= 0) {
@@ -410,7 +424,7 @@ Page({
 
     //获取商品数据
     wx.request({
-      url: `${api}/common/get_goods_cate`,
+      url: `${api}/common/get_goods_cate?city=${app.globalData.city}`,
       success: res => {
         console.log(res.data);
         this.setData({

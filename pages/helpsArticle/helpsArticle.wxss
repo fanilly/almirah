@@ -1,0 +1,23 @@
+/* pages/helpsArticle1/helpsArticle1.wxss */
+
+@import '../../wxParse/wxParse.wxss';
+page {
+  background-color: #fff;
+  padding: 15rpx;
+  box-sizing: border-box;
+}
+
+image {
+  max-width: 100%;
+}
+
+view {
+  line-height: 60rpx;
+  margin-bottom: 15rpx;
+  box-sizing: border-box;
+}
+
+.f36 {
+  padding: 20rpx 0;
+  text-align: center;
+}

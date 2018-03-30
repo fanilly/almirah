@@ -58,7 +58,7 @@ input {
 }
 
 .h-content {
-  padding: 0 0 0 35rpx;
+  padding: 20rpx 0 0 35rpx;
   text-align: justify;
 }
 
@@ -82,7 +82,6 @@ input {
   margin-top: 50rpx;
 }
 
-.search-box input{
+.search-box input {
   width: 100%;
-
 }

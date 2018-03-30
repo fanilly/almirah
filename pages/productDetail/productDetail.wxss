@@ -1,5 +1,6 @@
 /* pages/productDetail/productDetail.wxss */
 
+@import '../../wxParse/wxParse.wxss';
 .infos {
   background-color: #fff;
   padding: 15rpx;

@@ -7,23 +7,23 @@
   <view class="content">
     <view class="list-item">
       <view><text>微</text><text>信</text><text>公</text><text>众</text><text>号</text><text>：</text></view>
-      <view>净衣客洗衣</view>
+      <view>{{settings.wechat}}</view>
     </view>
     <view class="list-item">
       <view><text>微</text><text>信</text><text>客</text><text>服</text><text>：</text></view>
-      <view>jingyike2017</view>
+      <view>{{settings.wechatkf}}</view>
     </view>
     <view class="list-item">
       <view><text>联</text><text>系</text><text>电</text><text>话</text><text>：</text></view>
-      <view>4000371788</view>
+      <view>{{settings.phoneNo}}</view>
     </view>
     <view class="list-item">
       <view><text>电</text><text>子</text><text>邮</text><text>箱</text><text>：</text></view>
-      <view>henanjingyike@163.com</view>
+      <view>{{settings.email}}</view>
     </view>
     <view class="list-item">
       <view><text>官</text><text>方</text><text>网</text><text>站</text><text>：</text></view>
-      <view>http://jingyike.com</view>
+      <view>{{settings.website}}</view>
     </view>
   </view>
   <!-- footer -->

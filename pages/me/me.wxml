@@ -19,6 +19,9 @@
       <view class="f24">推荐码</view>
     </view>
   </view>
+  <view class="loading-box" wx:if="{{startRefresh}}">
+    <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+  </view>
   <view class="main">
     <!-- btns -->
     <view class="btn-list box-shadow">
@@ -83,6 +86,17 @@
           <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
         </view>
       </navigator>
+      <navigator url="../coupon/coupon">
+        <view class="flag-icon">
+          <image src="../../assets/icon02.png" style="width: 54rpx;height: 54rpx;position: relative;top:5rpx"></image>
+        </view>
+        <view class="f28 gray01 text-con">
+          我的优惠券<view wx:if="{{commission.freeWash * 1 > 0}}" class="text-desc f24 gray06">剩余 <text class="red-color f28">{{commission.freeWash}}</text> 张</view>
+        </view>
+        <view class="xs-arrow">
+          <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>
+        </view>
+      </navigator>
       <block>
         <navigator url="../sellRecord/sellRecord">
           <view class="flag-icon">
@@ -123,7 +137,7 @@
           <image src="../../assets/m_list_btns_07.png" style="width: 32rpx;height: 32rpx;position: relative;top:5rpx;"></image>
         </view>
         <view class="f28 gray01 text-con">
-          商家后台
+          商家登陆
         </view>
         <view class="xs-arrow">
           <image src="../../assets/xs_arrow.png" style="width: 18rpx;height: 32rpx"></image>

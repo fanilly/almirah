@@ -5,23 +5,9 @@
   <view class="welcome f24 gray04">
     <text class="f28 main-color">欢迎您</text>成为我们净衣客的一员，作为新成员的你，肯定对我们平台还有很多很多疑问吧，请先在列表中点击查看自己想要了解到内容建议您将所有问题都浏览一遍，为您以后的使用过程扫平障碍呦~~~</view>
   <view class="content">
-    <navigator url="../helpsArticle1/helpsArticle1" class="list-item gray04 f28">
-      <view>1.</view>
-      <view>如何洗衣？</view>
-      <view>
-        <image style="width: 20rpx;height: 35rpx;" src="../../assets/gray_arrow.png"></image>
-      </view>
-    </navigator>
-    <navigator url="../helpsArticle2/helpsArticle2" class="list-item gray04 f28">
-      <view>2.</view>
-      <view>如何成为会员？</view>
-      <view>
-        <image style="width: 20rpx;height: 35rpx;" src="../../assets/gray_arrow.png"></image>
-      </view>
-    </navigator>
-    <navigator url="../helpsArticle3/helpsArticle3" class="list-item gray04 f28">
-      <view>3.</view>
-      <view>成为会员时赠送的代金券如何使用？</view>
+    <navigator wx:for="{{lists}}" wx:key="{{index}}" url="../helpsArticle/helpsArticle?articleId={{item.articleId}}" class="list-item gray04 f28">
+      <view>{{index+1}}.</view>
+      <view>{{item.articleTitle}}</view>
       <view>
         <image style="width: 20rpx;height: 35rpx;" src="../../assets/gray_arrow.png"></image>
       </view>

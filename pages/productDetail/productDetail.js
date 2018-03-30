@@ -1,5 +1,6 @@
 // pages/productDetail/productDetail.js
 import getMGoodsLists from '../../request/getMGoodsLists.js';
+import WxParse from '../../wxParse/wxParse.js';
 const app = getApp(),
   getMallTrolleyItem = function(detail) { //本次购买或加入购物车的数据
     return {
@@ -130,6 +131,8 @@ Page({
           detail: res.data,
           loaded: true
         });
+        let article = res.data.goodsDesc;
+        WxParse.wxParse('article', 'html', article, this, 5);
       }
     });
 

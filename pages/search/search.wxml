@@ -27,6 +27,18 @@
       </view>
     </view>
   </block>
+  <!-- hotSearchs -->
+  <block wx:if="{{!startSearch && !isStartSearch}}">
+    <view class="history">
+      <view class="h-title f28 gray02">
+        <image src="../../assets/fire.png" style="width:21rpx;height:29rpx;vertical-align: middle; margin:-4rpx 10rpx 0 5rpx;"></image>
+        <text>热门搜索</text>
+      </view>
+      <view class="h-content">
+        <view class="f24 gray05" wx:for="{{hotSearchs}}" wx:key="{{index}}" id="{{index}}" bindtap="handleQuickHotSearch">{{item}}</view>
+      </view>
+    </view>
+  </block>
   <view style="height: 15rpx"></view>
   <!-- pro list -->
   <lists lists="{{lists}}" loadingStatus="{{loadingStatus}}"></lists>

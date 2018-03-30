@@ -1,6 +1,7 @@
 import getMGoodsLists from '../../request/getMGoodsLists.js';
+import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js';
 const app = getApp();
-let currentPageNum = 1; //当前加载的次数
+let currentPageNum = 1,qqmapsdk; //当前加载的次数
 
 Page({
   data: {
@@ -69,20 +70,53 @@ Page({
 
   onLoad: function(options) {
 
+    qqmapsdk = new QQMapWX({
+      key: 'JWABZ-W5A3V-AKHPN-UE4D4-NMO5T-4CFLQ'
+    });
+
     wx.getLocation({
       type: 'wgs84',
       success: function(res) {
-        console.log(res)
-        var latitude = res.latitude
-        var longitude = res.longitude
-
-        wx.chooseLocation({
-          success:function(res){
-            console.log(res)
+        //2、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function(addressRes) {
+            console.log(addressRes.result.address_component.city)
+            app.globalData.city = addressRes.result.address_component.city;
           }
-        })
+        });
       }
     });
+
+    console.log('--------------');
+    console.log(options)
+    if (options.recommendId) {
+      wx.request({
+        url: `${app.globalData.api}/user/modify_parentid?userId=${app.globalData.userID}&parentId=${options.recommendId}`,
+        success: res => {
+          console.log(res);
+          // wx.showModal({
+          //   content: res.data.msg,
+          //   showCancel: false
+          // });
+        }
+      });
+      if (app.globalData.isVIP) {
+        wx.showModal({
+          title: '温馨提示！',
+          content: '您已是衣随行会员，无需重复操作！感谢您的支持，祝您生活愉快！',
+          showCancel: false
+        });
+      } else {
+        wx.navigateTo({
+          url: '../register/register'
+        });
+      }
+    }
+    console.log('--------------');
     //获取系统信息
     wx.getSystemInfo({
       success: res => {
@@ -180,7 +214,7 @@ Page({
   onShareAppMessage(res) {
     return {
       title: '净衣客',
-      path: '/pages/index/index',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
       success() {
         console.log('success');
       },

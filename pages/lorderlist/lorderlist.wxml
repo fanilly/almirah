@@ -1,0 +1,89 @@
+<!--pages/businessAdmin/businessAdmin.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="gray04 picker-time">
+      <picker mode="date" value="{{startTime}}" data-rel="start" bindchange="handleDateChange">
+        <block wx:if="{{startTime==''}}">
+          <view class="picker-time-text">
+            <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
+            <text style="padding-left: 10rpx;" class="main-color f28">开始日期</text>
+          </view>
+        </block>
+        <view wx:else class="picker-time-text main-color f28">{{startTime}}</view>
+      </picker>
+    </view>
+    <view>---</view>
+    <view class="gray04 picker-time">
+      <picker mode="date" value="{{endTime}}" data-rel="end" bindchange="handleDateChange">
+        <block wx:if="{{endTime==''}}">
+          <view class="picker-time-text">
+            <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
+            <text style="padding-left: 10rpx;" class="main-color f28">截止日期</text>
+          </view>
+        </block>
+        <view wx:else class="picker-time-text main-color f28">{{endTime}}</view>
+      </picker>
+    </view>
+    <view>
+      <view class="btn f28" bindtap="handleStartSearch">搜索</view>
+    </view>
+  </view>
+  <view class="placeholder-box100"></view>
+  <block wx:if="{{startRefresh}}">
+    <view class="loading-box">
+      <image src="../../assets/loader.gif" style="width:60rpx;height:60rpx;margin:10rpx;"></image>
+    </view>
+  </block>
+  <view class="order-list" wx:if="{{currentIndex==i}}">
+    <block wx:for="{{lists}}" wx:for-index="j" wx:for-item="obj" wx:key="{{j}}">
+      <view class="order-list-item">
+        <view class="o-header">
+          <view class="f28 gray01">
+            订单编号:
+            <text class="gray04">{{obj.orderId}}</text>
+          </view>
+          <view class="f26">
+            <text class="main-color">{{obj.orderStatus}}</text>
+          </view>
+        </view>
+        <navigator url="../orderlistdetail/orderlistdetail?orderId={{obj.orderId}}&statusMark={{obj.orderStatus}}" hover-class="none" class="o-body">
+          <block wx:for="{{obj.goodslist}}" wx:key="{{index}}" wx:if="{{index<3}}">
+            <view>
+              <view class="item-lside f24 gray02 img-item-list">
+                <image src="{{baseUrl}}{{item.goodsThums}}" style="width: 60rpx;height: 50rpx;"></image>
+              </view>
+              <view class="item-lside f24 gray02 flex1">{{item.goodsName}}</view>
+              <view class="item-rside f24 gray04 item-index-list">x{{item.goodsNums}}</view>
+            </view>
+          </block>
+          <!-- <view class="f24 gray02">订单编号：{{item.orderId}}</view> -->
+          <view>
+            <view class="gray05 item-lside flex1 ddd">
+              <text wx:if="{{obj.goodslist.length>=4}}">......</text>
+            </view>
+            <view class="item-rside f24 gray05">共{{obj.goodslist.length}}件商品 实付
+              <text class="red-color f28">￥{{obj.totalMoney}}</text>
+            </view>
+          </view>
+        </navigator>
+        <view class="o-footer">
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{isLoadMore}}">
+      <view class="weui-loadmore">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+      </view>
+    </block>
+    <view wx:if="{{showIcon}}" class="container loadbox">
+      <image src="../../assets/loading_icon.png" style="width:170rpx;height:144rpx;"></image>
+      <text class="f24 gray05">暂无订单数据</text>
+    </view>
+  </view>
+  <!-- 底线 -->
+  <view class="public-footer" wx:if="{{noMoreData}}">
+    已加载全部数据
+  </view>
+  <!-- <view class="placeholder-box100"></view> -->
+</view>

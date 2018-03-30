@@ -128,6 +128,12 @@
   border-bottom: 0;
 }
 
+.lists-box .text-desc {
+  display: inline-block;
+  float: right;
+  padding-right: 20px;
+}
+
 .weui-footer {
   margin: 40rpx 0;
 }
@@ -148,4 +154,19 @@
   bottom: 15rpx;
   box-sizing: border-box;
   padding-top: 30rpx;
+}
+
+.loading-box {
+  margin-top: 50rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px #ccc;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  right: 0;
+  top: 20rpx;
+  margin: auto;
 }

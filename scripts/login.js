@@ -22,6 +22,7 @@ module.exports = (api, fn, err) => {
         },
         success: res => {
           let user = res.data;
+          console.log(res)
           //成功获取user之后获取用户微信信息
           wx.getUserInfo({
             success: res => {

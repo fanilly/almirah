@@ -28,6 +28,20 @@ Page({
     });
   },
 
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
+  },
+
   // 下拉刷新
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh(); //停止下拉刷新

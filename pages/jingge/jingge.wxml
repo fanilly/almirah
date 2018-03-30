@@ -1,0 +1,6 @@
+<!--pages/copartner/copartner.wxml-->
+<view class="container">
+  <navigator wx:for="{{list}}" wx:key="{{index}}" url="{{item.num*1 > 0 ? '../lorderlist/lorderlist?shopId=' + item.shopId : '/'}}" class="copartner-list-wapper">
+    {{item.userName}}<view class="total">{{item.num}}</view>
+  </navigator>
+</view>

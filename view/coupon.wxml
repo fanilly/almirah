@@ -1,0 +1,26 @@
+<template name="coupon">
+  <view class="coupon">
+    <view class="lside">
+      <text>优惠券</text>
+    </view>
+    <view class="center">
+      <view class="title">
+        <text>洗涤优惠券</text>
+      </view>
+      <view class="content">
+        <text>截止：2020-01-01</text>
+        <text>洗涤物品大于0件可用</text>
+        <text>净衣客洗衣</text>
+      </view>
+    </view>
+    <view class="rside">
+      <text>
+        <text>￥</text>10</text>
+      <view class="arc"></view>
+      <view class="arc"></view>
+      <view class="arc"></view>
+      <view class="arc"></view>
+      <view class="arc"></view>
+    </view>
+  </view>
+</template>

@@ -87,16 +87,17 @@ page {
 }
 
 .w-color {
-  color:#fff;
+  color: #fff;
 }
 
 .text-center {
-  text-align:center;
+  text-align: center;
 }
 
 .green-color {
   color: #1aad19;
 }
+
 
 /*466ede*/
 
@@ -333,11 +334,34 @@ page {
   margin-left: 20rpx;
 }
 
-
 .notice {
   padding-top: 15rpx;
 }
 
 .notice navigator {
   display: inline-block;
+}
+
+.copartner-list-wapper {
+  width: 100%;
+  line-height: 80rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 15rpx 22rpx;
+  font-size: 30rpx;
+  position: relative;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.copartner-list-wapper .total {
+  width: 60rpx;
+  height: 60rpx;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 25rpx;
+  font-size: 24rpx;
 }

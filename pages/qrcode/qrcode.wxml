@@ -1,8 +1,8 @@
 <!--pages/qrcode/qrcode.wxml-->
 <view class="container">
   <view class="qrcode-wapper">
-    <image class="qrcode" src="{{url}}"></image>
-    <image class="userphoto" src="{{userInfo.avatarUrl}}"></image>
+    <image class="qrcode" src="{{url}}" bindtap="handleClickDownLoad"></image>
+    <image class="userphoto" src="{{userInfo.avatarUrl}}" bindtap="handleClickDownLoad"></image>
   </view>
   <view class="f32">分享二维码赚取金币</view>
   <view class="my"><view>我的金币：<text class="red-color f36">￥{{money}}</text></view><view class="commission main-bg main-bgi" bindtap="handleTiXian">提现</view></view>

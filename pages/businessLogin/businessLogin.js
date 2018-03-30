@@ -5,6 +5,20 @@ Page({
     shopLoginPwd: ''
   },
 
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
+  },
+
   onLoad(options) {
     //如果已登陆 直接跳转至后台管理页面
     if (app.globalData.business.isLogin) {
@@ -66,7 +80,9 @@ Page({
           if (datas.data.status * 1 == 1) {
             //记录登陆状态
             app.globalData.business.isLogin = true;
+            app.globalData.business.identity = datas.data.level;
             app.globalData.business.shopId = datas.data.shopId;
+            app.globalData.business.userId = datas.data.userId;
             app.globalData.business.driveId = datas.data.DriveId;
             app.globalData.business.driveName = datas.data.DriveName;
             wx.setStorage({
@@ -84,9 +100,19 @@ Page({
               duration: 1500
             });
             setTimeout(() => {
-              wx.redirectTo({
-                url: '../businessAdmin/businessAdmin'
-              });
+              if (app.globalData.business.identity == 1) {
+                wx.redirectTo({
+                  url: '../businessAdmin/businessAdmin'
+                });
+              } else if (app.globalData.business.identity == 2) {
+                wx.redirectTo({
+                  url: `../jingge/jingge?userId=${app.globalData.business.userId}`
+                });
+              } else {
+                wx.redirectTo({
+                  url: `../copartner/copartner?userId=${app.globalData.business.userId}`
+                });
+              }
             }, 500);
           } else {
             wx.showToast({

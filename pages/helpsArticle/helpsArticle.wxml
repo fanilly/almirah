@@ -1,0 +1,4 @@
+<!--pages/helpsArticle1/helpsArticle1.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="f36 gray02">{{content.articleTitle}}</view>
+<template is="wxParse" data="{{wxParseData:article.nodes}}" />

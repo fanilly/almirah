@@ -16,7 +16,22 @@ Page({
     startSearch: false, //是否开始搜索
     isStartSearch: false, //是否开始搜索 控制历史是否显示
     hasHistorys: true, //是否存在历史记录
-    historys: [] //记录历史搜索记录
+    historys: [], //记录历史搜索记录
+    hotSearchs: [] //记录历史搜索记录
+  },
+
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
   },
 
   //上拉加载更多
@@ -41,6 +56,9 @@ Page({
   //生命周期函数--监听页面加载
   onLoad(options) {
     this.getHistoricalSearch();
+    let hotSearchs = app.globalData.SETTINGS.hotSearchs;
+    hotSearchs = hotSearchs.split('，');
+    this.setData({ hotSearchs })
   },
 
   //搜索
@@ -87,7 +105,7 @@ Page({
         isStartSearch: false,
         loadingStatus: -1,
         lists: [],
-        historys:[]
+        historys: []
       });
       this.getHistoricalSearch();
     }
@@ -120,6 +138,15 @@ Page({
   //当点击历史搜索记录时以点击历史的内容为关键词 进行快捷搜索
   handleQuickSearch(e) {
     let quickKeyWord = this.data.historys[e.target.id];
+    searchKeyWord = quickKeyWord;
+    this.setData({
+      quickSearchKeyWord: quickKeyWord
+    });
+    this.handleStartSearch();
+  },
+
+  handleQuickHotSearch(e) {
+    let quickKeyWord = this.data.hotSearchs[e.target.id];
     searchKeyWord = quickKeyWord;
     this.setData({
       quickSearchKeyWord: quickKeyWord

@@ -1,6 +1,6 @@
 // pages/lOrderDetail/lOrderDetail.js
 const app = getApp();
-let orderId;
+let orderId, tempPrintOrderData;
 Page({
   data: {
     baseUrl: app.globalData.baseUrl,
@@ -41,6 +41,20 @@ Page({
     latitude: '', //纬度
     longitude: '', //经度
     isEnd: false, //当前订单是否打印过（三种类型都完成）
+  },
+
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
   },
 
   //定位
@@ -249,6 +263,7 @@ Page({
           setTimeout(function() {
             wx.showLoading({
               title: '设备连接中...',
+              mask:true
             });
             //开启蓝牙模块
             _this.startBtooth();
@@ -279,6 +294,7 @@ Page({
             if (res.available) {
               wx.showLoading({
                 title: '设备连接中...',
+                mask:true
               });
               setTimeout(function() {
                 _this.connect();
@@ -493,6 +509,7 @@ Page({
       } else if (res.connected == false) {
         wx.showLoading({
           title: '重连中...',
+          mask:true
         });
         _this.connect();
       }
@@ -549,6 +566,7 @@ Page({
             _this.startPrint();
             wx.showLoading({
               title: '打印中...',
+              mask:true
             });
           } else if (res.cancel) {
             //用户点击取消
@@ -635,6 +653,7 @@ Page({
   printSuccess: function(data) {
     //打印失败
     wx.hideLoading();
+    this.handleChangeStatus(tempPrintOrderData);
     wx.showToast({
       title: '打印成功',
       image: '../../assets/success.png',
@@ -678,7 +697,17 @@ Page({
         }
       });
     } else {
+      tempPrintOrderData = {};
       let data = e.target.dataset;
+      tempPrintOrderData = {
+        target: {
+          dataset: {
+            msg: data.msg,
+            targetstatus: data.targetstatus,
+            orderid: data.orderid
+          }
+        }
+      };
       console.log(data);
       _this.data.connectState = true;
       wx.showLoading({ title: '数据获取中', mask: true });

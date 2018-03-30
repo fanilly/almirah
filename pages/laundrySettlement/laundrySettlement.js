@@ -175,14 +175,14 @@ Page({
       //     showCancel: false
       //   });
       // } else {
-        if (!this.data.prefetchingTime) {
-          wx.showModal({
-            content: '请选择预取时间',
-            showCancel: false
-          });
-        } else {
-          this.startBuy();
-        }
+      if (!this.data.prefetchingTime) {
+        wx.showModal({
+          content: '请选择预取时间',
+          showCancel: false
+        });
+      } else {
+        this.startBuy();
+      }
       // }
     } else if (!this.data.prefetchingTime) {
       wx.showModal({
@@ -220,7 +220,8 @@ Page({
         getAddressId: this.data.takeAddress.addressId,
         requireTime: this.data.prefetchingTime,
         deliverType: 0,
-        orderRemarks: this.data.remarks
+        orderRemarks: this.data.remarks,
+        city: app.globalData.city
       },
       success: res => {
         app.globalData.updateAlmirah = true;
@@ -271,7 +272,6 @@ Page({
               //   });
               // }, 800);
             }
-
 
           },
           fail: res => {

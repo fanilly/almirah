@@ -20,6 +20,20 @@ Page({
     baseUrl: app.globalData.baseUrl
   },
 
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
+  },
+
   test() {
     if (this.data.currentShowControl != -1) {
       this.setData({

@@ -1,39 +1,20 @@
 // pages/businessAdmin/businessAdmin.js
 const app = getApp(),
   params = {
-    num: [1, 2, 3, 4, 5, 7, 8, 9],
-    msg: ['暂无下单成功订单', '暂无上门取衣订单', '暂无取衣成功订单', '暂无正在清洗订单', '暂无清洗完成订单', '暂无上门送衣订单', '暂无送衣完成订单', '暂无订单完成订单']
+    // num: [1, 2, 3, 4, 5, 7, 8, 9],
+    num: [1, 12, 13, 14, 9],
+    msg: ['暂无下单成功订单', '暂无取衣中订单', '暂无清洗中订单', '暂无送衣中订单', '暂无订单完成订单']
   };
+let tempPrintOrderData;
 Page({
 
   data: {
     startRefresh: false,
     baseUrl: app.globalData.baseUrl,
-    btns: ['下单成功', '上门取衣', '取衣成功', '正在清洗', '清洗完成', '上门送衣', '送衣完成', '订单完成'],
+    btns: ['下单成功', '取衣中', '清洗中', '送衣中', '订单完成'],
     totalList: [0, 0, 0, 0, 0, 0, 0, 0],
     currentIndex: 0,
     listsAll: [{
-      lists: [],
-      listsStatus: '努力加载中...',
-      totalPage: 2,
-      curPage: 1,
-      noMoreData: false,
-      isLoadMore: false
-    }, {
-      lists: [],
-      listsStatus: '努力加载中...',
-      totalPage: 2,
-      curPage: 1,
-      noMoreData: false,
-      isLoadMore: false
-    }, {
-      lists: [],
-      listsStatus: '努力加载中...',
-      totalPage: 2,
-      curPage: 1,
-      noMoreData: false,
-      isLoadMore: false
-    }, {
       lists: [],
       listsStatus: '努力加载中...',
       totalPage: 2,
@@ -100,6 +81,20 @@ Page({
     isEnd: false, //当前订单是否打印过（三种类型都完成）
   },
 
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
+  },
+
   // 头部按钮点击事件
   handleCheckoutType(e) {
     let id = parseInt(e.target.id);
@@ -160,9 +155,15 @@ Page({
           nums = params.num,
           totalList = this.data.totalList;
         for (let i = 0; i < nums.length; i++) {
-          for (let j = 0; j < data.length; j++) {
-            if (data[j].orderStatus == nums[i]) {
-              totalList[i] = data[j].num;
+          // for (let j = 0; j < data.length; j++) {
+          //   if (data[j].orderStatus == nums[i]) {
+          //     totalList[i] = data[j].num;
+          //     break;
+          //   }
+          // }
+          for (let key in data) {
+            if (key == nums[i]) {
+              totalList[i] = data[key];
               break;
             }
           }
@@ -236,7 +237,7 @@ Page({
     console.log('on reach bottom');
     let listsAll = this.data.listsAll,
       currentIndex = this.data.currentIndex;
-    if (listsAll[currentIndex].curPage < listsAll[currentIndex].totalPage) {
+    if (listsAll[currentIndex].curPage <= listsAll[currentIndex].totalPage) {
       listsAll[currentIndex].isLoadMore = true;
       this.setData({
         listsAll
@@ -271,7 +272,7 @@ Page({
           listsAll[index].listsStatus = 1;
           listsAll[index].totalPage = data.totalPage;
           listsAll[index].curPage = listsAll[index].curPage + 1;
-          if (listsAll[index].curPage >= listsAll[index].totalPage) {
+          if (listsAll[index].curPage > listsAll[index].totalPage) {
             listsAll[index].noMoreData = true;
             listsAll[index].isLoadMore = false;
           }
@@ -292,6 +293,7 @@ Page({
       content: data.msg,
       success: (res) => {
         if (res.confirm) {
+          wx.showLoading({ title: '操作中', mask: true });
           wx.request({
             url: `${app.globalData.api}/admin/changeOrderStatus`,
             data: {
@@ -300,6 +302,7 @@ Page({
               status: data.targetstatus
             },
             success: res => {
+              wx.hideLoading();
               console.log(res);
               if (res.data.status == 1) {
                 wx.showToast({
@@ -311,6 +314,7 @@ Page({
                 listsAll[cIndex].lists.splice(data.index, 1);
                 if (listsAll[cIndex].lists.length <= 0) {
                   listsAll[cIndex].listsStatus = params.msg[cIndex];
+                  listsAll[cIndex].noMoreData = false;
                 }
                 this.setData({ listsAll });
               } else {
@@ -320,6 +324,14 @@ Page({
                   duration: 1500
                 });
               }
+            },
+            fail: err => {
+              wx.hideLoading();
+              wx.showToast({
+                title: '网络异常',
+                icon: '../../assets/warning.png',
+                duration: 1500
+              });
             }
           });
         }
@@ -378,6 +390,7 @@ Page({
           setTimeout(function() {
             wx.showLoading({
               title: '设备连接中...',
+              mask: true
             });
             //开启蓝牙模块
             _this.startBtooth();
@@ -408,6 +421,7 @@ Page({
             if (res.available) {
               wx.showLoading({
                 title: '设备连接中...',
+                mask: true
               });
               setTimeout(function() {
                 _this.connect();
@@ -444,6 +458,7 @@ Page({
         } else {
           wx.showLoading({
             title: '请开/重启蓝牙',
+            mask: true
           });
           _this.data.State = false;
         }
@@ -622,6 +637,7 @@ Page({
       } else if (res.connected == false) {
         wx.showLoading({
           title: '重连中...',
+          mask: true
         });
         _this.connect();
       }
@@ -678,6 +694,7 @@ Page({
             _this.startPrint();
             wx.showLoading({
               title: '打印中...',
+              mask: true
             });
           } else if (res.cancel) {
             //用户点击取消
@@ -764,6 +781,7 @@ Page({
   printSuccess: function(data) {
     //打印失败
     wx.hideLoading();
+    this.handleChangeStatus(tempPrintOrderData);
     wx.showToast({
       title: '打印成功',
       image: '../../assets/success.png',
@@ -799,7 +817,18 @@ Page({
         }
       });
     } else {
+      tempPrintOrderData = {};
       let data = e.target.dataset;
+      tempPrintOrderData = {
+        target: {
+          dataset: {
+            index:data.index,
+            msg:data.msg,
+            targetstatus:data.targetstatus,
+            orderid:data.orderid
+          }
+        }
+      };
       wx.showLoading({ title: '数据获取中', mask: true });
       wx.request({
         url: `${app.globalData.api}/admin/printOrder`,

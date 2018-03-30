@@ -26,6 +26,20 @@ Page({
     });
   },
 
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
+  },
+
   onLoad: function() {
     //获取系统信息
     wx.getSystemInfo({

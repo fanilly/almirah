@@ -2,6 +2,7 @@
 const app = getApp();
 Page({
   data: {
+    startRefresh: false,
     isVip: app.globalData.isVIP,
     commission: app.globalData.commission,
     hasNewMsg: app.globalData.hasNewMsg,
@@ -11,14 +12,39 @@ Page({
 
   handleGoBusinessAdmin() {
     if (app.globalData.business.isLogin) {
-      wx.navigateTo({
-        url: '../businessAdmin/businessAdmin'
-      });
-    }else{
+      if (app.globalData.business.identity == 1) {
+        wx.redirectTo({
+          url: '../businessAdmin/businessAdmin'
+        });
+      } else if (app.globalData.business.identity == 2) {
+        wx.redirectTo({
+          url: `../jingge/jingge?userId=${app.globalData.business.userId}`
+        });
+      } else {
+        wx.redirectTo({
+          url: `../copartner/copartner?userId=${app.globalData.business.userId}`
+        });
+      }
+    } else {
       wx.navigateTo({
         url: '../businessLogin/businessLogin'
       });
     }
+  },
+
+
+  //分享
+  onShareAppMessage(res) {
+    return {
+      title: '净衣客',
+      path: `/pages/index/index?recommendId=${app.globalData.userID}`,
+      success() {
+        console.log('success');
+      },
+      fail() {
+        console.log('fail');
+      }
+    };
   },
 
   // 生命周期函数--监听页面加载
@@ -37,7 +63,9 @@ Page({
   // 下拉刷新
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh(); //停止下拉刷新
-    wx.showLoading({ title: '正在刷新' });
+    this.setData({
+      startRefresh: true
+    });
     wx.request({
       url: `${app.globalData.api}/user/user_info`,
       data: {
@@ -48,7 +76,9 @@ Page({
         this.setData({
           commission: app.globalData.commission
         });
-        wx.hideLoading();
+        this.setData({
+          startRefresh: false
+        });
       }
     });
   },
@@ -99,26 +129,9 @@ Page({
 
   //联系客服
   handleServices() {
-    wx.showLoading();
-    wx.request({
-      url: `${app.globalData.api}/common/about`,
-      data: {
-        type: 2
-      },
-      success: res => {
-        wx.hideLoading();
-        wx.makePhoneCall({
-          phoneNumber: res.data.data.articleContent
-        });
-      },
-      fail: res => {
-        wx.hideLoading();
-        wx.showToast({
-          title: '客服繁忙！',
-          image: '../../images/warning.png',
-          duration: 2000
-        });
-      }
+
+    wx.makePhoneCall({
+      phoneNumber: app.globalData.SETTINGS.phoneNo
     });
   }
 });

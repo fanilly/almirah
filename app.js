@@ -44,8 +44,9 @@ App({
     login(this.globalData.api, (user, userInfo) => {
       //登陆成功 隐藏加载动画 并记录返回数据
       if (this.loginSuccessCallback) this.loginSuccessCallback(user);
-
+      console.log(user)
       this.globalData.userInfo = userInfo;
+      this.globalData.SETTINGS = user.seeting;
       this.globalData.userID = user.userId;
       this.globalData.isVIP = user.isVip == 1 ? true : false;
       this.globalData.hasNewMsg = user.newMessages == 1 ? true : false;
@@ -57,12 +58,16 @@ App({
       //由于 是网络请求，可能会在 Page.onLoad 之后才返回
       //// 所以此处加入 callback 以防止这种情况
       if (this.loginSuccessCallback) this.loginSuccessCallback(user);
+      this.globalData.SETTINGS = user.seeting;
       this.globalData.userID = user.userId;
       this.globalData.isVIP = user.isVip == 1 ? true : false;
       this.globalData.hasNewMsg = user.newMessages == 1 ? true : false;
       console.log(user);
       this.loginAfter(user);
       //必须授权
+      wx.navigateBack({
+        delta: -1
+      });
       wx.openSetting({
         success: res => {
           if (res.authSetting['scope.userInfo']) {
@@ -93,16 +98,19 @@ App({
     userID: '',
     updateAlmirah: false, //如果为真 显示衣橱页面是重新获取数据
     updateWashRecord: false, //如果为真 显示衣橱存储页面时重新获取数据
-    isVIP: null,
-    business: {
+    isVIP: null, //是否是会员
+    city: '郑州市',
+    business: { //商家数据
+      identity: '',
       isLogin: false,
       shopId: '',
+      userId: '',
       driveId: '',
       driveName: ''
     },
-    testData:null,
-    connectedPrint: false,
-    refreshBusinessAdmin: false,
+    testData: null, // 记录连接打印机所需数据
+    connectedPrint: false, //是否已经成功连接打印机
+    refreshBusinessAdmin: false, //是否刷新商家后台管理页面
     hasNewMsg: false, //是否存在新消息
     totalTrolleyLen: 0, //商城购物车物品数量
     takeAddress: null, //取衣地址

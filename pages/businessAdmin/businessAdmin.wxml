@@ -1,7 +1,7 @@
 <!--pages/businessAdmin/businessAdmin.wxml-->
 <view class="container">
   <view class="placeholder-box100"></view>
-  <view class="header" style="height: {{isShowAllClass?'320rpx':'100rpx'}}">
+  <view class="header" style="height: {{isShowAllClass?'220rpx':'100rpx'}}">
     <scroll-view scroll-x scroll-left="{{scrollLeft}}">
       <view class="wapper" style="white-space: {{isShowAllClass?'normal':'nowrap'}};">
         <view wx:for="{{btns}}" id="{{index}}" wx:key="key" class="f28 gray01 {{index==currentIndex?'main-color':''}}" bindtap="handleCheckoutType">{{item}}({{totalList[index]}})</view>
@@ -20,8 +20,8 @@
         <view class="order-list-item">
           <view class="o-header">
             <view class="f28 gray01">
-              订单时间:
-              <text class="gray04">{{objj.createTime}}</text>
+              订单编号:
+              <text class="gray04">{{objj.orderId}}</text>
             </view>
             <view class="f26">
               <text class="main-color">{{btns[i]}}</text>
@@ -48,15 +48,15 @@
             </view>
           </navigator>
           <view class="o-footer">
-            <view class="o-btn" wx:if="{{objj.orderStatus == 1}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="2" data-msg="上门取衣" bindtap="handleChangeStatus">上门取衣</view>
-            <view class="o-btn" wx:if="{{objj.orderStatus == 1}}" data-orderid="{{objj.orderId}}" bindtap="handlePrintLaundryOrder">打印订单</view>
-            <view class="o-btn" wx:if="{{objj.orderStatus == 2}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="3" data-msg="取衣成功" bindtap="handleChangeStatus">取衣成功</view>
-            <view class="o-btn" wx:if="{{objj.orderStatus == 3}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="4" data-msg="正在清洗" bindtap="handleChangeStatus">正在清洗</view>
-            <view class="o-btn" wx:if="{{objj.orderStatus == 4}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="5" data-msg="清洗完成" bindtap="handleChangeStatus">清洗完成</view>
-            <view class="o-btn" wx:if="{{objj.orderStatus == 5}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="7" data-msg="上门送衣" bindtap="handleChangeStatus">上门送衣</view>
-            <view class="o-btn" wx:if="{{objj.orderStatus == 7}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="8" data-msg="送衣完成" data-msg="上门取衣" bindtap="handleChangeStatus">送衣完成</view>
-            <view class="o-btn" wx:if="{{objj.orderStatus == 8}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="9" data-msg="订单完成" bindtap="handleChangeStatus">订单完成</view>
-            <view class="o-btn" wx:if="{{objj.orderStatus == 9}}" data-orderid="{{objj.orderId}}" bindtap="handlePrintLaundryOrder">打印订单</view>
+            <!-- <view class="o-btn" wx:if="{{objj.orderStatus == 1}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="2" data-msg="上门取衣" bindtap="handleChangeStatus">上门取衣</view> -->
+            <view class="o-btn" wx:if="{{objj.orderStatus == 1}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="2" data-msg="上门取衣" bindtap="handlePrintLaundryOrder">上门取衣</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 2}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="4" data-msg="取衣完成" bindtap="handleChangeStatus">取衣完成</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 3}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="4" data-msg="取衣完成" bindtap="handleChangeStatus">取衣完成</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 4}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="7" data-msg="清洗完成" bindtap="handleChangeStatus">清洗完成</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 5}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="7" data-msg="清洗完成" bindtap="handleChangeStatus">清洗完成</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 7}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="9" data-msg="送衣完成" bindtap="handleChangeStatus">送衣完成</view>
+            <view class="o-btn" wx:if="{{objj.orderStatus == 8}}" data-orderid="{{objj.orderId}}" data-index="{{j}}" data-targetstatus="9" data-msg="送衣完成" bindtap="handleChangeStatus">送衣完成</view>
+            <!-- <view class="o-btn" wx:if="{{objj.orderStatus == 9}}" data-orderid="{{objj.orderId}}" bindtap="handlePrintLaundryOrder">打印订单</view> -->
           </view>
         </view>
       </block>
