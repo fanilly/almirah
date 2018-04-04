@@ -6,6 +6,7 @@ Page({
   data: {
     showConfirm: false,
     countGoodsLength: 0,
+    useBalance: false,
     commission: null,
     couponChecked: false, //是否使用代金券
     isVIP: false,
@@ -141,6 +142,13 @@ Page({
     });
   },
 
+  // 切换是否使用余额
+  handleCheckoutBalance() {
+    this.setData({
+      useBalance: !this.data.useBalance
+    });
+  },
+
   onUnload() {
     console.log(123);
   },
@@ -181,7 +189,15 @@ Page({
           showCancel: false
         });
       } else {
-        this.startBuy();
+        let tempTest = this.data.couponChecked ? this.data.totalPrice * 1 - 10 : this.data.totalPrice;
+        if (this.data.useBalance && parseFloat(tempTest) > parseFloat(this.data.commission.balance)) {
+          wx.showModal({
+            content: '余额不足，请取消选中余额支付',
+            showCancel: false
+          });
+        } else {
+          this.startBuy();
+        }
       }
       // }
     } else if (!this.data.prefetchingTime) {
@@ -190,12 +206,20 @@ Page({
         showCancel: false
       });
     } else {
-      this.startBuy();
+      let tempTest = this.data.couponChecked ? this.data.totalPrice * 1 - 10 : this.data.totalPrice;
+      if (this.data.useBalance && parseFloat(tempTest) > parseFloat(this.data.commission.balance)) {
+        wx.showModal({
+          content: '余额不足，请取消选中余额支付',
+          showCancel: false
+        });
+      } else {
+        this.startBuy();
+      }
     }
   },
 
   startBuy() {
-    wx.showLoading({ title: '提交中' });
+    wx.showLoading({ title: '提交中', mask: true });
     console.log(this.data);
     let i,
       goods = [],
@@ -221,70 +245,132 @@ Page({
         requireTime: this.data.prefetchingTime,
         deliverType: 0,
         orderRemarks: this.data.remarks,
-        city: app.globalData.city
+        city: app.globalData.city,
+        payType: this.data.useBalance ? 1 : 0
       },
       success: res => {
         app.globalData.updateAlmirah = true;
         console.log('------');
         console.log(res);
         console.log('------');
-        wx.hideLoading();
         let data = res.data;
-        wx.requestPayment({
-          timeStamp: data.timeStamp.toString(),
-          nonceStr: data.nonceStr,
-          paySign: data.paySign,
-          package: data.package,
-          signType: 'MD5',
-          success: res => {
-            console.log(res);
+        console.log(data);
+        wx.hideLoading();
+        if (this.data.useBalance) {
+          if (data.status == 1) {
+            wx.showToast({
+              title: '下单成功',
+              icon: 'success',
+              duration: 1500
+            });
 
-            if (res.errMsg == 'requestPayment:ok') {
-              wx.showToast({
-                title: '下单成功',
-                icon: 'success',
-                duration: 1500
-              });
+            //允许衣橱页面更新
+            app.globalData.updateAlmirah = true;
 
-              app.globalData.updateAlmirah = true;
+            // 清空购物车
+            wx.removeStorage({
+              key: 'laundryTrolley'
+            });
 
-              // 清空购物车
-              wx.removeStorage({
-                key: 'laundryTrolley'
-              });
+            //更新优惠券数量
+            app.globalData.commission.freeWash = this.data.couponChecked ? app.globalData.commission.freeWash * 1 - 1 : app.globalData.commission.freeWash;
 
-              app.globalData.commission.freeWash = this.data.couponChecked ? app.globalData.commission.freeWash * 1 - 1 : app.globalData.commission.freeWash;
-
-              setTimeout(() => {
-                wx.redirectTo({
-                  url: `../success/success?type=laundry&orderId=${data.orderId}&createTime=${data.creatime}&shopName=${data.shopName}&shopTel=${data.shopTel}&shopAddress=${data.shopAddress}`
-                });
-              }, 600);
-            } else {
-              wx.showToast({
-                title: '网络异常',
-                image: '../../assets/warning.png',
-                duration: 1500
-              });
-              // setTimeout(() => {
-              //   wx.redirectTo({
-              //     url: '../fail/fail?type=laundry'
-              //   });
-              // }, 800);
+            //更新余额
+            if (this.data.useBalance) {
+              if (this.data.couponChecked) {
+                app.globalData.commission.balance = parseFloat(app.globalData.commission.balance) - this.data.totalPrice * 1 - 10;
+              } else {
+                app.globalData.commission.balance = parseFloat(app.globalData.commission.balance) - this.data.totalPrice * 1;
+              }
             }
 
-          },
-          fail: res => {
-            console.log(res);
-            if (res.errMsg == 'requestPayment:fail cancel') {
-              wx.showToast({
-                title: '取消支付',
-                image: '../../assets/warning.png',
-                duration: 1500
+            //更新用户信息
+            wx.request({
+              url: `${app.globalData.api}/user/user_info`,
+              data: {
+                userId: app.globalData.userID
+              },
+              success: res => {
+                app.globalData.commission = res.data.data;
+              }
+            });
+
+            //跳转至成功页面
+            setTimeout(() => {
+              wx.redirectTo({
+                url: `../success/success?type=laundry&orderId=${data.data.orderId}&createTime=${data.data.creatime}&shopName=${data.data.shopName}&shopTel=${data.data.shopTel}&shopAddress=${data.data.shopAddress}`
               });
-            }
+            }, 600);
+          } else {
+            wx.showToast({
+              title: '下单失败',
+              image: '../../assets/warning.png',
+              duration: 1500
+            });
           }
-        });
+        } else {
+          wx.requestPayment({
+            timeStamp: data.timeStamp.toString(),
+            nonceStr: data.nonceStr,
+            paySign: data.paySign,
+            package: data.package,
+            signType: 'MD5',
+            success: res => {
+              console.log(res);
+
+              if (res.errMsg == 'requestPayment:ok') {
+                wx.showToast({
+                  title: '下单成功',
+                  icon: 'success',
+                  duration: 1500
+                });
+
+                app.globalData.updateAlmirah = true;
+
+                // 清空购物车
+                wx.removeStorage({
+                  key: 'laundryTrolley'
+                });
+
+                app.globalData.commission.freeWash = this.data.couponChecked ? app.globalData.commission.freeWash * 1 - 1 : app.globalData.commission.freeWash;
+
+                wx.request({
+                  url: `${app.globalData.api}/user/user_info`,
+                  data: {
+                    userId: app.globalData.userID
+                  },
+                  success: res => {
+                    app.globalData.commission = res.data.data;
+                  }
+                });
+
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: `../success/success?type=laundry&orderId=${data.orderId}&createTime=${data.creatime}&shopName=${data.shopName}&shopTel=${data.shopTel}&shopAddress=${data.shopAddress}`
+                  });
+                }, 600);
+              } else {
+                wx.showToast({
+                  title: '网络异常',
+                  image: '../../assets/warning.png',
+                  duration: 1500
+                });
+              }
+
+            },
+            fail: res => {
+              console.log(res);
+              if (res.errMsg == 'requestPayment:fail cancel') {
+                wx.showToast({
+                  title: '取消支付',
+                  image: '../../assets/warning.png',
+                  duration: 1500
+                });
+              }
+            }
+          });
+        }
+
       }
     });
   }

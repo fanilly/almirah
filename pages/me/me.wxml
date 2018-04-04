@@ -10,8 +10,10 @@
         <image wx:if="{{isVip}}" src="../../assets/isvip.png" style="width: 50rpx;display:inline-block;height: 50rpx;position: relative;top:12rpx;"></image>
       </view>
       <view class="f28">{{commission.phone?commission.phone:'未绑定手机号'}}</view>
-      <view class="f28 commi">我的金币：
+      <view class="f28 commi">金币：
         <text class="red-color f32"> {{commission.money}}</text>
+        余额：
+        <text class="red-color f32"> {{commission.balance}}</text>
       </view>
     </view>
     <view>

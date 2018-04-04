@@ -48,9 +48,10 @@ Page({
   //只能为汉字
   handleFilter1(e) {
     let value = e.detail.value;
+    console.log(e);
     // [^\u4E00-\u9FA5]/g
     return {
-      value: value.replace(/[~'!@#$%^&*()-+_=:]/g, '')
+      value: value.replace(/[^\u4E00-\u9FA5]/g, '')
     };
   },
 

@@ -19,6 +19,14 @@ Page({
     };
   },
 
+  handleFilterLoginName(e){
+    let value = e.detail.value;
+    // [^\u4E00-\u9FA5]/g
+    return {
+      value: value.replace(/[~'!@#$%^&*()-+_=:]/g, '')
+    };
+  },
+
   onLoad(options) {
     //如果已登陆 直接跳转至后台管理页面
     if (app.globalData.business.isLogin) {

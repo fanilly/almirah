@@ -1,6 +1,35 @@
 <!--pages/copartner/copartner.wxml-->
 <view class="container">
-  <navigator wx:for="{{list}}" wx:key="{{index}}" url="{{item.num*1 > 0 ? '../lorderlist/lorderlist?shopId=' + item.shopId : '/'}}" class="copartner-list-wapper">
+  <view class="header">
+    <view class="gray04 picker-time">
+      <picker mode="date" value="{{startTime}}" data-rel="start" bindchange="handleDateChange">
+        <block wx:if="{{startTime==''}}">
+          <view class="picker-time-text">
+            <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
+            <text style="padding-left: 10rpx;" class="main-color f28">开始日期</text>
+          </view>
+        </block>
+        <view wx:else class="picker-time-text main-color f28">{{startTime}}</view>
+      </picker>
+    </view>
+    <view>---</view>
+    <view class="gray04 picker-time">
+      <picker mode="date" value="{{endTime}}" data-rel="end" bindchange="handleDateChange">
+        <block wx:if="{{endTime==''}}">
+          <view class="picker-time-text">
+            <image src="../../assets/clock.png" style="width:28rpx;height:28rpx;position:relative;top:4rpx;"></image>
+            <text style="padding-left: 10rpx;" class="main-color f28">截止日期</text>
+          </view>
+        </block>
+        <view wx:else class="picker-time-text main-color f28">{{endTime}}</view>
+      </picker>
+    </view>
+    <view>
+      <view class="btn f28" bindtap="handleStartSearch">搜索</view>
+    </view>
+  </view>
+  <view class="placeholder-box100"></view>
+  <view wx:for="{{list}}" wx:key="{{index}}"  bindtap="handleGo" data-index="{{index}}" url="{{item.num*1 > 0 ? '../lorderlist/lorderlist?shopId=' + item.shopId : '/'}}" class="copartner-list-wapper">
     {{item.userName}}<view class="total">{{item.num}}</view>
-  </navigator>
+  </view>
 </view>

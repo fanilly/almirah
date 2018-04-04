@@ -32,7 +32,7 @@ Page({
     let value = e.detail.value;
     // [^\u4E00-\u9FA5]/g
     return {
-      value: value.replace(/[~'!@#$%^&*()-+_=:]/g, '')
+      value: value.replace(/[^\u4E00-\u9FA5]/g, '')
     };
   },
 

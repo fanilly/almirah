@@ -1,21 +1,28 @@
+import { formatTime } from '../../utils/util.js';
 const app = getApp();
 Page({
   data: {
     hasCoupon: true,
+    termOfValidity: '',
     listData: []
   },
   onLoad() {
+    let subscribeTime = app.globalData.commission.subscribeTime,
+      tempArr = subscribeTime.split('-'),
+      year = `${tempArr[0]*1+1}-${tempArr[1]}-${tempArr[2]}`;
+    this.setData({
+      termOfValidity: formatTime(new Date(year))
+    });
     let total = parseInt(app.globalData.commission.freeWash),
       listData = [];
     if (total <= 0) {
       this.setData({ hasCoupon: false });
     } else {
       for (let i = 0; i < total; i++) {
-        listData.push('test')
+        listData.push('test');
       }
       this.setData({ listData, hasCoupon: true });
     }
-
   },
 
 

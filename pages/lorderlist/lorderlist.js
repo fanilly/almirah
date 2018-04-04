@@ -56,6 +56,14 @@ Page({
     currPage = 1;
     totalPage = 10;
     shopId = options.shopId;
+    if (options.startTime) {
+      startTime = options.startTime;
+      endTime = options.endTime;
+      this.setData({
+        startTime: options.startTime,
+        endTime: options.endTime
+      });
+    }
     this.getOrderList();
   },
 

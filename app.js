@@ -44,7 +44,7 @@ App({
     login(this.globalData.api, (user, userInfo) => {
       //登陆成功 隐藏加载动画 并记录返回数据
       if (this.loginSuccessCallback) this.loginSuccessCallback(user);
-      console.log(user)
+      console.log(user);
       this.globalData.userInfo = userInfo;
       this.globalData.SETTINGS = user.seeting;
       this.globalData.userID = user.userId;

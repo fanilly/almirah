@@ -4,7 +4,7 @@
     <view class="coupon-warp">
       <block wx:for="{{listData}}" wx:key="key">
         <navigator url="../laundryOrder/laundryOrder">
-          <template is="coupon"></template>
+          <template is="coupon" data="{{termOfValidity}}"></template>
         </navigator>
       </block>
     </view>

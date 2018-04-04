@@ -92,7 +92,7 @@ Page({
           }
 
           this.setData({
-            showTime: passTime > 1800 ? false : true,
+            showTime: passTime > 1800 ? false : data.Status == 0 ? true : false,
             content: data,
             loaded: true,
             totalGoods,

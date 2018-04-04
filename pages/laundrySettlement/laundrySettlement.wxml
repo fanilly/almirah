@@ -139,6 +139,17 @@
             是否使用代金券<text class="gray05">（注：每个订单只能使用一张）</text>
           </view>
         </view>
+        <view class="coupon f24 gray02" wx:if="{{isVIP && commission.freeWash*1>0}}">
+          剩余余额
+          <text class="red-color">{{commission.balance}}</text>
+        </view>
+        <view class="use-coupon f24 gray02" bindtap="handleCheckoutBalance"  wx:if="{{isVIP && commission.freeWash*1>0}}">
+          <view class="checkbox" id="{{index}}">
+            <icon color="#1aaade" class="weui-icon-checkbox_circle" style="position: relative;top:-28rpx;" type="circle" size="20" wx:if="{{!useBalance}}"></icon>
+            <icon color="#1aaade" style="position: relative;top:-28rpx;" class="weui-icon-checkbox_success" type="success" size="20" wx:if="{{useBalance}}"></icon>
+            是否使用余额支付<text class="gray05">（注：余额支付不能与现金支付同时使用）</text>
+          </view>
+        </view>
         <view class="f24 gray05 notice">注：点击提交订单暨表示已阅读并同意
           <navigator class="main-color" url="../notice/notice?type=1">《衣物洗涤须知》</navigator>
         </view>

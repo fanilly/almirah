@@ -30,7 +30,7 @@
             <view class="xs-inputs f28 gray03">
               <view>
                 <view> 尺码：</view>
-                <input class="gray04" name="size" placeholder-class="gray06 f24" bindtap="handleFilter" placeholder="请输入尺码" />
+                <input class="gray04" name="size" placeholder-class="gray06 f24" bindinput="handleFilter" placeholder="请输入尺码" />
                 <!-- <view class="choose-btn">
               <view class="btn-box">
                 <image src="../../assets/rule.png" style="width:30rpx;height: 30rpx; margin:4rpx 8rpx 0 0"></image>
@@ -40,7 +40,7 @@
               </view>
               <view>
                 <view> 颜色：</view>
-                <input class="gray04" bindtap="handleFilter1" name="color" placeholder-class="gray06 f24" placeholder="颜色（仅可输汉字）" />
+                <input class="gray04" bindinput="handleFilter1" name="color" placeholder-class="gray06 f24" placeholder="颜色（仅可输汉字）" />
               </view>
             </view>
             <view class="xs-inputs f28 gray03">

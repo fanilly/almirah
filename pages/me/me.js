@@ -13,15 +13,15 @@ Page({
   handleGoBusinessAdmin() {
     if (app.globalData.business.isLogin) {
       if (app.globalData.business.identity == 1) {
-        wx.redirectTo({
+        wx.navigateTo({
           url: '../businessAdmin/businessAdmin'
         });
       } else if (app.globalData.business.identity == 2) {
-        wx.redirectTo({
+        wx.navigateTo({
           url: `../jingge/jingge?userId=${app.globalData.business.userId}`
         });
       } else {
-        wx.redirectTo({
+        wx.navigateTo({
           url: `../copartner/copartner?userId=${app.globalData.business.userId}`
         });
       }
