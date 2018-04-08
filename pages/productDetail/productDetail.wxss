@@ -107,6 +107,7 @@
   position: fixed;
   bottom: 135rpx;
   right: 15rpx;
+  overflow: inherit;
 }
 
 .notice {

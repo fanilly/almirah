@@ -93,6 +93,7 @@ Page({
       url: `${app.globalData.api}/admin/parterOrder`,
       data: tempData,
       success: res => {
+        console.log(res)
         wx.hideLoading();
         let data = res.data.data,
           lists = this.data.lists;
@@ -102,7 +103,6 @@ Page({
           this.setData({ showIcon: false });
         }
         currPage++;
-        console.log(res)
         lists.push(...data.root);
         totalPage = data.totalPage;
         this.setData({ lists });

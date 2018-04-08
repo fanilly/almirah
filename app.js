@@ -117,8 +117,6 @@ App({
     giveAddress: null, //送衣地址
     receiptAddress: null, //商城买衣地址
     buyGoodsLists: [], //结算时选中的商品
-    api: 'https://xiyi.honghuseo.cn/index.php/api',
-    baseUrl: 'https://xiyi.honghuseo.cn/',
     commission: null,
     userInfo: null
   }

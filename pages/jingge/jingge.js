@@ -55,10 +55,14 @@ Page({
         startTime = this.data.startTime;
         endTime = this.data.endTime;
         wx.showLoading({ title: '加载中', mask: true });
+        console.log(`${app.globalData.api}/admin/qyParter`);
+        console.log(userID);
         wx.request({
           url: `${app.globalData.api}/admin/qyParter`,
           data: {
-            userId: userID
+            userId: userID,
+            startTime: this.data.startTime,
+            endTime: this.data.endTime
           },
           success: res => {
             wx.hideLoading();
