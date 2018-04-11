@@ -151,6 +151,7 @@ Page({
         shopId: app.globalData.business.shopId
       },
       success: res => {
+        console.log(res);
         let data = res.data.data || [],
           nums = params.num,
           totalList = this.data.totalList;
@@ -229,6 +230,7 @@ Page({
     listsAll[currentIndex].noMoreData = false;
     listsAll[currentIndex].listsStatus = 1;
     this.setData({ startRefresh, listsAll });
+    this.getOrderNum();
     this.myGetOrderList(params.num[currentIndex], currentIndex);
   },
 
@@ -805,18 +807,18 @@ Page({
 
   //打印订单
   handlePrintLaundryOrder(e) {
-    if (!app.globalData.connectedPrint) {
-      wx.showModal({
-        title: '温馨提示!',
-        content: '打印订单需要先连接打印机',
-        confirmText: '立即连接',
-        success: (res) => {
-          if (res.confirm) {
-            this.handleConnectPrientDev();
-          }
-        }
-      });
-    } else {
+    // if (!app.globalData.connectedPrint) {
+    //   wx.showModal({
+    //     title: '温馨提示!',
+    //     content: '打印订单需要先连接打印机',
+    //     confirmText: '立即连接',
+    //     success: (res) => {
+    //       if (res.confirm) {
+    //         this.handleConnectPrientDev();
+    //       }
+    //     }
+    //   });
+    // } else {
       tempPrintOrderData = {};
       let data = e.target.dataset;
       tempPrintOrderData = {
@@ -829,27 +831,28 @@ Page({
           }
         }
       };
-      wx.showLoading({ title: '数据获取中', mask: true });
-      wx.request({
-        url: `${app.globalData.api}/admin/printOrder`,
-        data: {
-          shopId: app.globalData.business.shopId,
-          orderId: data.orderid
-        },
-        success: res => {
-          console.log(res);
-          let printDataArr = [];
-          printDataArr.push(res.data.data.clientBill);
-          printDataArr.push(...res.data.data.agentBill);
-          printDataArr.push(...res.data.data.storeBill);
-          this.setData({
-            printDataArr,
-            printingOrderId: data.orderid
-          });
-          this.print();
-        }
-      });
-    }
+      this.handleChangeStatus(tempPrintOrderData);
+    //   wx.showLoading({ title: '数据获取中', mask: true });
+    //   wx.request({
+    //     url: `${app.globalData.api}/admin/printOrder`,
+    //     data: {
+    //       shopId: app.globalData.business.shopId,
+    //       orderId: data.orderid
+    //     },
+    //     success: res => {
+    //       console.log(res);
+    //       let printDataArr = [];
+    //       printDataArr.push(res.data.data.clientBill);
+    //       printDataArr.push(...res.data.data.agentBill);
+    //       printDataArr.push(...res.data.data.storeBill);
+    //       this.setData({
+    //         printDataArr,
+    //         printingOrderId: data.orderid
+    //       });
+    //       this.print();
+    //     }
+    //   });
+    // }
 
   }
 

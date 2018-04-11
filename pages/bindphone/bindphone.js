@@ -48,7 +48,7 @@ Page({
       success: res => {
         wx.hideLoading();
         console.log(res);
-        if (res.data * 1 == 1) {
+        if (res.data == 1) {
           app.globalData.commission.phone = data.phonenumber;
           //绑定成功
           wx.showToast({
@@ -61,9 +61,15 @@ Page({
               delta: 1
             });
           }, 600);
-        } else {
+        } else if (res.data == 0) {
           wx.showToast({
             title: '验证码不正确',
+            image: '../../assets/warning.png',
+            duration: 1500
+          });
+        } else {
+          wx.showToast({
+            title: res.data,
             image: '../../assets/warning.png',
             duration: 1500
           });
@@ -90,7 +96,7 @@ Page({
             }
           }
         });
-      }else if(phoneNumber == this.data.placeholder){
+      } else if (phoneNumber == this.data.placeholder) {
         wx.showModal({
           showCancel: false,
           content: '不能绑定相同的手机号',

@@ -11,7 +11,7 @@ Page({
       tempArr = subscribeTime.split('-'),
       year = `${tempArr[0]*1+1}-${tempArr[1]}-${tempArr[2]}`;
     this.setData({
-      termOfValidity: formatTime(new Date(year))
+      termOfValidity: year
     });
     let total = parseInt(app.globalData.commission.freeWash),
       listData = [];

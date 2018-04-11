@@ -94,8 +94,6 @@ Page({
       commission: app.globalData.commission
     });
 
-
-
     // 从购物车中获取商品渲染
     wx.getStorage({
       key: 'laundryTrolley',
@@ -230,6 +228,18 @@ Page({
         "goodsNum": trolleys[i].total
       });
     }
+    console.log(this.data.useBalance ? 1 : 0, this.data.couponChecked ? 1 : 0);
+    let tempPayType;
+    if (this.data.useBalance) {
+      tempPayType = 1;
+    } else {
+      if (this.data.couponChecked && this.data.totalPrice * 1 - 10 < 0) {
+        tempPayType = 1;
+      } else {
+        tempPayType = 0;
+      }
+    }
+    console.log(tempPayType + '++++++++++++++++++++++++');
     wx.request({
       method: 'POST',
       url: `${app.globalData.api}/buy/buy`,
@@ -246,7 +256,8 @@ Page({
         deliverType: 0,
         orderRemarks: this.data.remarks,
         city: app.globalData.city,
-        payType: this.data.useBalance ? 1 : 0
+        payType: tempPayType
+        // payType: this.data.useBalance ? 1 : 0
       },
       success: res => {
         app.globalData.updateAlmirah = true;
@@ -256,7 +267,7 @@ Page({
         let data = res.data;
         console.log(data);
         wx.hideLoading();
-        if (this.data.useBalance) {
+        if (this.data.useBalance || this.data.couponChecked && this.data.totalPrice * 1 - 10 < 0) {
           if (data.status == 1) {
             wx.showToast({
               title: '下单成功',

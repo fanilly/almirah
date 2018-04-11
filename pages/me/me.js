@@ -101,6 +101,7 @@ Page({
   // 生命周期函数--监听页面显示
   onShow() {
     this.setData({
+      isVip: app.globalData.isVIP,
       commission: app.globalData.commission,
       hasNewMsg: app.globalData.hasNewMsg
     });

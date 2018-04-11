@@ -70,9 +70,10 @@ Page({
   chooseAddress() {
     wx.chooseLocation({
       success: res => {
+        console.log(res);
         latitude = res.latitude;
         longitude = res.longitude;
-        address = res.name != '' ? res.name : res.address;
+        address = res.address != '' ? res.address : res.name;
         this.setData({
           address: address
         });

@@ -57,7 +57,8 @@ Page({
                 app.globalData.isVIP = true;
                 //获取用户信息
                 wx.showLoading({
-                  title: '状态更新'
+                  title: '状态更新',
+                  mask: true
                 });
                 wx.request({
                   url: `${app.globalData.api}/user/user_info`,
