@@ -4,7 +4,7 @@
   <form bindsubmit="formSubmit" class="content">
     <input type="text" maxlength="11" confirm-type="done" value="{{shopLoginName}}" bindinput="handleFilterLoginName" placeholder="请输入账号" placeholder-class="placeholder" name="loginName" />
     <view class="verf-code">
-      <input type="password" maxlength="6" placeholder="请输入密码" value="{{shopLoginPwd}}" placeholder-class="placeholder" name="loginPwd" />
+      <input type="password" placeholder="请输入密码" value="{{shopLoginPwd}}" placeholder-class="placeholder" name="loginPwd" />
     </view>
     <button formType="submit" class="main-bgi">立即登陆</button>
   </form>
