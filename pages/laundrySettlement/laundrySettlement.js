@@ -136,16 +136,16 @@ Page({
   // 切换是否使用代金券
   handleCheckout() {
     this.setData({
-      couponChecked: !this.data.couponChecked,
-      useBalance:!this.data.couponChecked ? false : this.data.useBalance
+      couponChecked: !this.data.couponChecked
+      // useBalance:!this.data.couponChecked ? false : this.data.useBalance
     });
   },
 
   // 切换是否使用余额
   handleCheckoutBalance() {
     this.setData({
-      useBalance: !this.data.useBalance,
-      couponChecked:!this.data.useBalance ? false : this.data.couponChecked
+      useBalance: !this.data.useBalance
+      // couponChecked:!this.data.useBalance ? false : this.data.couponChecked
     });
   },
 
@@ -171,11 +171,11 @@ Page({
   //购买
   handleBuy() {
     //如果使用余额支付 不能使用代金券
-    if (this.data.useBalance) {
-      this.setData({
-        couponChecked: false
-      });
-    }
+    // if (this.data.useBalance) {
+    //   this.setData({
+    //     couponChecked: false
+    //   });
+    // }
     if (!this.data.takeAddress) {
       console.log(123);
       wx.showModal({
