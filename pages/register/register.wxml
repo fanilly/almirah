@@ -13,7 +13,7 @@
     </view>
   </view>
   <block wx:if="{{!isVIP}}">
-    <view class="remarks gray06 f24">注：成为会员需支付98元</view>
+    <view class="remarks gray06 f24">注：成为会员需支付98元（会员有效期一年）</view>
     <view class="agreement gray06 f24">点击支付暨表示已阅读并同意
       <navigator url="../agreement/agreement">《用户协议》</navigator>
     </view>
